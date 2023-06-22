@@ -1,0 +1,184 @@
+:root {
+  --bar-width: 1.6rem;
+  --bar-height: 2px;
+  --hamburger-gap: 3px;
+  --hamburger-margin: 1.5rem;
+  --animation-timing: 200ms ease-in-out;
+  --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
+}
+
+.open {
+  animation: slide-in-blurred-right 800ms ease-in-out;
+  background-color: var(--secondary-color);
+}
+
+@keyframes slide-in-blurred-right {
+  0% {
+    -webkit-transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+            transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+    -webkit-transform-origin: 0% 50%;
+            transform-origin: 0% 50%;
+    -webkit-filter: blur(40px);
+            filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0) scaleY(1) scaleX(1);
+            transform: translateX(0) scaleY(1) scaleX(1);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+    -webkit-filter: blur(0);
+            filter: blur(0);
+    opacity: 1;
+  }
+}
+
+.close {
+  /* opacity: 0; */
+  transform: translate(-100%);
+  animation: slide-out-blurred-right 800ms ease-in-out;
+}
+
+.side_close {
+  right: -20rem;
+}
+
+@keyframes slide-out-blurred-right {
+  0% {
+    -webkit-transform: translateX(0) scaleY(1) scaleX(1);
+            transform: translateX(0) scaleY(1) scaleX(1);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+    -webkit-filter: blur(0);
+            filter: blur(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(1000px) scaleX(2) scaleY(0.2);
+            transform: translateX(1000px) scaleX(2) scaleY(0.2);
+    -webkit-transform-origin: 0% 50%;
+            transform-origin: 0% 50%;
+    -webkit-filter: blur(40px);
+            filter: blur(40px);
+    opacity: 0;
+  }
+}
+
+.hamburger_menu {
+  --x-width: calc(var(--hamburger-height) * 1.41421356237);
+
+  z-index: 700;
+  /* background-color: black; */
+  border-radius: 4px;
+  position: fixed;
+  top: 1.07rem;
+  right: 1rem;
+  /* padding: 1rem; */
+  height: calc(var(--bar-width) + 1.5rem);
+  width: calc(var(--bar-width) + 1.5rem);
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  gap: var(--hamburger-gap);
+  font-size: 1.5rem;
+  font-weight: 900;
+  flex-direction: column;
+}
+
+.line {
+  content: "";
+  width: var(--bar-width);
+  height: var(--bar-height);
+  background-color: var(--tetiary-color-1);
+  border-radius: 4px;
+  transform-origin: left center;
+  transition: opacity var(--animation-timing), width var(--animation-timing), rotate var(--animation-timing), translate var(--animation-timing), background-color var(--animation-timing);
+  display: block;
+  /* box-shadow: 1px 1px 1px var(--secondary-color); */
+}
+
+.tilt {
+  rotate: 45deg;
+  width: var(--bar-width);
+  translate: 0.2rem calc(var(--bar-height) / -0.5);
+  display: block;
+  animation: blend 800ms ease-in-out;
+  opacity: 0;
+}
+
+.tilt_1 {
+  /* rotate: 45deg; */
+  width: var(--bar-width);
+  translate: -0.4rem calc(var(--bar-height) / -2);
+  display: block;
+  animation: appear 800ms ease-in-out;
+}
+
+.rtilt {
+  rotate: -45deg;
+  width: var(--bar-width);
+  translate: 0.2rem calc(var(--bar-height) / 0.5);
+  display: block;
+  animation: blend 800ms ease-in-out;
+  opacity: 0;
+}
+
+.rtilt_1 {
+  /* rotate: -45deg; */
+  width: var(--bar-width);
+  translate: 0.4rem calc(var(--bar-height) / 2);
+  display: block;
+  animation: appear 800ms ease-in-out;
+}
+
+@keyframes vanish {
+  20% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0.2;
+  }
+
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.nav_content {
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding-top: 5rem;
+  background-color: var(--tetiary-color-1);
+  height: 100%;
+  transition: var(--animation-timing);
+}
+
+.nav_content li {
+  justify-content: space-between;
+}
+
+.nav_content li:not(:last-child) {
+  border-top: 1px solid var(--tetiary-color-3);
+  padding: 1rem;
+}
+
+.reg {
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.reg_btn {
+  padding: 0.8rem 1.2rem;
+  font-size: clamp(0.7rem, 5vw, 1rem);
+  width: 100%;
+}

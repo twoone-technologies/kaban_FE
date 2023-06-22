@@ -1,0 +1,6 @@
+.btn {
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  color: var(--tetiary-color-1);
+  width: 100%;
+}
