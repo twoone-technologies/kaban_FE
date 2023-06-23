@@ -116,6 +116,10 @@ svg {
   border-radius: 5px;
 }
 
+f-width {
+  width: 100%;
+}
+
 .pad {
   padding: 1rem;
 }

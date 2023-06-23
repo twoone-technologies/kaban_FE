@@ -4,6 +4,10 @@
   cursor: pointer;
 }
 
+.a_tag {
+  background-color: aqua;
+}
+
 .nav_item_ul {
   justify-content: space-between;
   align-items: center;

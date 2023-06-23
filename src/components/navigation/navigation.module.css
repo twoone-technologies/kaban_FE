@@ -13,13 +13,13 @@
 }
 
 .open {
-  animation: slide-in-blurred-right 800ms ease-in-out;
+  animation: slide-in-blurred-right 300ms ease-in-out;
   background-color: var(--secondary-color);
 }
 
 .close {
   transform: translate(110%);
-  animation: slide-out-blurred-right 800ms ease-in-out;
+  animation: slide-out-blurred-right 300ms ease-in-out;
   background-color: var(--secondary-color);
 }
 

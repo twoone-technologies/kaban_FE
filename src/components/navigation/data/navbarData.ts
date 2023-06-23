@@ -8,55 +8,66 @@ import { agentsIcon } from "~/assets";
 import { agenciesIcon } from "~/assets";
 
 const navbarData = {
-  Realtors: {
-    href: undefined,
-    subItems: [
-      {
-        icon: agentsIcon,
-        name: 'Agents',
-      },
-      {
-        icon: agenciesIcon,
-        name: 'Agencies',
-      },
-    ]
-  },
-  Company: {
-    href: undefined,
-    subItems: [
-      {
-        icon: aboutUsIcon,
-        name: 'About Us',
-      },
-      {
-        icon: contactUsIcon,
-        name: 'Contact Us',
-      },
-      {
-        icon: faqIcon,
-        name: 'FAQs',
-      },
-    ]
-  },
   Property: {
     href: undefined,
     subItems: [
       {
         icon: house_1Icon,
         name: 'Residential',
+        path: 'residential',
       },
       {
         icon: house_2Icon,
         name: 'Industrial',
+        path: 'industrial',
       },
       {
         icon: house_3Icon,
         name: 'Commercial',
+        path: 'commercial',
       },
     ]
   },
+
+  Realtors: {
+    href: undefined,
+    subItems: [
+      {
+        icon: agentsIcon,
+        name: 'Agents',
+        path: 'agents',
+      },
+      {
+        icon: agenciesIcon,
+        name: 'Agencies',
+        path: 'agencies',
+      },
+    ]
+  },
+
+  Company: {
+    href: undefined,
+    subItems: [
+      {
+        icon: aboutUsIcon,
+        name: 'About Us',
+        path: 'about-us',
+      },
+      {
+        icon: contactUsIcon,
+        name: 'Contact Us',
+        path: 'contact-us',
+      },
+      {
+        icon: faqIcon,
+        name: 'FAQs',
+        path: 'faqs',
+      },
+    ]
+  },
+
   Blog: {
-    href: '#',
+    href: '/blog',
     subItems: undefined
   }
 }

@@ -10,6 +10,7 @@ type Props = {
   subItems?: {
     icon: string;
     name: string;
+    path: string;
   }[];
   drop: boolean;
   handleClick: () => void;
@@ -23,7 +24,7 @@ const NavItem = ({ title, href, subItems, drop, handleClick }: Props) => {
   }
 
   return (href
-    ? <li className={`${styles.nav_item}`}><a href={href}>{title}</a></li>
+    ? <Link className={`${styles.nav_item}`} to={href}>{title}</Link>
     : <li className={`flex f_column ${styles.nav_item}`} onClick={onItemClickHandler}>
       <div className={`flex ${styles.nav_item_ul}`}>
         <span
@@ -36,13 +37,13 @@ const NavItem = ({ title, href, subItems, drop, handleClick }: Props) => {
       </div>
       <ul className={`flex f_column ${styles.drop_down} ${drop ? styles.open_link : styles.close_link}`}>
         {subItems?.map((item, id) => (
-          <li key={id} onMouseEnter={() => sethover(id)} onMouseLeave={() => sethover(-1)}
+          <Link to={item.path} key={id} onMouseEnter={() => sethover(id)} onMouseLeave={() => sethover(-1)}
             className={`flex pad b-radius ${styles.nav_item_link}`}>
             {hover === id && drop ?
               <Svg href={`${item.icon}`} className={`${drop ? styles.blue : styles.ash}`} /> :
               <Svg href={`${item.icon}`} className={`${drop ? styles.ash : styles.ash}`} />}
-            <Link to={'#'}>{item.name}</Link>
-          </li>
+            <span>{item.name}</span>
+          </Link>
         ))}
       </ul>
     </li>
