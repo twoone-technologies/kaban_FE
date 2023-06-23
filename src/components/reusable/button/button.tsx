@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import "../../../../main.css";
+import "~/styles/main.css";
 
 type Props = {
   className: string,

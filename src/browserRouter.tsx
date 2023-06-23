@@ -1,5 +1,5 @@
 import { Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom"
-import LandingPage from "./routes/landingpage/_landingpage"
+import LandingPage from "./routes/_landingpage"
 import Root from "./routes/_index"
 import Blog from "./routes/blog"
 import Commercial from "./routes/_property.commercial"
