@@ -65,6 +65,36 @@ a {
   text-decoration: inherit;
 }
 
+.App {
+  color: var(--accent-color);
+  background-color: var(--tetiary-color);
+}
+
+.heading {
+  margin-bottom: 2rem;
+  font-size: clamp(1rem, 7vw, 1.3rem);
+  text-align: center;
+  position: relative;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: var(--accent-1-color);
+}
+
+.head {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.box_shadow {
+  box-shadow: -10px 10px 11px 1px var(--shadow-color);
+}
+
 ul {
   list-style-type: none;
 }
@@ -72,6 +102,10 @@ ul {
 /* svg component */
 svg {
   fill: currentColor;
+}
+
+.svg_icon {
+  color: var(--accent-color);
 }
 
 .svg_icon:hover {
@@ -83,7 +117,7 @@ svg {
   display: flex;
 }
 
-.f_column {
+.f-column {
   flex-direction: column;
 }
 

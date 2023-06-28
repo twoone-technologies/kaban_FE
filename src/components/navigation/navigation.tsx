@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { logoIcon } from "~/assets";
-import Button from "../reusable/button/button";
+import Button from "~/components/reusable/Button";
 import styles from "./navigation.module.css";
 import NavItem from "./navitem/navitem";
 import navbarData from "./data/navbarData";
-import Svg from "../reusable/svg/svg";
+import Svg from "~/components/reusable/Svg";
 
 function Navigation() {
   const [open, setopen] = useState(false);
@@ -20,7 +20,7 @@ function Navigation() {
       <Button
         type="button"
         onClick={onClickHandler}
-        className={`flex f_column ${styles.hamburger_menu} ${open ? styles.border : styles.border_1}`}
+        className={`flex f-column ${styles.hamburger_menu} ${open ? styles.border : styles.border_1}`}
       >
         <span className={`${styles.line} ${open ? styles.tilt : styles.tilt_1}`}></span>
         <span className={`${styles.line} ${open ? styles.hide : styles.see}`}></span>
