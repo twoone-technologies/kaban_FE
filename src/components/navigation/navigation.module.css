@@ -8,6 +8,7 @@
 }
 
 .nav {
+  background-color: burlywood;
   position: fixed;
   top: 0;
   height: 4rem;
@@ -17,7 +18,7 @@
 }
 
 .logo {
-  color: whitesmoke;
+  color: var(--tetiary-color-1);
 }
 
 .open {
@@ -34,8 +35,6 @@
   z-index: 700;
   transition: all 300ms ease-in-out;
   padding: 12px 8px;
-  border-radius: 8px;
-  background-color: transparent;
   justify-content: center;
   gap: var(--hamburger-gap);
 }
@@ -74,29 +73,24 @@
   rotate: 45deg;
   width: var(--bar-width);
   translate: 0.22rem calc(var(--bar-height) / -9);
-  display: block;
 }
 
 .tilt_1 {
   background-color: var(--tetiary-color-1);
   width: var(--bar-width);
   /* translate: -0.4rem calc(var(--bar-height) / -2); */
-  display: block;
 }
 
 .rtilt {
-  background-color: var(--primary-color);
   rotate: -45deg;
   width: var(--bar-width);
+  background-color: var(--primary-color);
   translate: 0.22rem calc(var(--bar-height) / 9);
-  display: block;
 }
 
 .rtilt_1 {
   background-color: var(--tetiary-color-1);
   width: var(--bar-width);
-  /* translate: 0.4rem calc(var(--bar-height) / 2); */
-  display: block;
 }
 
 .nav_content {
@@ -130,7 +124,6 @@
 @media screen and (width >= 768px) {
   .nav {
     padding: 0 4rem;
-    background-color: aqua;
   }
 
   .nav_content {
@@ -144,7 +137,6 @@
 
   .hamburger_menu {
     display: none;
-    visibility: collapse;
   }
 
   .close {
