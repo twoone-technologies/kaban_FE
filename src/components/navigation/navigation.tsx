@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { logoIcon } from "~/assets";
+import Button from "../reusable/button/button";
 import styles from "./navigation.module.css";
+import NavItem from "./navitem/navitem";
 import navbarData from "./data/navbarData";
-import Svg from "../reusable/Svg";
-import Button from "../reusable/Button";
-import NavItem from "./navitem/Navitem";
+import Svg from "../reusable/svg/svg";
 
-export default function Navigation() {
+function Navigation() {
   const [open, setopen] = useState(false);
   const [dropdown, setDropdown] = useState(-1);
 
@@ -46,3 +46,5 @@ export default function Navigation() {
     </nav>
   )
 }
+
+export default Navigation;
