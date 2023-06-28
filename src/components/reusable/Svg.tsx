@@ -6,7 +6,7 @@ type Props = {
   href: string,
 }
 
-const Svg = ({className, width='1.5em', height='1.5em', width_2='100%', href}: Props) => {
+export default function Svg ({className, width='1.5em', height='1.5em', width_2='100%', href}: Props) {
   return (
     <svg 
       className={`svg_icon ${className}`} 
@@ -16,5 +16,3 @@ const Svg = ({className, width='1.5em', height='1.5em', width_2='100%', href}: P
     </svg>
   )
 }
-
-export default Svg;
