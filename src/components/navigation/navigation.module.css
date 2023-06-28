@@ -130,6 +130,7 @@
 @media screen and (width >= 768px) {
   .nav {
     padding: 0 4rem;
+    background-color: aqua;
   }
 
   .nav_content {
@@ -143,6 +144,7 @@
 
   .hamburger_menu {
     display: none;
+    visibility: collapse;
   }
 
   .close {

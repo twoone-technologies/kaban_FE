@@ -1,9 +1,9 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { arrowIcon } from "~/assets";
 import styles from "./navitem.module.css"
-import Svg from "~/components/reusable/svg/svg";
-import { Link } from "react-router-dom";
 import useResponsiveNav from "~/components/hooks/useResponsiveNav";
+import Svg from "~/components/reusable/Svg";
 
 type Props = {
   title: string,
@@ -18,7 +18,7 @@ type Props = {
   mouseOver: () => void;
 }
 
-const NavItem = ({ title, href, subItems, drop, handleClick, mouseOver }: Props) => {
+export default function NavItem({ title, href, subItems, drop, handleClick, mouseOver }: Props) {
   const [hover, sethover] = useState(-1);
   const navStateHandler = useResponsiveNav({
     onClick: handleClick,
@@ -56,5 +56,3 @@ const NavItem = ({ title, href, subItems, drop, handleClick, mouseOver }: Props)
       </li>
   )
 }
-
-export default NavItem;
