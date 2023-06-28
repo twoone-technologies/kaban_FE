@@ -1,4 +1,4 @@
-import HeroSection from "../components/homepage/HeroSection";
+import HeroSection from "../components/herosection/HeroSection";
 
 export default function LandingPage() {
   return (

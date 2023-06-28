@@ -2,8 +2,8 @@ import { useState } from "react";
 import { logoIcon } from "~/assets";
 import Button from "~/components/reusable/Button";
 import styles from "./navigation.module.css";
-import NavItem from "./navitem/navitem";
-import navbarData from "./data/navbarData";
+import NavItem from "./navitem/NavItem.tsx";
+import navbarData from "./data/navbarData.ts";
 import Svg from "~/components/reusable/Svg";
 
 function Navigation() {

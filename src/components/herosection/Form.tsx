@@ -1,9 +1,9 @@
-import Button from "../reusable/button/button";
+import Button from "~/components/reusable/Button";
 import styles from "./hero.module.css";
 
 export default function Form() {
   return (
-    <form className={`flex b-radius f-width ${styles.form}`}>
+    <form className={`b-radius f-width ${styles.form}`}>
       <div>
         <label htmlFor="name"></label>
         <input
