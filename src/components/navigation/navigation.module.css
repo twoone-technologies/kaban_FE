@@ -17,7 +17,7 @@
 }
 
 .logo {
-  color: whitesmoke;
+  color: var(--tetiary-color-1);
 }
 
 .open {
@@ -143,6 +143,7 @@
 
   .hamburger_menu {
     display: none;
+    visibility: collapse;
   }
 
   .close {

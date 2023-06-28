@@ -117,7 +117,7 @@ svg {
   display: flex;
 }
 
-.f_column {
+.f-column {
   flex-direction: column;
 }
 
