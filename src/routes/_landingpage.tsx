@@ -1,7 +1,9 @@
-import HomePage from "./../components/homepage/homePage";
+import HeroSection from "../components/homepage/HeroSection";
 
 export default function LandingPage() {
   return (
-    <HomePage />
+    <>
+      <HeroSection />
+    </>
   )
 } 

@@ -1,0 +1,8 @@
+.hero {
+  background-image: url("/src/assets/Frame.svg");
+  height: 100dvh;
+  background-position: center;
+  justify-content: center;
+  align-items: center;
+  color: var(--tetiary-color-1);
+}
