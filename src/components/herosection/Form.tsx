@@ -9,7 +9,7 @@ export default function Form() {
         <input
           name="fullname"
           type="text"
-          maxLength="30"
+          maxLength={30}
           className={`flex b-radius f-width ${styles.form_input}`}
           placeholder="Property Type"
           required
@@ -21,7 +21,7 @@ export default function Form() {
           name="email"
           type="text"
           className={`flex b-radius f-width ${styles.form_input}`}
-          maxLength="30"
+          maxLength={30}
           placeholder="All Cities"
           required
         />
@@ -33,7 +33,7 @@ export default function Form() {
           type="text"
           className={`flex b-radius f-width ${styles.form_input}`}
           placeholder="Bedrooms"
-          maxLength="500"
+          maxLength={500}
           required
         />
       </div>
@@ -44,10 +44,21 @@ export default function Form() {
           type="text"
           className={`flex b-radius f-width ${styles.form_input}`}
           placeholder="Max. price"
-          maxLength="500"
+          maxLength={500}
           required
         />
       </div>
+      {/* <div>
+        <label htmlFor="myBrowser">Choose a browser from this list:</label>
+        <input list="browsers" id="myBrowser" name="myBrowser" className={`flex b-radius f-width ${styles.form_input}`} />
+        <datalist id="browsers">
+          <option value="Chrome"></option>
+          <option value="Firefox"></option>
+          <option value="Opera"></option>
+          <option value="Safari"></option>
+          <option value="Microsoft Edge"></option>
+        </datalist>
+      </div> */}
       <Button className={styles.btn}>Search</Button>
     </form>
   )
