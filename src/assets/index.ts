@@ -9,6 +9,7 @@ import aboutUs from "./about_us.svg";
 import contactUs from "./messages.svg";
 import faq from "./faq.svg";
 import frame from "./Frame.svg";
+import search from "./search-normal.svg";
 
 export const logoIcon = `${logo}#img`;
 export const arrowIcon = `${arrow}#img`;
@@ -20,4 +21,5 @@ export const agenciesIcon = `${agencies}#img`;
 export const aboutUsIcon = `${aboutUs}#img`;
 export const contactUsIcon = `${contactUs}#img`;
 export const faqIcon = `${faq}#img`;
-export const frameIcon = `${frame}#img`; 
+export const frameIcon = `${frame}#img`;
+export const searchIcon = `${search}#img`;

@@ -1,65 +1,43 @@
+import { useState } from "react";
 import Button from "~/components/reusable/Button";
 import styles from "./hero.module.css";
+import Svg from "../reusable/Svg";
+import { searchIcon } from "~/assets";
+import FormItem from "./FormItem";
 
 export default function Form() {
+  const [status, setStatus] = useState<'rent' | 'sale'>('rent')
+  function handleStatus(stat: 'rent' | 'sale') {
+    setStatus(stat)
+  }
+
   return (
     <form className={`b-radius f-width ${styles.form}`}>
-      <div>
-        <label htmlFor="name"></label>
-        <input
-          name="fullname"
-          type="text"
-          maxLength={30}
-          className={`flex b-radius f-width ${styles.form_input}`}
-          placeholder="Property Type"
-          required
-        />
+      <div className={`flex f-width ${styles.btn_wrap}`}>
+        <label className={`${styles.label}
+          ${status === "rent" ? styles.rent : styles.sale}`}
+          htmlFor="button">
+        </label>
+        <input type="hidden" name="status" value={status} />
+        <Button onClick={() => handleStatus('rent')} type="button"
+          className={`${styles.form_btn}`}>
+          For Rent
+        </Button>
+        <Button onClick={() => handleStatus('sale')} type="button"
+          className={`${styles.form_btn}`}>
+          For Sale
+        </Button>
       </div>
       <div>
-        <label htmlFor="email"></label>
-        <input
-          name="email"
-          type="text"
-          className={`flex b-radius f-width ${styles.form_input}`}
-          maxLength={30}
-          placeholder="All Cities"
-          required
-        />
+        <label htmlFor="location"></label>
+        <div className={`flex b-radius f-width ${styles.form_input}`}>
+          <input type="text" placeholder="Location" name="Location" maxLength={30}
+          required className={`flex b-radius f-width ${styles.input}`} />
+          <Svg href={searchIcon} className={styles.svgIcon} width="17px" height="17px" />
+        </div>
       </div>
-      <div>
-        <label htmlFor="bedrooms"></label>
-        <input
-          name="bedrooms"
-          type="text"
-          className={`flex b-radius f-width ${styles.form_input}`}
-          placeholder="Bedrooms"
-          maxLength={500}
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="max price"></label>
-        <input
-          name="max price"
-          type="text"
-          className={`flex b-radius f-width ${styles.form_input}`}
-          placeholder="Max. price"
-          maxLength={500}
-          required
-        />
-      </div>
-      {/* <div>
-        <label htmlFor="myBrowser">Choose a browser from this list:</label>
-        <input list="browsers" id="myBrowser" name="myBrowser" className={`flex b-radius f-width ${styles.form_input}`} />
-        <datalist id="browsers">
-          <option value="Chrome"></option>
-          <option value="Firefox"></option>
-          <option value="Opera"></option>
-          <option value="Safari"></option>
-          <option value="Microsoft Edge"></option>
-        </datalist>
-      </div> */}
-      <Button className={styles.btn}>Search</Button>
+      <FormItem />
+      <Button type="submit" className={styles.btn}>Search</Button>
     </form>
   )
 }

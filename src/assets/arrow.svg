@@ -1,3 +1,9 @@
-<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M1 1L7 7L1 13" stroke="#495E6C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="20" id="img" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<g id="arrow-down">
+<g id="vuesax/bold/arrow-down">
+<g id="arrow-down_2">
+<path id="Vector" d="M6.81665 5.06688L6.81665 10.2585V14.9335C6.81665 15.7335 7.78332 16.1335 8.34998 15.5669L12.6666 11.2502C13.3583 10.5585 13.3583 9.43354 12.6666 8.74188L11.025 7.10021L8.34998 4.42521C7.78332 3.86688 6.81665 4.26688 6.81665 5.06688Z" fill="currentColor"/>
+</g>
+</g>
+</g>
 </svg>

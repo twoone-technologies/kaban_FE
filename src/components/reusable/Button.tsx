@@ -2,7 +2,6 @@ import { ReactNode } from "react";
 import "~/styles/main.css";
 
 type Props = {
-  className: string,
   children: ReactNode,
 } & React.ComponentProps<'button'>
 
