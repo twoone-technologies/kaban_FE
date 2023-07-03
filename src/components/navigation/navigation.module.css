@@ -15,6 +15,7 @@
   padding: 0 1rem;
   justify-content: space-between;
   align-items: center;
+  transition: all 300ms ease-in-out;
 }
 
 .logo {
@@ -42,11 +43,11 @@
 }
 
 .border {
-  border: 2px solid var(--primary-color);
+  outline: 2px solid var(--primary-color);
 }
 
 .border_1 {
-  border: 2px solid var(--tetiary-color-1);
+  outline: 2px solid var(--tetiary-color-1);
 }
 
 .line {
@@ -55,8 +56,18 @@
   height: var(--bar-height);
   border-radius: 2px;
   transform-origin: left center;
-  transition: opacity var(--animation-timing), width var(--animation-timing), rotate var(--animation-timing), translate var(--animation-timing), background-color var(--animation-timing);
+  transition: opacity var(--animation-timing), width var(--animation-timing), 
+  rotate var(--animation-timing), translate var(--animation-timing), 
+  background-color var(--animation-timing);
   display: block;
+}
+
+/* nav */
+.tilt {
+  background-color: var(--primary-color);
+  rotate: 45deg;
+  width: var(--bar-width);
+  translate: 0.22rem calc(var(--bar-height) / -9);
 }
 
 .hide {
@@ -64,42 +75,27 @@
   animation: blend 800ms ease-in-out;
 }
 
-.see {
-  background-color: var(--tetiary-color-1);
-  opacity: 1;
-  animation: appear 800ms ease-in-out;
-}
-
-.tilt {
-  background-color: var(--primary-color);
-  rotate: 45deg;
-  width: var(--bar-width);
-  translate: 0.22rem calc(var(--bar-height) / -9);
-  display: block;
-}
-
-.tilt_1 {
-  background-color: var(--tetiary-color-1);
-  width: var(--bar-width);
-  /* translate: -0.4rem calc(var(--bar-height) / -2); */
-  display: block;
-}
-
 .rtilt {
   background-color: var(--primary-color);
   rotate: -45deg;
   width: var(--bar-width);
   translate: 0.22rem calc(var(--bar-height) / 9);
-  display: block;
 }
 
-.rtilt_1 {
+.see {
+  opacity: 1;
+  animation: appear 800ms ease-in-out;
+}
+
+.hue_1 {
+  background-color: var(--primary-color);
+}
+
+.hue_2 {
   background-color: var(--tetiary-color-1);
-  width: var(--bar-width);
-  /* translate: 0.4rem calc(var(--bar-height) / 2); */
-  display: block;
 }
 
+/* nav */
 .nav_content {
   overflow: scroll;
   flex-direction: column;
