@@ -1,0 +1,79 @@
+.card {
+  max-width: 22rem;
+  text-align: left;
+}
+
+.above {
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  color: var(--tetiary-color-1);
+  position: relative;
+  padding: 1rem;
+  height: 13rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.img {
+  top: 0;
+  right: 0;
+  position: absolute;
+  height: 100%;
+  max-width: 22rem;
+}
+
+.sale {
+  background-color: var(--accent-color);
+}
+
+.featured {
+  background-color: #41AE49;
+}
+
+.below {
+  background-color: var(--tetiary-color-1);
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  gap: 1rem;
+}
+
+.header small {
+  color: var(--accent-color);
+}
+
+.iconWrap {
+  background-color: var(--hover-color);
+  gap: 1.3rem;
+}
+
+.iconWrap p {
+  font-size: clamp(12px, 4vw, 1rem);
+  margin-block: auto;
+}
+
+.icons svg {
+  color: var(--accent-color);
+}
+
+.agent {
+  border-top: 1px solid var(--accent-color);
+  padding-top: 8px;
+}
+
+.agent_img_wrap {
+  width: 2rem;
+  height: 2rem;
+  outline: 1px solid var(--accent-color);
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 4px;
+}
+
+.agent_img {
+  height: 100%;
+}
+
+.date {
+  background-color: rgba(0, 106, 255, 0.30);
+  color: #006aff;
+}
