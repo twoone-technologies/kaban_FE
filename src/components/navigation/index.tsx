@@ -2,9 +2,9 @@ import { useState } from "react";
 import { logoIcon } from "~/assets";
 import Button from "~/components/reusable/Button";
 import styles from "./navigation.module.css";
-import NavItem from "./navitem/NavItem";
-import navbarData from "./data/navbarData";
+import navbarData from "../data/navbarData";
 import Svg from "~/components/reusable/Svg";
+import NavItem from "./navitem";
 
 function Navigation() {
   const [open, setopen] = useState(false);

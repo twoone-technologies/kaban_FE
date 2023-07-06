@@ -35,8 +35,8 @@ const NavItem = ({ title, href, subItems, drop, handleClick, mouseOver }: Props)
           >
             {title}
           </span>
-          <img
-            className={`${styles.arrow_Icon} ${drop ? styles.rotate90 : styles.rotate0}`} src={arrowIcon} alt="arrowIcon" />
+          <Svg
+            className={`${styles.arrow_Icon} ${drop ? styles.rotate90 : styles.rotate0}`} href={arrowIcon} />
         </div>
         <div className={styles.overlay}>
           <div className={`flex f-column b-radius ${styles.drop_down}
