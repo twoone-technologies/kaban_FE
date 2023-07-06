@@ -8,7 +8,7 @@
   --hover-color: #e8eceec6; 
   --tetiary-color-1: #ffffff; /* text color (footer) */
   --tetiary-color-2: #3a424b; /* subtle text color */
-  --tetiary-color-3: #f5f5f5; /* background color */
+  --tetiary-color-3: #f0f0f0; /* background color */
 }
 
 body.dark {
@@ -60,35 +60,38 @@ body::-webkit-scrollbar-thumb:hover {
   background-color: var(--accent-color);
 }
 
+/* color class */
+.primary-color {
+  color: var(--primary-color);
+}
+
+.bg-primary {
+  background-color: var(--primary-color);
+}
+
+.secondary-color {
+  color: var(--secondary-color);
+}
+
+.bg-tetiary {
+  background-color: var(--tetiary-color-1);
+}
+
 a {
   color: inherit;
   text-decoration: inherit;
 }
 
-.App {
-  color: var(--accent-color);
-  background-color: var(--tetiary-color);
+h1 {
+  font-size: clamp(0.7rem, 5vw, 3rem);
 }
 
-.heading {
-  margin-bottom: 2rem;
-  font-size: clamp(1rem, 7vw, 1.3rem);
-  text-align: center;
-  position: relative;
+h2 {
+  color: var(--primary-color);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
-  color: var(--accent-1-color);
-}
-
-.head {
-  text-align: center;
-  align-items: center;
-  justify-content: center;
+p {
+  font-size: clamp(3px, 4vw, 1.3rem);
 }
 
 .box_shadow {
@@ -104,10 +107,6 @@ svg {
   fill: currentColor;
 }
 
-.svg_icon {
-  color: var(--accent-color);
-}
-
 .svg_icon:hover {
   color: var(--primary-color);
 }
@@ -121,8 +120,16 @@ svg {
   flex-direction: column;
 }
 
+.s-btw {
+  justify-content: space-between;
+}
+
+.align-y {
+  align-items: center;
+}
+
 .b-radius {
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
 .f-width {
@@ -132,6 +139,18 @@ svg {
 .pad {
   padding: 1rem 0.5rem;
 }
+
+.c_pad {
+  padding: 1rem;
+}
+
+.c-pad {
+  padding: 0.4rem;
+}
+
+.stack {
+  z-index: 100;
+};
 
 .nil {
   display: none;
@@ -157,9 +176,8 @@ svg {
 }
 
 .container {
-  --gutter: 120px;
-  width: calc(100% - var(--gutter));
-  margin-inline: auto;
+  width: 100%;
+  padding: 1rem;
 }
 
 footer {
@@ -168,4 +186,11 @@ footer {
   flex-direction: column;
   background-color: var(--accent-color);
   color: var(--secondary-color);
+}
+
+@media screen and (width >= 768px) {
+  .container {
+    width: 100%;
+    padding: 4rem;
+  }
 }

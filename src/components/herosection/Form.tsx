@@ -28,7 +28,7 @@ export default function Form() {
           For Sale
         </Button>
       </div>
-      <div>
+      <div className={styles.location}>
         <label htmlFor="location"></label>
         <div className={`flex b-radius f-width ${styles.form_input}`}>
           <input type="text" placeholder="Location" name="Location" maxLength={30}

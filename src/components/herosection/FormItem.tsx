@@ -2,7 +2,7 @@ import { arrowIcon } from "~/assets";
 import Svg from "../reusable/Svg";
 import Optgroup from "./Optgroup";
 import styles from "./hero.module.css";
-import { property_type, roomAndPrice } from "../data/formData";
+import { property_type, roomAndPrice } from "./formData";
 
 function FormItem() {
   return (

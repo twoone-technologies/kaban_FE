@@ -5,7 +5,7 @@ import styles from "./card.module.css"
 type Props = {
   apartmentImg: string,
   apartmentName: string,
-  sale: string,
+  status: string,
   featured: string,
   price: string,
   address: string,
@@ -20,7 +20,7 @@ type Props = {
 }
 
 export default function Card(
-  { apartmentImg, apartmentName, sale, featured, price, address, propertyType,
+  { apartmentImg, apartmentName, status, featured, price, address, propertyType,
   bedNo, toiletNo, showerNo, carNo, agentImg, agentName, date }: Props) {
 
   const setNums = (str:string) => {
@@ -35,7 +35,7 @@ export default function Card(
       <div className={`flex f-column s-btw ${styles.above}`}>
         <img src={apartmentImg} alt={apartmentImg} className={styles.img} />
         <div className={`flex s-btw f-width`}>
-          <span className={`b-radius stack c-pad ${styles.sale}`}>FOR {sale}</span>
+          <span className={`b-radius stack c-pad ${styles.sale}`}>FOR {status}</span>
           <span className={`b-radius stack c-pad ${styles.featured}`}>{featured}</span>
         </div>
         <div className={`flex s-btw f-width`}>

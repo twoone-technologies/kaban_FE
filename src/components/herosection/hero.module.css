@@ -58,7 +58,12 @@
   color: var(--primary-color);
 }
 
-.form_input:hover {
+.input {
+  padding: 0.7rem 0.5rem;
+  height: 100%;
+}
+
+.input:hover {
   background-color: var(--hover-color);
 }
 
@@ -66,14 +71,8 @@
   outline: 2px solid var(--primary-color);
 }
 
-.input {
-  padding: 0.7rem 0.5rem;
-  height: 100%;
-}
-
-select {
-  appearance: none;
-  color: var(--accent-color);
+.input:hover+.svgIcon {
+  color: var(--primary-color);
 }
 
 .svgIcon {
@@ -81,8 +80,9 @@ select {
   right: 0.4rem;
 }
 
-.input:hover+.svgIcon {
-  color: var(--primary-color);
+select {
+  appearance: none;
+  color: var(--accent-color);
 }
 
 .rotate {
@@ -102,7 +102,7 @@ optgroup[label] {
   padding: 0.7rem 0.5rem;
 }
 
-@media screen and (600px <= width <= 800px) {
+@media screen and (600px <= width <= 880px) {
   .form {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -116,13 +116,17 @@ optgroup[label] {
   }
 }
 
-@media screen and (width >= 800px) {
+@media screen and (width >= 880px) {
   .form {
     max-width: 60rem;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
   }
 
   .btn_wrap {
-    grid-column: 1 / 6;
+    grid-column: 1 / 7;
+  }
+
+  .location {
+    grid-column: 1 / 3;
   }
 }
