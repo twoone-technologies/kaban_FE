@@ -4,7 +4,8 @@ import Optgroup from "./Optgroup";
 import styles from "./hero.module.css";
 import { property_type, roomAndPrice } from "../data/formData";
 
-function FormItem() {
+export default function HeroFormItem() {
+
   return (
     <>
       <div className={`flex b-radius f-width ${styles.form_input}`}>
@@ -31,5 +32,3 @@ function FormItem() {
     </>
   )
 }
-
-export default FormItem;

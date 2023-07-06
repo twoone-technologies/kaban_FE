@@ -3,9 +3,9 @@ import Button from "~/components/reusable/Button";
 import styles from "./hero.module.css";
 import Svg from "../reusable/Svg";
 import { searchIcon } from "~/assets";
-import FormItem from "./FormItem";
+import HeroFormItem from "./HeroFormItem";
 
-export default function Form() {
+export default function HeroForm() {
   const [status, setStatus] = useState<'rent' | 'sale'>('rent')
   function handleStatus(stat: 'rent' | 'sale') {
     setStatus(stat)
@@ -36,7 +36,7 @@ export default function Form() {
           <Svg href={searchIcon} className={styles.svgIcon} width="17px" height="17px" />
         </div>
       </div>
-      <FormItem />
+      <HeroFormItem />
       <Button type="submit" className={styles.btn}>Search</Button>
     </form>
   )
