@@ -3,6 +3,7 @@ import background from "~/assets/imgbg.png"
 
 export const dummyObj = [
   {
+    id: 1,
     apartmentImg: background,
     apartmentName: 'Modern loft apartment',
     status: 'SALE',
@@ -19,6 +20,7 @@ export const dummyObj = [
     date: '2 days ago' 
   },
   {
+    id: 2,
     apartmentImg: background,
     apartmentName: 'Modern loft apartment',
     status: 'RENT',
@@ -35,6 +37,7 @@ export const dummyObj = [
     date: '2 days ago' 
   },
   {
+    id: 3,
     apartmentImg: background,
     apartmentName: 'Modern loft apartment',
     status: 'SALE',
@@ -51,6 +54,7 @@ export const dummyObj = [
     date: '2 days ago' 
   },
   {
+    id: 4,
     apartmentImg: background,
     apartmentName: 'Modern loft apartment',
     status: 'RENT',
@@ -67,6 +71,7 @@ export const dummyObj = [
     date: '2 days ago' 
   },
   {
+    id: 5,
     apartmentImg: background,
     apartmentName: 'Modern loft apartment',
     status: 'SALE',
@@ -83,6 +88,7 @@ export const dummyObj = [
     date: '2 days ago' 
   },
   {
+    id: 6,
     apartmentImg: background,
     apartmentName: 'Modern loft apartment',
     status: 'RENT',

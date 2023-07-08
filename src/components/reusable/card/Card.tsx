@@ -19,9 +19,7 @@ type Props = {
   date: string 
 }
 
-export default function Card(
-  { apartmentImg, apartmentName, status, featured, price, address, propertyType,
-  bedNo, toiletNo, showerNo, carNo, agentImg, agentName, date }: Props) {
+export default function Card(props: Props) {
 
   const setNums = (str:string) => {
     if (str === undefined || NaN || '') {
@@ -33,49 +31,49 @@ export default function Card(
   return (
     <div className={styles.card}>
       <div className={`flex f-column s-btw ${styles.above}`}>
-        <img src={apartmentImg} alt={apartmentImg} className={styles.img} />
+        <img src={props.apartmentImg} alt={props.apartmentImg} className={styles.img} />
         <div className={`flex s-btw f-width`}>
-          <span className={`b-radius stack c-pad ${styles.sale}`}>FOR {status}</span>
-          <span className={`b-radius stack c-pad ${styles.featured}`}>{featured}</span>
+          <span className={`b-radius stack c-pad ${styles.sale}`}>FOR {props.status}</span>
+          <span className={`b-radius stack c-pad ${styles.featured}`}>{props.featured}</span>
         </div>
         <div className={`flex s-btw f-width`}>
-          <b className={`stack`}>₦{setNums(price)}</b><Svg className={`stack`} href={heartIcon} />
+          <b className={`stack`}>₦{setNums(props.price)}</b><Svg className={`stack`} href={heartIcon} />
         </div>
       </div>
       <div className={`flex f-column c_pad s-btw ${styles.below}`}>
         <div className={`flex f-column ${styles.header}`}>
-          <h3>{apartmentName}</h3>
-          <small>{address}</small>
+          <h3>{props.apartmentName}</h3>
+          <small>{props.address}</small>
         </div>
         <div className={`flex s-btw c-pad f-width ${styles.iconWrap}`}>
-          <p>{propertyType}</p>
+          <p>{props.propertyType}</p>
           <div className={`flex s-btw f-width ${styles.icons}`}>
             <div className="flex align-y">
               <Svg href={bedIcon} />
-              <span>{bedNo}</span>
+              <span>{props.bedNo}</span>
             </div>
             <div className="flex align-y">
               <Svg href={showerIcon} />
-              <span>{showerNo}</span>
+              <span>{props.showerNo}</span>
             </div>
             <div className="flex align-y">
               <Svg href={toiletIcon} />
-              <span>{toiletNo}</span>
+              <span>{props.toiletNo}</span>
             </div>
             <div className="flex align-y">
               <Svg href={carIcon} />
-              <span>{carNo}</span>
+              <span>{props.carNo}</span>
             </div>
           </div>
         </div>
         <div className={`flex s-btw f-width align-y ${styles.agent}`}>
           <div className="flex align-y">
             <div className={styles.agent_img_wrap}>
-              <img src={agentImg} className={`${styles.agentImg}`} alt={agentName} />
+              <img src={props.agentImg} className={`${styles.agentImg}`} alt={props.agentName} />
             </div>
-            <small>{agentName}</small>
+            <small>{props.agentName}</small>
           </div>
-          <small className={`b-radius c-pad ${styles.date}`}>{date}</small>
+          <small className={`b-radius c-pad ${styles.date}`}>{props.date}</small>
         </div>
       </div>
     </div>
