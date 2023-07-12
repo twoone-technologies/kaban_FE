@@ -1,0 +1,75 @@
+.section {
+    padding: 2rem 3rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 64px;
+}
+
+.section_heading {
+    text-align: center;
+}
+
+.section_heading h1 {
+    color: var(--primary-color);
+}
+
+.card_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+}
+
+.property_card:nth-child(1) {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+}
+.property_card:nth-child(2) {
+    grid-column: 3 / 5;
+    grid-row: 1 / 2;
+}
+
+.property_card:nth-child(3) {
+    grid-column: 1 / 5;
+}
+
+.property_card {
+    background-image: url('/src/assets/img/commercial.jpg');
+    opacity: 0.7;
+    min-height: 300px;
+    padding: 15rem 22rem 1rem 0.8rem;
+    border-radius: 16px;
+    align-items: center;
+    flex: 1 0 0;
+    transition: ease-in 0.4s;
+}
+
+.property_card:hover {
+    /* transform:translate3d(30); */
+    opacity: 1;
+}
+
+.sm_card {
+    padding: 0.8rem 0.6rem 0.8rem 0.6rem;
+    gap: .5rem;
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+.sm_card h3 {
+    font-size: 1rem;
+    line-height: 1.5;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.sm_card p {
+    font-size: .7rem;
+}
+
+.sm_card_info {
+    display: flex;
+    gap: .1rem;
+}
