@@ -165,8 +165,8 @@ svg {
 }
 
 .container {
-  --gutter: 120px;
-  width: max(90%, calc(100% - var(--gutter)));
+  --gutter: 5%;
+  width: calc(100% - 2 * var(--gutter));
   margin-inline: auto;
 }
 
