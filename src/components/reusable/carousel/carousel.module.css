@@ -1,0 +1,21 @@
+.carousel {
+  gap: 3rem;
+  overflow-x: auto;
+  margin-block: 2rem;
+}
+
+.btn_grp {
+  border: 1px solid;
+  width: calc(100% - 2rem);
+  position: absolute;
+  bottom: 1rem;
+  /* left: 2.3rem; */
+}
+
+@media screen and (width>=768px) {
+  .btn_grp {
+    bottom: 3rem;
+    width: calc(100% - 8rem);
+    left: unset;
+  }
+}

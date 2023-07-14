@@ -116,6 +116,12 @@ optgroup[label] {
   }
 }
 
+@media screen and (width >= 768px) {
+  .hero {
+    padding-inline: 4rem;
+  }
+}
+
 @media screen and (width >= 880px) {
   .form {
     max-width: 60rem;

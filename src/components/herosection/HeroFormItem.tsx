@@ -1,8 +1,8 @@
 import { arrowIcon } from "~/assets";
 import Svg from "../reusable/Svg";
-import Optgroup from "./Optgroup";
 import styles from "./hero.module.css";
 import { property_type, roomAndPrice } from "./formData";
+import OptGroup from "./Optgroup";
 
 export default function HeroFormItem() {
 
@@ -13,7 +13,7 @@ export default function HeroFormItem() {
         <select name='propertyType' title="propertyType" 
           className={`flex b-radius f-width ${styles.input}`}>
           {Object.entries(property_type).map(([key, val], id) => (
-            <Optgroup key={id} header={key} subItems={val.subItems} />
+            <OptGroup key={id} header={key} subItems={val.subItems} />
           ))}
         </select>
         <Svg href={arrowIcon} className={`${styles.rotate} ${styles.svgIcon}`} />

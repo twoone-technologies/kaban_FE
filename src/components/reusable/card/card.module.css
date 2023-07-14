@@ -1,5 +1,5 @@
 .card {
-  max-width: 22rem;
+  max-width: 18rem;
   text-align: left;
 }
 
@@ -19,7 +19,7 @@
   right: 0;
   position: absolute;
   height: 100%;
-  max-width: 22rem;
+  max-width: 18rem;
 }
 
 .sale {
@@ -51,8 +51,13 @@
   margin-block: auto;
 }
 
+.icons {
+  font-size: clamp(12px, 4vw, 1rem);
+}
+
 .icons svg {
   color: var(--accent-color);
+  margin-block: auto;
 }
 
 .agent {
@@ -70,10 +75,25 @@
 }
 
 .agent_img {
-  height: 100%;
+  top: -3px;
+  right: 0;
+  position: relative;
+  /* height: 100%; */
+  max-width: 30rem;
+  width: 100%;
 }
 
 .date {
   background-color: rgba(0, 106, 255, 0.30);
   color: #006aff;
+}
+
+@media screen and (width >= 768px) {
+  .card {
+    min-width: 23.8rem;
+  }
+
+  .img {
+    min-width: 23.8rem;
+  }
 }

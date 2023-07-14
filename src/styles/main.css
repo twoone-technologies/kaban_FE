@@ -180,6 +180,31 @@ svg {
   padding: 1rem;
 }
 
+/* carousel */
+.carousel_item {
+  width: unset;
+}
+
+.swiper_container {
+  gap: 1rem;
+}
+
+.btn_grp {
+  border: 1px solid;
+  width: calc(100% - 2rem);
+  position: absolute;
+  bottom: 1rem;
+  /* left: 2.3rem; */
+}
+
+@media screen and (width>=768px) {
+  .btn_grp {
+    bottom: 3rem;
+    width: calc(100% - 8rem);
+    left: unset;
+  }
+}
+
 footer {
   padding: 1rem;
   align-items: center;

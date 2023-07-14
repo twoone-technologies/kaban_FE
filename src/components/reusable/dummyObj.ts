@@ -1,5 +1,6 @@
-import Ikon from "~/assets/Ikon.png";
+import { IkonIcon } from "~/assets"
 import background from "~/assets/imgbg.png"
+import pic from "~/assets/Ikon.png"
 
 export const dummyObj = [
   {
@@ -15,7 +16,7 @@ export const dummyObj = [
     toiletNo: '2',
     showerNo: '2',
     carNo: '0',
-    agentImg: Ikon,
+    agentImg: pic,
     agentName: 'The Goat',
     date: '2 days ago' 
   },
@@ -32,7 +33,7 @@ export const dummyObj = [
     toiletNo: '2',
     showerNo: '2',
     carNo: '0',
-    agentImg: Ikon,
+    agentImg: IkonIcon,
     agentName: 'The Goat',
     date: '2 days ago' 
   },
@@ -49,7 +50,7 @@ export const dummyObj = [
     toiletNo: '2',
     showerNo: '2',
     carNo: '0',
-    agentImg: Ikon,
+    agentImg: IkonIcon,
     agentName: 'The Goat',
     date: '2 days ago' 
   },
@@ -66,7 +67,7 @@ export const dummyObj = [
     toiletNo: '2',
     showerNo: '2',
     carNo: '0',
-    agentImg: Ikon,
+    agentImg: IkonIcon,
     agentName: 'The Goat',
     date: '2 days ago' 
   },
@@ -83,7 +84,7 @@ export const dummyObj = [
     toiletNo: '2',
     showerNo: '2',
     carNo: '0',
-    agentImg: Ikon,
+    agentImg: IkonIcon,
     agentName: 'The Goat',
     date: '2 days ago' 
   },
@@ -100,7 +101,7 @@ export const dummyObj = [
     toiletNo: '2',
     showerNo: '2',
     carNo: '0',
-    agentImg: Ikon,
+    agentImg: IkonIcon,
     agentName: 'The Goat',
     date: '2 days ago' 
   },
