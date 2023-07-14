@@ -1,0 +1,93 @@
+.grid_container {
+  display: grid;
+  grid-template-areas:
+    "t b c"
+    "a b d";
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.city_card_container {
+  aspect-ratio: 4/3;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.section_title {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  padding-block: 2rem;
+}
+
+.city_card {
+  background-color: rgb(100, 90, 77);
+  background-image: var(--background-img);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-blend-mode: overlay;
+  height: 100%;
+
+  padding: 1rem;
+
+  cursor: pointer;
+  transition: scale 250ms ease-in-out;
+}
+.city_card:hover {
+  scale: 1.03;
+}
+
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: max-content;
+  max-width: 90%;
+
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.city_card_container:nth-child(1) {
+  grid-area: "t";
+}
+.city_card_container:nth-child(2) {
+  grid-area: a;
+}
+
+.city_card_container:nth-child(3) {
+  grid-area: b;
+  aspect-ratio: auto;
+}
+
+.city_card_container:nth-child(4) {
+  grid-area: c;
+}
+
+.city_card_container:nth-child(5) {
+  grid-area: d;
+}
+
+@media screen and (max-width: 600px) {
+  .grid_container {
+    display: grid;
+    grid-template-areas: "t" "a" "b" "c" "d";
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .city_card_container:nth-child(1) {
+    aspect-ratio: auto;
+  }
+  .city_card_container:nth-child(3) {
+    aspect-ratio: 4/3;
+  }
+
+  .section_title {
+    text-align: center;
+  }
+}

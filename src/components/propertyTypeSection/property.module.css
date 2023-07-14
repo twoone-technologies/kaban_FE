@@ -16,7 +16,7 @@
 .card_container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     gap: 1rem;
 }
 
@@ -45,7 +45,7 @@
 }
 
 .property_card:hover {
-    /* transform:translate3d(30); */
+    transform: scale(1.1);
     opacity: 1;
 }
 
