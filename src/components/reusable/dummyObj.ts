@@ -16,6 +16,7 @@ export const dummyObj = [
     toiletNo: '2',
     showerNo: '2',
     carNo: '0',
+    photoNo: '22',
     agentImg: pic,
     agentName: 'The Goat',
     date: '2 days ago' 
@@ -33,6 +34,7 @@ export const dummyObj = [
     toiletNo: '2',
     showerNo: '2',
     carNo: '0',
+    photoNo: '22',
     agentImg: IkonIcon,
     agentName: 'The Goat',
     date: '2 days ago' 
@@ -50,6 +52,7 @@ export const dummyObj = [
     toiletNo: '2',
     showerNo: '2',
     carNo: '0',
+    photoNo: '22',
     agentImg: IkonIcon,
     agentName: 'The Goat',
     date: '2 days ago' 
@@ -67,6 +70,7 @@ export const dummyObj = [
     toiletNo: '2',
     showerNo: '2',
     carNo: '0',
+    photoNo: '22',
     agentImg: IkonIcon,
     agentName: 'The Goat',
     date: '2 days ago' 
@@ -84,6 +88,7 @@ export const dummyObj = [
     toiletNo: '2',
     showerNo: '2',
     carNo: '0',
+    photoNo: '22',
     agentImg: IkonIcon,
     agentName: 'The Goat',
     date: '2 days ago' 
@@ -101,6 +106,7 @@ export const dummyObj = [
     toiletNo: '2',
     showerNo: '2',
     carNo: '0',
+    photoNo: '22',
     agentImg: IkonIcon,
     agentName: 'The Goat',
     date: '2 days ago' 

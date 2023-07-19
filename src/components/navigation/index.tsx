@@ -28,10 +28,10 @@ function Navigation() {
   location.pathname === "/" ?
     content = (
       <nav className={`flex f-width ${styles.nav} 
-      ${navBar ? `bg-tetiary secondary-color` : ''}`}>
+      ${navBar ? `bg-tetiary` : ''}`}>
       <Link to={"/"}>
         <Svg href={logoIcon} width="100px" height="40px"
-          className={`${navBar ? `primary-color` : styles.logo}`} />
+          className={`${navBar ? `bg-primary` : styles.logo}`} />
       </Link><Button type="button" title="menu" onClick={onClickHandler}
         className={`flex f-column ${styles.hamburger_menu}
         ${open || navBar ? styles.border : styles.border_1}`}

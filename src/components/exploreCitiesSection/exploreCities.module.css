@@ -1,0 +1,114 @@
+.grid_container {
+  display: grid;
+  grid-template-areas: 't' 'a' 'b' 'c' 'd';
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.city_card_container {
+  aspect-ratio: 4/3;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.city_card_container:nth-child(1) {
+  grid-area: t;
+  aspect-ratio: auto;
+}
+
+.city_card_container:nth-child(2) {
+  grid-area: a;
+}
+
+.city_card_container:nth-child(3) {
+  grid-area: b;
+}
+
+.city_card_container:nth-child(4) {
+  grid-area: c;
+}
+
+.city_card_container:nth-child(5) {
+  grid-area: d;
+}
+
+.section_title {
+  text-align: center;
+}
+
+.city_card {
+  background-color: rgba(0,0,0, 0.6);
+  background-image: var(--background-img);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-blend-mode: multiply;
+  height: 100%;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 350ms ease-in-out;
+}
+
+.section_title {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  padding-block: 2rem;
+}
+
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: max-content;
+  max-width: 90%;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+@media screen and (width >= 600px) {
+  .grid_container {
+    display: grid;
+    grid-template-areas:
+      't t c'
+      'a b d';
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .city_card_container:nth-child(1) {
+    justify-content: center;    
+  }
+  
+  .city_card_container:nth-child(3) {
+    grid-row: 2;    
+  }
+
+  .city_card:hover {
+    transform: scale(1.05);
+    background-color: rgba(0,0,0,0.1);
+  }
+}
+
+@media screen and (width >= 800px) {
+  .grid_container {
+    display: grid;
+    grid-template-areas:
+    't b c'
+      'a b d';
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .city_card_container:nth-child(1) {
+    justify-content: flex-end;    
+  }
+
+  .city_card_container:nth-child(3) {
+    aspect-ratio: auto;
+    grid-row: 1 / 3;
+  }
+}

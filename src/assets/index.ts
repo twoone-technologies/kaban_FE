@@ -20,3 +20,6 @@ import Ikon from "./Ikon.png"; export const IkonIcon = `${Ikon}`;
 import arrowRight from "./arrow-right.svg";  export const arrowRightIcon = `${arrowRight}#img`
 import arrowLeft from "./arrow-left.svg";  export const arrowLeftIcon = `${arrowLeft}#img`
 import indicator from "./indicator.svg"; export const indicatorIcon = `${indicator}#img`
+import location from "./location.svg"; export const locationIcon = `${location}#img`
+import camera from "./camera.svg"; export const cameraIcon =`${camera}#img`
+import dot from "./Ellipse.svg"; export const dotIcon =`${dot}#img`

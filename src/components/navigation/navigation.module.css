@@ -16,6 +16,7 @@
   justify-content: space-between;
   align-items: center;
   transition: all 300ms ease-in-out;
+  font-size: clamp(3px, 4vw, 0.8rem);
 }
 
 .logo {
@@ -120,7 +121,7 @@
 
 .reg_btn {
   padding: 0.5rem 1rem;
-  font-size: clamp(0.7rem, 5vw, 1rem);
+  font-size: clamp(3px, 4vw, 0.8rem);
   width: 100%;
 }
 
