@@ -126,14 +126,6 @@ svg {
   z-index: 100;
 };
 
-.nil {
-  display: none;
-}
-
-.text-align {
-  text-align: center;
-}
-
 /* color */
 .bg-grey {
   background-color: var(--tetiary-color-3);
@@ -158,6 +150,7 @@ svg {
 /* homepage utils */
 .header {
   margin-bottom: 3rem;
+  text-align: center;
 }
 
 .header-p {

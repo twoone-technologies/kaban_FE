@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { logoIcon } from "~/assets";
 import Button from "~/components/reusable/Button";
@@ -11,24 +11,47 @@ function Navigation() {
   const [open, setOpen] = useState(false);
   const [dropDown, setDropDown] = useState(-1);
   const [navBar, setNavBar] = useState(false);
+  const [goingUp, setGoingUp] = useState(false);
+  const [scroll, setScroll] = useState(0);
 
-  const colorSwap = () => {
-    window.scrollY >= 70 ? setNavBar(true) : setNavBar(false)
-  };
-  window.addEventListener('scroll', colorSwap);
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (scroll < currentScrollY && !goingUp) {
+        setGoingUp(true);
+      }
+      if (scroll > currentScrollY && goingUp) {
+        setGoingUp(false);
+      }
+      setScroll(currentScrollY);
+    }
 
-  const location = useLocation();
+    const colorSwap = () => {
+      window.scrollY >= 70 ? setNavBar(true) : setNavBar(false)
+    };
+
+    const navStatus = () => {
+      colorSwap();
+      handleScroll();
+    }
+
+    return () => {
+      window.addEventListener('scroll', navStatus);
+    }
+  }, [goingUp, scroll])
+  
 
   const onClickHandler = () => {
     setOpen(!open);
   };
 
+  const location = useLocation();
   let content;
 
   location.pathname === "/" ?
     content = (
-      <nav className={`flex f-width ${styles.nav} 
-      ${navBar ? `bg-tetiary` : ''}`}>
+      <nav className={`flex f-width ${styles.nav} ${navBar ? `bg-tetiary` : ''}
+      ${goingUp ? styles.hide : styles.see }`}>
       <Link to={"/"}>
         <Svg href={logoIcon} width="100px" height="40px"
           className={`${navBar ? `bg-primary` : styles.logo}`} />
@@ -63,7 +86,7 @@ function Navigation() {
         </nav>
     ) :
     content = (
-      <nav className={`flex f-width bg-tetiary secondary-color ${styles.nav}`}>
+      <nav className={`flex f-width bg-tetiary ${styles.nav}`}>
         <Link to={"/"}>
           <Svg href={logoIcon} width="100px" height="40px"
             className='bg-primary' />

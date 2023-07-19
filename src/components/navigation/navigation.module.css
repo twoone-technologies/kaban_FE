@@ -73,6 +73,7 @@
 
 .hide {
   opacity: 0;
+  visibility: hidden;
   animation: blend 800ms ease-in-out;
 }
 
