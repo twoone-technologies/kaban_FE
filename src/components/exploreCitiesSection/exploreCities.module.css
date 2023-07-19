@@ -38,7 +38,7 @@
 }
 
 .city_card {
-  background-color: rgba(0,0,0, 0.6);
+  background-color: rgba(0, 0, 0, 0.377);
   background-image: var(--background-img);
   background-repeat: no-repeat;
   background-size: cover;

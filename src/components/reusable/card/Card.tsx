@@ -2,12 +2,13 @@ import { useState } from "react";
 import { heartIcon, bedIcon, showerIcon, carIcon, IkonIcon, locationIcon, cameraIcon, dotIcon } from "~/assets"
 import Svg from "../Svg"
 import styles from "./card.module.css"
+import Label from "./Label";
 
 type HouseCard = {
   apartmentImg: string,
   apartmentName: string,
   status: string,
-  featured: string,
+  featured: boolean,
   price: string,
   address: string,
   propertyType: string,
@@ -36,7 +37,7 @@ export default function Card({ card }: { card: HouseCard }) {
   }
 
   return (
-    <div  onMouseEnter={onHoverHandler} onMouseLeave={onHoverHandler} className={`b-radius ${styles.card}`}>
+    <div  onMouseEnter={onHoverHandler} onMouseLeave={onHoverHandler} className={`b-radius box_shadow ${styles.card}`}>
       <div
         className={`flex f-column s-btw ${styles.above}`}>
         <div className={`f-width ${styles.overlay} ${hover ? styles.nil : ''}`}></div>
@@ -57,14 +58,8 @@ export default function Card({ card }: { card: HouseCard }) {
           <div className="flex s-btw">
             <h3>₦{setNums(card.price)}</h3>
             <div className={`flex gap ${styles.status_grp}`}>
-              <div className={`b-radius flex align-y c-pad ${styles.featured}`}>
-                <Svg href={dotIcon} />
-                <span>{card.featured}</span>
-              </div>
-              <div className={`b-radius flex align-y c-pad ${styles.status}`}>
-                <Svg href={dotIcon} />
-                <span>FOR {card.status}</span>
-              </div>
+              {card.featured?<Label type="featured" text="FEATURED" />:null}
+              <Label type="status" text={`FOR ${card.status}`} />
             </div>
           </div>
         </div>

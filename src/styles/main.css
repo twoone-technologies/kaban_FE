@@ -61,7 +61,7 @@ p {
 }
 
 .box_shadow {
-  box-shadow: -10px 10px 11px 1px var(--shadow-color);
+  box-shadow: 10px 10px 11px 1px var(--hover-color);
 }
 
 ul {
@@ -153,6 +153,15 @@ svg {
 
 .bg-primary {
   color: var(--primary-color);
+}
+
+/* homepage utils */
+.header {
+  margin-bottom: 3rem;
+}
+
+.header-p {
+  font-size: 0.2rem;
 }
 
 .f_line {

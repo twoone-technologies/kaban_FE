@@ -66,7 +66,7 @@ function Navigation() {
       <nav className={`flex f-width bg-tetiary secondary-color ${styles.nav}`}>
         <Link to={"/"}>
           <Svg href={logoIcon} width="100px" height="40px"
-            className='primary-color' />
+            className='bg-primary' />
         </Link>
         <Button type="button" title="menu" onClick={onClickHandler}
           className={`flex f-column ${styles.hamburger_menu} ${styles.border}`}>

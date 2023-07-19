@@ -1,6 +1,5 @@
 .card {
   min-width: 16rem;
-  /* text-align: left; */
 }
 
 .above {
@@ -20,7 +19,7 @@
   top: 0;
   right: 0;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.338);
+  background-color: rgba(0, 0, 0, 0.194);
   z-index: 200;
 }
 
@@ -49,6 +48,7 @@
 
 .status_grp {
   font-size: clamp(3px, 4vw, 0.5rem);
+  font-weight: 700;
 }
 
 .status_grp div {

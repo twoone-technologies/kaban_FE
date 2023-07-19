@@ -7,16 +7,14 @@ import "swiper/css/navigation"
 import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
 import Container from "../reusable/Container";
 import { dummyObj } from "../reusable/dummyObj";
-import styles from "./features.module.css";
 import Svg from "../reusable/Svg";
 import { arrowIcon} from "~/assets";
 
 export default function FeaturedList() {
-  console.log(dummyObj);
   return (
-    <section className={`container-pad ${styles.feature}`}>
+    <section className="container-pad bg-grey">
       <Container element="div">
-        <div className={`text-align ${styles.header}`}>
+        <div className="text-align header">
           <h2>Explore Our Featured Listings</h2>
           <p>Properties considered worth your<br /> time by listing realtors</p>
         </div>
@@ -56,8 +54,12 @@ export default function FeaturedList() {
           ))}
           <div className={`flex gap s-btw align-y carousel-btn-grp`}>
             <div className="flex gap">
-              <div className="carousel-btn flex align-y"><Svg className="btn-prev" href={arrowIcon} /></div>
-              <div className="carousel-btn flex align-y"><Svg className="btn-next" href={arrowIcon} /></div>
+              <div className="carousel-btn flex align-y">
+                <Svg className="btn-prev" href={arrowIcon} />
+              </div>
+              <div className="carousel-btn flex align-y">
+                <Svg className="btn-next" href={arrowIcon} />
+              </div>
             </div>
             <div className="flex gap c-pagination" />
           </div>
