@@ -75,7 +75,7 @@
 }
 
 .input:hover {
-  background-color: var(--hover-color);
+  background-color: #dae0e692;
 }
 
 .input:focus-within {
