@@ -75,7 +75,6 @@
 
   .nav_item {
     border-top: unset;
-    /* width: 6rem; */
     justify-content: center;
     padding: 0;
     margin: 0 0.8rem;
@@ -83,6 +82,10 @@
 
   .txt_color {
     color: var(--tetiary-color-1);
+  }
+
+  .txt_color_2 {
+    color: var(--tetiary-color-2);
   }
 
   .set_color {

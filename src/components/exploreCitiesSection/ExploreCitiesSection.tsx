@@ -8,11 +8,9 @@ export default function ExploreCitiesSection() {
     <section className="section bg-grey">
       <Container element="div">
         <div className={style.grid_container}>
-          <div className={`section-heading ${style.city_card_container}`}>
-            <div className={style.section_title}>
-              <h2 className="section_heading">Explore Cities</h2>
+          <div className={`flex f-column ${style.city_card_container}`}>
+              <h2>Explore Cities</h2>
               <p>Have a look at listings located at some of the amazing cities in Nigeria.</p>
-            </div>
           </div>
           {cities.map(city => (
             <CityCard key={city.name} city={city} />

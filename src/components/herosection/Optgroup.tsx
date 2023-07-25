@@ -6,7 +6,7 @@ type Props = {
   }[],
 } & React.ComponentProps<'optgroup'>
 
-export default function Optgroup({ subItems, header, className }: Props) {
+export default function OptGroup({ subItems, header, className }: Props) {
   return (
     <optgroup label={header} className={className}>
       {subItems.map((item) => (

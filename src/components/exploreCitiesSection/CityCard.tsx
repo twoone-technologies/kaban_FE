@@ -7,7 +7,7 @@ export default function CityCard({ city }: {
     const cardRef = useRef<HTMLDivElement>(null)
     useEffect(() => {
         cardRef.current?.style.setProperty('--background-img', `url(${city.image})`)
-    }, [])
+    }, [city.image])
     return (
         <div className={style.city_card_container}>
             <div ref={cardRef} className={style.city_card}>
