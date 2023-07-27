@@ -8,11 +8,6 @@ export default function PropertyTypeCard({ data }: {
     useEffect(() => {
         cardRef.current?.style.setProperty('--background-img', `url(${data.image})`)
     }, [])
-
-    // const dotRef = useRef<HTMLDivElement>(null)
-    // useEffect(() => {
-    //     dotRef.current?.style.setProperty('list-style-image', `url(~/src/assets/img/ellipse.svg)`)
-    // }, [])
     return (
         <div className={style.card_container}>
             <div ref={cardRef} className={style.property_card}>
