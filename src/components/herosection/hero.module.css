@@ -23,10 +23,17 @@
 
 .form_btn {
   background-color: transparent;
-  color: var(--tetiary-color-2);
   margin-right: 1rem;
   padding: 0.7rem 0.5rem;
   position: relative;
+}
+
+.isActive {
+  color: var(--primary-color);
+}
+
+.notActive {
+  color: var(--tetiary-color-2);
 }
 
 .label {
@@ -50,7 +57,7 @@
 .form_input {
   position: relative;
   align-items: center;
-  border: 1px solid var(--tetiary-color-2);
+  border: 1px solid var(--hover-color);
   color: var(--accent-color);
 }
 
@@ -58,22 +65,21 @@
   color: var(--primary-color);
 }
 
-.form_input:hover {
-  background-color: var(--hover-color);
-}
-
-.input:focus-within {
-  outline: 2px solid var(--primary-color);
-}
-
 .input {
   padding: 0.7rem 0.5rem;
   height: 100%;
 }
 
-select {
-  appearance: none;
+.input::placeholder {
   color: var(--accent-color);
+}
+
+.input:hover {
+  background-color: #dae0e692;
+}
+
+.input:focus-within {
+  outline: 2px solid var(--primary-color);
 }
 
 .svgIcon {
@@ -81,8 +87,9 @@ select {
   right: 0.4rem;
 }
 
-.input:hover+.svgIcon {
-  color: var(--primary-color);
+select {
+  appearance: none;
+  color: var(--accent-color);
 }
 
 .rotate {
@@ -102,8 +109,9 @@ optgroup[label] {
   padding: 0.7rem 0.5rem;
 }
 
-@media screen and (600px <= width <= 800px) {
+@media screen and (600px <= width <= 880px) {
   .form {
+    padding: 2rem;
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -116,13 +124,31 @@ optgroup[label] {
   }
 }
 
-@media screen and (width >= 800px) {
+@media screen and (width >= 768px) {
+  .hero {
+    padding-inline: 4rem;
+  }
+
+  .form {
+    padding: 2rem;
+  }
+}
+
+@media screen and (width >= 880px) {
+  .hero p {
+    font-size: 1.5rem;
+  }
+
   .form {
     max-width: 60rem;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
   }
 
   .btn_wrap {
-    grid-column: 1 / 6;
+    grid-column: 1 / 7;
+  }
+
+  .location {
+    grid-column: 1 / 3;
   }
 }

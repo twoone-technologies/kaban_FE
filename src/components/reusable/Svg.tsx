@@ -4,13 +4,14 @@ type Props = {
   height?: string,
   width_2?: string,
   href: string,
+  onClick?: () => void,
 }
 
-export default function Svg ({className, width='1.5em', height='1.5em', width_2='100%', href}: Props) {
+export default function Svg ({className, width='1.5em', height='1.5em', width_2='100%', href, onClick}: Props) {
   return (
-    <svg 
+    <svg onClick={onClick}
       className={`svg_icon ${className}`} 
-      width={width} 
+      width={width}
       height={height}>
       <use width={width_2} href={href}></use>
     </svg>
