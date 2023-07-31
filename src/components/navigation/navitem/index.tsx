@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { arrowIcon } from "~/assets";
+import { arrowIcon } from "~/assets/icons";
 import styles from "./navitem.module.css"
 import Svg from "~/components/reusable/Svg";
 import { Link } from "react-router-dom";

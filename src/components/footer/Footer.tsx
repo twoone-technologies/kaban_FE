@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import Container from '../reusable/Container'
-import { logoIcon, facebookIcon, twitterIcon, instagramIcon, linkedinIcon } from '~/assets';
+import { logoIcon, facebookIcon, twitterIcon, instagramIcon, linkedinIcon } from '~/assets/icons';
 import Svg from '../reusable/Svg';
 import styles from './footer.module.css';
 

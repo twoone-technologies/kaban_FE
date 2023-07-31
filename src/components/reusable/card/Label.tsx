@@ -1,4 +1,4 @@
-import { dotIcon } from "~/assets"
+import { dotIcon } from "~/assets/icons"
 import styles from "./card.module.css"
 import Svg from "../Svg"
 

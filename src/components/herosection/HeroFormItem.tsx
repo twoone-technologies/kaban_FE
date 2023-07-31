@@ -1,4 +1,4 @@
-import { arrowIcon } from "~/assets";
+import { arrowIcon } from "~/assets/icons";
 import Svg from "../reusable/Svg";
 import styles from "./hero.module.css";
 import { property_type, roomAndPrice } from "./formData";

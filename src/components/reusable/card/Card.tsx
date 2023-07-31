@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { heartIcon, bedIcon, showerIcon, carIcon, IkonIcon, locationIcon, cameraIcon, dotIcon } from "~/assets"
+import { heartIcon, bedIcon, showerIcon, carIcon, locationIcon, cameraIcon } from "~/assets/icons"
+import { IkonIcon } from "~/assets/img"
 import Svg from "../Svg"
 import styles from "./card.module.css"
 import Label from "./Label";
