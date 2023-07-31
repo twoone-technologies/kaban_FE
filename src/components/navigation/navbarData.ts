@@ -1,11 +1,11 @@
-import { aboutUsIcon } from "~/assets";
-import { contactUsIcon } from "~/assets";
-import { faqIcon } from "~/assets";
-import { house_1Icon } from "~/assets";
-import { house_2Icon } from "~/assets";
-import { house_3Icon } from "~/assets";
-import { agentsIcon } from "~/assets";
-import { agenciesIcon } from "~/assets";
+import { aboutUsIcon } from "~/assets/icons";
+import { contactUsIcon } from "~/assets/icons";
+import { faqIcon } from "~/assets/icons";
+import { house_1Icon } from "~/assets/img";
+import { house_2Icon } from "~/assets/img";
+import { house_3Icon } from "~/assets/img";
+import { agentsIcon } from "~/assets/icons";
+import { agenciesIcon } from "~/assets/icons";
 
 const navbarData = {
   Property: {

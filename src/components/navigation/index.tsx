@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { logoIcon } from "~/assets";
+import { logoIcon } from "~/assets/icons";
 import Button from "~/components/reusable/Button";
 import styles from "./navigation.module.css";
 import navbarData from "./navbarData";

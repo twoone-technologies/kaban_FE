@@ -1,6 +1,6 @@
-import { IkonIcon } from "~/assets"
-import background from "~/assets/imgbg.png"
-import pic from "~/assets/Ikon.png"
+import { IkonIcon } from "~/assets/img"
+import background from "~/assets/img/imgbg.png"
+import pic from "~/assets/img/Ikon.png"
 
 export const dummyObj = [
   {
