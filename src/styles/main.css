@@ -5,7 +5,7 @@
   --primary-color: #006aff; /* headlines & active states */
   --secondary-color: #141414; /* card text-color */
   --accent-color: #96999b; /* accent color */
-  --hover-color: #dae0e6;
+  --hover-color: #edf1f5;
   --tetiary-color-1: #ffffff; /* text color (footer) */
   --tetiary-color-2: #3a424b; /* subtle text color */
   --tetiary-color-3: #f0f0f0; /* background color */
@@ -61,7 +61,7 @@ p {
 }
 
 .box_shadow {
-  box-shadow: 10px 10px 11px 1px var(--hover-color);
+  box-shadow: 1px 1px 10px 1px var(--hover-color);
 }
 
 ul {

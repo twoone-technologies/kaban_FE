@@ -2,7 +2,7 @@ import FeaturedList from "~/components/featuredListings/FeaturedList";
 import HeroSection from "~/components/herosection/HeroSection";
 import ExploreCitiesSection from "~/components/exploreCitiesSection/ExploreCitiesSection";
 import LatestAdditions from "~/components/latestAddidtions/LatestAdditions";
-import { ActionFunctionArgs, redirect } from "react-router-dom";
+import { ActionFunctionArgs, redirect, useLocation } from "react-router-dom";
 
 export async function action({ request }: ActionFunctionArgs) {
   // get form data
@@ -19,20 +19,21 @@ export async function action({ request }: ActionFunctionArgs) {
 
   // const str = `search_results?status=${payload.status}&location=${payload.location}${property_type??`&propertyType=${payload.propertyType}`}${bedrooms??`&bedrooms=${payload.bedrooms}`}${price_Range??`&priceRange=${payload.priceRange}`}`
   // console.log(str);
-
-
-
-
-
+  
   // send data to BE
- //const res = await searchListings(searchStr)
-
-
+  //const res = await searchListings(searchStr)
+  
+  
   // redirect to result page with the data
-  return redirect(`/search_results?${searchStr}`)
+  
+  if (location.pathname !== "/search_results") {
+    console.log(location);
+    return redirect(`/search_results?${searchStr}`)
+  }
 }
 
 export default function LandingPage() {
+  const location = useLocation();
   return (
     <>
       <HeroSection />
