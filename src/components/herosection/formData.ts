@@ -1,5 +1,5 @@
 export const roomAndPrice = {
-  Bedrooms: [
+  bedrooms: [
     {
       type: 'Bedrooms',
       value: '',
@@ -26,30 +26,30 @@ export const roomAndPrice = {
     },
   ],
 
-  Price_Range: [
+  priceRange: [
     {
       type: 'Price_Range',
       value: '',
     },
     {
       type: '100,000 - 300,000',
-      value: '100,000 - 300,000',
+      value: '100000 - 300000',
     },
     {
       type: '300,000 - 500,000',
-      value: '300,000 - 500,000',
+      value: '300000 - 500000',
     },
     {
       type: '500,000 - 1,000,000',
-      value: '500,000 - 1,000,000',
+      value: '500000 - 1000000',
     },
     {
       type: '1,000,000 - 5,000,000',
-      value: '1,000,000 - 5,000,000',
+      value: '1000000 - 5000000',
     },
     {
-      type: '5,000,000',
-      value: '5,000,000',
+      type: '5,000,000+',
+      value: '5000000',
     },
   ],
 }

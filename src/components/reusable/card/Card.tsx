@@ -22,7 +22,7 @@ type HouseCard = {
   date: string
 }
 
-export default function Card({ card }: { card: HouseCard }) {
+export default function Card({ card }: { card: HouseCard }, className: string) {
   const [hover, setHover] = useState(false)
 
   const onHoverHandler = () => {

@@ -1,0 +1,115 @@
+.form {
+  margin-top: 4rem;
+  display: grid;
+  grid-gap: 1rem;
+  color: var(--tetiary-color-2);
+  background-color: var(--tetiary-color-1);
+}
+
+.btn_wrap {
+  border-bottom: 1px solid;
+}
+
+.form_btn {
+  background-color: transparent;
+  margin-right: 1rem;
+  padding: 0.7rem 0.5rem;
+  position: relative;
+}
+
+.isActive {
+  color: var(--primary-color);
+}
+
+.notActive {
+  color: var(--tetiary-color-2);
+}
+
+.label {
+  bottom: -2.1px;
+  position: absolute;
+  content: "";
+  width: 4rem;
+  height: 4px;
+  transition: all 300ms ease-in-out;
+  background-color: var(--primary-color);
+}
+
+.sale {
+  transform: translate(5.5rem);
+}
+
+.form > div {
+  position: relative;
+}
+
+.form_input {
+  position: relative;
+  align-items: center;
+  border: 1px solid var(--hover-color);
+  color: var(--accent-color);
+}
+
+.hover {
+  color: var(--primary-color);
+}
+
+.input {
+  padding: 0.7rem 0.5rem;
+  height: 100%;
+}
+
+.input::placeholder {
+  color: var(--accent-color);
+}
+
+.input:hover {
+  background-color: #dae0e692;
+}
+
+.input:focus-within {
+  outline: 2px solid var(--primary-color);
+}
+
+.svgIcon {
+  position: absolute;
+  right: 0.4rem;
+}
+
+select {
+  appearance: none;
+  color: var(--accent-color);
+}
+
+.rotate {
+  rotate: 90deg;
+}
+
+option[value=""] {
+  color: var(--accent-color);
+  opacity: 1;
+}
+
+optgroup[label] {
+  font-style: italic;
+}
+
+.btn {
+  padding: 0.7rem 0.5rem;
+}
+
+@media screen and (600px <= width <= 880px) {
+  .form {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (width >= 880px) {
+  .form {
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  .location {
+    grid-column: 1 / 3;
+  }
+}

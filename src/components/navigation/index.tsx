@@ -86,7 +86,8 @@ function Navigation() {
         </nav>
     ) :
     content = (
-      <nav className={`flex f-width bg-tetiary ${styles.nav}`}>
+      <nav className={`flex f-width bg-tetiary ${styles.nav}
+      ${goingUp ? styles.hide : styles.see }`}>
         <Link to={"/"}>
           <Svg href={logoIcon} width="100px" height="40px"
             className='bg-primary' />
