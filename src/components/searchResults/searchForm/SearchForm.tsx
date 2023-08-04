@@ -1,6 +1,6 @@
 import Button from "~/components/reusable/Button";
 import styles from "./searchForm.module.css";
-import { arrowIcon, searchIcon } from "~/assets";
+import { arrowIcon, searchIcon } from "~/assets/icons";
 import { Form } from "react-router-dom";
 import Svg from "~/components/reusable/Svg";
 import HeroFormItem from "~/components/herosection/HeroFormItem";

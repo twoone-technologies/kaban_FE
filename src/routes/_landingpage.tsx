@@ -2,6 +2,8 @@ import FeaturedList from "~/components/featuredListings/FeaturedList";
 import HeroSection from "~/components/herosection/HeroSection";
 import ExploreCitiesSection from "~/components/exploreCitiesSection/ExploreCitiesSection";
 import LatestAdditions from "~/components/latestAddidtions/LatestAdditions";
+import PropertyTypeSection from "~/components/propertyTypeSection/PropertyTypeSection";
+import Footer from "~/components/footer/Footer";
 import { ActionFunctionArgs, redirect, useLocation } from "react-router-dom";
 
 export async function action({ request }: ActionFunctionArgs) {
@@ -38,8 +40,10 @@ export default function LandingPage() {
     <>
       <HeroSection />
       <FeaturedList />
+      <PropertyTypeSection />
       <ExploreCitiesSection />
       <LatestAdditions />
+      <Footer />
     </>
   )
 } 

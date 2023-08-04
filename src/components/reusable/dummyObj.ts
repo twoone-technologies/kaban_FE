@@ -1,6 +1,6 @@
-import { IkonIcon } from "~/assets"
-import background from "~/assets/imgbg.png"
-import pic from "~/assets/Ikon.png"
+import { IkonIcon } from "~/assets/img"
+import background from "~/assets/img/imgbg.png"
+import pic from "~/assets/img/Ikon.png"
 
 export const dummyObj = [
   {
@@ -9,10 +9,10 @@ export const dummyObj = [
     apartmentName: 'Modern loft apartment',
     status: 'SALE',
     featured:true,
-    price: '86000000',
+    price: '860000',
     address: 'Nwaniba Road, Uyo. Akwa Ibom State',
     propertyType: 'Apartment',
-    bedNo: '3',
+    bedNo: '1',
     toiletNo: '2',
     showerNo: '2',
     carNo: '0',
@@ -27,7 +27,7 @@ export const dummyObj = [
     apartmentName: 'Modern loft apartment',
     status: 'RENT',
     featured: true,
-    price: '86000000',
+    price: '860000',
     address: 'Nwaniba Road, Uyo. Akwa Ibom State',
     propertyType: 'Apartment',
     bedNo: '3',
@@ -45,10 +45,10 @@ export const dummyObj = [
     apartmentName: 'Modern loft apartment',
     status: 'SALE',
     featured: true,
-    price: '86000000',
+    price: '860000',
     address: 'Nwaniba Road, Uyo. Akwa Ibom State',
     propertyType: 'Apartment',
-    bedNo: '3',
+    bedNo: '0',
     toiletNo: '2',
     showerNo: '2',
     carNo: '0',
@@ -63,13 +63,13 @@ export const dummyObj = [
     apartmentName: 'Modern loft apartment',
     status: 'RENT',
     featured: true,
-    price: '86000000',
+    price: '860000',
     address: 'Nwaniba Road, Uyo. Akwa Ibom State',
     propertyType: 'Apartment',
     bedNo: '3',
-    toiletNo: '2',
+    toiletNo: '1',
     showerNo: '2',
-    carNo: '0',
+    carNo: '3',
     photoNo: '22',
     agentImg: IkonIcon,
     agentName: 'The Goat',
@@ -81,7 +81,7 @@ export const dummyObj = [
     apartmentName: 'Modern loft apartment',
     status: 'SALE',
     featured: true,
-    price: '86000000',
+    price: '860000',
     address: 'Nwaniba Road, Uyo. Akwa Ibom State',
     propertyType: 'Apartment',
     bedNo: '3',
@@ -99,7 +99,7 @@ export const dummyObj = [
     apartmentName: 'Modern loft apartment',
     status: 'RENT',
     featured: true,
-    price: '86000000',
+    price: '860000',
     address: 'Nwaniba Road, Uyo. Akwa Ibom State',
     propertyType: 'Apartment',
     bedNo: '3',

@@ -8,7 +8,7 @@ import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
 import Container from "../reusable/Container";
 import { dummyObj } from "../reusable/dummyObj";
 import Svg from "../reusable/Svg";
-import { arrowIcon} from "~/assets";
+import { arrowIcon} from "~/assets/icons";
 
 export default function FeaturedList() {
   return (
