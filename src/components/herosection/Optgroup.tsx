@@ -1,17 +1,20 @@
 type Props = {
-  header: string,
-  subItems: {
+  onClick?: () => void,
+  header?: string,
+  subItems?: {
     type: string,
     value: string,
-  }[],
+  }[] | string,
 } & React.ComponentProps<'optgroup'>
 
-export default function OptGroup({ subItems, header, className }: Props) {
+export default function OptGroup({ subItems, header, className, onClick }: Props) {
   return (
     <optgroup label={header} className={className}>
-      {subItems.map((item) => (
-        <option key={item.type} value={item.value}>{item.type}</option>
-      ))}
+      {typeof subItems === 'object'? subItems.map((item) => (
+        <option key={item.type} onClick={onClick} value={item.value}>{item.type}</option>
+      )) : 
+        <option value={header}>{header}</option>
+      }
     </optgroup>
   )
 }

@@ -1,7 +1,34 @@
 export const roomAndPrice = {
-  bedrooms: [
+  bedroom: [
     {
-      type: 'Bedrooms',
+      type: 'Bedroom',
+      value: '',
+    },
+    {
+      type: '1',
+      value: '1',
+    },
+    {
+      type: '2',
+      value: '2',
+    },
+    {
+      type: '3',
+      value: '3',
+    },
+    {
+      type: '4 - 5',
+      value: '4 - 5',
+    },
+    {
+      type: '5',
+      value: '5',
+    },
+  ],
+
+  bathroom: [
+    {
+      type: 'Bathroom',
       value: '',
     },
     {
@@ -53,8 +80,6 @@ export const roomAndPrice = {
     },
   ],
 }
-
-
 
 export const property_type = {
   Residential: {

@@ -32,14 +32,6 @@ export default function HeroForm() {
           For Sale
         </Button>
       </div>
-      <div className={styles.location}>
-        <label htmlFor="location"></label>
-        <div className={`flex b-radius f-width ${styles.form_input}`}>
-          <input type="text" placeholder="Location" name="location" maxLength={30} required 
-          className={`flex b-radius f-width ${styles.input}`} />
-          <Svg href={searchIcon} className={styles.svgIcon} width="17px" height="17px" />
-        </div>
-      </div>
       <HeroFormItem />
       <Button type="submit" className={styles.btn}>Search</Button>
     </Form>

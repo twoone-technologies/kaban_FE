@@ -7,7 +7,7 @@ type Props = {
 
 export default function Button({className, children, ...buttonProps}: Props) {
   return (
-    <button className={`btn ${className}`} {...buttonProps}>
+    <button className={`btn animate ${className}`} {...buttonProps}>
       {children}
     </button>
   )

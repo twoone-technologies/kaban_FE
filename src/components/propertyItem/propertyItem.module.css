@@ -1,0 +1,46 @@
+.wrapper {
+  margin-block: 4rem;
+}
+
+.carousel_img_wrap {
+  height: 18rem;
+}
+
+.carousel_img {
+  width: 100%;
+}
+
+.carousel_btn {
+  background-color: rgba(0, 0, 0, 0.30);
+  border-radius: 50%;
+  color: var(--tertiary-color-1);
+}
+
+.carousel_btn:hover {
+  background-color: rgba(0, 0, 0, 0.605);
+  border-radius: 50%;
+  color: var(--tertiary-color-1);
+}
+
+.carousel_btn svg:hover  {
+  color: var(--tertiary-color-1);
+}
+
+.carousel_btn:nth-child(1) {
+  transform: rotate(180deg);
+}
+
+.btn_grp {
+  padding: 0.4rem 2.5rem;
+  position: absolute;
+  bottom: 40%;
+  height: 4.3rem;
+}
+
+.img_no {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  color: var(--tertiary-color-1);
+  background-color: rgba(0, 0, 0, 0.30);
+}

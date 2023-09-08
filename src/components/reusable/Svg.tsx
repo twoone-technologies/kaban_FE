@@ -3,7 +3,7 @@ type Props = {
   width?: string,
   height?: string,
   width_2?: string,
-  href: string,
+  href?: string,
   onClick?: () => void,
 }
 

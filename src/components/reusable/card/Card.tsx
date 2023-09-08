@@ -1,10 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import {
-  bedIcon,
-  showerIcon,
-  carIcon,
-} from '~/assets/icons';
+import { bedIcon, showerIcon, carIcon } from '~/assets/icons';
 import styles from './card.module.css';
 import AgentInfo from './CardAgentInfo';
 import CardIcons from './CardIcons';
@@ -59,9 +55,8 @@ export type HouseCard = {
 };
 
 export default function Card({
-  card,
+  card, mapState = false,
   orientation = 'portrait',
-  mapState = false,
 }: {
   card: HouseCard;
   orientation?: string;
@@ -70,11 +65,9 @@ export default function Card({
   const navigate = useNavigate();
   const [hover, setHover] = useState(false);
   const onHoverHandler = () => setHover(!hover);
-
   const borders = orientation === 'portrait' ? styles.border_r : '';
   const cardState =
     orientation === 'landscape' && mapState === false ? styles.portrait : '';
-
   const cardimgState =
     orientation === 'landscape' && mapState === false
       ? styles.landscape_2
