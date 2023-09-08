@@ -6,6 +6,7 @@ import styles from './navigation.module.css';
 import navbarData from './navbarData';
 import Svg from '~/components/reusable/Svg';
 import NavItem from './navitem';
+import Container from '../reusable/Container';
 
 function Navigation() {
   const [open, setOpen] = useState(false);
@@ -49,8 +50,8 @@ function Navigation() {
 
   location.pathname === '/'
     ? (content = (
-        <nav
-          className={`flex f-width ${styles.nav} ${navBar ? `bg-tetiary` : ''}
+        <Container element='nav'
+          className={`flex f-width ${styles.nav} ${navBar ? `bg-tertiary` : ''}
       ${goingUp ? styles.hide : styles.see}`}
         >
           <Link to={'/'}>
@@ -108,11 +109,11 @@ function Navigation() {
               </Button>
             </li>
           </ul>
-        </nav>
+        </Container>
       ))
     : (content = (
-        <nav
-          className={`flex f-width bg-tetiary ${styles.nav}
+        <Container element='nav'
+          className={`flex f-width bg-tertiary ${styles.nav}
       ${goingUp ? styles.hide : styles.see}`}
         >
           <Link to={'/'}>
@@ -172,7 +173,7 @@ function Navigation() {
               </Button>
             </li>
           </ul>
-        </nav>
+        </Container>
       ));
 
   return <>{content}</>;

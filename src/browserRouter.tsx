@@ -10,13 +10,15 @@ import ContactUs from "./routes/_company.contact-us"
 import FAQs from "./routes/_company.faqs"
 import Agents from "./routes/_realtors.agents"
 import Agencies from "./routes/_realtors.agencies"
-import SearchResults from "./routes/search_results"
+import SearchResults, {action as results } from "./routes/search_results"
+import PropertyItem from "./components/propertyItem/PropertyItem"
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
       <Route index element={<LandingPage />} action={listingSearch} />
-      <Route path="search_results" element={<SearchResults />} />
+      <Route path="search_results" element={<SearchResults />} action={results} />
+      <Route path="property-item/:id" element={<PropertyItem />} />
       <Route path="blog" element={<Blog />} />
       <Route path="commercial" element={<Commercial />} />
       <Route path="industrial" element={<Industrial />} />
