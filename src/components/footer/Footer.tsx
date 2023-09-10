@@ -19,20 +19,7 @@ function Footer() {
                             Kaban is here to help you ease the stress of finding a property that
                             meets your satisfaction by bringing the best deals available to your screen.
                         </p>
-                        <div className={`flex ${styles.icons_container}`}>
-                                <Link to="https://facebook.com/kaban-ng" target='_blank'>
-                                    <Svg href={facebookIcon} className={styles.socials_icon} />
-                                </Link>
-                            <Link to="https://twitter.com/kaban-ng" target='_blank'>
-                                <Svg href={twitterIcon} className={styles.socials_icon} />
-                            </Link>
-                            <Link to="https://instagram.com/kaban-ng" target='_blank'>
-                                <Svg href={instagramIcon} className={styles.socials_icon} />
-                            </Link>
-                            <Link to="https://linkedin.com/kaban-ng" target='_blank'>
-                                <Svg href={linkedinIcon} className={styles.socials_icon} />
-                            </Link>
-                        </div>
+
                     </div>
                     <div className={`flex ${styles.link_container}`}>
                         <div className={`flex ${styles.mt_1}`}>
@@ -90,6 +77,20 @@ function Footer() {
                             </ul>
                         </div>
                     </div>
+                </div>
+                <div className={`flex ${styles.icons_container}`}>
+                    <Link to="https://facebook.com/kaban-ng" target='_blank'>
+                        <Svg href={facebookIcon} className={styles.socials_icon} />
+                    </Link>
+                    <Link to="https://twitter.com/kaban-ng" target='_blank'>
+                        <Svg href={twitterIcon} className={styles.socials_icon} />
+                    </Link>
+                    <Link to="https://instagram.com/kaban-ng" target='_blank'>
+                        <Svg href={instagramIcon} className={styles.socials_icon} />
+                    </Link>
+                    <Link to="https://linkedin.com/kaban-ng" target='_blank'>
+                        <Svg href={linkedinIcon} className={styles.socials_icon} />
+                    </Link>
                 </div>
                 <hr className={styles.hr} />
                 <div className={`flex ${styles.footer_bottom}`}>
