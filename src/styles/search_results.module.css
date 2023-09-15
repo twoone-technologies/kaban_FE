@@ -26,8 +26,10 @@
 }
 
 .map {
+  width: 100%;
+  height: 100dvh;
   background-position: center;
-  color: var(--tertiary-color-1);
+  color: var(--tertiary-color-2);
   position: sticky;
   top: 11px;
   border: 1px solid;

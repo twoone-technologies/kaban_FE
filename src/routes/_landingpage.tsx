@@ -3,7 +3,6 @@ import HeroSection from "~/components/herosection/HeroSection";
 import ExploreCitiesSection from "~/components/exploreCitiesSection/ExploreCitiesSection";
 import LatestAdditions from "~/components/latestAddidtions/LatestAdditions";
 import PropertyTypeSection from "~/components/propertyTypeSection/PropertyTypeSection";
-import Footer from "~/components/footer/Footer";
 import { ActionFunctionArgs, redirect, useLocation } from "react-router-dom";
 
 export async function action({ request }: ActionFunctionArgs) {
@@ -32,10 +31,10 @@ export async function action({ request }: ActionFunctionArgs) {
     console.log(location);
     return redirect(`/search_results?${searchStr}`)
   }
+  return redirect(`/search_results?${searchStr}`)
 }
 
 export default function LandingPage() {
-  const location = useLocation();
   return (
     <>
       <HeroSection />
@@ -43,7 +42,6 @@ export default function LandingPage() {
       <PropertyTypeSection />
       <ExploreCitiesSection />
       <LatestAdditions />
-      <Footer />
     </>
   )
 } 

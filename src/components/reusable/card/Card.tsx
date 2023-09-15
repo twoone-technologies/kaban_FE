@@ -30,7 +30,7 @@ export type HouseCard = {
   city: string;
   images: [
     {
-      url?: string;
+      url: string;
       cover: boolean;
       _id: string;
       id: string;

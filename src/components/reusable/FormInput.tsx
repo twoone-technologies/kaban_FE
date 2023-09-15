@@ -59,6 +59,7 @@ export default function FormInput({
         <select
           name={title}
           title={title}
+          onChange={onChange1}
           className={`flex b-radius f-width ${styles.input}`}
         >
           <OptGroup header={header} subItems={subItems} />
