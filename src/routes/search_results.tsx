@@ -47,7 +47,6 @@ export async function action({ request }: ActionFunctionArgs) {
   return redirect(`/search_results?${searchStr}`)
 }
 
-
 export default function SearchResults() {
   // const res = await searchListings(search)
 
@@ -103,14 +102,19 @@ export default function SearchResults() {
   const order =
     position === 'portrait' && map === false ? styles.grid_style : resultOnly;
 
+    const location = {
+      address: '1600 Amphitheatre Parkway, Mountain View, california.',
+      lat: 37.42216,
+      lng: -122.08427,
+    } // our 
+
   return (
     <Container element="section"
-      className={`container-pad ${styles.search_container}`}
+      className={`container-pad ${styles.search_container}
+      ${stack === 'map' ? styles.c_reset : ''}`}
     >
       <div className={`${styles.map_section} ${renderMap} ${mapPage}`}>
-        <div className={styles.map}>
-        <Map />
-        </div>
+        <Map location={location} zoomLevel={17} />
       </div>
       <div className={`flex b-radius c-pad ${styles.map_control}`}>
         <div onClick={() => handleStack('listings')}
@@ -124,12 +128,14 @@ export default function SearchResults() {
           <span>Map</span>
         </div>
       </div>
-      <div className={`${styles.results} ${adjustList} ${listingsPage}`}>
-        <SearchForm />
+      <div className={`${styles.results}  ${adjustList}
+        ${stack === 'map' ? styles.resMap : ''}`}>
+        <SearchForm className={mapPage} />
+        
         <h3>Rental Listings</h3>
         <div className="flex s-btw align-y">
           <span className={styles.size}>{dummyObj.length} results found</span>
-          <div className="flex align-y">
+          <div className={`flex align-y ${listingsPage}`}>
             <div title="toggle Map" className={styles.nil}>
               <Svg onClick={toggleMap} href={mapIcon} />
             </div>
@@ -154,7 +160,7 @@ export default function SearchResults() {
             </div>
           </div>
         </div>
-        <div className={`${styles.listings_wrap} ${order}`}>
+        <div className={`${styles.listings_wrap} ${listingsPage} ${order}`}>
           {sortArr.map((item) => (
             <Card key={item.id} card={item} orientation={position} mapState={map} />
           ))}
