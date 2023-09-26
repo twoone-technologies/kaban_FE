@@ -1,12 +1,5 @@
 <svg width="24" id="img" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="vuesax/linear/share">
-<g id="share">
-<path id="Vector" d="M16.96 6.16992C18.96 7.55992 20.34 9.76992 20.62 12.3199" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector_2" d="M3.48999 12.3702C3.74999 9.83021 5.10999 7.62021 7.08999 6.22021" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector_3" d="M8.18994 20.9399C9.34994 21.5299 10.6699 21.8599 12.0599 21.8599C13.3999 21.8599 14.6599 21.5599 15.7899 21.0099" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector_4" d="M12.06 7.70014C13.5954 7.70014 14.84 6.45549 14.84 4.92014C14.84 3.38479 13.5954 2.14014 12.06 2.14014C10.5247 2.14014 9.28003 3.38479 9.28003 4.92014C9.28003 6.45549 10.5247 7.70014 12.06 7.70014Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector_5" d="M4.83005 19.9199C6.3654 19.9199 7.61005 18.6752 7.61005 17.1399C7.61005 15.6045 6.3654 14.3599 4.83005 14.3599C3.2947 14.3599 2.05005 15.6045 2.05005 17.1399C2.05005 18.6752 3.2947 19.9199 4.83005 19.9199Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector_6" d="M19.17 19.9199C20.7054 19.9199 21.95 18.6752 21.95 17.1399C21.95 15.6045 20.7054 14.3599 19.17 14.3599C17.6347 14.3599 16.39 15.6045 16.39 17.1399C16.39 18.6752 17.6347 19.9199 19.17 19.9199Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
+<g id="majesticons:share-line">
+<path id="Vector" d="M20 12L13.6 5V8.5C10.4 8.5 4 10.6 4 19C4 17.833 5.92 15.5 13.6 15.5V19L20 12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 </svg>

@@ -71,6 +71,9 @@ export const linkedinIcon = `${linkedin}#img`;
 import share from "./share.svg"; 
 export const shareIcon = `${share}#img`;
 
+import alarm from "./alarm.svg"; 
+export const alarmIcon = `${alarm}#img`;
+
 // sort icons
 import sort from "./sort.svg"; 
 export const sortIcon = `${sort}#img`;
@@ -81,7 +84,7 @@ export const vertIcon = `${vert}#img`;
 import grid from "./row-horizontal.svg"; 
 export const gridIcon = `${grid}#img`;
 
-//map icons
+// map icons
 import map from "./map.svg";
 export const mapIcon = `${map}#img`;
 
@@ -91,3 +94,6 @@ export const tickIcon = `${tick}#img`;
 
 import bell from "./bell.svg";
 export const bellIcon = `${bell}#img`;
+
+import close from "./close.svg";
+export const closeIcon = `${close}#img`;

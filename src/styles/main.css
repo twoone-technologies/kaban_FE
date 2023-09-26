@@ -79,6 +79,11 @@ svg {
   fill: currentColor;
 }
 
+.svg_icon:active {
+  transform: scale(1.2);
+  transition: scale 100ms ease-in;
+}
+
 .svg_icon:hover {
   color: var(--primary-color);
 }

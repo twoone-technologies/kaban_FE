@@ -114,7 +114,7 @@ function Navigation() {
     : (content = (
         <Container element='nav'
           className={`flex f-width bg-tertiary ${styles.nav}
-      ${goingUp ? styles.hide : styles.see}`}
+          ${goingUp ? styles.hide : styles.see} ${styles.nav_btm}`} 
         >
           <Link to={'/'}>
             <Svg
