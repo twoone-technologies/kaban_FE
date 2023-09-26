@@ -21,6 +21,10 @@
   font-size: clamp(3px, 4vw, 0.8rem);
 }
 
+.nav_btm {
+  border-bottom: 1px solid var(--hover-color);
+}
+
 .logo {
   color: var(--tertiary-color-1);
 }

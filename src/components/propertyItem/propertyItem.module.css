@@ -2,17 +2,35 @@
   margin-top: 4rem;
 }
 
-.swiper_container {
-  height: 26rem;
+.tools {
+  padding-block: 1rem;
+}
+
+.toolkit {
+  gap: 1.5rem;
+}
+
+.tooltip {
+  /* outline: 1px solid; */
+  color: var(--tertiary-color-1);
+  border-radius: 5px;
+  background-color: var(--primary-color);
+}
+
+.rotate {
+  rotate: 180deg;
+  outline: 1px solid var(--hover-color);
+  border-radius: 50%;
 }
 
 .carousel_wrap {
-  position: relative;
-  border: 1px solid;
+  position: absolute;
+  left: 0;
+  width: 100%;
 }
 
 .carousel_wrap2 {
-  width: 100%;
+  display: none;
   overflow-x: scroll;
 }
 
@@ -20,13 +38,7 @@
   display: none;
 }
 
-.carousel_img_wrap {
-  /* height: 20rem; */
-  /* width: 100%; */
-}
-
 .btn_grp {
-  /* width: 100%; */
   padding: 0.4rem 2.5rem;
   position: absolute;
   bottom: 40%;
@@ -34,7 +46,6 @@
 }
 
 .carousel_img {
-  /* display: inline-block; */
   width: 100%;
   height: 500px;
 }
@@ -45,6 +56,14 @@
 
 .fg {
   background-color: rgba(0, 0, 0, 0.457);
+}
+
+.active {
+  opacity: 1;
+}
+
+.slide {
+  opacity: 0;
 }
 
 .overlay {
@@ -70,7 +89,6 @@
 }
 
 .disable {
-  /* background-color: rgba(0, 0, 0, 0.162); */
   opacity: 0.4;
   pointer-events: none;
 }
@@ -94,14 +112,33 @@
 .img_no {
   position: absolute;
   bottom: 1rem;
-  right: 1rem;
+  left: 1rem;
   color: var(--tertiary-color-1);
   background-color: rgba(0, 0, 0, 0.30);
 }
 
+.dateLikes {
+  position: absolute;
+  top: 0.5rem;
+  color: var(--tertiary-color-1);
+}
+
+.date {
+  background-color: rgba(0, 0, 0, 0.30);
+}
+
 .pagination {
-  /* background-color: aquamarine; */
   position: absolute;
   bottom: 1rem;
   left: 1rem;
+}
+
+@media screen and (width >= 768px) {
+  .carousel_wrap {
+    position: relative;
+  }
+
+  .carousel_wrap2 {
+    display: flex;
+  }
 }
