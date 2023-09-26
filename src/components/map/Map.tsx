@@ -1,18 +1,30 @@
 import GoogleMapReact from 'google-map-react';
+import LocationPin from './LocationPin';
+import styles from './map.module.css'
 
-export default function Map() {
+type MapProps = {
+  location:  {
+    address: string;
+    lat: number;
+    lng: number;
+}
+  zoomLevel: number;
+};
+
+export default function Map({ location, zoomLevel }: MapProps) {
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
-      <h4>Map</h4>
+    <div className={styles.map}>
       {/* <GoogleMapReact
-        bootstrapURLKeys={{ key: "" }}
-        defaultCenter={
-          lat: 10.99835602,
-          lng: 77.01502627
-        }
-        defaultZoom={14}
+        bootstrapURLKeys={{ key: 'AIzaSyAT-hRk7tVNYvzXUjMPhZLkUtEm8wofOYs' }}
+        defaultCenter={location}
+        defaultZoom={zoomLevel}
       >
+        <LocationPin
+          lat={location.lat}
+          lng={location.lng}
+          text={location.address}
+        />
       </GoogleMapReact> */}
     </div>
-  )
+  );
 }
