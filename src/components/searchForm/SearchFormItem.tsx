@@ -42,8 +42,8 @@ export default function SearchFormItem({formStyle}: {formStyle: string}) {
         header={'status'} subItems={statusArr}
       />
       <FormInput title={'propertyType'} link={arrowIcon} />
-      {Object.entries(roomAndPrice).map(([key, val]) => (
-        <FormInput title={key} subItems={val} link={arrowIcon} />
+      {Object.entries(roomAndPrice).map(([key, val], id) => (
+        <FormInput key={id} title={key} subItems={val} link={arrowIcon} />
       ))}
       <FormInput title={'Min.price'} type={'number'} link={arrowIcon} />
       <FormInput title={'Max.price'} type={'number'} link={arrowIcon} />

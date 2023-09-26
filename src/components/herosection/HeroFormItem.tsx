@@ -17,8 +17,9 @@ export default function HeroFormItem() {
         className={styles.location}
       />
       <FormInput title={'propertyType'} link={arrowIcon} />
-      {Object.entries(roomAndPrice).map(([key, val]) => (
+      {Object.entries(roomAndPrice).map(([key, val], id) => (
         <FormInput
+          key={id}
           title={key}
           subItems={val}
           link={arrowIcon}

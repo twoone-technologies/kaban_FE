@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import Button from '~/components/reusable/Button';
 import styles from './searchForm.module.css';
-import { arrowIcon, bellIcon } from '~/assets/icons';
+import { arrowIcon } from '~/assets/icons';
 import { Form } from 'react-router-dom';
-import Svg from '~/components/reusable/Svg';
 import SearchFormItem from './SearchFormItem';
 import CheckboxGroup from './CheckboxGroup';
 import FormInput from '../reusable/FormInput';
 
-export default function SearchForm() {
+export default function SearchForm({className}: {className: string}) {
   const [formStyle, setFormStyle] = useState<'open' | 'close'>('close');
   const [otherItems, setOtherItems] = useState(false);
 
@@ -26,7 +25,7 @@ export default function SearchForm() {
     <Form
       method="post"
       className={`b-radius f-width flex f-column
-      ${styles.form} ${formActive}`}
+      ${styles.form} ${formActive} ${className}`}
     >
       <FormInput
         readOnly
@@ -47,19 +46,13 @@ export default function SearchForm() {
         <span>other features</span>
       </div>
       <CheckboxGroup className={`f-height ${isActive} ${extras}`} />
-      <div className={`flex gap ${isActive}`}>
         <Button
           type="submit"
-          className={`${styles.btn} f-width`}
+          className={`${styles.btn} ${isActive} f-width`}
           onClick={() => handleStyle('close')}
         >
           Search
         </Button>
-        <Button type="button" className={`flex align-y gap ${styles.save_btn}`}>
-          <Svg href={bellIcon} height="1.7rem" />
-          Save Search
-        </Button>
-      </div>
     </Form>
   );
 }
