@@ -1,17 +1,26 @@
 .card {
   min-width: 16rem;
+  transition: all 300ms ease-in-out;
+}
+
+.border_r {
+  border-top-right-radius: 8px;
+  flex-direction: column;
+}
+
+.landscape {
+  border-top-right-radius: 8px;
 }
 
 .above {
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-  color: var(--tetiary-color-1);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  color: var(--tertiary-color-1);
   position: relative;
   padding: 1rem;
   height: 13rem;
   width: 100%;
   overflow: hidden;
-  transition: all 300ms ease-in-out;
 }
 
 .overlay {
@@ -67,14 +76,15 @@
 
 .featured {
   background-color: #41ae483f;
-  color: #41ae48;
+  color: var(--tertiary-color-4);
 }
 
 .below {
-  background-color: var(--tetiary-color-1);
+  background-color: var(--tertiary-color-1);
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
   gap: 0.4rem;
+  width: 100%;
 }
 
 .header p {
@@ -89,7 +99,7 @@
 
 .icons {
   font-size: clamp(8px, 4vw, 11px);
-  gap: 1rem;
+  gap: 0.7rem;
 }
 
 .icons Svg {
@@ -113,7 +123,6 @@
   top: -3px;
   right: 0;
   position: relative;
-  /* height: 100%; */
   max-width: 30rem;
   width: 100%;
 }
@@ -122,23 +131,52 @@
   background-color: rgba(0, 0, 0, 0.39);
 }
 
+.agent {
+  background-color: var(--tertiary-color-3);
+}
+
 @media screen and (width >= 768px) {
   .card {
     min-width: 19rem;
+    display: flex;
   }
 
   .img {
     min-width: 19rem;
   }
+
+  .above {
+    border-top-right-radius: unset;
+  }
+
+  .border_r {
+    border-top-right-radius: 8px;
+  }
+
+  .below {
+    border-top-right-radius: 8px;
+  }
 }
 
-@media screen and (695px < width < 850px ) {
-  .status_grp {
-    font-size: clamp(3px, 4vw, 0.4rem);
-  }  
+@media screen and (768px < width < 1000px) {
+  .portrait {
+    flex-direction: column;
+    height: 25.5rem;
+  }
 
-  .status_grp Svg {
-    position: relative;
-    top: 1px;
+  .landscape_2 {
+    border-top-right-radius: 8px;
+  }
+}
+
+@media screen and (width >= 1000px ) {
+  .landscape_1 {
+    /* height: 100%; */
+    border-bottom-left-radius: 8px;
+  }
+
+  .landscape_2 {
+    /* height: 100%; */
+    border-bottom-left-radius: 8px;
   }
 }

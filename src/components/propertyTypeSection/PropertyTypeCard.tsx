@@ -15,8 +15,8 @@ export default function PropertyTypeCard({ data }: {
             <div className={style.sm_card}>
                 <h3>{data.name}</h3>
                 <div className={style.sm_card_info}>
-                    {data.type.map((dataTypeItem) => (
-                        <li>{dataTypeItem}</li>
+                    {data.type.map((dataTypeItem, id) => (
+                        <li key={id}>{dataTypeItem}</li>
                     )
                     )}
                 </div>

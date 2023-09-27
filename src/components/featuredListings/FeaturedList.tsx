@@ -57,7 +57,7 @@ export default function FeaturedList() {
               <div className="carousel-btn flex align-y">
                 <Svg className="btn-prev" href={arrowIcon} />
               </div>
-              <div className="carousel-btn flex align-y">
+              <div className={"carousel-btn flex align-y"}>
                 <Svg className="btn-next" href={arrowIcon} />
               </div>
             </div>

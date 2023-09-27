@@ -1,0 +1,23 @@
+
+.modalWrap {
+  padding: 2rem;
+  text-align: center;
+  margin: auto;
+  max-width: 35rem;
+  background-color: transparent;
+}
+
+.modal {
+  border: 1px solid var(--secondary-color);
+  color: var(--text-color);
+  padding: 2rem;
+}
+
+.btn {
+  width: 100%;
+}
+
+.modalWrap::backdrop {
+  background-color: rgba(21, 14, 40, 0.93);
+}
+

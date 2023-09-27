@@ -1,100 +1,130 @@
-import { useState } from "react";
-import { heartIcon, bedIcon, showerIcon, carIcon, locationIcon, cameraIcon } from "~/assets/icons"
-import { IkonIcon } from "~/assets/img"
-import Svg from "../Svg"
-import styles from "./card.module.css"
-import Label from "./Label";
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { bedIcon, showerIcon, carIcon } from '~/assets/icons';
+import styles from './card.module.css';
+import AgentInfo from './CardAgentInfo';
+import CardIcons from './CardIcons';
+import HeaderInfo from './CardHeaderInfo';
+import Address from './CardAddress';
+import CardImg from './CardImg';
 
-type HouseCard = {
-  apartmentImg: string,
-  apartmentName: string,
-  status: string,
-  featured: boolean,
-  price: string,
-  address: string,
-  propertyType: string,
-  photoNo: string,
-  bedNo: string,
-  toiletNo: string,
-  showerNo: string,
-  carNo: string,
-  agentImg: string,
-  agentName: string,
-  date: string
-}
+export type HouseCard = {
+  location: {
+    type: string;
+    coordinates: number[];
+  };
+  _id: string;
+  realtor: {
+    agentImg: string;
+    agentName: string;
+  };
+  title: string;
+  property_category: string;
+  property_type: string;
+  status: string;
+  featured: boolean;
+  price: {
+    amount: number;
+  };
+  address: string;
+  city: string;
+  images: [
+    {
+      url: string;
+      cover: boolean;
+      _id: string;
+      id: string;
+    },
+  ];
+  details: {
+    bedroom: number;
+    bathroom: number;
+    land_area: string;
+    parking_space: number;
+    features: [
+      {
+        title: string;
+        checked: boolean;
+      },
+    ];
+  };
+  street_view: boolean;
+  report: [];
+  createdAt: string;
+  id: string;
+};
 
-export default function Card({ card }: { card: HouseCard }) {
-  const [hover, setHover] = useState(false)
-
-  const onHoverHandler = () => {
-    setHover(!hover);
-  }
-
-  const setNums = (str: string) => {
-    if (str === undefined || NaN || '') {
-      return "..."
-    }
-    return parseInt(str).toLocaleString();
-  }
+export default function Card({
+  card, mapState = false,
+  orientation = 'portrait',
+}: {
+  card: HouseCard;
+  orientation?: string;
+  mapState?: boolean;
+}) {
+  const navigate = useNavigate();
+  const [hover, setHover] = useState(false);
+  const onHoverHandler = () => setHover(!hover);
+  const borders = orientation === 'portrait' ? styles.border_r : '';
+  const cardState =
+    orientation === 'landscape' && mapState === false ? styles.portrait : '';
+  const cardimgState =
+    orientation === 'landscape' && mapState === false
+      ? styles.landscape_2
+      : styles.landscape_1;
 
   return (
-    <div  onMouseEnter={onHoverHandler} onMouseLeave={onHoverHandler} className={`b-radius box_shadow ${styles.card}`}>
+    <div
+      onMouseEnter={onHoverHandler}
+      onMouseLeave={onHoverHandler}
+      onClick={() => navigate(`/property-item/${card.id}`)}
+      className={`b-radius box_shadow ${styles.card} ${borders} ${cardState}`}
+    >
       <div
-        className={`flex f-column s-btw ${styles.above}`}>
-        <div className={`f-width ${styles.overlay} ${hover ? styles.nil : ''}`}></div>
-        <img src={card.apartmentImg} alt={card.apartmentImg}
-        className={`${styles.img} ${hover ? styles.scale : ''}`}  />
-        <div className={`flex s-btw f-width`}>
-          <small className={`b-radius stack c-pad ${styles.date}`}>{card.date}</small>
-          <Svg className={`stack`} href={heartIcon} />
-        </div>
-        <div className='flex stack align-y'>
-          <Svg href={cameraIcon} />
-          <span>{card.photoNo}</span>
-        </div>
+        className={`flex f-column s-btw ${styles.above} 
+        ${orientation === 'portrait' ? styles.border_r : cardimgState}`}
+      >
+        <CardImg
+          enter={hover}
+          src={card.images.find((img) => img.cover)?.url}
+          title={card.title}
+          date={card.createdAt}
+          imgNo={card.images.length}
+        />
       </div>
+
       <div className={`flex f-column c_pad s-btw ${styles.below}`}>
-        <div className={`flex f-column ${styles.header}`}>
-          <p>{card.propertyType}</p>
-          <div className="flex s-btw">
-            <h3>₦{setNums(card.price)}</h3>
-            <div className={`flex gap ${styles.status_grp}`}>
-              {card.featured?<Label type="featured" text="FEATURED" />:null}
-              <Label type="status" text={`FOR ${card.status}`} />
-            </div>
-          </div>
-        </div>
+        <HeaderInfo
+          type={card.property_type}
+          num={card.price.amount}
+          featured={card.featured}
+          stat={card.status}
+        />
         <div className={`flex f-column s-btw gap ${styles.iconWrap}`}>
-          <b className="c-grey">{card.apartmentName}</b>
-          <div className="flex c-grey">
-            <Svg width_2="1.2rem" width="1.2rem" className="locate" href={locationIcon} />
-            <small>{card.address}</small>
-          </div>
+          <Address title={card.title} address={card.address} />
           <div className={`flex f-width ${styles.icons}`}>
-            <div className="flex align-y">
-              <Svg href={bedIcon} />
-              <span>{card.bedNo} bed</span>
-            </div>
-            <div className="flex align-y">
-              <Svg href={showerIcon} />
-              <span>{card.showerNo} bath</span>
-            </div>
-            <div className="flex align-y">
-              <Svg href={carIcon} />
-              <span>{card.carNo} parking spots</span>
-            </div>
+            <CardIcons
+              title="bedroom"
+              icon={bedIcon}
+              num={card.details.bedroom}
+            />
+            <CardIcons
+              title="bathroom"
+              icon={showerIcon}
+              num={card.details.bathroom}
+            />
+            <CardIcons
+              title="parking spots"
+              icon={carIcon}
+              num={card.details.parking_space}
+            />
           </div>
         </div>
-        <div className={`flex s-btw f-width align-y b-radius c-pad bg-grey ${styles.agent}`}>
-          <div className="flex align-y">
-            <div className={styles.agent_img_wrap}>
-              <img src={IkonIcon} className={styles.agent_img}
-                alt={card.agentName} />
-            </div>
-            <small>{card.agentName}</small>
-          </div>
-        </div>
+        <AgentInfo
+          src={card.realtor.agentImg}
+          identity={card.realtor.agentName}
+        />
       </div>
     </div>
-  )
+  );
 }

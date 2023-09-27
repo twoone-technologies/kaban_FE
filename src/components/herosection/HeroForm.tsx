@@ -4,15 +4,17 @@ import styles from "./hero.module.css";
 import Svg from "../reusable/Svg";
 import { searchIcon } from "~/assets/icons";
 import HeroFormItem from "./HeroFormItem";
+import { Form } from "react-router-dom";
 
 export default function HeroForm() {
+
   const [status, setStatus] = useState<'rent' | 'sale'>('rent')
   function handleStatus(status: 'rent' | 'sale') {
-    setStatus(status);{console.log(status)}
+    setStatus(status);
   }
 
   return (
-    <form className={`b-radius f-width ${styles.form}`}>
+    <Form method="post" className={`b-radius f-width ${styles.form}`}>
       <div className={`flex f-width h-grey ${styles.btn_wrap}`}>
         <label className={`${styles.label}
           ${status === "rent" ? styles.rent : styles.sale}`}
@@ -30,16 +32,8 @@ export default function HeroForm() {
           For Sale
         </Button>
       </div>
-      <div className={styles.location}>
-        <label htmlFor="location"></label>
-        <div className={`flex b-radius f-width ${styles.form_input}`}>
-          <input type="text" placeholder="Location" name="Location" maxLength={30} required 
-          className={`flex b-radius f-width ${styles.input}`} />
-          <Svg href={searchIcon} className={styles.svgIcon} width="17px" height="17px" />
-        </div>
-      </div>
       <HeroFormItem />
       <Button type="submit" className={styles.btn}>Search</Button>
-    </form>
+    </Form>
   )
 }

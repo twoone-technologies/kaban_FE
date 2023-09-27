@@ -1,0 +1,17 @@
+.map {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  color: var(--tertiary-color-2);
+  position: sticky;
+  overflow: hidden;
+  box-shadow: -2px 1px 5px 2px var(--hover-color);
+}
+
+@media screen and (width >= 768px) {
+  .map {
+    border-radius: 8px;
+    height: 97dvh;
+    top: 8px;
+  }
+}

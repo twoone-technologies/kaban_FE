@@ -1,5 +1,5 @@
 .nav_item {
-  border-top: 1px solid var(--tetiary-color-3);
+  border-top: 1px solid var(--tertiary-color-3);
   padding: 1rem;
   cursor: pointer;
 }
@@ -81,11 +81,11 @@
   }
 
   .txt_color {
-    color: var(--tetiary-color-1);
+    color: var(--tertiary-color-1);
   }
 
   .txt_color_2 {
-    color: var(--tetiary-color-2);
+    color: var(--tertiary-color-2);
   }
 
   .set_color {
@@ -107,7 +107,8 @@
   }
 
   .drop_down {
-    background-color: var(--tetiary-color-1);
+    box-shadow: 1px 1px 10px 1px var(--hover-color); 
+    background-color: var(--tertiary-color-1);
     margin-left: -0.1rem;
   }
 
