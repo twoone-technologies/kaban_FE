@@ -1,22 +1,37 @@
+import { ReactNode } from 'react';
 import Svg from '../Svg';
 
-const plural = (num: number) => {
+const plural = (num: number | undefined) => {
   if (num === 0) return 'nil';
   if (num === 1) return num;
   return num;
 };
 
-export default function CardIcons({
-  title, num, icon}: {
+type IconProps = {
   title: string;
   icon: string;
-  num: number;
-}) {
+  num?: number | undefined;
+  value?: string | ReactNode;
+} & React.ComponentProps<'div'>
 
+export default function CardIcons({
+  title,
+  num,
+  icon,
+  value,
+  className
+}: IconProps) {
   return (
-    <div title={title} className="flex align-y">
-      <Svg href={icon} />
-      <span>{plural(num)}</span>
-    </div>
+    <>
+      {num === 0 ? null : (
+        <div title={title} className="flex s-gap align-y">
+          <Svg href={icon} width='1rem' height='1.5rem' className={className} />
+          <small>
+            {plural(num)}
+            {value}
+          </small>
+        </div>
+      )}
+    </>
   );
 }

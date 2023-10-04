@@ -2,13 +2,14 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { bedIcon, showerIcon, carIcon } from '~/assets/icons';
 import styles from './card.module.css';
-import AgentInfo from './CardAgentInfo';
+import CardAgentInfo from './CardAgentInfo';
 import CardIcons from './CardIcons';
-import HeaderInfo from './CardHeaderInfo';
-import Address from './CardAddress';
+import CardHeaderInfo from './CardHeaderInfo';
+import CardAddress from './CardAddress';
 import CardImg from './CardImg';
 
 export type HouseCard = {
+  find(arg0: (item: { realtor: { agentName: string; }; }) => void): unknown;
   location: {
     type: string;
     coordinates: number[];
@@ -17,9 +18,12 @@ export type HouseCard = {
   realtor: {
     agentImg: string;
     agentName: string;
+    contact: string;
+    location: string;
   };
   title: string;
   property_category: string;
+  contact: string;
   property_type: string;
   status: string;
   featured: boolean;
@@ -55,7 +59,8 @@ export type HouseCard = {
 };
 
 export default function Card({
-  card, mapState = false,
+  card,
+  mapState = false,
   orientation = 'portrait',
 }: {
   card: HouseCard;
@@ -94,14 +99,14 @@ export default function Card({
       </div>
 
       <div className={`flex f-column c_pad s-btw ${styles.below}`}>
-        <HeaderInfo
+        <CardHeaderInfo
           type={card.property_type}
           num={card.price.amount}
           featured={card.featured}
           stat={card.status}
         />
         <div className={`flex f-column s-btw gap ${styles.iconWrap}`}>
-          <Address title={card.title} address={card.address} />
+          <CardAddress title={card.title} address={card.address} />
           <div className={`flex f-width ${styles.icons}`}>
             <CardIcons
               title="bedroom"
@@ -120,7 +125,7 @@ export default function Card({
             />
           </div>
         </div>
-        <AgentInfo
+        <CardAgentInfo
           src={card.realtor.agentImg}
           identity={card.realtor.agentName}
         />

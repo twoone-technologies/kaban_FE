@@ -20,9 +20,8 @@ export default function CardHeaderInfo({type, num, featured, stat}: Props) {
       <div className="flex align-y s-btw">
         <h3>₦{setNums(num)}</h3>
         <div className={`flex gap ${styles.status_grp}`}>
-          {featured ? 
-          <Label type="featured" text="FEATURED" /> : null}
-          <Label type="status" text={`FOR ${stat}`} />
+          {featured ? <Label type="featured" text="Featured" /> : null}
+          <Label type="status" text={`For ${stat}`} />
         </div>
       </div>
     </div>

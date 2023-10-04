@@ -69,12 +69,19 @@
   top: 3px;
 }
 
+.label_svg {
+  position: relative;
+  top: 0.4rem;
+}
+
 .status {
+  font-size: 10px;
   color: var(--primary-color);
   background-color: #006aff2f;
 }
 
 .featured {
+  font-size: 10px;
   background-color: #41ae483f;
   color: var(--tertiary-color-4);
 }
@@ -120,9 +127,6 @@
 }
 
 .agent_img {
-  top: -3px;
-  right: 0;
-  position: relative;
   max-width: 30rem;
   width: 100%;
 }
@@ -171,12 +175,10 @@
 
 @media screen and (width >= 1000px ) {
   .landscape_1 {
-    /* height: 100%; */
     border-bottom-left-radius: 8px;
   }
 
   .landscape_2 {
-    /* height: 100%; */
     border-bottom-left-radius: 8px;
   }
 }
