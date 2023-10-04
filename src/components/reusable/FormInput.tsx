@@ -5,7 +5,10 @@ import Checkbox from '../searchForm/checkbox/Checkbox';
 import styles from '~/components/searchForm/searchForm.module.css';
 
 type Props = {
+  id?: string;
+  svgI?: string
   title: string;
+  title_1?: string;
   type?: string;
   link?: string;
   width?: string;
@@ -18,6 +21,8 @@ type Props = {
         type: string;
         value: string;
       }[];
+  selectClass?: string;
+  textAreaClass?: string;
   inputClass?: string;
   className?: string;
   onFocus?: () => void;
@@ -27,7 +32,9 @@ type Props = {
   React.ComponentProps<'input'>;
 
 export default function FormInput({
+  svgI,
   title,
+  title_1,
   type,
   header,
   subItems,
@@ -35,6 +42,8 @@ export default function FormInput({
   width,
   height,
   radius,
+  selectClass,
+  textAreaClass,
   inputClass,
   className,
   onFocus,
@@ -60,7 +69,7 @@ export default function FormInput({
           name={title}
           title={title}
           onChange={onChange1}
-          className={`flex b-radius f-width ${styles.input}`}
+          className={`flex b-radius f-width ${selectClass} ${styles.input}`}
         >
           <OptGroup header={header} subItems={subItems} />
         </select>
@@ -76,6 +85,18 @@ export default function FormInput({
       onChange={onChange1}
       className={`flex b-radius f-width 
       ${inputClass} ${styles.input}`}
+    />
+  );
+
+  const textArea = (
+    <textarea
+      onChange={onChange1}
+      id="message"
+      className={textAreaClass}
+      required
+      maxLength={500}
+      name="message"
+      placeholder="write your message here"
     />
   );
 
@@ -103,7 +124,7 @@ export default function FormInput({
           href={link}
           width={width}
           height={height}
-          className={`${styles.rotate} ${styles.svgIcon}`}
+          className={`${styles.rotate} ${svgI} ${styles.svgIcon}`}
         />
       ));
 
@@ -112,10 +133,11 @@ export default function FormInput({
       onFocus={onFocus}
       className={`flex b-radius f-width ${styles.form_input} ${className}`}
     >
-      <label htmlFor={title} />
-      {header|| subItems || title === 'propertyType' ? select : null}
+      {title_1 ? <label className={styles.label} htmlFor={title}>{title_1}</label> : <label htmlFor={title} />}
+      {header || subItems || title === 'propertyType' ? select : null}
       {type === 'range' ? output : null}
       {type ? input : null}
+      {title_1 === 'Message'? textArea : null}
       {link ? svg : null}
     </div>
   );

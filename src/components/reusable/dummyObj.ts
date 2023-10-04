@@ -18,10 +18,13 @@ export const dummyObj = [
     realtor: {
       agentImg: pic,
       agentName: 'Jojo',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd'
     },
     title: "Self contained apartment",
     property_category: "residential",
-    property_type: "Apartment",
+    property_type: "Self-Contain",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "sale",
     featured: true,
     price: {
@@ -69,7 +72,7 @@ export const dummyObj = [
       features: [
         {
           title: 'Swimming pool', 
-          checked: true
+          checked: false
         },
         {
           title: 'Fitted kitchen',
@@ -119,10 +122,13 @@ export const dummyObj = [
     realtor: {
       agentImg: pic,
       agentName: 'Jojo',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd'
     },
     title: "Loft apartment",
     property_category: "residential",
-    property_type: "Apartment",
+    property_type: "Self-Contain",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "sale",
     featured: true,
     price: {
@@ -220,10 +226,13 @@ export const dummyObj = [
     realtor: {
       agentImg: pic,
       agentName: 'Jojo',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd'
     },
     title: "Spacious apartment",
     property_category: "residential",
-    property_type: "Apartment",
+    property_type: "Self-Contain",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
     featured: true,
     price: {
@@ -295,7 +304,7 @@ export const dummyObj = [
         },
         {
           title: 'CCTV Cameras',
-          checked: true
+          checked: false
         },
         {
           title: 'Security',
@@ -321,10 +330,13 @@ export const dummyObj = [
     realtor: {
       agentImg: pic,
       agentName: 'Jojo',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd'
     },
     title: "Luxurious flat",
     property_category: "residential",
-    property_type: "Apartment",
+    property_type: "Self-Contain",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "sale",
     featured: true,
     price: {
@@ -422,10 +434,13 @@ export const dummyObj = [
     realtor: {
       agentImg: pic,
       agentName: 'Atake',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd'
     },
     title: "Classy Duplex",
     property_category: "residential",
-    property_type: "Apartment",
+    property_type: "Self-Contain",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
     featured: true,
     price: {
@@ -523,10 +538,13 @@ export const dummyObj = [
     realtor: {
       agentImg: pic,
       agentName: 'Atake',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd'
     },
     title: "Spacious Selfcon",
     property_category: "residential",
     property_type: "Apartment",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
     featured: true,
     price: {
@@ -624,10 +642,13 @@ export const dummyObj = [
     realtor: {
       agentImg: pic,
       agentName: 'Atake',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd'
     },
     title: "Simple Extension",
     property_category: "residential",
     property_type: "Apartment",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
     featured: false,
     price: {
@@ -725,10 +746,13 @@ export const dummyObj = [
     realtor: {
       agentImg: pic,
       agentName: 'Atake',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd'
     },
     title: "Modern Fittings",
     property_category: "residential",
     property_type: "Apartment",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
     featured: false,
     price: {
@@ -826,10 +850,13 @@ export const dummyObj = [
     realtor: {
       agentImg: pic,
       agentName: 'Atake',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd'
     },
     title: "Simple Extension",
     property_category: "residential",
     property_type: "Apartment",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
     featured: false,
     price: {
@@ -927,10 +954,13 @@ export const dummyObj = [
     realtor: {
       agentImg: pic,
       agentName: 'hoe',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd'
     },
     title: "Modern Fittings",
     property_category: "residential",
     property_type: "Apartment",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
     featured: false,
     price: {
@@ -1028,10 +1058,13 @@ export const dummyObj = [
     realtor: {
       agentImg: pic,
       agentName: 'Atake',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd'
     },
     title: "Simple Extension",
     property_category: "residential",
     property_type: "Apartment",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
     featured: false,
     price: {
@@ -1129,10 +1162,13 @@ export const dummyObj = [
     realtor: {
       agentImg: pic,
       agentName: 'Atake',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd'
     },
     title: "Modern Fittings",
     property_category: "residential",
     property_type: "Apartment",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
     featured: false,
     price: {
@@ -1230,10 +1266,13 @@ export const dummyObj = [
     realtor: {
       agentImg: pic,
       agentName: 'Atake',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd'
     },
     title: "Simple Extension",
     property_category: "residential",
     property_type: "Apartment",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
     featured: false,
     price: {
@@ -1331,10 +1370,13 @@ export const dummyObj = [
     realtor: {
       agentImg: pic,
       agentName: 'Atake',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd'
     },
     title: "Sweetness",
     property_category: "residential",
     property_type: "Apartment",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
     featured: false,
     price: {
