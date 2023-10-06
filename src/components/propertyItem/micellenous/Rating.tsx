@@ -1,5 +1,5 @@
 import Svg from '~/components/reusable/Svg';
-import styles from '../propertyItem.module.css';
+import styles from './micellenous.module.css';
 import { starIcon } from '~/assets/icons';
 
 export default function Rating({ num }: {num: number | undefined}) {

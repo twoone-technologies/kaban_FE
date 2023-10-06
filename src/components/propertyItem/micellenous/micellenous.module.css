@@ -1,0 +1,150 @@
+/* gallery and header */
+.title_price {
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+/* property details */
+div[title='features'] {
+  display: none;
+}
+
+/* agent details */
+.img {
+  width: 3rem;
+  height: 3rem;
+}
+
+.rated {
+  color: var(--star-color);
+}
+
+.rated:hover {
+  color: var(--star-color);
+}
+
+.svg {
+  color: whitesmoke;
+}
+
+.svg:hover {
+  color: whitesmoke;
+}
+
+.agentInfo {
+  background-color: unset;
+}
+
+.agentInfo small {
+  font-size: 1rem;
+}
+
+.agentInfo > div {
+  gap: 0.5rem;
+}
+
+.agentIcon {
+  color: var(--accent-color-1);
+  gap: 0.3rem;
+}
+
+.visit {
+  font-size: small;
+  justify-content: center;
+  padding: 0.8rem;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+/* text */
+.safety_tips {
+  background-color: #F2DDDA;
+  margin-bottom: 1rem;
+}
+
+.disclaimer {
+  background-color: #FFE4C0;
+  margin-bottom: 1rem;
+}
+
+.similarItems {
+  display: grid;
+  gap: 1rem;
+}
+
+.similarItemsHeader {
+  margin-block: 1rem;
+}
+
+.similarItemsWrap:first-child {
+  margin-block: 1rem;
+}
+
+.similarItemsHeader {
+  font-size: 11.6px;
+}
+
+/* features and description */
+.checkboxGroup {
+  display: grid;
+  gap: 1rem;
+}
+
+.header h5 {
+  margin-top: 17rem;
+}
+
+@media screen and (width >= 768px) {
+  .header h5 {
+    margin-top: unset;
+  }
+
+  .title_price {
+    flex-direction: row;
+  }
+
+  .similarItemsHeader {
+    font-size: unset;
+  }
+
+  .safety_tips div p {
+    font-size: 0.8rem
+  }
+
+  .disclaimer div span {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (600px <= width <= 1024px) {
+  .similarItems {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .checkboxGroup {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+@media screen and (width >= 1024px) {
+  .checkboxGroup {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .item_details:nth-of-type(1) {
+    width: 70%;
+  }
+
+  .similarItems {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (width >= 1440px) {
+  .similarItems {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+
