@@ -1,23 +1,96 @@
-
 .modalWrap {
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
   margin: auto;
   max-width: 35rem;
   background-color: transparent;
 }
 
+.modalWrap::-webkit-scrollbar{
+  display: none;
+}
+
 .modal {
-  border: 1px solid var(--accent-color);
-  color: var(--text-color);
-  padding: 2rem;
+  background-color: var(--tertiary-color-1);
+  border-radius: 1rem;
+  padding: 2rem 1rem;
+}
+
+.modal h2 {
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
 }
 
 .btn {
-  width: 100%;
+  position: absolute;
+  padding: 0.3rem;
+  top: 1.7rem;
+  right: 1.7rem;
+  width: auto;
+  color: var(--tertiary-color-2);
+  background-color: var(--hover-color);
 }
 
 .modalWrap::backdrop {
-  background-color: rgba(21, 14, 40, 0.93);
+  background-color: rgba(0, 0, 0, 0.50);
+}
+
+
+/* modal report form */
+.form {
+  gap: 1rem;
+  margin-block: 1rem;
+}
+
+.input {
+  border: none;
+  display: unset;
+}
+
+.input label {
+  color: var(--tertiary-color-2);
+  margin-bottom: 0.5rem;
+}
+
+.svg {
+  position: absolute;
+  bottom: 0.4rem;
+  left: 17.3rem;
+}
+
+.inputClass {
+  border: 1px solid var(--hover-color);
+}
+
+.select_input {
+  border: 1px solid var(--hover-color);
+}
+
+.input_msg {
+  padding: 0.8rem 0.5rem;
+  height: 5rem;
+  border: 1px solid var(--hover-color);
+}
+
+@media screen and (width >= 768px) {
+  .modalWrap {
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    margin: auto;
+    max-width: 45rem;
+    background-color: transparent;
+  }
+
+  .modal {
+    background-color: var(--tertiary-color-1);
+    border-radius: 1.5rem;
+    padding: 4rem;
+  }
+
+  .btn {
+    top: 2.5rem;
+    right: 2.5rem;
+  }
+
 }
 

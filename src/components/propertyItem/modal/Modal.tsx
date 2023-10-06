@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react';
 import Button from '~/components/reusable/Button';
 import styles from './modal.module.css';
+import Svg from '~/components/reusable/Svg';
+import { closeIcon } from '~/assets/icons';
 
 type ModalProps = {
   isVisible: boolean;
@@ -19,10 +21,10 @@ export default function Modal({ isVisible, children, onClose }: ModalProps) {
   }, [isVisible]);
 
   return (
-    <dialog className={styles.modalWrap} ref={modal} onClose={onClose}>
-      <aside className={`${styles.modal} ${styles.modal_txt}`}>
+    <dialog className={`b-radius ${styles.modalWrap}`} ref={modal} onClose={onClose}>
+      <aside className={`${styles.modal}`}>
         {children}
-        <Button className={`f-width ${styles.btn}`} onClick={() => modal.current.close()}>Back</Button>
+        <Button className={`f-width ${styles.btn}`} onClick={() => modal.current.close()}><Svg href={closeIcon} /></Button>
       </aside>
     </dialog>
   );
