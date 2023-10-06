@@ -5,7 +5,9 @@
   --primary-color: #006aff; /* headlines & active states */
   --secondary-color: #141414; /* card text-color */
   --accent-color: #96999b; /* accent color */
+  --accent-color-1: #5F6D7E;
   --hover-color: #edf1f5;
+  --star-color: #F9B900;
   --tertiary-color-1: #ffffff; /* text color (footer) */
   --tertiary-color-2: #3a424b; /* subtle text color */
   --tertiary-color-3: #f0f0f0; /* background color */
@@ -41,6 +43,10 @@ body::-webkit-scrollbar-thumb {
 /* $-Handle on hover-$ */
 body::-webkit-scrollbar-thumb:hover {
   background-color: var(--primary-color);
+}
+
+#root {
+  background-color: #fafafa;
 }
 
 a {
@@ -79,12 +85,12 @@ svg {
   fill: currentColor;
 }
 
-.svg_icon:active {
+svg:active {
   transform: scale(1.2);
   transition: scale 100ms ease-in;
 }
 
-.svg_icon:hover {
+svg:hover {
   color: var(--primary-color);
 }
 
@@ -103,6 +109,10 @@ svg {
 
 .align-y {
   align-items: center;
+}
+
+.align-x {
+  justify-content: center;
 }
 
 .b-radius {
@@ -127,6 +137,10 @@ svg {
 
 .gap {
   gap: 0.5rem;
+}
+
+.s-gap {
+  gap: 0.2rem;
 }
 
 .stack {
@@ -236,6 +250,13 @@ f-height {
 input:focus+svg,
 input:hover+svg {
   display: none;
+}
+
+.ads {
+  height: 100%;
+  max-height: 350px;
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
 @media screen and (width >= 768px) {

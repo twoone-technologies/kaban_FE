@@ -1,6 +1,7 @@
 import { HouseCard } from "./card/Card";
 
-export const dateHandler = (dateStr: string) => {
+export const dateHandler = (dateStr: string | undefined) => {
+  if (dateStr === undefined) return null
   const date = new Date(dateStr);
 
   const currentDate = new Date();
@@ -18,10 +19,11 @@ export const dateHandler = (dateStr: string) => {
   }
 };
 
-export const getTotal = (items: HouseCard, agentName: string) => {
+export const getTotal = (items: HouseCard[], agentName: string) => {
   let totalCount = 0;
-
-  items.find((item: { realtor: { agentName: string; }; }) => {
+  
+  if (items === undefined) return null
+  items.find((item: { realtor: { agentName: string } }) => {
     item.realtor.agentName === agentName ? totalCount++ : null
   })
 

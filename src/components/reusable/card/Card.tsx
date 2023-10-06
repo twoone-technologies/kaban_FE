@@ -9,10 +9,10 @@ import CardAddress from './CardAddress';
 import CardImg from './CardImg';
 
 export type HouseCard = {
-  find(arg0: (item: { realtor: { agentName: string; }; }) => void): unknown;
+  find?(arg0: (item: { realtor: { agentName: string; }; }) => void): unknown;
   location: {
     type: string;
-    coordinates: number[];
+    coordinates: [number, number] | number[];
   };
   _id: string;
   realtor: {
@@ -20,11 +20,13 @@ export type HouseCard = {
     agentName: string;
     contact: string;
     location: string;
+    rating: number;
+    verified: boolean;
   };
   title: string;
   property_category: string;
-  contact: string;
   property_type: string;
+  description: string;
   status: string;
   featured: boolean;
   price: {
@@ -32,28 +34,25 @@ export type HouseCard = {
   };
   address: string;
   city: string;
-  images: [
-    {
+  images: {
       url: string;
       cover: boolean;
       _id: string;
       id: string;
-    },
-  ];
+    }[];
   details: {
     bedroom: number;
     bathroom: number;
     land_area: string;
     parking_space: number;
-    features: [
-      {
+    features: {
         title: string;
         checked: boolean;
-      },
-    ];
+      }[];
   };
+  videoLink: string;
   street_view: boolean;
-  report: [];
+  report: string[];
   createdAt: string;
   id: string;
 };

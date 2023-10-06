@@ -15,7 +15,7 @@ export default function CardAddress({
         <Svg
           width_2="0.8rem"
           width="1rem"
-          height="1rem"
+          height="1.5rem"
           className="locate"
           href={locationIcon}
         />

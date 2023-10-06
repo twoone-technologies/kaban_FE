@@ -23,7 +23,7 @@ type AdsProps = {
 };
 
 export const Ads: React.FC<AdsProps> = ({ adContent }) => {
-  const [ads, setAds] = useState<'Advertise' | ReactNode>('Advertise');
+  const [ads, setAds] = useState<'' | ReactNode>('');
 
   // Check if adContent is provided, and set it as the ads content.
   useEffect(() => {

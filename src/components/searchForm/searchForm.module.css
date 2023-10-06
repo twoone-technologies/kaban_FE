@@ -205,6 +205,11 @@ input[type=range]::-webkit-slider-thumb {
   grid-template-columns: repeat(2, 1fr);
 }
 
+.label {
+  display: flex;
+  width: 100%;
+}
+
 @media screen and (600px <= width <= 880px) {
   .form_content {
     grid-template-columns: repeat(2, 1fr);
