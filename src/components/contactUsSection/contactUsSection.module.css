@@ -1,11 +1,11 @@
 .title_container {
   max-width: 506px;
-  /* padding-inline: 1.25rem; */
 }
 
 .title_container h1 {
   color: #272d37;
   font-size: clamp(1.5rem, 5vw, 4rem);
+  font-weight: 600;
   line-height: 110%;
 }
 

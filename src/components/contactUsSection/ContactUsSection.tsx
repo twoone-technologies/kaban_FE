@@ -17,7 +17,7 @@ export default function ContactUsSection() {
   };
 
   return (
-    <section className="f-column align-center mt-4">
+    <section className="f-column align-center mt-5">
       <div className={`f-column align-center ${styles.title_container}`}>
         <h1 className={`center-text ${styles.contact_title}`}>Get in Touch With Kaban</h1>
         <p className="center-text">Reach out today for personalized assistance and guidance on your property journey.</p>
