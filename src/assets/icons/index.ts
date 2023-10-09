@@ -34,7 +34,10 @@ export const showerIcon = `${shower}#img`;
 import toilet from "./Toilet.svg";
 export const toiletIcon = `${toilet}#img`;
 
-import car from "./Car.svg";
+import square from "./square.svg"; 
+export const squareIcon = `${square}#img`;
+
+import car from "./Car.svg"; 
 export const carIcon = `${car}#img`;
 
 import arrowRight from "./arrow-right.svg";
@@ -103,3 +106,28 @@ export const bellIcon = `${bell}#img`;
 
 import close from "./close.svg";
 export const closeIcon = `${close}#img`;
+
+//agent icons
+import bookmark from "./bookmark.svg";
+export const bookmarkIcon = `${bookmark}#img`;
+
+import buildings from "./buildings.svg";
+export const buildingsIcon = `${buildings}#img`;
+
+import external_ink from "./externalLink.svg";
+export const exLinkIcon = `${external_ink}#img`;
+
+import mail from "./mail.svg";
+export const mailIcon = `${mail}#img`;
+
+import whatsapp from "./whatsapp.svg";
+export const whatsappIcon = `${whatsapp}#img`;
+
+import phone from "./phone.svg";
+export const phoneIcon = `${phone}#img`;
+
+import star from "./star.svg";
+export const starIcon = `${star}#img`;
+
+import verify from "./verify.svg";
+export const verifyIcon = `${verify}#img`;

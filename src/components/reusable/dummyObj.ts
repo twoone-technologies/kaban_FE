@@ -9,19 +9,24 @@ export const dummyObj = [
   {
     location: {
       type: "Point",
-        coordinates: [
-          -180,
-          -90
-        ]
+      coordinates: [
+        -180,
+        -90
+      ]
     },
     _id: "1",
     realtor: {
       agentImg: pic,
       agentName: 'Jojo',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd',
+      rating: 4,
+      verified: false
     },
     title: "Self contained apartment",
     property_category: "residential",
-    property_type: "Apartment",
+    property_type: "Self-Contain",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "sale",
     featured: true,
     price: {
@@ -59,6 +64,12 @@ export const dummyObj = [
         cover: false,
         _id: "5",
         id: "5"
+      },
+      {
+        url: background2,
+        cover: false,
+        _id: "6",
+        id: "6"
       }
     ],
     details: {
@@ -68,15 +79,15 @@ export const dummyObj = [
       parking_space: 0,
       features: [
         {
-          title: 'Swimming pool', 
-          checked: true
+          title: 'Swimming pool',
+          checked: false
         },
         {
           title: 'Fitted kitchen',
           checked: true
         },
         {
-          title: 'In-built speaker', 
+          title: 'In-built speaker',
           checked: true
         },
         {
@@ -84,7 +95,7 @@ export const dummyObj = [
           checked: true
         },
         {
-          title: 'Boys quarter', 
+          title: 'Boys quarter',
           checked: true
         },
         {
@@ -97,32 +108,38 @@ export const dummyObj = [
         },
         {
           title: 'Security',
-          checked: true 
+          checked: true
         },
       ]
     },
+    videoLink: 'https://youtu.be/Rgt-uRFUV7Q?si=8JA8V1ReznRO9G8x',
     street_view: false,
     report: [],
     createdAt: "2023-08-17T18:57:48.921Z",
     id: "1"
-  },  
+  },
 
   {
     location: {
       type: "Point",
-        coordinates: [
-          -180,
-          -90
-        ]
+      coordinates: [
+        -180,
+        -90
+      ]
     },
     _id: "2",
     realtor: {
       agentImg: pic,
       agentName: 'Jojo',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd',
+      rating: 4,
+      verified: false
     },
     title: "Loft apartment",
     property_category: "residential",
-    property_type: "Apartment",
+    property_type: "Self-Contain",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "sale",
     featured: true,
     price: {
@@ -169,7 +186,7 @@ export const dummyObj = [
       parking_space: 0,
       features: [
         {
-          title: 'Swimming pool', 
+          title: 'Swimming pool',
           checked: true
         },
         {
@@ -177,7 +194,7 @@ export const dummyObj = [
           checked: true
         },
         {
-          title: 'In-built speaker', 
+          title: 'In-built speaker',
           checked: true
         },
         {
@@ -185,7 +202,7 @@ export const dummyObj = [
           checked: true
         },
         {
-          title: 'Boys quarter', 
+          title: 'Boys quarter',
           checked: true
         },
         {
@@ -198,32 +215,38 @@ export const dummyObj = [
         },
         {
           title: 'Security',
-          checked: true 
+          checked: true
         },
       ]
     },
+    videoLink: 'https://youtu.be/_noJ6pLvimU',
     street_view: false,
     report: [],
     createdAt: "2023-08-17T18:57:48.921Z",
     id: "2"
-  },  
+  },
 
   {
     location: {
       type: "Point",
-        coordinates: [
-          -180,
-          -90
-        ]
+      coordinates: [
+        -180,
+        -90
+      ]
     },
     _id: "3",
     realtor: {
       agentImg: pic,
       agentName: 'Jojo',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd',
+      rating: 4,
+      verified: false
     },
     title: "Spacious apartment",
     property_category: "residential",
-    property_type: "Apartment",
+    property_type: "Self-Contain",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
     featured: true,
     price: {
@@ -270,7 +293,7 @@ export const dummyObj = [
       parking_space: 2,
       features: [
         {
-          title: 'Swimming pool', 
+          title: 'Swimming pool',
           checked: true
         },
         {
@@ -278,7 +301,7 @@ export const dummyObj = [
           checked: true
         },
         {
-          title: 'In-built speaker', 
+          title: 'In-built speaker',
           checked: true
         },
         {
@@ -286,7 +309,7 @@ export const dummyObj = [
           checked: true
         },
         {
-          title: 'Boys quarter', 
+          title: 'Boys quarter',
           checked: true
         },
         {
@@ -295,36 +318,42 @@ export const dummyObj = [
         },
         {
           title: 'CCTV Cameras',
-          checked: true
+          checked: false
         },
         {
           title: 'Security',
-          checked: true 
+          checked: true
         },
       ]
     },
+    videoLink: 'https://youtu.be/Rgt-uRFUV7Q?si=8JA8V1ReznRO9G8x',
     street_view: false,
     report: [],
     createdAt: "2023-08-17T18:57:48.921Z",
     id: "3"
-  },  
+  },
 
   {
     location: {
       type: "Point",
-        coordinates: [
-          -180,
-          -90
-        ]
+      coordinates: [
+        -180,
+        -90
+      ]
     },
     _id: "4",
     realtor: {
       agentImg: pic,
       agentName: 'Jojo',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd',
+      rating: 4,
+      verified: false
     },
     title: "Luxurious flat",
     property_category: "residential",
-    property_type: "Apartment",
+    property_type: "Self-Contain",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "sale",
     featured: true,
     price: {
@@ -371,7 +400,7 @@ export const dummyObj = [
       parking_space: 4,
       features: [
         {
-          title: 'Swimming pool', 
+          title: 'Swimming pool',
           checked: true
         },
         {
@@ -379,7 +408,7 @@ export const dummyObj = [
           checked: true
         },
         {
-          title: 'In-built speaker', 
+          title: 'In-built speaker',
           checked: true
         },
         {
@@ -387,7 +416,7 @@ export const dummyObj = [
           checked: true
         },
         {
-          title: 'Boys quarter', 
+          title: 'Boys quarter',
           checked: true
         },
         {
@@ -400,32 +429,38 @@ export const dummyObj = [
         },
         {
           title: 'Security',
-          checked: true 
+          checked: true
         },
       ]
     },
+    videoLink: 'https://youtu.be/7x0PiPBFADk',
     street_view: false,
     report: [],
     createdAt: "2023-08-17T18:57:48.921Z",
     id: "4"
-  },  
+  },
 
   {
     location: {
       type: "Point",
-        coordinates: [
-          -180,
-          -90
-        ]
+      coordinates: [
+        -180,
+        -90
+      ]
     },
     _id: "5",
     realtor: {
       agentImg: pic,
       agentName: 'Atake',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd',
+      rating: 2,
+      verified: true
     },
     title: "Classy Duplex",
     property_category: "residential",
-    property_type: "Apartment",
+    property_type: "Self-Contain",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
     featured: true,
     price: {
@@ -472,7 +507,7 @@ export const dummyObj = [
       parking_space: 2,
       features: [
         {
-          title: 'Swimming pool', 
+          title: 'Swimming pool',
           checked: true
         },
         {
@@ -480,7 +515,7 @@ export const dummyObj = [
           checked: true
         },
         {
-          title: 'In-built speaker', 
+          title: 'In-built speaker',
           checked: true
         },
         {
@@ -488,7 +523,7 @@ export const dummyObj = [
           checked: true
         },
         {
-          title: 'Boys quarter', 
+          title: 'Boys quarter',
           checked: true
         },
         {
@@ -501,32 +536,38 @@ export const dummyObj = [
         },
         {
           title: 'Security',
-          checked: true 
+          checked: true
         },
       ]
     },
+    videoLink: 'https://youtu.be/Rgt-uRFUV7Q?si=8JA8V1ReznRO9G8x',
     street_view: false,
     report: [],
     createdAt: "2023-08-17T18:57:48.921Z",
     id: "5"
-  },  
+  },
 
   {
     location: {
       type: "Point",
-        coordinates: [
-          -180,
-          -90
-        ]
+      coordinates: [
+        -180,
+        -90
+      ]
     },
     _id: "6",
     realtor: {
       agentImg: pic,
       agentName: 'Atake',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd',
+      rating: 2,
+      verified: true
     },
     title: "Spacious Selfcon",
     property_category: "residential",
     property_type: "Apartment",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
     featured: true,
     price: {
@@ -573,7 +614,7 @@ export const dummyObj = [
       parking_space: 1,
       features: [
         {
-          title: 'Swimming pool', 
+          title: 'Swimming pool',
           checked: true
         },
         {
@@ -581,7 +622,7 @@ export const dummyObj = [
           checked: true
         },
         {
-          title: 'In-built speaker', 
+          title: 'In-built speaker',
           checked: true
         },
         {
@@ -589,7 +630,7 @@ export const dummyObj = [
           checked: true
         },
         {
-          title: 'Boys quarter', 
+          title: 'Boys quarter',
           checked: true
         },
         {
@@ -602,32 +643,38 @@ export const dummyObj = [
         },
         {
           title: 'Security',
-          checked: true 
+          checked: true
         },
       ]
     },
+    videoLink: 'https://youtu.be/7x0PiPBFADk',
     street_view: false,
     report: [],
     createdAt: "2023-08-17T18:57:48.921Z",
     id: "6"
-  },  
+  },
 
   {
     location: {
       type: "Point",
-        coordinates: [
-          -180,
-          -90
-        ]
+      coordinates: [
+        -180,
+        -90
+      ]
     },
     _id: "7",
     realtor: {
       agentImg: pic,
       agentName: 'Atake',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd',
+      rating: 2,
+      verified: true
     },
     title: "Simple Extension",
     property_category: "residential",
     property_type: "Apartment",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
     featured: false,
     price: {
@@ -674,7 +721,7 @@ export const dummyObj = [
       parking_space: 8,
       features: [
         {
-          title: 'Swimming pool', 
+          title: 'Swimming pool',
           checked: true
         },
         {
@@ -682,7 +729,7 @@ export const dummyObj = [
           checked: true
         },
         {
-          title: 'In-built speaker', 
+          title: 'In-built speaker',
           checked: true
         },
         {
@@ -690,7 +737,7 @@ export const dummyObj = [
           checked: true
         },
         {
-          title: 'Boys quarter', 
+          title: 'Boys quarter',
           checked: true
         },
         {
@@ -703,32 +750,38 @@ export const dummyObj = [
         },
         {
           title: 'Security',
-          checked: true 
+          checked: true
         },
       ]
     },
+    videoLink: 'https://youtu.be/Rgt-uRFUV7Q?si=8JA8V1ReznRO9G8x',
     street_view: false,
     report: [],
     createdAt: "2023-08-17T18:57:48.921Z",
     id: "7"
-  },  
+  },
 
   {
     location: {
       type: "Point",
-        coordinates: [
-          -180,
-          -90
-        ]
+      coordinates: [
+        -180,
+        -90
+      ]
     },
     _id: "8",
     realtor: {
       agentImg: pic,
       agentName: 'Atake',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd',
+      rating: 2,
+      verified: true
     },
     title: "Modern Fittings",
     property_category: "residential",
     property_type: "Apartment",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
     featured: false,
     price: {
@@ -775,7 +828,7 @@ export const dummyObj = [
       parking_space: 1,
       features: [
         {
-          title: 'Swimming pool', 
+          title: 'Swimming pool',
           checked: true
         },
         {
@@ -783,7 +836,7 @@ export const dummyObj = [
           checked: true
         },
         {
-          title: 'In-built speaker', 
+          title: 'In-built speaker',
           checked: true
         },
         {
@@ -791,7 +844,7 @@ export const dummyObj = [
           checked: true
         },
         {
-          title: 'Boys quarter', 
+          title: 'Boys quarter',
           checked: true
         },
         {
@@ -804,32 +857,38 @@ export const dummyObj = [
         },
         {
           title: 'Security',
-          checked: true 
+          checked: true
         },
       ]
     },
+    videoLink: 'https://youtu.be/Rgt-uRFUV7Q?si=8JA8V1ReznRO9G8x',
     street_view: false,
     report: [],
     createdAt: "2023-08-17T18:57:48.921Z",
     id: "8"
-  },  
+  },
 
   {
     location: {
       type: "Point",
-        coordinates: [
-          -180,
-          -90
-        ]
+      coordinates: [
+        -180,
+        -90
+      ]
     },
     _id: "9",
     realtor: {
       agentImg: pic,
       agentName: 'Atake',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd',
+      rating: 2,
+      verified: true
     },
     title: "Simple Extension",
     property_category: "residential",
     property_type: "Apartment",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
     featured: false,
     price: {
@@ -876,7 +935,7 @@ export const dummyObj = [
       parking_space: 8,
       features: [
         {
-          title: 'Swimming pool', 
+          title: 'Swimming pool',
           checked: true
         },
         {
@@ -884,7 +943,7 @@ export const dummyObj = [
           checked: true
         },
         {
-          title: 'In-built speaker', 
+          title: 'In-built speaker',
           checked: true
         },
         {
@@ -892,7 +951,7 @@ export const dummyObj = [
           checked: true
         },
         {
-          title: 'Boys quarter', 
+          title: 'Boys quarter',
           checked: true
         },
         {
@@ -905,34 +964,40 @@ export const dummyObj = [
         },
         {
           title: 'Security',
-          checked: true 
+          checked: true
         },
       ]
     },
+    videoLink: 'https://youtu.be/Rgt-uRFUV7Q?si=8JA8V1ReznRO9G8x',
     street_view: false,
     report: [],
     createdAt: "2023-08-17T18:57:48.921Z",
     id: "9"
-  },  
+  },
 
   {
     location: {
       type: "Point",
-        coordinates: [
-          -180,
-          -90
-        ]
+      coordinates: [
+        -180,
+        -90
+      ]
     },
     _id: "10",
     realtor: {
       agentImg: pic,
-      agentName: 'hoe',
+      agentName: 'John',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd',
+      rating: 5,
+      verified: true
     },
     title: "Modern Fittings",
     property_category: "residential",
     property_type: "Apartment",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
-    featured: false,
+    featured: true,
     price: {
       amount: 280000
     },
@@ -977,7 +1042,7 @@ export const dummyObj = [
       parking_space: 3,
       features: [
         {
-          title: 'Swimming pool', 
+          title: 'Swimming pool',
           checked: true
         },
         {
@@ -985,7 +1050,7 @@ export const dummyObj = [
           checked: true
         },
         {
-          title: 'In-built speaker', 
+          title: 'In-built speaker',
           checked: true
         },
         {
@@ -993,45 +1058,51 @@ export const dummyObj = [
           checked: true
         },
         {
-          title: 'Boys quarter', 
-          checked: true
+          title: 'Boys quarter',
+          checked: false
         },
         {
           title: 'Gym',
-          checked: true
+          checked: false
         },
         {
           title: 'CCTV Cameras',
-          checked: true
+          checked: false
         },
         {
           title: 'Security',
-          checked: true 
+          checked: false
         },
       ]
     },
+    videoLink: 'https://youtu.be/Rgt-uRFUV7Q?si=8JA8V1ReznRO9G8x',
     street_view: false,
     report: [],
-    createdAt: "2023-08-17T18:57:48.921Z",
+    createdAt: "2023-10-17T18:57:48.921Z",
     id: "10"
   },
 
   {
     location: {
       type: "Point",
-        coordinates: [
-          -180,
-          -90
-        ]
+      coordinates: [
+        -180,
+        -90
+      ]
     },
     _id: "11",
     realtor: {
       agentImg: pic,
       agentName: 'Atake',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd',
+      rating: 2,
+      verified: true
     },
     title: "Simple Extension",
     property_category: "residential",
     property_type: "Apartment",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
     featured: false,
     price: {
@@ -1078,7 +1149,7 @@ export const dummyObj = [
       parking_space: 8,
       features: [
         {
-          title: 'Swimming pool', 
+          title: 'Swimming pool',
           checked: true
         },
         {
@@ -1086,7 +1157,7 @@ export const dummyObj = [
           checked: true
         },
         {
-          title: 'In-built speaker', 
+          title: 'In-built speaker',
           checked: true
         },
         {
@@ -1094,7 +1165,7 @@ export const dummyObj = [
           checked: true
         },
         {
-          title: 'Boys quarter', 
+          title: 'Boys quarter',
           checked: true
         },
         {
@@ -1107,32 +1178,38 @@ export const dummyObj = [
         },
         {
           title: 'Security',
-          checked: true 
+          checked: true
         },
       ]
     },
+    videoLink: 'https://youtu.be/Rgt-uRFUV7Q?si=8JA8V1ReznRO9G8x',
     street_view: false,
     report: [],
     createdAt: "2023-08-17T18:57:48.921Z",
     id: "11"
-  },  
+  },
 
   {
     location: {
       type: "Point",
-        coordinates: [
-          -180,
-          -90
-        ]
+      coordinates: [
+        -280,
+        -40
+      ]
     },
     _id: "12",
     realtor: {
       agentImg: pic,
       agentName: 'Atake',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd',
+      rating: 2,
+      verified: true
     },
     title: "Modern Fittings",
     property_category: "residential",
     property_type: "Apartment",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
     featured: false,
     price: {
@@ -1179,7 +1256,7 @@ export const dummyObj = [
       parking_space: 5,
       features: [
         {
-          title: 'Swimming pool', 
+          title: 'Swimming pool',
           checked: true
         },
         {
@@ -1187,7 +1264,7 @@ export const dummyObj = [
           checked: true
         },
         {
-          title: 'In-built speaker', 
+          title: 'In-built speaker',
           checked: true
         },
         {
@@ -1195,7 +1272,7 @@ export const dummyObj = [
           checked: true
         },
         {
-          title: 'Boys quarter', 
+          title: 'Boys quarter',
           checked: true
         },
         {
@@ -1208,32 +1285,38 @@ export const dummyObj = [
         },
         {
           title: 'Security',
-          checked: true 
+          checked: true
         },
       ]
     },
+    videoLink: 'https://youtu.be/Rgt-uRFUV7Q?si=8JA8V1ReznRO9G8x',
     street_view: false,
     report: [],
-    createdAt: "2023-08-17T18:57:48.921Z",
+    createdAt: "2023-02-10T18:57:48.921Z",
     id: "12"
-  },  
+  },
 
   {
     location: {
       type: "Point",
-        coordinates: [
-          -180,
-          -90
-        ]
+      coordinates: [
+        -180,
+        -90
+      ]
     },
     _id: "13",
     realtor: {
       agentImg: pic,
       agentName: 'Atake',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd',
+      rating: 2,
+      verified: true
     },
     title: "Simple Extension",
     property_category: "residential",
     property_type: "Apartment",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
     featured: false,
     price: {
@@ -1280,7 +1363,7 @@ export const dummyObj = [
       parking_space: 8,
       features: [
         {
-          title: 'Swimming pool', 
+          title: 'Swimming pool',
           checked: true
         },
         {
@@ -1288,7 +1371,7 @@ export const dummyObj = [
           checked: true
         },
         {
-          title: 'In-built speaker', 
+          title: 'In-built speaker',
           checked: true
         },
         {
@@ -1296,7 +1379,7 @@ export const dummyObj = [
           checked: true
         },
         {
-          title: 'Boys quarter', 
+          title: 'Boys quarter',
           checked: true
         },
         {
@@ -1309,32 +1392,38 @@ export const dummyObj = [
         },
         {
           title: 'Security',
-          checked: true 
+          checked: true
         },
       ]
     },
+    videoLink: 'https://youtu.be/Rgt-uRFUV7Q?si=8JA8V1ReznRO9G8x',
     street_view: false,
     report: [],
     createdAt: "2023-08-17T18:57:48.921Z",
     id: "13"
-  },  
+  },
 
   {
     location: {
       type: "Point",
-        coordinates: [
-          -180,
-          -90
-        ]
+      coordinates: [
+        -180,
+        -90
+      ]
     },
     _id: "14",
     realtor: {
       agentImg: pic,
       agentName: 'Atake',
+      contact: '+234 703 489 1298',
+      location: '40 saint street, Nwaniba rd',
+      rating: 2,
+      verified: true
     },
     title: "Sweetness",
     property_category: "residential",
     property_type: "Apartment",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
     featured: false,
     price: {
@@ -1381,7 +1470,7 @@ export const dummyObj = [
       parking_space: 4,
       features: [
         {
-          title: 'Swimming pool', 
+          title: 'Swimming pool',
           checked: true
         },
         {
@@ -1389,7 +1478,7 @@ export const dummyObj = [
           checked: true
         },
         {
-          title: 'In-built speaker', 
+          title: 'In-built speaker',
           checked: true
         },
         {
@@ -1397,7 +1486,7 @@ export const dummyObj = [
           checked: true
         },
         {
-          title: 'Boys quarter', 
+          title: 'Boys quarter',
           checked: true
         },
         {
@@ -1410,13 +1499,14 @@ export const dummyObj = [
         },
         {
           title: 'Security',
-          checked: true 
+          checked: true
         },
       ]
     },
+    videoLink: 'https://youtu.be/Rgt-uRFUV7Q?si=8JA8V1ReznRO9G8x',
     street_view: false,
     report: [],
-    createdAt: "2023-08-17T18:57:48.921Z",
+    createdAt: "2023-09-27T18:57:48.921Z",
     id: "14"
   }
 ]

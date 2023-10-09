@@ -5,7 +5,7 @@ import Svg from "../Svg"
 export default function Label({ type, text }: { type: 'featured' | 'status', text: string }) {
   return (
     <div className={`b-radius flex align-y c-pad ${styles[type]}`}>
-      <Svg href={dotIcon} />
+      <Svg href={dotIcon} className={styles.label_svg}/>
       <span>{text}</span>
     </div>
   )

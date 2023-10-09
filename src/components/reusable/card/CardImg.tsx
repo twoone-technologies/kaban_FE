@@ -1,5 +1,6 @@
 import { cameraIcon, heartIcon } from '~/assets/icons';
 import styles from './card.module.css';
+import { dateHandler } from '../FunctionUtils';
 import Svg from '../Svg';
 
 type Props = {
@@ -11,6 +12,7 @@ type Props = {
 };
 
 export default function CardImg({ enter, src, title, date, imgNo }: Props) {
+
   return (
     <>
       <div
@@ -23,7 +25,7 @@ export default function CardImg({ enter, src, title, date, imgNo }: Props) {
         className={`${styles.img} ${enter ? styles.scale : ''}`}
       />
       <div className={`flex s-btw f-width`}>
-        <small className={`b-radius stack c-pad ${styles.date}`}>{date}</small>
+        <small className={`b-radius stack c-pad ${styles.date}`}>{dateHandler(date)}</small>
         <Svg className={`stack`} href={heartIcon} />
       </div>
       <div className="flex stack align-y">
