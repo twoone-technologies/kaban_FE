@@ -1,9 +1,9 @@
 import FeaturedList from "~/components/featuredListings/FeaturedList";
-import HeroSection from "~/components/herosection/HeroSection";
+import HeroSection from "~/components/heroSection/HeroSection";
 import ExploreCitiesSection from "~/components/exploreCitiesSection/ExploreCitiesSection";
 import LatestAdditions from "~/components/latestAddidtions/LatestAdditions";
 import PropertyTypeSection from "~/components/propertyTypeSection/PropertyTypeSection";
-import { ActionFunctionArgs, redirect, useLocation } from "react-router-dom";
+import { ActionFunctionArgs, redirect } from "react-router-dom";
 
 export async function action({ request }: ActionFunctionArgs) {
   // get form data
