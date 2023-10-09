@@ -1,0 +1,91 @@
+.title_container {
+  max-width: 42rem;
+}
+
+.title_container h1 {
+  color: #272d37;
+  margin-bottom: 3rem;
+  font-size: clamp(1.5rem, 5vw, 4rem);
+  font-weight: 600;
+  line-height: 110%;
+}
+
+.title_container p {
+  color: #5f6d7e;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-weight: 500;
+  line-height: 120%;
+}
+
+.faq_container {
+  width: 70%;
+  padding: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.question_title {
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  font-weight: 600;
+}
+
+.accordionGroup {
+  border-bottom: 1px solid #eaecf0;
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.accordionGroup:hover {
+  background-color: #f3f3f3;
+}
+
+.accordion {
+  background: none;
+  width: 100%;
+  font-size: clamp(1rem, 4vw, 1.25rem);
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+}
+
+.panel {
+  display: none;
+  color: #5f6d7e;
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 110%;
+  letter-spacing: -0.0125rem;
+  overflow: hidden;
+}
+
+.active {
+  display: block;
+}
+
+.rotateIcon {
+  transform: translateY(-50%) rotateX(180deg);
+}
+
+.furtherQue {
+  width: 50%;
+  margin-bottom: 7.5rem;
+}
+
+.furtherQue p {
+  font-size: clamp(1rem, 4vw, 1.5rem);
+}
+.furtherQue a {
+  font-size: clamp(1rem, 4vw, 1.25rem);
+}
+
+@media screen and (width < 768px) {
+  .faq_container {
+    width: 100%;
+  }
+  .furtherQue {
+    width: 80%;
+  }
+}

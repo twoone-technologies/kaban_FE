@@ -98,10 +98,6 @@
     justify-content: center;
   }
 
-  .link_container {
-    flex-direction: column;
-  }
-
   .footer_bottom {
     font-size: 12px;
     flex-direction: column-reverse;
