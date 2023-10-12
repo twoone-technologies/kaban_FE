@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import Map from '../../map/Map';
 import styles from './itemInfo.module.css';
 import { HouseCard } from '~/components/reusable/card/Card';
+import MapLoader from '~/components/map/MapLoader';
 
 export default function VideoMap({ item }: { item: HouseCard }) {
   const [isVisible, setIsVisible] = useState<'video' | 'map'>('video');
@@ -38,7 +38,7 @@ export default function VideoMap({ item }: { item: HouseCard }) {
           allowFullScreen
         ></iframe>: 
           <div className={styles.map_wrap}>
-            <Map className={styles.map}/>
+            <MapLoader idx={item.id} />
           </div>
         }
       </div>
