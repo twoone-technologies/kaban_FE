@@ -20,7 +20,7 @@ export default function Map({ className, idx }: MapProps) {
 
   const center = { lat: 5.020495237740932, lng: 7.925467457407156 };
 
-  const onLoad = useCallback((map) => {
+  const onLoad = useCallback((map: google.maps.Map) => {
     const infoWindow = new window.google.maps.InfoWindow();
 
     if (window.location.pathname === `/property-item/${idx}`) {
@@ -58,7 +58,7 @@ export default function Map({ className, idx }: MapProps) {
         map.setCenter(center);
       }
     } else {
-      const markers = dummyObj.map((markerData) => {
+      dummyObj.map((markerData) => {
         const marker = new window.google.maps.Marker({
           position: {
             lat: markerData.location.coordinates[0],

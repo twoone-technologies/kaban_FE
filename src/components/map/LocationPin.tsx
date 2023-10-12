@@ -1,5 +1,4 @@
 import { locationIcon } from '~/assets/icons';
-import styles from './map.module.css';
 
 type LocationProps = {
   text: string;
