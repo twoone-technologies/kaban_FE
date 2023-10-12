@@ -10,8 +10,7 @@ export const dummyObj = [
     location: {
       type: "Point",
       coordinates: [
-        -180,
-        -90
+        5.020495237740932, 7.925467457407156
       ]
     },
     _id: "1",
@@ -123,8 +122,7 @@ export const dummyObj = [
     location: {
       type: "Point",
       coordinates: [
-        -180,
-        -90
+        5.024412634805162, 7.954057765122827
       ]
     },
     _id: "2",
@@ -230,8 +228,7 @@ export const dummyObj = [
     location: {
       type: "Point",
       coordinates: [
-        -180,
-        -90
+        5.021188029644788, 7.9493797534282145
       ]
     },
     _id: "3",
@@ -337,8 +334,7 @@ export const dummyObj = [
     location: {
       type: "Point",
       coordinates: [
-        -180,
-        -90
+        5.018414851358759, 7.953675530606606
       ]
     },
     _id: "4",
@@ -444,8 +440,7 @@ export const dummyObj = [
     location: {
       type: "Point",
       coordinates: [
-        -180,
-        -90
+        5.010358759516951, 7.9502977619968185
       ]
     },
     _id: "5",
@@ -551,8 +546,7 @@ export const dummyObj = [
     location: {
       type: "Point",
       coordinates: [
-        -180,
-        -90
+        5.0284106824649415, 7.9704002974196815
       ]
     },
     _id: "6",
@@ -658,8 +652,7 @@ export const dummyObj = [
     location: {
       type: "Point",
       coordinates: [
-        -180,
-        -90
+        5.0284106824649415, 7.9704002974196815
       ]
     },
     _id: "7",
@@ -765,8 +758,7 @@ export const dummyObj = [
     location: {
       type: "Point",
       coordinates: [
-        -180,
-        -90
+        5.023012571445013, 7.979956285186445
       ]
     },
     _id: "8",
@@ -872,8 +864,7 @@ export const dummyObj = [
     location: {
       type: "Point",
       coordinates: [
-        -180,
-        -90
+        5.032299616496085, 7.975469632363518
       ]
     },
     _id: "9",
@@ -979,8 +970,7 @@ export const dummyObj = [
     location: {
       type: "Point",
       coordinates: [
-        -180,
-        -90
+        5.019558917735403, 7.969788481025434
       ]
     },
     _id: "10",
@@ -1086,8 +1076,7 @@ export const dummyObj = [
     location: {
       type: "Point",
       coordinates: [
-        -180,
-        -90
+        5.018107797286042, 7.9662632537373765
       ]
     },
     _id: "11",
@@ -1193,8 +1182,7 @@ export const dummyObj = [
     location: {
       type: "Point",
       coordinates: [
-        -280,
-        -40
+        5.041905085661808, 7.959094638216312
       ]
     },
     _id: "12",
@@ -1300,8 +1288,7 @@ export const dummyObj = [
     location: {
       type: "Point",
       coordinates: [
-        -180,
-        -90
+        5.017214030258889, 7.91761086192234
       ]
     },
     _id: "13",
@@ -1407,8 +1394,7 @@ export const dummyObj = [
     location: {
       type: "Point",
       coordinates: [
-        -180,
-        -90
+        5.047919724652166, 7.966614711743988
       ]
     },
     _id: "14",
