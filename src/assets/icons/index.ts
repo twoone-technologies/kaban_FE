@@ -97,6 +97,9 @@ export const gridIcon = `${grid}#img`;
 import map from "./map.svg";
 export const mapIcon = `${map}#img`;
 
+import mapPin from "./mapIcon.svg";
+export const mapPinIcon = `${mapPin}#img`;
+
 // form icons
 import tick from "./tick.svg";
 export const tickIcon = `${tick}#img`;
