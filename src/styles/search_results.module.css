@@ -32,9 +32,7 @@
 }
 
 .activeElement {
-  /* outline: 2px solid crimson; */
-  box-shadow: 1px 1px 10px 1px #8abbff;
-  /* border: 1px solid var(--primary-color); */
+  box-shadow: 1px 1px 10px 1px  #717376;
 }
 
 @media screen and (width < 768px) {
