@@ -18,6 +18,8 @@ export type HouseCard = {
   realtor: {
     agentImg: string;
     agentName: string;
+    whatsAppLink: string,
+    email: string,
     contact: string;
     location: string;
     rating: number;

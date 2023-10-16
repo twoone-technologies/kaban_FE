@@ -327,8 +327,8 @@ input:hover+svg {
   margin-top: 5rem;
 }
 
-.pad-block-1 {
-  padding-block: 1rem;
+.pad-block-0 {
+  padding-block: 0.5rem;
 }
 
 .pad-block-1 {

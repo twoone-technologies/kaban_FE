@@ -14,9 +14,11 @@ import PropertyDetails from './micellenous/PropertyDetails';
 import DescriptionAndFeatures from './micellenous/DescriptionAndFeatures';
 import AgentDetails from './micellenous/AgentDetails';
 import SimilarItems from './micellenous/SimilarItems';
+import Tooltip from '../reusable/Tooltip';
 
 export default function PropertyItem() {
   const [show, setShow] = useState(false);
+  const [copy, setCopy] = useState(false);
   const { id } = useParams<{ id: string }>();
 
   const listing = dummyObj.find((item) => parseInt(item.id) === Number(id));
@@ -30,13 +32,20 @@ export default function PropertyItem() {
     return similarItems;
   };
 
+  const tooltip = () => {
+    setCopy(true);
+    setTimeout(() => {
+      setCopy(false);
+    }, 3000);
+  };
+
   return (
     <Container element="section" className={styles.wrapper}>
       <Modal isVisible={show} onClose={() => setShow(false)}>
         <h2>Report Listing</h2>
         <ReportForm />
       </Modal>
-      <Toolkit onClick={() => setShow(true)} />
+      <Toolkit onClick={() => setShow(true)} onCopy={tooltip} />
       <div className={`flex f-width ${styles.pg_layout}`}>
         <div className={`f-width flex f-column gap ${styles.item_details}`}>
           <GalleryAndHeader item={listingItem} />
@@ -50,6 +59,7 @@ export default function PropertyItem() {
           <Ads adContent={<h1 className={styles.content}></h1>} />
         </div>
       </div>
+      <Tooltip copy={copy} />
       <SimilarItems similar={filterObj()} />
       <Ads adContent={<h1 className={styles.content}></h1>} />
     </Container>
