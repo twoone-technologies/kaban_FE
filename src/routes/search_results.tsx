@@ -14,17 +14,19 @@ import {
   vertIcon,
 } from '~/assets/icons';
 import { ActionFunctionArgs, redirect } from 'react-router-dom';
-import Map from '~/components/map/Map';
 import FormInput from '~/components/reusable/FormInput';
+import MapLoader from '~/components/map/MapLoader';
 
 export async function action({ request }: ActionFunctionArgs) {
   // get form data
   const formData = await request.formData();
   console.log(...formData);
-  const searchStr = [...formData].reduce((prev, [key, val]) => {
-    if (val) prev.push(`${key}=${val}`)
-    return prev
-  }, [] as string[]).join('&')
+  const searchStr = [...formData]
+    .reduce((prev, [key, val]) => {
+      if (val) prev.push(`${key}=${val}`);
+      return prev;
+    }, [] as string[])
+    .join('&');
   // console.log(searchStr);
 
   // const property_type = payload.propertyType;
@@ -33,18 +35,17 @@ export async function action({ request }: ActionFunctionArgs) {
 
   // const str = `search_results?status=${payload.status}&location=${payload.location}${property_type??`&propertyType=${payload.propertyType}`}${bedrooms??`&bedrooms=${payload.bedrooms}`}${price_Range??`&priceRange=${payload.priceRange}`}`
   // console.log(str);
-  
+
   // send data to BE
   //const res = await searchListings(searchStr)
-  
-  
+
   // redirect to result page with the data
-  
-  if (location.pathname !== "/search_results") {
+
+  if (location.pathname !== '/search_results') {
     console.log(location);
-    return redirect(`/search_results?${searchStr}`)
+    return redirect(`/search_results?${searchStr}`);
   }
-  return redirect(`/search_results?${searchStr}`)
+  return redirect(`/search_results?${searchStr}`);
 }
 
 export default function SearchResults() {
@@ -56,6 +57,8 @@ export default function SearchResults() {
   const [stack, setStack] = useState<'listings' | 'map'>('listings');
 
   const [map, setMap] = useState(false);
+
+  const [selectItem, setSelectItem] = useState(0);
 
   const [sortArr, setSortArr] = useState(dummyObj);
 
@@ -71,23 +74,25 @@ export default function SearchResults() {
     setMap(!map);
   };
 
-  const handleSort = (e: { target: { value: string; }; }) => {
+  const handleSort = (e: { target: { value: string } }) => {
     if (e.target.value === 'Price Acending') {
-      setSortArr([...sortArr].sort((a, b) => a.price.amount - b.price.amount))
+      setSortArr([...sortArr].sort((a, b) => a.price.amount - b.price.amount));
     }
     if (e.target.value === 'Price Decending') {
-      setSortArr([...sortArr].sort((a, b) => b.price.amount - a.price.amount))
+      setSortArr([...sortArr].sort((a, b) => b.price.amount - a.price.amount));
     }
     if (e.target.value === 'Featured listings first') {
-      setSortArr([...sortArr].sort((a, b) => Number(b.featured) - Number(a.featured)))
+      setSortArr(
+        [...sortArr].sort((a, b) => Number(b.featured) - Number(a.featured)),
+      );
     }
-  }
+  };
 
-  const active = stack === 'listings' ? styles.isActive : ''
-  const mapActive = stack === 'map' ? styles.isActive : ''
+  const active = stack === 'listings' ? styles.isActive : '';
+  const mapActive = stack === 'map' ? styles.isActive : '';
 
-  const listingsPage = stack === 'listings' ? '' : styles.stack
-  const mapPage = stack === 'map' ? '' : styles.stack
+  const listingsPage = stack === 'listings' ? '' : styles.stack;
+  const mapPage = stack === 'map' ? '' : styles.stack;
 
   const renderMap = map ? styles.off : styles.on;
   const adjustList = map ? styles.results_full : '';
@@ -102,36 +107,41 @@ export default function SearchResults() {
   const order =
     position === 'portrait' && map === false ? styles.grid_style : resultOnly;
 
-    const location = {
-      address: '1600 Amphitheatre Parkway, Mountain View, california.',
-      lat: 37.42216,
-      lng: -122.08427,
-    } // our 
-
   return (
-    <Container element="section"
+    <Container
+      element="section"
       className={`container-pad ${styles.search_container}
       ${stack === 'map' ? styles.c_reset : ''}`}
     >
       <div className={`${styles.map_section} ${renderMap} ${mapPage}`}>
-        <Map location={location} zoomLevel={17} />
+        <div className={styles.mapWrap}>
+          <MapLoader object={dummyObj} onClick={setSelectItem} />
+        </div>
       </div>
-      <div className={`flex b-radius c-pad ${styles.map_control}`}>
-        <div onClick={() => handleStack('listings')}
-          className={`flex c-pad f-width gap align-y ${active} ${styles.map_tool}`}>
+      <div
+        className={`flex b-radius c-pad ${styles.map_control}
+        ${stack === 'map' ? styles.width_1 : styles.width_2}`}
+      >
+        <div
+          onClick={() => handleStack('listings')}
+          className={`flex c-pad f-width gap align-y ${active} ${styles.map_tool}`}
+        >
           <Svg href={gridIcon} />
           <span>Listings</span>
         </div>
-        <div onClick={() => handleStack('map')}
-          className={`flex c-pad f-width gap align-y ${mapActive} ${styles.map_tool}`}>
+        <div
+          onClick={() => handleStack('map')}
+          className={`flex c-pad f-width gap align-y ${mapActive} ${styles.map_tool}`}
+        >
           <Svg href={mapIcon} />
           <span>Map</span>
         </div>
       </div>
-      <div className={`${styles.results}  ${adjustList}
-        ${stack === 'map' ? styles.resMap : ''}`}>
+      <div
+        className={`${styles.results} ${adjustList}
+        ${stack === 'map' ? styles.resMap : ''}`}
+      >
         <SearchForm className={mapPage} />
-        
         <h3>Rental Listings</h3>
         <div className="flex s-btw align-y">
           <span className={styles.size}>{dummyObj.length} results found</span>
@@ -139,9 +149,15 @@ export default function SearchResults() {
             <div title="toggle Map" className={styles.nil}>
               <Svg onClick={toggleMap} href={mapIcon} />
             </div>
-            <Svg href={sortIcon} width='50px' height='20px'/>
-            <FormInput title={'sort'} className={styles.sort} header={'Sort'} subItems={sortOptions}
-              onChange1={handleSort} link={arrowIcon}/>
+            <Svg href={sortIcon} width="50px" height="20px" />
+            <FormInput
+              title={'sort'}
+              className={styles.sort}
+              header={'Sort'}
+              subItems={sortOptions}
+              onChange1={handleSort}
+              link={arrowIcon}
+            />
             <div className={`gap c-pad flex ${styles.nil}`}>
               <div title="landscape">
                 <Svg
@@ -162,7 +178,13 @@ export default function SearchResults() {
         </div>
         <div className={`${styles.listings_wrap} ${listingsPage} ${order}`}>
           {sortArr.map((item) => (
-            <Card key={item.id} card={item} orientation={position} mapState={map} />
+            <Card
+              card={item}
+              key={item.id}
+              mapState={map}
+              orientation={position}
+              className={selectItem === parseInt(item.id) ? styles.activeElement : undefined}
+            />
           ))}
         </div>
       </div>

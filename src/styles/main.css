@@ -445,3 +445,7 @@ input:hover+svg {
 .no-wrap {
   white-space: nowrap;
 }
+
+.nil {
+  display: none;
+}

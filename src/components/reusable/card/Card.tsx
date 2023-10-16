@@ -59,10 +59,12 @@ export type HouseCard = {
 
 export default function Card({
   card,
+  className,
   mapState = false,
   orientation = 'portrait',
 }: {
   card: HouseCard;
+  className?: string;
   orientation?: string;
   mapState?: boolean;
 }) {
@@ -78,11 +80,11 @@ export default function Card({
       : styles.landscape_1;
 
   return (
-    <div
+    <div id={`property-${card.id}`}
       onMouseEnter={onHoverHandler}
       onMouseLeave={onHoverHandler}
       onClick={() => navigate(`/property-item/${card.id}`)}
-      className={`b-radius box_shadow ${styles.card} ${borders} ${cardState}`}
+      className={`b-radius box_shadow ${styles.card} ${borders} ${className} ${cardState}`}
     >
       <div
         className={`flex f-column s-btw ${styles.above} 

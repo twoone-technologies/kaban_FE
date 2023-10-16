@@ -9,5 +9,8 @@ export default defineConfig({
     alias: {
       "~": resolve(__dirname, "src")
     }
-  }
+  },
+  define: {
+    'import.meta.env.API_KEY': process.env.VITE_API_KEY,
+  },
 })
