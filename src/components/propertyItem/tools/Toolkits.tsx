@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { alarmIcon, arrowIcon, shareIcon } from '~/assets/icons';
 import styles from './toolkit.module.css';
 import Svg from '~/components/reusable/Svg';
+import useInteractiveNav from '~/hooks/useInteractiveNav';
 
 type ToolkitProps = {
   onClick: () => void,
@@ -11,36 +11,7 @@ type ToolkitProps = {
 }
 
 export default function Toolkit({onClick, onCopy}: ToolkitProps) {
-  const [navBar, setNavBar] = useState(false);
-  const [goingUp, setGoingUp] = useState(false);
-  const [scroll, setScroll] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (scroll < currentScrollY && !goingUp) {
-        setGoingUp(true);
-      }
-      if (scroll > currentScrollY && goingUp) {
-        setGoingUp(false);
-      }
-      setScroll(currentScrollY);
-    };
-
-    const colorSwap = () => {
-      window.scrollY >= 70 ? setNavBar(true) : setNavBar(false);
-    };
-
-    const navStatus = () => {
-      colorSwap();
-      handleScroll();
-    };
-
-    return () => {
-      window.addEventListener('scroll', navStatus);
-    };
-  }, [goingUp, scroll]);
-
+  const navStyleHandler = useInteractiveNav();
   
   const handleShare = () => {
     console.log(location);
@@ -69,8 +40,8 @@ export default function Toolkit({onClick, onCopy}: ToolkitProps) {
 
   return (
     <div className={`flex s-btw f-width ${styles.tools}
-    ${goingUp ? styles.navstate : styles.translateY}
-    ${scroll < 4 ? styles.translate0 : ''}
+    ${navStyleHandler.goingUp ? styles.navstate : styles.translateY}
+    ${navStyleHandler.scroll < 4 ? styles.translate0 : ''}
     `}>
       <Link to={'/'} className={`flex align-y c-pad ${styles.rotate}`}>
         <Svg href={arrowIcon} />
