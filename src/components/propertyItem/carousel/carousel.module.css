@@ -58,7 +58,7 @@
 }
 
 .carousel_btn {
-  z-index: 900;
+  z-index: 600;
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.605);
   border-radius: 50%;

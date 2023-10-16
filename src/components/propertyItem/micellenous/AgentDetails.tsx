@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { HouseCard } from '~/components/reusable/card/Card';
 import styles from './micellenous.module.css';
 import ItemInfo from '../itemInfo/ItemInfo';
@@ -8,11 +9,15 @@ import {
   buildingsIcon,
   exLinkIcon,
   locationIcon,
+  mailIcon,
   phoneIcon,
   verifyIcon,
+  whatsappIcon,
 } from '~/assets/icons';
 import CardIcons from '~/components/reusable/card/CardIcons';
 import { dateHandler, getTotal } from '~/components/reusable/FunctionUtils';
+import { Link } from 'react-router-dom';
+import AgentContact from './AgentContact';
 
 type AgentProps = {
   item: HouseCard;
@@ -20,12 +25,17 @@ type AgentProps = {
 };
 
 export default function AgentDetails({ item, object }: AgentProps) {
+  const [contact, setContact] = useState<'whatsapp' | 'email' | ''>('');
+  const handleContact = (contact: 'whatsapp' | 'email') => {
+    setContact(contact);
+  };
+
   return (
     <ItemInfo
       className="b-radius bg-tertiary f_line"
       h1={'Leasing Agent'}
       children={
-        <div className="flex f-column gap">
+        <div className="flex f-width f-column gap">
           <CardAgentInfo
             className={styles.agentInfo}
             imgClass={styles.img}
@@ -70,6 +80,27 @@ export default function AgentDetails({ item, object }: AgentProps) {
               icon={phoneIcon}
               value={item?.realtor.contact}
             />
+          </div>
+          <div className={`flex align-y gap-1`}>
+            <Link
+              onClick={() => handleContact('email')}
+              to={`mailto:${item.realtor.email}`}
+              className={`flex gap f-width align-y align-x pad-block-0 pad-inline-1 b-radius ${styles.btn}
+              ${contact === 'email' && styles.active_btn}`}
+            >
+              <Svg href={mailIcon} width="1rem" height="1.5rem" />
+              Email
+            </Link>
+            <AgentContact item={item} />
+            <Link
+              onClick={() => handleContact('whatsapp')}
+              to={item.realtor.whatsAppLink} target='_blank'
+              className={`flex gap f-width align-y align-x pad-block-0 pad-inline-1 b-radius ${styles.btn}
+              ${contact === 'whatsapp'&& styles.active_btn}`}
+            >
+              <Svg href={whatsappIcon} width="1.2rem" height="1.5rem" />
+              WhatsApp
+            </Link>
           </div>
         </div>
       }
