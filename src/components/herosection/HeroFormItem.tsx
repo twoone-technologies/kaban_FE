@@ -1,7 +1,7 @@
 import { arrowIcon, searchIcon } from '~/assets/icons';
 import styles from './hero.module.css';
-import { roomAndPrice } from './formData';
 import FormInput from '../reusable/FormInput';
+import { roomAndPrice } from './formData';
 
 export default function HeroFormItem() {
   return (
