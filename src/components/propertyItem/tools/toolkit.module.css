@@ -1,18 +1,22 @@
 .tools {
   padding-block: 1rem;
   position: sticky;
-  top: 1px;
+  top: 0;
+  transform: translateX(-1.5px);
+  width: calc(100% + 3px);
   z-index: 900;
 }
 
 .rotate {
   rotate: 180deg;
+  background-color: unset;
+  color: var(--tertiary-color-2);
   outline: 1px solid var(--hover-color);
   border-radius: 50%;
 }
 
 .toolkit {
-  gap: 1.5rem;
+  gap: 3.5rem;
 }
 
 .tooltip {
@@ -20,10 +24,10 @@
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  font-size: 1.2rem;
+  font-size: 3.2rem;
   font-weight: 700;
-  padding: 1.3rem;
-  color: var(--tertiary-color-1);
+  padding: 3.3rem;
+  color: var(--tertiary-color-3);
   border-radius: 5px;
   background: linear-gradient(45deg, rgb(159, 183, 230), #0400ff, rgb(159, 183, 230));
   transform-origin: 100% 100%;
@@ -32,7 +36,7 @@
 
 .active {
   opacity: 1;
-  transform: scale(1)
+  transform: scale(3)
 }
 
 .slide {
@@ -41,8 +45,8 @@
 }
 
 .translateY {
-  transform: translateY(3rem);
-  background-color: var(--tertiary-color-1);
+  transform: translate(-1.5px, 4rem);
+  background-color: var(--tertiary-color-3);
 }
 
 .translate0 {
@@ -50,6 +54,6 @@
 }
 
 .navstate {
-  background-color: var(--tertiary-color-1);
+  background-color: var(--tertiary-color-3);
 }
 

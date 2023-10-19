@@ -1,9 +1,10 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { alarmIcon, arrowIcon, shareIcon } from '~/assets/icons';
 import styles from './toolkit.module.css';
 import Svg from '~/components/reusable/Svg';
 import useInteractiveNav from '~/hooks/useInteractiveNav';
+import Button from '~/components/reusable/Button';
 
 type ToolkitProps = {
   onClick: () => void,
@@ -12,7 +13,8 @@ type ToolkitProps = {
 
 export default function Toolkit({onClick, onCopy}: ToolkitProps) {
   const navStyleHandler = useInteractiveNav();
-  
+  const navigate = useNavigate();
+
   const handleShare = () => {
     console.log(location);
     if (navigator.share) {
@@ -43,9 +45,9 @@ export default function Toolkit({onClick, onCopy}: ToolkitProps) {
     ${navStyleHandler.goingUp ? styles.navstate : styles.translateY}
     ${navStyleHandler.scroll < 4 ? styles.translate0 : ''}
     `}>
-      <Link to={'/'} className={`flex align-y c-pad ${styles.rotate}`}>
+      <Button onClick={() => navigate(-1)} className={`flex align-y c-pad ${styles.rotate}`}>
         <Svg href={arrowIcon} />
-      </Link>
+      </Button>
       <div className={`flex align-y ${styles.toolkit}`}>
         <CopyToClipboard text={location.href} onCopy={onCopy}>
           <Svg href={shareIcon} onClick={handleShare} />
