@@ -1,5 +1,5 @@
 .nav_item {
-  border-top: 1px solid var(--tertiary-color-3);
+  border-top: 1px solid var(--hover-color);
   padding: 1rem;
   cursor: pointer;
 }
@@ -107,19 +107,19 @@
   }
 
   .drop_down {
-    box-shadow: 1px 1px 10px 1px var(--hover-color); 
     background-color: var(--tertiary-color-1);
     margin-left: -0.1rem;
   }
-
+  
   .close_link {
     overflow: hidden;
     max-width: 0;
     max-height: 0;
     opacity: 0;
   }
-
+  
   .open_link {
+    border: 1px solid var(--hover-color);
     min-width: 15rem;
     opacity: 1;
     overflow: none;
