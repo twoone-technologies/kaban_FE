@@ -40,13 +40,6 @@ export default function SwitchGroup({
     <div className="flex s-btw align-y">
       <span className={styles.size}>{listingObject.length} results found</span>
       <div className={`flex align-y ${listingsPage}`}>
-        <div title="toggle Map" className={styles.nil}>
-          <Svg
-            href={mapIcon}
-            className={!mapState ? 'bg-primary' : ''}
-            onClick={onClick}
-          />
-        </div>
         <Svg href={sortIcon} width="50px" height="20px" />
         <FormInput
           title={'sort'}
@@ -71,6 +64,13 @@ export default function SwitchGroup({
               className={orientation === 'portrait' ? 'bg-primary' : ''}
             />
           </div>
+        </div>
+        <div title="toggle Map" className={styles.nil}>
+          <Svg
+            href={mapIcon}
+            className={!mapState ? 'bg-primary' : ''}
+            onClick={onClick}
+          />
         </div>
       </div>
     </div>
