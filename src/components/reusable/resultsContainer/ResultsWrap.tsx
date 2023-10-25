@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Container from '~/components/reusable/Container';
+import { Link } from 'react-router-dom';
 import Card, { HouseCard } from '~/components/reusable/card/Card';
 import SearchForm from '~/components/searchForm/SearchForm';
 import styles from '~/components/reusable/resultsContainer/results.module.css';
@@ -8,14 +9,21 @@ import MobileMapControl from './MobileMapControl';
 import SwitchGroup from './SwitchGroup';
 
 type ResultsProps = {
-  city: string;
+  city?: string;
   status: string;
+  propertyCategory?: string;
+  onSubmit?: () => void;
   object: HouseCard[];
-}
+};
 
-export default function ResultsWrap({city, status, object}: ResultsProps) {
+export default function ResultsWrap({
+  city,
+  status,
+  onSubmit,
+  propertyCategory,
+  object,
+}: ResultsProps) {
   // const res = await searchListings(search)
-
   const [position, setPosition] = useState<'portrait' | 'landscape'>(
     'portrait',
   );
@@ -46,12 +54,12 @@ export default function ResultsWrap({city, status, object}: ResultsProps) {
   const mapPage = stack === 'map' ? '' : styles.stack;
   const renderMap = map ? styles.off : styles.on;
   const adjustList = map && styles.results_full;
-  const resultOnly = position === 'portrait' && map === true
-    ? styles.grid_style_2
-    : map
-    ? styles.grid_style_3
-    : styles.grid_style_4;
-
+  const resultOnly =
+    position === 'portrait' && map === true
+      ? styles.grid_style_2
+      : map
+      ? styles.grid_style_3
+      : styles.grid_style_4;
   const order =
     position === 'portrait' && map === false ? styles.grid_style : resultOnly;
 
@@ -71,8 +79,25 @@ export default function ResultsWrap({city, status, object}: ResultsProps) {
         className={`${styles.results} ${adjustList}
         ${stack === 'map' && styles.resMap}`}
       >
-        <SearchForm className={styles.f} />
-        <h3>{city} {status} Listings</h3>
+        <SearchForm className={styles.f} onSubmit={onSubmit} />
+        {propertyCategory && (
+          <>
+            <Link to={'/'} className="bg-primary">
+              Home
+            </Link>
+            {status ? 
+              <span>{' '}{'>'} For {status}</span>
+            :
+              <span> {'>'} Sales & Rent</span>
+            }
+          </>
+        )}
+        <h3>
+          {propertyCategory || (
+          <span>{city} {status}</span>
+          )}{' '}
+          Listings {propertyCategory ? city && `in ${city}` : ''}
+        </h3>
         <SwitchGroup
           onChange={handleSort}
           mapState={map}
@@ -91,8 +116,8 @@ export default function ResultsWrap({city, status, object}: ResultsProps) {
               orientation={position}
               className={
                 selectItem === parseInt(item.id)
-                  ? styles.activeElement
-                  : undefined
+                ? styles.activeElement
+                : undefined
               }
             />
           ))}
