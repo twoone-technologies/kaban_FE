@@ -28,9 +28,10 @@ export async function action({ request }: ActionFunctionArgs) {
 }
 
 export default function Industrial() {
-  const { category, cityStatus, stat } = useHeader();
+  const { category, city, cityStatus, stat } = useHeader();
   return (
     <ResultsWrap
+      city={city}
       status={stat}
       propertyCategory={category}
       object={dummyObj}

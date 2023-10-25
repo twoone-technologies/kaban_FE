@@ -9,7 +9,7 @@ import MobileMapControl from './MobileMapControl';
 import SwitchGroup from './SwitchGroup';
 
 type ResultsProps = {
-  city?: string;
+  city: string;
   status: string;
   propertyCategory?: string;
   onSubmit?: () => void;

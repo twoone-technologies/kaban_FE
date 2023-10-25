@@ -28,13 +28,14 @@ export async function action({ request }: ActionFunctionArgs) {
 }
 
 export default function Commercial() {
-  const {category, cityStatus, stat} = useHeader();
+  const {category, city, cityStatus, stat} = useHeader();
   const commercial = dummyObj.filter(
     (items) => items.property_category === 'commercial',
   );
 
   return (
     <ResultsWrap
+      city={city}
       status={stat}
       propertyCategory={category}
       object={commercial}
