@@ -25,8 +25,8 @@ export const dummyObj = [
       verified: false
     },
     title: "Self contained apartment",
-    property_category: "residential",
-    property_type: "Self-Contain",
+    property_category: "commercial",
+    property_type: "shops",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "sale",
     featured: true,
@@ -139,8 +139,8 @@ export const dummyObj = [
       verified: false
     },
     title: "Loft apartment",
-    property_category: "residential",
-    property_type: "Self-Contain",
+    property_category: "commercial",
+    property_type: "shops",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "sale",
     featured: true,
@@ -247,8 +247,8 @@ export const dummyObj = [
       verified: false
     },
     title: "Spacious apartment",
-    property_category: "residential",
-    property_type: "Self-Contain",
+    property_category: "commercial",
+    property_type: "shops",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
     featured: true,
@@ -355,10 +355,10 @@ export const dummyObj = [
       verified: false
     },
     title: "Luxurious flat",
-    property_category: "residential",
-    property_type: "Self-Contain",
+    property_category: "commercial",
+    property_type: "shops",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
-    status: "sale",
+    status: "rent",
     featured: true,
     price: {
       amount: 340000
