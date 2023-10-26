@@ -16,6 +16,8 @@ export const dummyObj = [
     _id: "1",
     realtor: {
       agentImg: pic,
+      whatsAppLink: '',
+      email: '',
       agentName: 'Jojo',
       contact: '+234 703 489 1298',
       location: '40 saint street, Nwaniba rd',
@@ -128,6 +130,8 @@ export const dummyObj = [
     _id: "2",
     realtor: {
       agentImg: pic,
+      whatsAppLink: '',
+      email: '',
       agentName: 'Jojo',
       contact: '+234 703 489 1298',
       location: '40 saint street, Nwaniba rd',
@@ -234,6 +238,8 @@ export const dummyObj = [
     _id: "3",
     realtor: {
       agentImg: pic,
+      whatsAppLink: '',
+      email: '',
       agentName: 'Jojo',
       contact: '+234 703 489 1298',
       location: '40 saint street, Nwaniba rd',
@@ -340,6 +346,8 @@ export const dummyObj = [
     _id: "4",
     realtor: {
       agentImg: pic,
+      whatsAppLink: '',
+      email: '',
       agentName: 'Jojo',
       contact: '+234 703 489 1298',
       location: '40 saint street, Nwaniba rd',
@@ -446,6 +454,8 @@ export const dummyObj = [
     _id: "5",
     realtor: {
       agentImg: pic,
+      whatsAppLink: '',
+      email: '',
       agentName: 'Atake',
       contact: '+234 703 489 1298',
       location: '40 saint street, Nwaniba rd',
@@ -552,6 +562,8 @@ export const dummyObj = [
     _id: "6",
     realtor: {
       agentImg: pic,
+      whatsAppLink: '',
+      email: '',
       agentName: 'Atake',
       contact: '+234 703 489 1298',
       location: '40 saint street, Nwaniba rd',
@@ -658,6 +670,8 @@ export const dummyObj = [
     _id: "7",
     realtor: {
       agentImg: pic,
+      whatsAppLink: '',
+      email: '',
       agentName: 'Atake',
       contact: '+234 703 489 1298',
       location: '40 saint street, Nwaniba rd',
@@ -764,6 +778,8 @@ export const dummyObj = [
     _id: "8",
     realtor: {
       agentImg: pic,
+      whatsAppLink: '',
+      email: '',
       agentName: 'Atake',
       contact: '+234 703 489 1298',
       location: '40 saint street, Nwaniba rd',
@@ -870,6 +886,8 @@ export const dummyObj = [
     _id: "9",
     realtor: {
       agentImg: pic,
+      whatsAppLink: '',
+      email: '',
       agentName: 'Atake',
       contact: '+234 703 489 1298',
       location: '40 saint street, Nwaniba rd',
@@ -976,6 +994,8 @@ export const dummyObj = [
     _id: "10",
     realtor: {
       agentImg: pic,
+      whatsAppLink: '',
+      email: '',
       agentName: 'John',
       contact: '+234 703 489 1298',
       location: '40 saint street, Nwaniba rd',
@@ -1082,6 +1102,8 @@ export const dummyObj = [
     _id: "11",
     realtor: {
       agentImg: pic,
+      whatsAppLink: '',
+      email: '',
       agentName: 'Atake',
       contact: '+234 703 489 1298',
       location: '40 saint street, Nwaniba rd',
@@ -1188,6 +1210,8 @@ export const dummyObj = [
     _id: "12",
     realtor: {
       agentImg: pic,
+      whatsAppLink: '',
+      email: '',
       agentName: 'Atake',
       contact: '+234 703 489 1298',
       location: '40 saint street, Nwaniba rd',
@@ -1294,6 +1318,8 @@ export const dummyObj = [
     _id: "13",
     realtor: {
       agentImg: pic,
+      whatsAppLink: '',
+      email: '',
       agentName: 'Atake',
       contact: '+234 703 489 1298',
       location: '40 saint street, Nwaniba rd',
@@ -1400,6 +1426,8 @@ export const dummyObj = [
     _id: "14",
     realtor: {
       agentImg: pic,
+      whatsAppLink: '',
+      email: '',
       agentName: 'Atake',
       contact: '+234 703 489 1298',
       location: '40 saint street, Nwaniba rd',

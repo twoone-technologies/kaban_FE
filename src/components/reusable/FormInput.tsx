@@ -1,8 +1,8 @@
 import OptGroup from '../herosection/Optgroup';
-import { property_type } from '../herosection/formData';
 import Svg from './Svg';
 import Checkbox from '../searchForm/checkbox/Checkbox';
 import styles from '~/components/searchForm/searchForm.module.css';
+import { property_type } from '../heroSection/formData';
 
 type Props = {
   id?: string;

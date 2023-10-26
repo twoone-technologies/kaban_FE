@@ -1,12 +1,20 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { alarmIcon, arrowIcon, shareIcon } from '~/assets/icons';
 import styles from './toolkit.module.css';
 import Svg from '~/components/reusable/Svg';
+import useInteractiveNav from '~/hooks/useInteractiveNav';
+import Button from '~/components/reusable/Button';
 
-export default function Toolkit({onClick}: {onClick: () => void}) {
-  const [copy, setCopy] = useState(false);
+type ToolkitProps = {
+  onClick: () => void,
+  onCopy: () => void,
+}
+
+export default function Toolkit({onClick, onCopy}: ToolkitProps) {
+  const navStyleHandler = useInteractiveNav();
+  const navigate = useNavigate();
+
   const handleShare = () => {
     console.log(location);
     if (navigator.share) {
@@ -32,26 +40,16 @@ export default function Toolkit({onClick}: {onClick: () => void}) {
     }
   };
 
-  const tooltip = () => {
-    setCopy(true);
-    setTimeout(() => {
-      setCopy(false);
-    }, 3000);
-  };
-
   return (
-    <div className={`flex s-btw f-width ${styles.tools}`}>
-      <Link to={'/'} className={`flex align-y c-pad ${styles.rotate}`}>
+    <div className={`flex s-btw f-width ${styles.tools}
+    ${navStyleHandler.goingUp ? styles.navstate : styles.translateY}
+    ${navStyleHandler.scroll < 4 ? styles.translate0 : ''}
+    `}>
+      <Button onClick={() => navigate(-1)} className={`flex align-y c-pad ${styles.rotate}`}>
         <Svg href={arrowIcon} />
-      </Link>
+      </Button>
       <div className={`flex align-y ${styles.toolkit}`}>
-        <h3
-          className={`c-pad stack box-shadow ${styles.tooltip}
-            ${copy === true ? styles.active : styles.slide}`}
-        >
-          Link copied to clipboard
-        </h3>
-        <CopyToClipboard text={location.href} onCopy={tooltip}>
+        <CopyToClipboard text={location.href} onCopy={onCopy}>
           <Svg href={shareIcon} onClick={handleShare} />
         </CopyToClipboard>
         <Svg href={alarmIcon} onClick={onClick} />

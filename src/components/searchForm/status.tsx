@@ -1,11 +1,11 @@
 export const statusArr = [
   {
     type: 'For Rent',
-    value: 'For Rent'
+    value: 'rent'
   },
   {
     type: 'For Sale',
-    value: 'For Sale'
+    value: 'sale'
   },
 ]
 

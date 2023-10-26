@@ -48,6 +48,16 @@ div[title='features'] {
   gap: 0.3rem;
 }
 
+.btn {
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.active_btn {
+  color: white;
+  background-color: var(--primary-color);
+}
+
 .visit {
   font-size: small;
   justify-content: center;
@@ -94,6 +104,16 @@ div[title='features'] {
   margin-top: 17rem;
 }
 
+.mobileContactInfo {
+  display: flex;
+  left: 0;
+  bottom: 0;
+  z-index: 500;
+  position: fixed;
+  border-top: 1px solid var(--hover-color);
+  background-color: var(--tertiary-color-1);
+}
+
 @media screen and (width >= 768px) {
   .header h5 {
     margin-top: unset;
@@ -113,6 +133,10 @@ div[title='features'] {
 
   .disclaimer div span {
     font-size: 0.8rem;
+  }
+  
+  .mobileContactInfo {
+    display: none;
   }
 }
 

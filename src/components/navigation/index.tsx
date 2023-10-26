@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { logoIcon } from '~/assets/icons';
 import Button from '~/components/reusable/Button';
@@ -7,39 +7,13 @@ import navbarData from './navbarData';
 import Svg from '~/components/reusable/Svg';
 import NavItem from './navitem';
 import Container from '../reusable/Container';
+import useInteractiveNav from '~/hooks/useInteractiveNav';
 
 function Navigation() {
   const [open, setOpen] = useState(false);
   const [dropDown, setDropDown] = useState(-1);
-  const [navBar, setNavBar] = useState(false);
-  const [goingUp, setGoingUp] = useState(false);
-  const [scroll, setScroll] = useState(0);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (scroll < currentScrollY && !goingUp) {
-        setGoingUp(true);
-      }
-      if (scroll > currentScrollY && goingUp) {
-        setGoingUp(false);
-      }
-      setScroll(currentScrollY);
-    };
-
-    const colorSwap = () => {
-      window.scrollY >= 70 ? setNavBar(true) : setNavBar(false);
-    };
-
-    const navStatus = () => {
-      colorSwap();
-      handleScroll();
-    };
-
-    return () => {
-      window.addEventListener('scroll', navStatus);
-    };
-  }, [goingUp, scroll]);
+  const navStyleHandler = useInteractiveNav();
 
   const onClickHandler = () => {
     setOpen(!open);
@@ -51,15 +25,15 @@ function Navigation() {
   location.pathname === '/'
     ? (content = (
         <Container element='nav'
-          className={`flex f-width ${styles.nav} ${navBar ? `bg-tertiary` : ''}
-      ${goingUp ? styles.hide : styles.see}`}
+          className={`flex f-width ${styles.nav} ${navStyleHandler.navBar ? `bg-tertiary` : ''}
+      ${navStyleHandler.goingUp ? styles.hide : styles.see}`}
         >
           <Link to={'/'}>
             <Svg
               href={logoIcon}
               width="100px"
               height="40px"
-              className={`${navBar ? `bg-primary` : styles.logo}`}
+              className={`${navStyleHandler.navBar ? `bg-primary` : styles.logo}`}
             />
           </Link>
           <Button
@@ -67,19 +41,19 @@ function Navigation() {
             title="menu"
             onClick={onClickHandler}
             className={`flex f-column ${styles.hamburger_menu}
-        ${open || navBar ? styles.border : styles.border_1}`}
+        ${open || navStyleHandler.navBar ? styles.border : styles.border_1}`}
           >
             <span
               className={`${styles.line} ${open ? styles.tilt : ''} 
-        ${navBar || open ? styles.hue_1 : styles.hue_2}`}
+        ${navStyleHandler.navBar || open ? styles.hue_1 : styles.hue_2}`}
             ></span>
             <span
               className={`${styles.line} ${open ? styles.hide : styles.see} 
-        ${navBar || open ? styles.hue_1 : styles.hue_2}`}
+        ${navStyleHandler.navBar || open ? styles.hue_1 : styles.hue_2}`}
             ></span>
             <span
               className={`${styles.line} ${open ? styles.rtilt : ''} 
-        ${navBar || open ? styles.hue_1 : styles.hue_2}`}
+        ${navStyleHandler.navBar || open ? styles.hue_1 : styles.hue_2}`}
             ></span>
           </Button>
           <ul
@@ -100,7 +74,7 @@ function Navigation() {
                 mouseOver={() =>
                   setDropDown((prev) => (prev === idx ? -1 : idx))
                 }
-                navState={navBar}
+                navState={navStyleHandler.navBar}
               />
             ))}
             <li className={`flex ${styles.reg}`}>
@@ -114,7 +88,7 @@ function Navigation() {
     : (content = (
         <Container element='nav'
           className={`flex f-width bg-tertiary ${styles.nav}
-          ${goingUp ? styles.hide : styles.see} ${styles.nav_btm}`} 
+          ${navStyleHandler.goingUp ? styles.hide : styles.see} ${styles.nav_btm}`} 
         >
           <Link to={'/'}>
             <Svg

@@ -10,7 +10,7 @@
   --star-color: #F9B900;
   --tertiary-color-1: #ffffff; /* text color (footer) */
   --tertiary-color-2: #3a424b; /* subtle text color */
-  --tertiary-color-3: #f0f0f0; /* background color */
+  --tertiary-color-3: #fafafa; /* background color */
   --tertiary-color-4: #41ae48; /* featured and savebtn color */ 
 }
 
@@ -46,7 +46,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 #root {
-  background-color: #fafafa;
+  background-color: var(--tertiary-color-3);
 }
 
 a {
@@ -327,8 +327,8 @@ input:hover+svg {
   margin-top: 5rem;
 }
 
-.pad-block-1 {
-  padding-block: 1rem;
+.pad-block-0 {
+  padding-block: 0.5rem;
 }
 
 .pad-block-1 {
