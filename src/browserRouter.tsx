@@ -2,9 +2,9 @@ import { Route, createBrowserRouter, createRoutesFromElements } from "react-rout
 import LandingPage, { action as listingSearch } from "./routes/_landingpage"
 import Root from "./routes/_index"
 import Blog from "./routes/blog"
-import Commercial from "./routes/_property.commercial"
-import Industrial from "./routes/_property.industrial"
-import Residential from "./routes/_property.residential"
+import Commercial, {action as comResults } from "./routes/_property.commercial"
+import Industrial, {action as indResults } from "./routes/_property.industrial"
+import Residential, {action as resResults } from "./routes/_property.residential"
 import AboutUs from "./routes/_company.about-us"
 import ContactUs from "./routes/_company.contact-us"
 import FAQs from "./routes/_company.faqs"
@@ -20,9 +20,9 @@ export const router = createBrowserRouter(
       <Route path="search_results" element={<SearchResults />} action={results} />
       <Route path="property-item/:id" element={<PropertyItem />} />
       <Route path="blog" element={<Blog />} />
-      <Route path="commercial" element={<Commercial />} />
-      <Route path="industrial" element={<Industrial />} />
-      <Route path="residential" element={<Residential />} />
+      <Route path="commercial" element={<Commercial />} action={comResults} />
+      <Route path="industrial" element={<Industrial />} action={indResults} />
+      <Route path="residential" element={<Residential />} action={resResults} />
       <Route path="agents" element={<Agents />} />
       <Route path="agencies" element={<Agencies />} />
       <Route path="about-us" element={<AboutUs />} />

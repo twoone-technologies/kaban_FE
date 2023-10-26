@@ -1,6 +1,7 @@
 import { ActionFunctionArgs, redirect } from 'react-router-dom';
 import { dummyObj } from '~/components/reusable/dummyObj';
 import ResultsWrap from '~/components/reusable/resultsContainer/ResultsWrap';
+import useHeader from '~/hooks/useHeader';
 
 export async function action({ request }: ActionFunctionArgs) {
   // get form data
@@ -28,19 +29,18 @@ export async function action({ request }: ActionFunctionArgs) {
 }
 
 export default function SearchResults() {
-  const cityStat = () => {
-    const arr = location.href.split('&');
-    let city = arr[1].split('=')[1];
-    const status = arr[0].split('=')[1];
-    if (city.includes('%20')) city = city.replace(/%20/g, ' ');
-    return { city, status };
-  };
+  const { city, cityStatus, stat } = useHeader();
 
   return (
     <ResultsWrap
-      city={cityStat().city}
-      status={cityStat().status}
+      city={city}
+      status={stat}
       object={dummyObj}
+      onSubmit={() => {
+        setTimeout(() => {
+          cityStatus();
+        }, 500);
+      }}
     />
   );
 }
