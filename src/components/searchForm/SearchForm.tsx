@@ -10,8 +10,10 @@ import FormInput from '../reusable/FormInput';
 export default function SearchForm({
   className,
   onSubmit,
+  defaultCity
 }: {
   className: string;
+  defaultCity?: string;
   onSubmit?: () => void;
 }) {
   const [formStyle, setFormStyle] = useState(false);
@@ -40,7 +42,7 @@ export default function SearchForm({
         title={'Advanced search'}
         onFocus={() => handleStyle()}
       />
-      <SearchFormItem formStyle={formStyle} />
+      <SearchFormItem defaultCity={defaultCity} formStyle={formStyle} />
       <div className={`flex align-y gap ${isActive}`}>
         <Button
           type="button"

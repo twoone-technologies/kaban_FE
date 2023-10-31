@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Container from '~/components/reusable/Container';
 import { Link } from 'react-router-dom';
 import Card, { HouseCard } from '~/components/reusable/card/Card';
@@ -11,6 +11,7 @@ import SwitchGroup from './SwitchGroup';
 type ResultsProps = {
   city: string;
   status: string;
+  defaultCity?: string;
   propertyCategory?: string;
   onSubmit?: () => void;
   object: HouseCard[];
@@ -18,6 +19,7 @@ type ResultsProps = {
 
 export default function ResultsWrap({
   city,
+  defaultCity,
   status,
   onSubmit,
   propertyCategory,
@@ -30,7 +32,14 @@ export default function ResultsWrap({
   const [stack, setStack] = useState<'listings' | 'map'>('listings');
   const [map, setMap] = useState(false);
   const [selectItem, setSelectItem] = useState(0);
-  const [sortArr, setSortArr] = useState(object);
+  const [sortArr, setSortArr] = useState<HouseCard[]>([]);
+
+  useEffect(() => {
+    if (object) {
+      setSortArr(object)
+    }
+  }, [object])
+
 
   const toggleMap = () => {
     setMap(!map);
@@ -79,25 +88,22 @@ export default function ResultsWrap({
         className={`${styles.results} ${adjustList}
         ${stack === 'map' && styles.resMap}`}
       >
-        <SearchForm className={styles.f} onSubmit={onSubmit} />
-        {propertyCategory && (
+        {(propertyCategory || city || status) && (
           <>
             <Link to={'/'} className="bg-primary">
               Home
             </Link>
-            {status ? 
-              <span>{' '}{'>'} For {status}</span>
-            :
-              <span> {'>'} Sales & Rent</span>
-            }
+            {status && <span>{' '}{'>'} For {status}</span>}
+            {!status && <span> {'>'} Sales & Rent</span>}
           </>
         )}
         <h3>
           {propertyCategory || (
-          <span>{city} {status}</span>
-          )}{' '}
-          Listings {propertyCategory ? city && `in ${city}` : ''}
+            <span>{city} {status}</span>
+            )}{' '}
+          Listings {propertyCategory && city && `in ${city}`}
         </h3>
+        <SearchForm defaultCity={defaultCity} className={styles.f} onSubmit={onSubmit} />
         <SwitchGroup
           onChange={handleSort}
           mapState={map}

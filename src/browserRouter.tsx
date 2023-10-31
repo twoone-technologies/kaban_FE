@@ -12,6 +12,7 @@ import Agents from "./routes/_realtors.agents"
 import Agencies from "./routes/_realtors.agencies"
 import SearchResults, {action as results } from "./routes/search_results"
 import PropertyItem from "./components/propertyItem/PropertyItem"
+import CityName, {action as cityResults, loader as citiesLoader} from "./routes/cities.$cityName"
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,7 +29,7 @@ export const router = createBrowserRouter(
       <Route path="about-us" element={<AboutUs />} />
       <Route path="contact-us" element={<ContactUs />} />
       <Route path="faqs" element={<FAQs />} />
-      <Route path="cities/:cityName" element={<FAQs />} />
+      <Route path="cities/:cityName" element={<CityName />} loader={citiesLoader} action={cityResults} />
     </Route>
   )
 )

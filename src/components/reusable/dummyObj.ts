@@ -472,7 +472,7 @@ export const dummyObj = [
       amount: 260000
     },
     address: "21 Aka Road, Uyo. Akwa Ibom State",
-    city: "uyo",
+    city: "port harcourt",
     images: [
       {
         url: background,
@@ -580,7 +580,7 @@ export const dummyObj = [
       amount: 260000
     },
     address: "55 Aka Road, Uyo. Akwa Ibom State",
-    city: "uyo",
+    city: "port harcourt",
     images: [
       {
         url: background,
@@ -688,7 +688,7 @@ export const dummyObj = [
       amount: 150000
     },
     address: "16 Aka Road, Uyo. Akwa Ibom State",
-    city: "uyo",
+    city: "port harcourt",
     images: [
       {
         url: background,
@@ -796,7 +796,7 @@ export const dummyObj = [
       amount: 280000
     },
     address: "55 Aka Road, Uyo. Akwa Ibom State",
-    city: "uyo",
+    city: "port harcourt",
     images: [
       {
         url: background,
@@ -904,7 +904,7 @@ export const dummyObj = [
       amount: 150000
     },
     address: "16 Aka Road, Uyo. Akwa Ibom State",
-    city: "uyo",
+    city: "asaba",
     images: [
       {
         url: background,
@@ -1012,7 +1012,7 @@ export const dummyObj = [
       amount: 280000
     },
     address: "11 Aka Road, Uyo. Akwa Ibom State",
-    city: "uyo",
+    city: "asaba",
     images: [
       {
         url: background,
@@ -1120,7 +1120,7 @@ export const dummyObj = [
       amount: 150000
     },
     address: "16 Aka Road, Uyo. Akwa Ibom State",
-    city: "uyo",
+    city: "asaba",
     images: [
       {
         url: background,

@@ -5,7 +5,8 @@ import { statusArr } from './status';
 import FormInput from '../reusable/FormInput';
 import styles from './searchForm.module.css';
 
-export default function SearchFormItem({formStyle}: {formStyle: boolean}) {
+export default function SearchFormItem({formStyle, defaultCity}: {formStyle: boolean,
+  defaultCity?: string}) {
   const [isDisabled, setIsDisabled] = useState(false);
   const [radius, setRadius] = useState('');
 
@@ -32,7 +33,7 @@ export default function SearchFormItem({formStyle}: {formStyle: boolean}) {
         className={styles.slider}
         onChange={handleRadiusStatus}
       />
-      <FormInput
+      <FormInput defaultValue={defaultCity}
         width={'17px'} height={'17px'}
         type={'search'} link={searchIcon}
         title={'location'} className={styles.location}
