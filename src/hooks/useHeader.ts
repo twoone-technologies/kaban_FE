@@ -24,8 +24,6 @@ export default function useHeader() {
       window.history.pushState({ path: new_url }, '', new_url)
     }
     if (location.href.indexOf('?') === -1) {
-      console.log('goat');
-      console.log(location.href.split('/'));
       const key = location.href.split('/')[4];
       setCity(key.replace('%20', ' ') ?? '');
     }
