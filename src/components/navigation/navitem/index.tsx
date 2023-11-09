@@ -15,11 +15,12 @@ type Props = {
   }[];
   navState: boolean;
   drop: boolean;
+  closeNav: (arg:boolean) => void;
   handleClick: () => void;
   mouseOver: () => void;
 }
 
-const NavItem = ({ title, href, subItems, navState, drop, handleClick, mouseOver }: Props) => {
+const NavItem = ({ title, href, subItems, navState, drop, handleClick, mouseOver, closeNav }: Props) => {
   const [hover, sethover] = useState(-1);
   const navStateHandler = useResponsiveNav({
     onClick: handleClick,
@@ -47,6 +48,7 @@ const NavItem = ({ title, href, subItems, navState, drop, handleClick, mouseOver
             {subItems?.map((item, id) => (
               <Link to={item.path} key={id}
                 onMouseEnter={() => sethover(id)} onMouseLeave={() => sethover(-1)}
+                onClick={() => closeNav(false)}
                 className={`flex pad b-radius ${styles.nav_item_link}`}>
                 {hover === id && drop ?
                   <Svg href={`${item.icon}`} className={`${drop ? styles.blue : styles.ash}`} /> :

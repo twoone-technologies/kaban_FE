@@ -54,6 +54,7 @@
 
   .item_details:nth-of-type(2) {
     flex-direction: column;
+    width: 39%;
     gap: 2rem;
   }
 }

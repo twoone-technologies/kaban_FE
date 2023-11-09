@@ -1,9 +1,9 @@
 .tools {
-  padding-block: 1rem;
+  padding: 1rem 1%;
   position: sticky;
   top: 0;
-  transform: translateX(-1.5px);
-  width: calc(100% + 3px);
+  transform: translateX(-2.5px);
+  width: calc(100% + 7px);
   z-index: 900;
 }
 
@@ -33,7 +33,6 @@
   transform-origin: 100% 100%;
 }
 
-
 .active {
   opacity: 1;
   transform: scale(3)
@@ -57,3 +56,8 @@
   background-color: var(--tertiary-color-3);
 }
 
+@media screen and (width >= 768px) {
+  .tools {
+    width: calc(100% + 16px);
+  }
+}

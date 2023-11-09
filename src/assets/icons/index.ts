@@ -110,6 +110,9 @@ export const bellIcon = `${bell}#img`;
 import close from "./close.svg";
 export const closeIcon = `${close}#img`;
 
+import googleSvg from "./googleSvg.svg";
+export const googleSvgIcon = `${googleSvg}#img`;
+
 //agent icons
 import bookmark from "./bookmark.svg";
 export const bookmarkIcon = `${bookmark}#img`;

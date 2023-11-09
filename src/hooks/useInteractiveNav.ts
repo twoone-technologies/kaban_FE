@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react"
 
 export default function useInteractiveNav() {
+  const [open, setOpen] = useState(false);
   const [navBar, setNavBar] = useState(false);
   const [goingUp, setGoingUp] = useState(false);
   const [scroll, setScroll] = useState(0);
+
+  if (open) document.body.style.overflowY = 'hidden'
+  else document.body.style.overflowY = ''
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,7 +33,7 @@ export default function useInteractiveNav() {
     return () => {
       window.addEventListener('scroll', navStatus);
     };
-  }, [goingUp, scroll]);
+  }, [goingUp, scroll, open]);
 
-  return {navBar, goingUp, scroll}
+  return {navBar, goingUp, scroll, open, setOpen}
 }

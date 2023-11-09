@@ -12,7 +12,7 @@ type ToolkitProps = {
 }
 
 export default function Toolkit({onClick, onCopy}: ToolkitProps) {
-  const navStyleHandler = useInteractiveNav();
+  const {goingUp, scroll} = useInteractiveNav();
   const navigate = useNavigate();
 
   const handleShare = () => {
@@ -42,8 +42,8 @@ export default function Toolkit({onClick, onCopy}: ToolkitProps) {
 
   return (
     <div className={`flex s-btw f-width ${styles.tools}
-    ${navStyleHandler.goingUp ? styles.navstate : styles.translateY}
-    ${navStyleHandler.scroll < 4 ? styles.translate0 : ''}
+    ${goingUp ? styles.navstate : styles.translateY}
+    ${scroll < 4 ? styles.translate0 : ''}
     `}>
       <Button onClick={() => navigate(-1)} className={`flex align-y c-pad ${styles.rotate}`}>
         <Svg href={arrowIcon} />

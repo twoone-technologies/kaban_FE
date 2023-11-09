@@ -25,6 +25,12 @@
   border-bottom: 1px solid var(--hover-color);
 }
 
+.nav > a > svg {
+  position: absolute;
+  top: 1rem;
+  z-index: 2000;
+}
+
 .logo {
   color: var(--tertiary-color-1);
 }
@@ -77,6 +83,10 @@
   translate: 0.22rem calc(var(--bar-height) / -9);
 }
 
+.slideUp {
+  transform: translateY(-4rem);
+}
+
 .hide {
   opacity: 0;
   visibility: hidden;
@@ -111,7 +121,7 @@
   width: 100%;
   padding-top: 5rem;
   background-color: var(--tertiary-color-1);
-  height: 100%;
+  height: 100vh;
   transition: var(--animation-timing);
 }
 
@@ -131,6 +141,10 @@
   cursor: pointer;
 }
 
+.bg_color::backdrop.bg {
+  background-color: white;
+}
+
 @media screen and (width >= 768px) {
   .nav {
     position: fixed;
@@ -146,6 +160,7 @@
     background-color: unset;
     position: relative;
     width: max-content;
+    height: 100%;
   }
 
   .hamburger_menu {
