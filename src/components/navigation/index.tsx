@@ -1,24 +1,25 @@
 import { useEffect, useState } from 'react';
-import {
-  Link,
-  useLocation,
-  useNavigate,
-} from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { logoIcon } from '~/assets/icons';
 import Button from '~/components/reusable/Button';
 import styles from './navigation.module.css';
-import navbarData from './navbarData';
+import navbarData, { userData } from './navbarData';
 import Svg from '~/components/reusable/Svg';
 import NavItem from './navitem';
 import Container from '../reusable/Container';
 import useInteractiveNav from '~/hooks/useInteractiveNav';
 import { SignInModal, SignUpModal } from './register/ModalRegister';
+import UserItem from './user';
+import ikon from '~/assets/img/Ikon.png';
+import HamburgerMenu from './HamburgerMenu';
 
 function Navigation() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [login, setLogIn] = useState<'sign_in' | 'sign_up'>('sign_up');
+  const [tooltip, setToolTip] = useState(false);
   const [dropDown, setDropDown] = useState(-1);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
+  const [login, setLogIn] = useState<'sign_in' | 'sign_up'>('sign_up');
   const { navBar, goingUp, open, setOpen } = useInteractiveNav();
 
   const onClickHandler = () => {
@@ -26,12 +27,26 @@ function Navigation() {
   };
 
   useEffect(() => {
+    if (user) {
+      console.log(user);
+      setUser(user);
+    }
+
     setLogIn('sign_up');
 
     return () => {
       login;
     };
-  }, [login]);
+  }, [login, user]);
+
+  interface queryObj {
+    [key: string]: string;
+  }
+  const fName = user[0].fullName.split(' ')[0].split('')[0];
+  const lName = user[0].fullName.split(' ')[1].split('')[0];
+  const fullName = user[0].fullName;
+  const email = user[1].email;
+  console.log({ fName, lName, fullName, email });
 
   const background =
     location.pathname === '/'
@@ -42,11 +57,6 @@ function Navigation() {
     location.pathname === '/'
       ? `${navBar || open === true ? `bg-primary` : styles.logo}`
       : 'bg-primary';
-
-  const menuBtn =
-    location.pathname === '/'
-      ? `${navBar || open ? styles.border : styles.border_1}`
-      : styles.border;
 
   const menuBtn_1 =
     location.pathname === '/'
@@ -79,26 +89,10 @@ function Navigation() {
           className={linkColor}
         />
       </Link>
-      <Button
-        type="button"
-        title="menu"
-        onClick={onClickHandler}
-        className={`flex f-column 
-          ${styles.hamburger_menu} ${menuBtn}`}
-      >
-        <span
-          className={`${styles.line} 
-          ${open && styles.tilt} ${menuBtn_1}`}
-        />
-        <span
-          className={`${styles.line} ${menuBtn_2}
-          ${open ? styles.hide : styles.see}`}
-        />
-        <span
-          className={`${styles.line}
-          ${open && styles.rtilt} ${menuBtn_3}`}
-        />
-      </Button>
+      <HamburgerMenu  onClick={onClickHandler}
+        open={open} line_1={menuBtn_1}
+        line_2={menuBtn_2} line_3={menuBtn_3}
+      />
       <ul
         className={`flex ${styles.nav_content} ${
           open ? styles.open : styles.close
@@ -117,30 +111,51 @@ function Navigation() {
             navState={txtColor}
           />
         ))}
-        <li className={`flex ${styles.reg}`}>
-          <Button
-            type="submit"
-            onClick={() => {
-              setOpen(false);
-              setLogIn('sign_in');
-              navigate({ search: `?login=login/${login}` });
-            }}
-            className={styles.reg_btn}
-          >
-            Register
-          </Button>
-          <SignInModal 
+        <ul className={`flex gap ${styles.reg}`}>
+          {user ? (
+            <li className={`flex gap align-y ${styles.loggedState}`}>
+              <Button className={styles.post_btn}>Post a property</Button>
+              <UserItem
+                className={styles.toggleUser}
+                closeNav={setOpen}
+                firstLetter={fName}
+                lastLetter={lName}
+                drop={tooltip}
+                email={email}
+                subItems={userData}
+                handleClick={() => setToolTip(!tooltip)}
+                mouseOver={() => setToolTip(!tooltip)}
+                verified={true}
+                agentName={fullName}
+              />
+            </li>
+          ) : (
+            <Button
+              type="submit"
+              className={styles.reg_btn}
+              onClick={() => {
+                setOpen(false);
+                setLogIn('sign_in');
+                navigate({ search: `?login=login/${login}` });
+              }}
+            >
+              Register
+            </Button>
+          )}
+          <SignInModal
             isVisible={location.search.split('=')[1] === `login/sign_in`}
             signUpUrl={() => {
-              navigate({ search: `?login=login/sign_up`})
-            }} />
-          <SignUpModal 
-            isVisible={location.search.split('=')[1] === `login/sign_up`} 
+              navigate({ search: `?login=login/sign_up` });
+            }}
+          />
+          <SignUpModal
+            isVisible={location.search.split('=')[1] === `login/sign_up`}
             signInUrl={() => {
               console.log('foo');
-              navigate({ search: `?login=login/sign_in`});
-            }} />
-        </li>
+              navigate({ search: `?login=login/sign_in` });
+            }}
+          />
+        </ul>
       </ul>
     </Container>
   );

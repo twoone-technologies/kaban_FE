@@ -7,10 +7,9 @@ import { useNavigate } from 'react-router-dom';
 
 type ModalProps = {
   isVisible: boolean;
-  onClose: () => void;
 } & React.ComponentProps<'dialog'>;
 
-export default function Modal({ isVisible, children, onClose }: ModalProps) {
+export default function Modal({ isVisible, children }: ModalProps) {
   const modal = useRef(null);
   const navigate = useNavigate()
 
@@ -29,7 +28,6 @@ export default function Modal({ isVisible, children, onClose }: ModalProps) {
     <dialog
       className={`b-radius ${styles.modalWrap}`}
       ref={modal}
-      onClose={onClose}
     >
       <aside className={styles.modal}>
         {children}

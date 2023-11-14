@@ -1,27 +1,34 @@
-import { useState } from 'react';
 import Modal from '../../reusable/modal/Modal';
 import SignUp from './SignUp';
 import SignIn from './SignIn';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
   isVisible: boolean;
-  onClose?: () => void;
   signInUrl?: () => void;
   signUpUrl?: () => void;
 } & React.ComponentProps<'dialog'>;
 
-export function SignUpModal({ isVisible, onClose, signInUrl }: Props) {
+export function SignUpModal({ isVisible, signInUrl }: Props) {
   return (
-    <Modal isVisible={isVisible} onClose={() => onClose}>
-      <SignUp signInUrl={signInUrl}  />
+    <Modal isVisible={isVisible}>
+      <SignUp signInUrl={signInUrl} />
     </Modal>
   );
 }
 
-export function SignInModal({ isVisible, onClose, signUpUrl }: Props) {
+export function SignInModal({ isVisible, signUpUrl }: Props) {
+  const navigate = useNavigate();
   return (
-    <Modal isVisible={isVisible} onClose={() => onClose}>
-      <SignIn signUpUrl={signUpUrl}  />
+    <Modal isVisible={isVisible}>
+      <SignIn
+        signUpUrl={signUpUrl}
+        isLogged={() => {''
+          // setTimeout(() => {
+          //   navigate({ search: `` });
+          // }, 1000);
+        }}
+      />
     </Modal>
   );
 }
