@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import Button from '~/components/reusable/Button';
 
 export default function SignUp({ signInUrl }: { signInUrl?: () => void }) {
+  const navigate = useNavigate()
   return (
     <>
       <h2>Get Started</h2>
@@ -45,7 +46,7 @@ export default function SignUp({ signInUrl }: { signInUrl?: () => void }) {
           placeholder="8+ characters"
         />
         <div className="flex">
-          <Checkbox title="termsPolicy" />
+          <Checkbox name='termsPolicy' title="termsPolicy" />
           <span className={styles.termsPolicy}>
             By creating an account you agree to Kaban{' '}
             <Link className="bg-primary" to={''}>
@@ -57,9 +58,17 @@ export default function SignUp({ signInUrl }: { signInUrl?: () => void }) {
             </Link>
           </span>
         </div>
-        <Button type="submit" className={'flex align-x c-pad'}>
-          Sign Up
-        </Button>
+        <input 
+          name='intent'
+          value='Sign Up'
+          type="submit" 
+          onClick={() => {
+            setTimeout(() => {
+              navigate({ search: `?auth=sign_in`})
+            }, 500);
+          }}
+          className={'flex bg-primary-1 b-radius bg-grey c-tertiary align-x c-pad'}
+        />
         <LineText text="Or continue with" />
         <Button
           type="button"

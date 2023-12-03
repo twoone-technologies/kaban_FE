@@ -21,7 +21,6 @@
   border: none;
   font-family: "Inter", sans-serif;
   scroll-behavior: smooth;
-  transition: all 0.5s ease;
 }
 
 /* $-width-$ */
@@ -145,12 +144,20 @@ svg:hover {
   color: var(--accent-color);
 }
 
+.c-tertiary {
+  color: var(--tertiary-color-1);
+}
+
 .h-grey {
   color: var(--hover-color);
 }
 
 .bg-tertiary {
   background-color: var(--tertiary-color-1);
+}
+
+.bg-primary-1 {
+  background-color: var(--primary-color);;
 }
 
 .bg-primary {

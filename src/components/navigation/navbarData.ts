@@ -1,4 +1,4 @@
-import { aboutUsIcon } from "~/assets/icons";
+import { aboutUsIcon, dashboardIcon, inviteIcon, sign_outIcon, supportIcon } from "~/assets/icons";
 import { contactUsIcon } from "~/assets/icons";
 import { faqIcon } from "~/assets/icons";
 import { house_1Icon } from "~/assets/img";
@@ -72,4 +72,27 @@ const navbarData = {
   }
 }
 export default navbarData
+
+export const userData = [
+  {
+    icon: dashboardIcon,
+    name: 'Dashboad',
+    path: '',
+  },
+  {
+    icon: supportIcon,
+    name: 'Support',
+    path: '',
+  },
+  {
+    icon: inviteIcon,
+    name: 'Invite a realtor',
+    path: '',
+  },
+  {
+    icon: sign_outIcon,
+    name: 'Sign out',
+    path: '',
+  },
+]
 

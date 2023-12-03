@@ -137,3 +137,15 @@ export const starIcon = `${star}#img`;
 
 import verify from "./verify.svg";
 export const verifyIcon = `${verify}#img`;
+
+import dashboard from "./dashboard.svg";
+export const dashboardIcon = `${dashboard}#img`;
+
+import support from "./support.svg";
+export const supportIcon = `${support}#img`;
+
+import invite from "./invite.svg";
+export const inviteIcon = `${invite}#img`;
+
+import sign_out from "./sign_out.svg";
+export const sign_outIcon = `${sign_out}#img`;

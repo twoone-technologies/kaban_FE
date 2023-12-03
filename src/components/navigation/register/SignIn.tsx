@@ -8,7 +8,8 @@ import LineText from './LineText';
 import { Link } from 'react-router-dom';
 import Button from '~/components/reusable/Button';
 
-export default function SignIn({ signUpUrl }: { signUpUrl?: () => void }) {
+export default function SignIn({ signUpUrl, isLogged }: { signUpUrl?: () => void, isLogged: () => void }) {
+  const navigate = useNavigate()
   return (
     <>
       <h2>Welcome</h2>
@@ -46,12 +47,17 @@ export default function SignIn({ signUpUrl }: { signUpUrl?: () => void }) {
             Forgot password?
           </Link>
         </div>
-        <Button type="submit" className={'flex align-x c-pad'}>
-          Sign In
-        </Button>
+        <input
+          onClick={() => isLogged()}
+          name='intent'
+          value={'Sign In'}
+          type="submit" 
+          className={'flex bg-primary-1 b-radius bg-grey c-tertiary align-x c-pad'}
+        />
         <LineText text="Or continue with" />
         <Button
           type="button"
+          onClick={() => navigate(-1)}
           className={`flex gap align-x align-y c-pad ${styles.google_btn}`}
         >
           <Svg height={'1.3rem'} href={googleSvgIcon} />
