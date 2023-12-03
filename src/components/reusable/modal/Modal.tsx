@@ -35,7 +35,7 @@ export default function Modal({ isVisible, children }: ModalProps) {
           className={`f-width ${styles.btn}`}
           onClick={() => {
             modal?.current?.close();
-            navigate({search: ''})
+            navigate(-1)
           }}
         >
           <Svg href={closeIcon} />

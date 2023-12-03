@@ -64,7 +64,7 @@ export default function SignUp({ signInUrl }: { signInUrl?: () => void }) {
           type="submit" 
           onClick={() => {
             setTimeout(() => {
-              navigate({ search: `?login=login/sign_in`})
+              navigate({ search: `?auth=sign_in`})
             }, 500);
           }}
           className={'flex bg-primary-1 b-radius bg-grey c-tertiary align-x c-pad'}

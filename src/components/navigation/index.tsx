@@ -10,7 +10,6 @@ import Container from '../reusable/Container';
 import useInteractiveNav from '~/hooks/useInteractiveNav';
 import { SignInModal, SignUpModal } from './register/ModalRegister';
 import UserItem from './user';
-import ikon from '~/assets/img/Ikon.png';
 import HamburgerMenu from './HamburgerMenu';
 
 function Navigation() {
@@ -26,27 +25,24 @@ function Navigation() {
     setOpen(!open);
   };
 
-  useEffect(() => {
-    if (user) {
-      console.log(user);
-      setUser(user);
-    }
+  // useEffect(() => {
+  //   if (user) {
+  //     console.log(user);
+  //     setUser(user);
+  //   }
 
-    setLogIn('sign_up');
+  //   setLogIn('sign_up');
 
-    return () => {
-      login;
-    };
-  }, [login, user]);
+  //   return () => {
+  //     login;
+  //   };
+  // }, [login, user]);
 
-  interface queryObj {
-    [key: string]: string;
-  }
-  const fName = user[0].fullName.split(' ')[0].split('')[0];
-  const lName = user[0].fullName.split(' ')[1].split('')[0];
-  const fullName = user[0].fullName;
-  const email = user[1].email;
-  console.log({ fName, lName, fullName, email });
+  // const fName = user[0]?.fullName?.split(' ')[0]?.split('')[0];
+  // const lName = user[0]?.fullName?.split(' ')[1]?.split('')[0];
+  // const fullName = user[0]?.fullName;
+  // const email = user[1]?.email;
+  // console.log({ fName, lName, fullName, email });
 
   const background =
     location.pathname === '/'
@@ -115,7 +111,7 @@ function Navigation() {
           {user ? (
             <li className={`flex gap align-y ${styles.loggedState}`}>
               <Button className={styles.post_btn}>Post a property</Button>
-              <UserItem
+              {/* <UserItem
                 className={styles.toggleUser}
                 closeNav={setOpen}
                 firstLetter={fName}
@@ -127,7 +123,7 @@ function Navigation() {
                 mouseOver={() => setToolTip(!tooltip)}
                 verified={true}
                 agentName={fullName}
-              />
+              /> */}
             </li>
           ) : (
             <Button
@@ -136,23 +132,22 @@ function Navigation() {
               onClick={() => {
                 setOpen(false);
                 setLogIn('sign_in');
-                navigate({ search: `?login=login/${login}` });
+                navigate({ search: `?auth=${login}` });
               }}
             >
               Register
             </Button>
           )}
           <SignInModal
-            isVisible={location.search.split('=')[1] === `login/sign_in`}
+            isVisible={location.search.split('=')[1] === `sign_in`}
             signUpUrl={() => {
-              navigate({ search: `?login=login/sign_up` });
+              navigate({ search: `?auth=sign_up` });
             }}
           />
           <SignUpModal
-            isVisible={location.search.split('=')[1] === `login/sign_up`}
+            isVisible={location.search.split('=')[1] === `sign_up`}
             signInUrl={() => {
-              console.log('foo');
-              navigate({ search: `?login=login/sign_in` });
+              navigate({ search: `?auth=sign_in` });
             }}
           />
         </ul>

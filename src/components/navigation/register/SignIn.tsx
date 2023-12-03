@@ -1,4 +1,4 @@
-import { Form } from 'react-router-dom';
+import { Form, useNavigate } from 'react-router-dom';
 import styles from '~/components/reusable/modal/modal.module.css';
 import { googleSvgIcon, logoIcon } from '~/assets/icons';
 import FormInput from '~/components/reusable/FormInput';
@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import Button from '~/components/reusable/Button';
 
 export default function SignIn({ signUpUrl, isLogged }: { signUpUrl?: () => void, isLogged: () => void }) {
+  const navigate = useNavigate()
   return (
     <>
       <h2>Welcome</h2>
@@ -56,6 +57,7 @@ export default function SignIn({ signUpUrl, isLogged }: { signUpUrl?: () => void
         <LineText text="Or continue with" />
         <Button
           type="button"
+          onClick={() => navigate(-1)}
           className={`flex gap align-x align-y c-pad ${styles.google_btn}`}
         >
           <Svg height={'1.3rem'} href={googleSvgIcon} />
