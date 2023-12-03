@@ -85,7 +85,7 @@ export default function AgentDetails({ item, object }: AgentProps) {
             <Link
               onClick={() => handleContact('email')}
               to={`mailto:${item.realtor.email}`}
-              className={`flex gap f-width align-y align-x pad-block-0 pad-inline-1 b-radius ${styles.btn}
+              className={`flex gap f-width align-y align-x pad-block-0 b-radius ${styles.btn}
               ${contact === 'email' && styles.active_btn}`}
             >
               <Svg href={mailIcon} width="1rem" height="1.5rem" />
@@ -95,7 +95,7 @@ export default function AgentDetails({ item, object }: AgentProps) {
             <Link
               onClick={() => handleContact('whatsapp')}
               to={item.realtor.whatsAppLink} target='_blank'
-              className={`flex gap f-width align-y align-x pad-block-0 pad-inline-1 b-radius ${styles.btn}
+              className={`flex gap f-width align-y align-x pad-block-0 b-radius ${styles.btn}
               ${contact === 'whatsapp'&& styles.active_btn}`}
             >
               <Svg href={whatsappIcon} width="1.2rem" height="1.5rem" />

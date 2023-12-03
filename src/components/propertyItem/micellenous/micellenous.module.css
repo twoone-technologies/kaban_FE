@@ -49,6 +49,7 @@ div[title='features'] {
 }
 
 .btn {
+  font-size: 11px;
   border: 1px solid var(--primary-color);
   color: var(--primary-color);
 }
@@ -151,7 +152,7 @@ div[title='features'] {
 }
 
 
-@media screen and (width >= 1024px) {
+@media screen and (width >= 1064px) {
   .checkboxGroup {
     grid-template-columns: repeat(4, 1fr);
   }

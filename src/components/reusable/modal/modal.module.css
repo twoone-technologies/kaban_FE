@@ -1,8 +1,8 @@
 .modalWrap {
-  padding: 1rem;
+  font-size: 14px;
   text-align: center;
-  margin: auto;
-  max-width: 35rem;
+  margin-inline: auto;
+  width: 100%;
   background-color: transparent;
 }
 
@@ -11,9 +11,11 @@
 }
 
 .modal {
+  margin-top: 10%;
   background-color: var(--tertiary-color-1);
   border-radius: 1rem;
   padding: 2rem 1rem;
+  font-size: 11px;
 }
 
 .modal h2 {
@@ -23,22 +25,30 @@
 .btn {
   position: absolute;
   padding: 0.3rem;
-  top: 1.7rem;
-  right: 1.7rem;
+  top: 1rem;
+  right: 0rem;
   width: auto;
   color: var(--tertiary-color-2);
   background-color: var(--hover-color);
 }
 
 .modalWrap::backdrop {
-  background-color: rgba(0, 0, 0, 0.50);
+  background-color: white;
 }
-
 
 /* modal report form */
 .form {
   gap: 1rem;
   margin-block: 1rem;
+}
+
+.span {
+  cursor: pointer;
+}
+
+.input_wrap {
+  display: grid;
+  gap: 1rem;
 }
 
 .input {
@@ -54,11 +64,11 @@
 .svg {
   position: absolute;
   bottom: 0.4rem;
-  left: 17.3rem;
 }
 
 .inputClass {
   border: 1px solid var(--hover-color);
+  font-size: 11px;
 }
 
 .select_input {
@@ -71,26 +81,69 @@
   border: 1px solid var(--hover-color);
 }
 
+.hr {
+  width: 100%;
+  height: 1px;
+  background-color: var(--hover-color);
+}
+
+/* register form */
+.getStarted {
+  margin-top: 1rem;
+}
+
+.google_btn {
+  background-color: unset;
+  border: 1px solid var(--hover-color);
+  color: var(--tertiary-color-2);
+}
+
+.google_btn:hover {
+  border: 1px solid var(--primary-color);
+}
+
+.k_logo {
+  position: absolute;
+  top: 1rem;
+  left: 0.6rem;
+  color: var(--primary-color);
+}
+
 @media screen and (width >= 768px) {
   .modalWrap {
     width: 100%;
-    padding: 1rem;
     text-align: center;
     margin: auto;
-    max-width: 45rem;
+    max-width: 35rem;
     background-color: transparent;
   }
 
+  .modalWrap::backdrop {
+    background-color: rgba(0, 0, 0, 0.50);
+  }
+
+  .k_logo {
+    display: none;
+  }
+
   .modal {
+    margin-top: 0;
     background-color: var(--tertiary-color-1);
     border-radius: 1.5rem;
-    padding: 4rem;
+    padding: 2rem 6rem;
+  }
+
+  .input_wrap {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .termsPolicy {
+    font-size: 9px;
   }
 
   .btn {
-    top: 2.5rem;
-    right: 2.5rem;
+    top: 1.5rem;
+    right: 1.5rem;
   }
-
 }
 

@@ -26,23 +26,7 @@
 
 /* $-width-$ */
 body::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* $-Track-$ */
-body::-webkit-scrollbar-track {
-  background-color: var(--tertiary-color);
-}
-
-/* $-Handle-$ */
-body::-webkit-scrollbar-thumb {
-  background-color: var(--accent-color);
-  border-radius: 8px;
-}
-
-/* $-Handle on hover-$ */
-body::-webkit-scrollbar-thumb:hover {
-  background-color: var(--primary-color);
+  display: none;
 }
 
 #root {
@@ -269,7 +253,7 @@ input:hover+svg {
   .container {
     --gutter: 8rem;
     width: calc(100% - var(--gutter));
-    max-width: 1920px;
+    max-width: 1440px;
     padding-block: 2rem;
     margin-inline: auto;
   }

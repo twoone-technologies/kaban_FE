@@ -1,6 +1,6 @@
 import { Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom"
 import LandingPage, { action as listingSearch } from "./routes/_landingpage"
-import Root from "./routes/_index"
+import Root, {action as signResults } from "./routes/_index"
 import Blog from "./routes/blog"
 import Commercial, {action as comResults } from "./routes/_property.commercial"
 import Industrial, {action as indResults } from "./routes/_property.industrial"
@@ -16,7 +16,7 @@ import CityName, {action as cityResults, loader as citiesLoader} from "./routes/
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Root />}>
+    <Route path="/" element={<Root />} action={signResults}>
       <Route index element={<LandingPage />} action={listingSearch} />
       <Route path="search_results" element={<SearchResults />} action={results} />
       <Route path="property-item/:id" element={<PropertyItem />} />
