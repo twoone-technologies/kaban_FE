@@ -13,6 +13,7 @@ import Agencies from "./routes/_realtors.agencies"
 import SearchResults, {action as results } from "./routes/search_results"
 import PropertyItem from "./components/propertyItem/PropertyItem"
 import CityName, {action as cityResults, loader as citiesLoader} from "./routes/cities.$cityName"
+import Dashboard from "./components/dashboard"
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -30,6 +31,7 @@ export const router = createBrowserRouter(
       <Route path="contact-us" element={<ContactUs />} />
       <Route path="faqs" element={<FAQs />} />
       <Route path="cities/:cityName" element={<CityName />} loader={citiesLoader} action={cityResults} />
+      <Route path="dashboard" element={<Dashboard />} />
     </Route>
   )
 )
