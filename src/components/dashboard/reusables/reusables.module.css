@@ -1,0 +1,54 @@
+.giftIcon {
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  padding: 0.8rem;
+}
+
+.svgWrap {
+  width: 4.5rem;
+  height: 4.5rem;
+  background-color: var(--tertiary-color-5);
+  border: 1px solid var(--primary-color);
+  border-radius: 50%;
+}
+
+.svgClass {
+  color: var(--primary-color);
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.num {
+  font-size: 1.1vw;
+}
+
+.title {
+  font-size: 1vw;
+}
+
+@media screen and (width <= 1024px) {
+  .listingData h4 {
+    font-size: clamp(1rem, 4vw, 1.4rem);
+  }
+
+  .listingData span {
+    font-size: 1rem;
+  }
+
+  .svgWrap {
+    height: 4.4rem;
+  }
+}
+
+@media screen and (width <= 768px) {
+  .listingData span {
+    font-size: 13px;
+  }
+}
+
+
+@media screen and (width <= 500px) {
+  .listingData span {
+    font-size: 13px;
+  }
+}

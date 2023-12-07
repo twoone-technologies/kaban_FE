@@ -6,12 +6,13 @@
   --secondary-color: #141414; /* card text-color */
   --accent-color: #96999b; /* accent color */
   --accent-color-1: #5F6D7E;
-  --hover-color: #edf1f5;
+  --hover-color: #EAEBF0;
   --star-color: #F9B900;
   --tertiary-color-1: #ffffff; /* text color (footer) */
   --tertiary-color-2: #3a424b; /* subtle text color */
   --tertiary-color-3: #fafafa; /* background color */
   --tertiary-color-4: #41ae48; /* featured and savebtn color */ 
+  --tertiary-color-5: #E8EFFD; /* dashboard overlay color */
 }
 
 * {
@@ -78,6 +79,10 @@ svg:hover {
 }
 
 /* $-Utility classes-$ */
+.grid {
+  display: grid;
+}
+
 .flex {
   display: flex;
 }

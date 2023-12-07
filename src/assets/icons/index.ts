@@ -147,5 +147,17 @@ export const supportIcon = `${support}#img`;
 import invite from "./invite.svg";
 export const inviteIcon = `${invite}#img`;
 
+import gift from "./gift.svg";
+export const giftIcon = `${gift}#img`;
+
+import edit from "./edit.svg";
+export const editIcon = `${edit}#img`;
+
+import eye from "./eye.svg";
+export const eyeIcon = `${eye}#img`;
+
+import kbt from "./kbt.svg";
+export const kbtIcon = `${kbt}#img`;
+
 import sign_out from "./sign_out.svg";
 export const sign_outIcon = `${sign_out}#img`;
