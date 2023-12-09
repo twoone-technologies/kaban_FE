@@ -2,7 +2,7 @@ import styles from './insights.module.css'
 import { Link } from 'react-router-dom';
 import { exLinkIcon, eyeIcon, phoneIcon, whatsappIcon } from '~/assets/icons';
 import Svg from '~/components/reusable/Svg';
-import ListingData from '../ListingData';
+import ListingData from '../../reusables/ListingData';
 import ItemInfo from '~/components/propertyItem/itemInfo/ItemInfo';
 
 export default function Insights() {
