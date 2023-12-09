@@ -1,6 +1,6 @@
 import { buildingsIcon, exLinkIcon, kbtIcon } from '~/assets/icons';
 import styles from './agent.module.css';
-import ListingData from '../ListingData';
+import ListingData from '../../reusables/ListingData';
 import { Link } from 'react-router-dom';
 import Svg from '~/components/reusable/Svg';
 

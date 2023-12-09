@@ -1,5 +1,5 @@
 import styles from './invite.module.css';
-import ListingData from '../ListingData';
+import ListingData from '../../reusables/ListingData';
 import { giftIcon, inviteIcon } from '~/assets/icons';
 import Button from '~/components/reusable/Button';
 import Svg from '~/components/reusable/Svg';
