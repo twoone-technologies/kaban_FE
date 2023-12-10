@@ -56,3 +56,9 @@
   width: 3rem;
   height: 3rem;
 }
+
+@media screen and (width <= 900px) {
+  .sidebar {
+    display: none;
+  }
+}
