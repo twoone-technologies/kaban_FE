@@ -17,6 +17,23 @@ export default function Container<El extends keyof JSX.IntrinsicElements>({
   );
 }
 
+export function Wrapper<El extends keyof JSX.IntrinsicElements>({
+  children,
+  element,
+  className,
+  ...rest
+}: {
+  element: El;
+} & React.ComponentProps<El>) {
+  const Comp = element as string;
+
+  return (
+    <Comp className={`wrapper ${className}`} {...rest}>
+      {children}
+    </Comp>
+  );
+}
+
 
 type AdsProps = {
   adContent: ReactNode; // Define a prop called adContent to receive the ad.

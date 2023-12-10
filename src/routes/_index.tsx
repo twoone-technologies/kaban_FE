@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
-import { ActionFunctionArgs, Outlet, redirect, useNavigate } from "react-router-dom";
+import { ActionFunctionArgs, Outlet, redirect, useLocation, useNavigate } from "react-router-dom";
+import Sidebar from "~/components/dashboard/sidebar";
 import Footer from "~/components/footer/Footer";
 import Navigation from "~/components/navigation";
 import "~/styles/main.css";
@@ -45,8 +46,11 @@ export async function action({ request }: ActionFunctionArgs) {
 }
 
 export default function Root() {
+  const location = useLocation()
+
   return (
     <>
+      {location.pathname.includes('dashboard') && <Sidebar />}
       <Navigation />
       <Outlet />
       <Footer />
