@@ -9,7 +9,7 @@ export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
   console.log(...formData);
 
-  let user: { [x: string]: FormDataEntryValue; }[] = [];
+  // let user: { [x: string]: FormDataEntryValue; }[] = [];
   let data: { [x: string]: FormDataEntryValue; }[] = [];
   [...formData].map(([_, val]) => {
     data = [...formData].map(([key, value]) => ({ [key]: value }));
@@ -22,12 +22,13 @@ export async function action({ request }: ActionFunctionArgs) {
         break;
 
       case 'Sign In': {
+        console.log('object');
         // get data from BE
-        user = JSON.parse(localStorage.getItem('user') ?? '')
-        if (user) {
-          console.log(user);
-          return user
-        }
+        // user = JSON.parse(localStorage.getItem('user') ?? '')
+        // if (user) {
+        //   console.log(user);
+        //   return user
+        // }
         break;
       }
 
@@ -35,7 +36,7 @@ export async function action({ request }: ActionFunctionArgs) {
         break;
     }
     console.log(data);
-    return [{ data }, { user }]
+    return [{ data }]
   })
 
   console.log(data);
