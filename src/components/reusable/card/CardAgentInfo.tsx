@@ -24,7 +24,7 @@ export default function CardAgentInfo({
     <div
       className={`flex s-btw f-width align-y b-radius c-pad ${className} ${styles.agent}`}
     >
-      <div className="flex align-y">
+      <div className="flex align-y gap">
         <div className={`${imgClass} ${styles.agent_img_wrap}`}>
           {src ? <img src={src} className={styles.agent_img} alt={'img'} />:
             <div className={`flex align-x align-y ${styles.name_initials}`}>

@@ -113,7 +113,7 @@ export const closeIcon = `${close}#img`;
 import googleSvg from "./googleSvg.svg";
 export const googleSvgIcon = `${googleSvg}#img`;
 
-//agent icons
+//agent icons & dashboard
 import bookmark from "./bookmark.svg";
 export const bookmarkIcon = `${bookmark}#img`;
 
@@ -138,6 +138,7 @@ export const starIcon = `${star}#img`;
 import verify from "./verify.svg";
 export const verifyIcon = `${verify}#img`;
 
+// dashboard icons
 import dashboard from "./dashboard.svg";
 export const dashboardIcon = `${dashboard}#img`;
 
@@ -161,3 +162,12 @@ export const kbtIcon = `${kbt}#img`;
 
 import sign_out from "./sign_out.svg";
 export const sign_outIcon = `${sign_out}#img`;
+
+import insights from "./insights.svg";
+export const insightsIcon = `${insights}#img`;
+
+import wallet from "./wallet.svg";
+export const walletIcon = `${wallet}#img`;
+
+import houseView from "./houseView.svg";
+export const houseViewIcon = `${houseView}#img`;

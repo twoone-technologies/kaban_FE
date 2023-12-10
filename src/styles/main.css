@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap");
 
 :root {
+  --dashboard-col: #437EF7;
   --primary-color: #006aff; /* headlines & active states */
   --secondary-color: #141414; /* card text-color */
   --accent-color: #96999b; /* accent color */

@@ -14,6 +14,11 @@ import SearchResults, {action as results } from "./routes/search_results"
 import PropertyItem from "./components/propertyItem/PropertyItem"
 import CityName, {action as cityResults, loader as citiesLoader} from "./routes/cities.$cityName"
 import Overview from "./components/dashboard/overview"
+import Dashboard from "./components/dashboard"
+import Insight from "./components/dashboard/insight"
+import Listings from "./components/dashboard/mylisting"
+import Wallet from "./components/dashboard/wallet"
+import Support from "./components/dashboard/support"
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -31,7 +36,12 @@ export const router = createBrowserRouter(
       <Route path="contact-us" element={<ContactUs />} />
       <Route path="faqs" element={<FAQs />} />
       <Route path="cities/:cityName" element={<CityName />} loader={citiesLoader} action={cityResults} />
-      <Route path="dashboard/Overview" element={<Overview />} />
+      <Route path="dashboard" element={<Dashboard />} />
+      <Route path="dashboard/overview" element={<Overview />} />
+      <Route path="dashboard/insights" element={<Insight />} />
+      <Route path="dashboard/listings" element={<Listings />} />
+      <Route path="dashboard/wallet" element={<Wallet />} />
+      <Route path="dashboard/support" element={<Support />} />
     </Route>
   )
 )
