@@ -10,7 +10,7 @@ type ModalProps = {
 } & React.ComponentProps<'dialog'>;
 
 export default function Modal({ isVisible, children }: ModalProps) {
-  const modal = useRef(null);
+  const modal = useRef<HTMLDialogElement>(null);
   const navigate = useNavigate()
 
   useEffect(() => {

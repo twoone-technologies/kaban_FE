@@ -3,11 +3,6 @@ import Container from '../../reusable/Container';
 import styles from './sidebar.module.css';
 import {
   logoIcon,
-  buildingsIcon,
-  houseViewIcon,
-  insightsIcon,
-  supportIcon,
-  walletIcon,
   giftIcon,
   inviteIcon,
   verifyIcon,

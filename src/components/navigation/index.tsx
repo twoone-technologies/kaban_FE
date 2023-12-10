@@ -1,23 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { logoIcon } from '~/assets/icons';
 import Button from '~/components/reusable/Button';
 import styles from './navigation.module.css';
-import navbarData, { userData } from './navbarData';
+import navbarData from './navbarData';
 import Svg from '~/components/reusable/Svg';
 import NavItem from './navitem';
 import Container from '../reusable/Container';
 import useInteractiveNav from '~/hooks/useInteractiveNav';
 import { SignInModal, SignUpModal } from './register/ModalRegister';
-import UserItem from './user';
 import HamburgerMenu from './HamburgerMenu';
 
 function Navigation() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [tooltip, setToolTip] = useState(false);
   const [dropDown, setDropDown] = useState(-1);
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
+  const [user] = useState(JSON.parse(localStorage.getItem('user') ?? ''));
   const [login, setLogIn] = useState<'sign_in' | 'sign_up'>('sign_up');
   const { navBar, goingUp, open, setOpen } = useInteractiveNav();
 
@@ -85,14 +83,13 @@ function Navigation() {
           className={linkColor}
         />
       </Link>
-      <HamburgerMenu  onClick={onClickHandler}
+      <HamburgerMenu onClick={onClickHandler}
         open={open} line_1={menuBtn_1}
         line_2={menuBtn_2} line_3={menuBtn_3}
       />
       <ul
-        className={`flex ${styles.nav_content} ${
-          open ? styles.open : styles.close
-        }`}
+        className={`flex ${styles.nav_content} ${open ? styles.open : styles.close
+          }`}
       >
         {Object.entries(navbarData).map(([key, val], idx) => (
           <NavItem

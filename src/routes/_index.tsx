@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react"
-import { ActionFunctionArgs, Outlet, redirect, useLocation, useNavigate } from "react-router-dom";
+import { ActionFunctionArgs, Outlet, useLocation } from "react-router-dom";
 import Sidebar from "~/components/dashboard/sidebar";
 import Footer from "~/components/footer/Footer";
 import Navigation from "~/components/navigation";
@@ -12,19 +11,19 @@ export async function action({ request }: ActionFunctionArgs) {
 
   let user: { [x: string]: FormDataEntryValue; }[] = [];
   let data: { [x: string]: FormDataEntryValue; }[] = [];
-  [...formData].map(([key, val]) => {
+  [...formData].map(([_, val]) => {
     data = [...formData].map(([key, value]) => ({ [key]: value }));
-  
+
     switch (val) {
       case 'Sign Up':
         // send data to BE
         localStorage.setItem('user', JSON.stringify(data));
         console.log('foo');
-      break;
-  
+        break;
+
       case 'Sign In': {
         // get data from BE
-        user = JSON.parse(localStorage.getItem('user'))
+        user = JSON.parse(localStorage.getItem('user') ?? '')
         if (user) {
           console.log(user);
           return user
@@ -36,7 +35,7 @@ export async function action({ request }: ActionFunctionArgs) {
         break;
     }
     console.log(data);
-    return [{data}, {user}]
+    return [{ data }, { user }]
   })
 
   console.log(data);

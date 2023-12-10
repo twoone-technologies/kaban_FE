@@ -1,7 +1,6 @@
 import Modal from '../../reusable/modal/Modal';
 import SignUp from './SignUp';
 import SignIn from './SignIn';
-import { useNavigate } from 'react-router-dom';
 
 type Props = {
   isVisible: boolean;
@@ -18,7 +17,6 @@ export function SignUpModal({ isVisible, signInUrl }: Props) {
 }
 
 export function SignInModal({ isVisible, signUpUrl }: Props) {
-  const navigate = useNavigate();
   return (
     <Modal isVisible={isVisible}>
       <SignIn

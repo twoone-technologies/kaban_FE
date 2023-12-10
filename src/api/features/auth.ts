@@ -22,7 +22,7 @@ export const authApi = api.injectEndpoints({
                 url: '/users/refresh',
                 method: 'GET',
             }),
-            async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+            async onQueryStarted(_, { dispatch, queryFulfilled }) {
                 try {
                     const { data } = await queryFulfilled
                     dispatch(setCredentials({ ...data }))

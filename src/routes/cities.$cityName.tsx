@@ -7,15 +7,15 @@ import { dummyObj } from '~/components/reusable/dummyObj';
 import ResultsWrap from '~/components/reusable/resultsContainer/ResultsWrap';
 import useHeader from '~/hooks/useHeader';
 
-export async function loader({ params, request }: LoaderFunctionArgs) {
-	// Create getURLData function that will 
-	// get the city from params and other query params
+export async function loader({ }: LoaderFunctionArgs) {
+  // Create getURLData function that will 
+  // get the city from params and other query params
   // const { city } = getURLData(request.url);
   // const commercial = dummyObj.filter(
   //   (items) => items.city === city.toLocaleLowerCase(),
   // );
   // return { commercial };
-	return ''
+  return ''
 }
 
 export async function action({ request }: ActionFunctionArgs) {

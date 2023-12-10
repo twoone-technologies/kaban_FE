@@ -1,5 +1,5 @@
-import React, { ReactHTMLElement, useState } from 'react';
-import { arrowIcon, verifyIcon } from '~/assets/icons';
+import React, { useState } from 'react';
+import { verifyIcon } from '~/assets/icons';
 import styles from './user.module.css';
 import Svg from '~/components/reusable/Svg';
 import { Link } from 'react-router-dom';
