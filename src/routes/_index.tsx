@@ -53,7 +53,7 @@ export default function Root() {
       {location.pathname.includes('dashboard') && <Sidebar />}
       <Navigation />
       <Outlet />
-      <Footer />
+      {location.pathname.includes('dashboard') || <Footer />}
     </>
   )
 }

@@ -1,6 +1,6 @@
 .accountDetails {
   border: 1px solid var(--primary-color);
-  min-width: 66vw;
+  min-width: 48vw;
   background-color: var(--tertiary-color-5, #437EF7);
 }
 
