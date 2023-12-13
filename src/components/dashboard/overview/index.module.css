@@ -21,6 +21,10 @@
     flex-direction: column;
     gap: 1rem;
   }
+
+  .walletBlog {
+    flex-direction: column;
+  }
 }
 
 @media screen and (width <= 768px) {
@@ -35,10 +39,6 @@
 
   .linkSvg {
     width: 1.5rem;
-  }
-
-  .walletBlog {
-    flex-direction: column;
   }
 
   .agentCard {

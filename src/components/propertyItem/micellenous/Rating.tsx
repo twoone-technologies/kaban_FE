@@ -7,7 +7,7 @@ export default function Rating({ num }: {num: number | undefined}) {
   const numArr = [1, 2, 3, 4, 5];
 
   return (
-    <div className="flex gap">
+    <div className="flex">
       {numArr.map((number) =>
         number <= num ? (
           <Svg key={number} href={starIcon} className={styles.rated} />

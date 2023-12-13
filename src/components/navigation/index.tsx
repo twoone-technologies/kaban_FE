@@ -10,6 +10,7 @@ import Container from '../reusable/Container';
 import useInteractiveNav from '~/hooks/useInteractiveNav';
 import { SignInModal, SignUpModal } from './register/ModalRegister';
 import HamburgerMenu from './HamburgerMenu';
+import NavBoard from './dashboardNav';
 
 function Navigation() {
   const navigate = useNavigate();
@@ -19,6 +20,9 @@ function Navigation() {
   const [login, setLogIn] = useState<'sign_in' | 'sign_up'>('sign_up');
   const { navBar, goingUp, open, setOpen } = useInteractiveNav();
 
+  if (open === true) document.body.style.overflowY = 'hidden'
+  else document.body.style.overflowY = ''
+  
   const onClickHandler = () => {
     setOpen(!open);
   };
@@ -52,63 +56,57 @@ function Navigation() {
       ? `${navBar || open === true ? `bg-primary` : styles.logo}`
       : 'bg-primary';
 
-  const menuBtn_1 =
-    location.pathname === '/'
-      ? `${navBar || open ? styles.hue_1 : styles.hue_2}`
-      : styles.hue_1;
-
-  const menuBtn_2 =
-    location.pathname === '/'
-      ? `${navBar || open ? styles.hue_1 : styles.hue_2}`
-      : styles.hue_1;
-
-  const menuBtn_3 =
-    location.pathname === '/'
-      ? `${navBar || open ? styles.hue_1 : styles.hue_2}`
-      : styles.hue_1;
-
   const txtColor = location.pathname === '/' ? navBar : true;
 
   return (
-    <Container
-      element="nav"
-      className={`flex f-width ${styles.nav}
+    <>
+      {location.pathname.includes('dashboard') ? (
+        <NavBoard />
+      ) : (
+        <Container
+          element="nav"
+          className={`flex f-width ${styles.nav}
       ${background} ${goingUp && styles.slideUp}`}
-    >
-      <Link to={'/'} onClick={() => setOpen(false)}>
-        <Svg
-          href={logoIcon}
-          width="100px"
-          height="40px"
-          className={linkColor}
-        />
-      </Link>
-      <HamburgerMenu onClick={onClickHandler}
-        open={open} line_1={menuBtn_1}
-        line_2={menuBtn_2} line_3={menuBtn_3}
-      />
-      <ul
-        className={`flex ${styles.nav_content} ${open ? styles.open : styles.close
-          }`}
-      >
-        {Object.entries(navbarData).map(([key, val], idx) => (
-          <NavItem
-            key={key}
-            title={key}
-            closeNav={setOpen}
-            href={val.href}
-            subItems={val.subItems}
-            drop={dropDown === idx}
-            handleClick={() => setDropDown((prev) => (prev === idx ? -1 : idx))}
-            mouseOver={() => setDropDown((prev) => (prev === idx ? -1 : idx))}
-            navState={txtColor}
+        >
+          <Link to={'/'} onClick={() => setOpen(false)}>
+            <Svg
+              href={logoIcon}
+              width="100px"
+              height="40px"
+              className={linkColor}
+            />
+          </Link>
+          <HamburgerMenu
+            onClick={onClickHandler}
+            open={open}
           />
-        ))}
-        <ul className={`flex gap ${styles.reg}`}>
-          {user ? (
-            <li className={`flex gap align-y ${styles.loggedState}`}>
-              <Button className={styles.post_btn}>Post a property</Button>
-              {/* <UserItem
+          <ul
+            className={`flex ${styles.nav_content} ${
+              open ? styles.open : styles.close
+            }`}
+          >
+            {Object.entries(navbarData).map(([key, val], idx) => (
+              <NavItem
+                key={key}
+                title={key}
+                closeNav={setOpen}
+                href={val.href}
+                subItems={val.subItems}
+                drop={dropDown === idx}
+                handleClick={() =>
+                  setDropDown((prev) => (prev === idx ? -1 : idx))
+                }
+                mouseOver={() =>
+                  setDropDown((prev) => (prev === idx ? -1 : idx))
+                }
+                navState={txtColor}
+              />
+            ))}
+            <ul className={`flex gap ${styles.reg}`}>
+              {user ? (
+                <li className={`flex gap align-y ${styles.loggedState}`}>
+                  <Button className={styles.post_btn}>Post a property</Button>
+                  {/* <UserItem
                 className={styles.toggleUser}
                 closeNav={setOpen}
                 firstLetter={fName}
@@ -121,35 +119,37 @@ function Navigation() {
                 verified={true}
                 agentName={fullName}
               /> */}
-            </li>
-          ) : (
-            <Button
-              type="submit"
-              className={styles.reg_btn}
-              onClick={() => {
-                setOpen(false);
-                setLogIn('sign_in');
-                navigate({ search: `?auth=${login}` });
-              }}
-            >
-              Register
-            </Button>
-          )}
-          <SignInModal
-            isVisible={location.search.split('=')[1] === `sign_in`}
-            signUpUrl={() => {
-              navigate({ search: `?auth=sign_up` });
-            }}
-          />
-          <SignUpModal
-            isVisible={location.search.split('=')[1] === `sign_up`}
-            signInUrl={() => {
-              navigate({ search: `?auth=sign_in` });
-            }}
-          />
-        </ul>
-      </ul>
-    </Container>
+                </li>
+              ) : (
+                <Button
+                  type="submit"
+                  className={styles.reg_btn}
+                  onClick={() => {
+                    setOpen(false);
+                    setLogIn('sign_in');
+                    navigate({ search: `?auth=${login}` });
+                  }}
+                >
+                  Register
+                </Button>
+              )}
+              <SignInModal
+                isVisible={location.search.split('=')[1] === `sign_in`}
+                signUpUrl={() => {
+                  navigate({ search: `?auth=sign_up` });
+                }}
+              />
+              <SignUpModal
+                isVisible={location.search.split('=')[1] === `sign_up`}
+                signInUrl={() => {
+                  navigate({ search: `?auth=sign_in` });
+                }}
+              />
+            </ul>
+          </ul>
+        </Container>
+      )}
+    </>
   );
 }
 
