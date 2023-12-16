@@ -268,7 +268,7 @@ input:hover+svg {
   }
 }
 
-@media screen and (width >= 900px) {
+@media screen and (width > 800px) {
   .wrapper {
     padding-top: 3.5rem;
     padding-inline: 1.3rem;

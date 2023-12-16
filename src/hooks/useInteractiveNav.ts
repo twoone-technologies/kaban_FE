@@ -6,9 +6,6 @@ export default function useInteractiveNav() {
   const [goingUp, setGoingUp] = useState(false);
   const [scroll, setScroll] = useState(0);
 
-  if (open) document.body.style.overflowY = 'hidden'
-  else document.body.style.overflowY = ''
-
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -33,7 +30,7 @@ export default function useInteractiveNav() {
     return () => {
       window.addEventListener('scroll', navStatus);
     };
-  }, [goingUp, scroll, open]);
+  }, [goingUp, scroll]);
 
   return {navBar, goingUp, scroll, open, setOpen}
 }

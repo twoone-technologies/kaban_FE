@@ -1,6 +1,5 @@
-
 .wallet {
-  min-width: 20rem;
+  min-width: 18rem;
   border: 1px solid var(--hover-color);
 }
 

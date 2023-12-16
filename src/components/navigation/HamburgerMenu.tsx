@@ -1,40 +1,54 @@
 import styles from '~/components/navigation/navigation.module.css';
 import Button from '../reusable/Button';
+import useInteractiveNav from '~/hooks/useInteractiveNav';
 
 type Props = {
   open: boolean;
   onClick: () => void;
-  line_1: string;
-  line_2: string;
-  line_3: string;
+  className?: string;
 };
 
 export default function HamburgerMenu({
   open,
   onClick,
-  line_1,
-  line_2,
-  line_3,
+  className
 }: Props) {
+  const { navBar } = useInteractiveNav();
+
+  const menuBtn_1 =
+    location.pathname === '/'
+      ? `${navBar || open ? styles.hue_1 : styles.hue_2}`
+      : styles.hue_1;
+
+  const menuBtn_2 =
+    location.pathname === '/'
+      ? `${navBar || open ? styles.hue_1 : styles.hue_2}`
+      : styles.hue_1;
+
+  const menuBtn_3 =
+    location.pathname === '/'
+      ? `${navBar || open ? styles.hue_1 : styles.hue_2}`
+      : styles.hue_1;
+
   return (
     <Button
       type="button"
       title="menu"
       onClick={onClick}
       className={`flex f-column 
-          ${styles.hamburger_menu}`}
+        ${styles.hamburger_menu} ${className}`}
     >
       <span
         className={`${styles.line} 
-          ${open && styles.tilt} ${line_1}`}
+          ${open && styles.tilt} ${menuBtn_1}`}
       />
       <span
-        className={`${styles.line} ${line_2}
+        className={`${styles.line} ${menuBtn_2}
           ${open ? styles.hide : styles.see}`}
       />
       <span
         className={`${styles.line}
-          ${open && styles.rtilt} ${line_3}`}
+          ${open && styles.rtilt} ${menuBtn_3}`}
       />
     </Button>
   );

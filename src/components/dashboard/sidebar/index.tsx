@@ -12,12 +12,23 @@ import { sidebarArr } from './sidebar';
 import Button from '~/components/reusable/Button';
 import CardAgentInfo from '~/components/reusable/card/CardAgentInfo';
 import { IkonIcon } from '~/assets/img';
+import { ReactNode } from 'react';
 
-export default function Sidebar() {
+type Props = {
+  className?: string;
+  koinNode?: ReactNode;
+  agentClass?: string;
+  referClass?: string;
+  onClick?: () => void;
+} 
+
+export default function Sidebar({className, koinNode, agentClass, referClass, onClick}: Props) {
+  const route = location.pathname?.split('/')[2]
+
   return (
     <Container
       element="section"
-      className={`flex f-column gap-05 ${styles.sidebar}`}
+      className={`flex f-column gap-05 ${className} ${styles.sidebar}`}
     >
       <Link to={'/'} className="pad-1">
         <Svg
@@ -27,20 +38,23 @@ export default function Sidebar() {
           className="bg-primary"
         />
       </Link>
+      {koinNode}
       <ul className="flex f-column">
         <li className={`flex pad-1 f-width align-y`}>
           <h5>Main</h5>
         </li>
         {sidebarArr.map((link) => (
           <li key={link.svg}>
-            <Link className={`flex gap-1 pad-1 f-width align-y ${styles.link}`} to={`dashboard/${link.link}`}>
+            <Link onClick={onClick} 
+              className={`flex gap-1 pad-1 f-width align-y ${styles.link}
+              ${link.link === route && styles.isActive}`} to={`dashboard/${link.link}`}>
               <Svg href={link.svg} />
               <span>{link.route}</span>
             </Link>
           </li>
         ))}
       </ul>
-      <div className={`flex f-column b-radius pad gap ${styles.refer}`}>
+      <div className={`flex f-column b-radius pad gap ${referClass} ${styles.refer}`}>
         <div className={`flex align-y align-x ${styles.svgWrap}`}>
           <Svg href={giftIcon} /></div>
         <h4>Refer & Earn</h4>
@@ -49,9 +63,9 @@ export default function Sidebar() {
           <Svg href={inviteIcon} />
           invite a realtor
         </Button>
-      </div><hr className={styles.hr} />
+      </div>
       <CardAgentInfo star={4} 
-        className={`pad-1 ${styles.cardAgentInfo}`}
+        className={`pad-1 ${agentClass} ${styles.cardAgentInfo}`}
         imgClass={styles.img}
         src={IkonIcon}
         identity={

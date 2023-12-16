@@ -24,6 +24,13 @@
   border-left: 3px solid var(--primary-color);
   color: var(--primary-color);
   background-color: var(--tertiary-color-5);
+  transition: color 300ms ease-in-out;
+}
+
+.isActive {  
+  border-left: 3px solid var(--primary-color);
+  color: var(--primary-color);
+  background-color: var(--tertiary-color-5);
 }
 
 .refer {
@@ -48,11 +55,8 @@
   background-color: var(--tertiary-color-1);
 }
 
-.hr {
-  border: 1px solid var(--hover-color);
-}
-
 .cardAgentInfo {
+  border-top: 1px solid var(--hover-color);
   background-color: unset;
   margin-top: 1rem;
 }
@@ -62,7 +66,7 @@
   height: 3rem;
 }
 
-@media screen and (width <= 900px) {
+@media screen and (width <= 800px) {
   .sidebar {
     display: none;
   }
