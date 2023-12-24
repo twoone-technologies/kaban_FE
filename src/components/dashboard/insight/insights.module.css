@@ -1,0 +1,70 @@
+.dataWrap {
+  gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.data {
+  background-color: var(--tertiary-color-5);
+}
+
+.wallet {
+  min-width: 18rem;
+  border: 1px solid var(--hover-color);
+}
+
+.listKbt {
+  position: absolute;
+  right: 0.5rem;
+}
+
+.svgWrapper {
+  position: relative;
+  text-align: center;
+}
+
+.kbtTotal {
+  top: -7rem;
+  position: relative;
+}
+
+.listItem {
+  list-style-type: disc;
+  position: relative;
+  border-bottom: 1px solid var(--hover-color);
+}
+
+.listItem1 {
+  list-style-type: disc;
+  position: relative;
+  border-bottom: 1px solid var(--hover-color);
+}
+
+.listItem::marker {
+  color: var(--primary-color)
+}
+
+.listItem1::marker {
+  color: var(--dashboard-col)
+}
+
+.figs {
+  position: absolute;
+  right: 1rem;
+}
+
+.c_rate {
+  position: absolute;
+  top: 0;
+}
+
+@media screen and (width <= 1024px) {
+  .dataWrap {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (width < 425px) {
+  .dataWrap {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

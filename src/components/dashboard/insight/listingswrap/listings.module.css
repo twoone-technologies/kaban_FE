@@ -1,0 +1,80 @@
+table {
+  width: 90%;
+  font-size: 2vw;
+  outline: 1px solid var(--hover-color);
+  border-collapse: collapse;
+}
+
+table td,
+table th,
+table tr {
+  padding: 8px;
+  border-radius: 4px;
+  color: var(--accent-color);
+}
+
+table tbody tr {
+  border-top: 1px solid var(--hover-color);
+}
+
+table th {
+  padding: 13px 9px;
+  text-align: left;
+  font-weight: 700;
+}
+
+table tr:hover {
+  /* background-color: var(--hover-color); */
+}
+
+.margin {
+  /* border: 1px solid black; */
+  /* outline: 2px solid black; */
+  /* background-color: aqua; */
+}
+
+/* .margins {
+  padding-inline: 1rem;
+  color: var(--accent-color);
+  background-color: var(--primary-color);
+  border-radius: 4px;
+  cursor: pointer;
+} */
+
+.img {
+  border-radius: unset;
+}
+
+.bgCard {
+  border-radius: unset;
+  background-color: unset;
+}
+
+.address {
+  position: relative;
+}
+
+.listings {
+  color: var(--tertiary-color-2);
+}
+
+.address span {
+  color: var(--accent-color);
+  margin-left: 9px;
+}
+
+.locationSvg {
+  position: absolute;
+  top: -6px;
+}
+
+.td {
+  padding-inline: 1rem;
+}
+
+@media screen and (width >= 768px) {
+  table {
+    width: 70%;
+    font-size: 1vw;
+  }
+}

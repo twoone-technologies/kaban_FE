@@ -29,7 +29,7 @@ export type HouseCard = {
   property_category: string;
   property_type: string;
   description: string;
-  status: string;
+  status: 'featured' | 'sale' | 'rent';
   featured: boolean;
   price: {
     amount: number;
