@@ -4,7 +4,6 @@ import { buildingsIcon } from '~/assets/icons';
 import styles from './insights.module.css';
 import ItemInfo from '~/components/propertyItem/itemInfo/ItemInfo';
 import Listings from './listingswrap';
-import LineChat from '../reusables/charts/LineChat';
 
 export default function Insight() {
   const radius = 70;

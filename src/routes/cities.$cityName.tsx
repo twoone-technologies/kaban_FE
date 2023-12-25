@@ -3,6 +3,7 @@ import {
   LoaderFunctionArgs,
   redirect,
 } from 'react-router-dom';
+import { HouseCard } from '~/components/reusable/card/Card';
 import { dummyObj } from '~/components/reusable/dummyObj';
 import ResultsWrap from '~/components/reusable/resultsContainer/ResultsWrap';
 import useHeader from '~/hooks/useHeader';
@@ -44,8 +45,8 @@ export async function action({ request }: ActionFunctionArgs) {
 
 export default function CityName() {
   const { cityStatus, stat, city } = useHeader();
-  // console.log(city.toLocaleLowerCase());
-  const commercial = dummyObj.filter(
+  const commercial = dummyObj as HouseCard[]
+  commercial.filter(
     (items) => items.city === city.toLocaleLowerCase(),
   );
   const currCity = city.replace('+', ' ') ?? '';

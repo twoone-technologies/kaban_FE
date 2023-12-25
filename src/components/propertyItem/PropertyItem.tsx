@@ -23,9 +23,10 @@ export default function PropertyItem() {
 
   const listing = dummyObj.find((item) => parseInt(item.id) === Number(id));
   const listingItem = listing as HouseCard;
+  const listingArray = dummyObj as HouseCard[];
 
   const filterObj = () => {
-    const similarItems = dummyObj.filter(
+    const similarItems = listingArray.filter(
       (card) => listingItem?.property_type === card.property_type
     );
     similarItems.sort((a, b) => a.price.amount - b.price.amount);
@@ -51,10 +52,10 @@ export default function PropertyItem() {
           <GalleryAndHeader item={listingItem} />
           <PropertyDetails item={listingItem} />
           <DescriptionAndFeatures item={listingItem} />
-          <VideoMap item={listingItem} properties={dummyObj} />
+          <VideoMap item={listingItem} properties={listingArray} />
         </div>
         <div className={`flex f-column gap ${styles.item_details}`}>
-          <AgentDetails item={listingItem} object={dummyObj} />
+          <AgentDetails item={listingItem} object={listingArray} />
           <Text />
           <Ads adContent={<h1 className={styles.content}></h1>} />
         </div>

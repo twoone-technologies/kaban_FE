@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { Form } from 'react-router-dom';
 import styles from './listings.module.css'
 import CardAgentInfo from '~/components/reusable/card/CardAgentInfo';

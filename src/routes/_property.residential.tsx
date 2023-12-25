@@ -1,4 +1,5 @@
 import { ActionFunctionArgs, redirect } from 'react-router-dom';
+import { HouseCard } from '~/components/reusable/card/Card';
 import { dummyObj } from '~/components/reusable/dummyObj';
 import ResultsWrap from '~/components/reusable/resultsContainer/ResultsWrap';
 import useHeader from '~/hooks/useHeader';
@@ -29,12 +30,13 @@ export async function action({ request }: ActionFunctionArgs) {
 
 export default function Residential() {
   const { category, city, cityStatus, stat } = useHeader();
+  const residential = dummyObj as HouseCard[]
   return (
     <ResultsWrap
       city={city}
       status={stat}
       propertyCategory={category}
-      object={dummyObj}
+      object={residential}
       onSubmit={() => {
         setTimeout(() => {
           cityStatus();
