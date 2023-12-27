@@ -71,10 +71,10 @@
 
 .label_svg {
   position: relative;
-  top: 0.4rem;
+  top: 0.3rem;
 }
 
-.status {
+.sale {
   font-size: 10px;
   color: var(--primary-color);
   background-color: #006aff2f;
@@ -84,6 +84,11 @@
   font-size: 10px;
   background-color: #41ae483f;
   color: var(--tertiary-color-4);
+}
+
+.rent {
+  background-color: #FFF8EB;
+  color: #EEA23E;
 }
 
 .below {

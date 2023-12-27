@@ -13,9 +13,9 @@ export default function GalleryAndHeader({item}: {item: HouseCard}) {
         <h5>{item?.property_type}</h5>
         <div className={`flex gap ${styles.status_grp}`}>
           {item?.featured ? (
-            <Label type="featured" text="Featured" />
+            <Label type="featured" />
           ) : null}
-          <Label type="status" text={`For ${item?.status}`} />
+          <Label type={item?.status} />
         </div>
       </div>
       <div className={`flex gap s-btw ${styles.title_price}`}>

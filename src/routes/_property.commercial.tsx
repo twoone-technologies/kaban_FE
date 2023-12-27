@@ -1,4 +1,5 @@
 import { ActionFunctionArgs, redirect } from 'react-router-dom';
+import { HouseCard } from '~/components/reusable/card/Card';
 import { dummyObj } from '~/components/reusable/dummyObj';
 import ResultsWrap from '~/components/reusable/resultsContainer/ResultsWrap';
 import useHeader from '~/hooks/useHeader';
@@ -29,7 +30,8 @@ export async function action({ request }: ActionFunctionArgs) {
 
 export default function Commercial() {
   const {category, city, cityStatus, stat} = useHeader();
-  const commercial = dummyObj.filter(
+  const commercial = dummyObj as HouseCard[]
+  commercial.filter(
     (items) => items.property_category === 'commercial',
   );
 
