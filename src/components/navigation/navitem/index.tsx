@@ -13,9 +13,9 @@ type Props = {
     name: string;
     path: string;
   }[];
-  navState: boolean;
+  navState?: boolean;
   drop: boolean;
-  closeNav: (arg:boolean) => void;
+  closeNav?: (arg:boolean) => void;
   handleClick: () => void;
   mouseOver: () => void;
 }
@@ -48,7 +48,7 @@ const NavItem = ({ title, href, subItems, navState, drop, handleClick, mouseOver
             {subItems?.map((item, id) => (
               <Link to={item.path} key={id}
                 onMouseEnter={() => sethover(id)} onMouseLeave={() => sethover(-1)}
-                onClick={() => closeNav(false)}
+                onClick={() => closeNav && closeNav(false)}
                 className={`flex pad b-radius ${styles.nav_item_link}`}>
                 {hover === id && drop ?
                   <Svg href={`${item.icon}`} className={`${drop ? styles.blue : styles.ash}`} /> :

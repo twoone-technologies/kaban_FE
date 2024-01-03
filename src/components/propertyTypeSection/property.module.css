@@ -40,9 +40,7 @@
   background-position: center center;
   background-blend-mode: overlay;
   height: 100%;
-
   padding: 1rem;
-
   cursor: pointer;
   transition: scale 250ms ease-in-out;
 }
@@ -54,7 +52,7 @@
   background: rgba(0, 0, 0, 0.40);
   backdrop-filter: blur(25px);
 
-  padding: .8rem;
+  padding: 0.8rem;
   position: absolute;
   top: 80%;
   left: 30%;
@@ -62,7 +60,7 @@
   width: max-content;
   max-width: 90%;
   border: 1px solid rgba(255, 255, 255, 0.20);
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   z-index: 1;
   
   color: rgb(255, 255, 255);
@@ -91,17 +89,20 @@
     grid-template-areas: "a" "b" "c";
     grid-template-columns: 1fr;
   }
+
   .card_container:nth-child(1) {
     aspect-ratio: 4/3;
   }
+
   .card_container:nth-child(2) {
     aspect-ratio: 4/3;
   }
+
   .card_container:nth-child(3) {
     aspect-ratio: 4/3;
   }
+
   .sm_card {top: 80%;
     left: 50%;
   }
-  
 }

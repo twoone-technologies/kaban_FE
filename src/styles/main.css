@@ -135,7 +135,7 @@ svg:hover {
 
 .stack {
   z-index: 100;
-};
+}
 
 .f-height {
   height: 100%;
@@ -163,7 +163,7 @@ svg:hover {
 }
 
 .bg-primary-1 {
-  background-color: var(--primary-color);;
+  background-color: var(--primary-color);
 }
 
 .bg-primary {

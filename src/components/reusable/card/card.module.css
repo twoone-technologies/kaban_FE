@@ -106,7 +106,7 @@
 }
 
 .header h3 {
-  font-size: clamp(12px, 4vw, 1rem)
+  font-size: clamp(12px, 4vw, 1rem);
 }
 
 .icons {
