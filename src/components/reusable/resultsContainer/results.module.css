@@ -33,7 +33,7 @@
 }
 
 .activeElement {
-  box-shadow: 1px 1px 10px 1px  #71737674;
+  box-shadow: 1px 1px 10px 1px #71737674;
 }
 
 @media screen and (width < 768px) {
