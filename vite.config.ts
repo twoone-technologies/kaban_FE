@@ -5,6 +5,9 @@ import { resolve } from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  build: {
+    outDir: 'dist', // Adjust this to your preferred build directory
+  },
   resolve: {
     alias: {
       "~": resolve(__dirname, "src")
