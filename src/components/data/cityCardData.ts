@@ -1,22 +1,24 @@
+import { asabaImg, calabarImg, phImg, uyoImg } from "~/assets/img";
+
 export const cities = [
     {
         name: 'Port Harcourt',
         slogan: 'The treasure base',
-        image: "/src/assets/img/ph.png",
+        image: phImg,
     },
     {
         name: 'Asaba',
         slogan: 'The big heart',
-        image: "/src/assets/img/asaba.png",
+        image: asabaImg,
     },
     {
         name: 'Calabar',
         slogan: "The Nation's paradise",
-        image: "/src/assets/img/calabar.png",
+        image: calabarImg,
     },
     {
         name: 'Uyo',
         slogan: 'The land of promise',
-        image: "/src/assets/img/uyo.png",
+        image: uyoImg,
     },
 ]

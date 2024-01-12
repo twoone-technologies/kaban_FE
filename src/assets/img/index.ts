@@ -30,3 +30,15 @@ export const smilingCoupleImg = smilingCouple;
 
 import blankImg from "./blank-img.png";
 export const blankPic = blankImg;
+
+import asaba from "./asaba.png";
+export const asabaImg = asaba;
+
+import calabar from "./calabar.png";
+export const calabarImg = calabar;
+
+import ph from "./ph.png";
+export const phImg = ph;
+
+import uyo from "./uyo.png";
+export const uyoImg = uyo;
