@@ -103,3 +103,13 @@ export const bellIcon = `${bell}#img`;
 
 import close from "./close.svg";
 export const closeIcon = `${close}#img`;
+
+// about-us icons
+import userLight from "./user-light.svg";
+export const userIcon = `${userLight}#img`;
+
+import grommet from "./grommet.svg";
+export const grommetIcon = `${grommet}#img`;
+
+import transparency from "./transparency.svg";
+export const transparencyIcon = `${transparency}#img`;

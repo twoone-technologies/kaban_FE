@@ -1,5 +1,9 @@
+import AboutUsSection from "~/components/aboutUsSection/AboutUsSection";
+
 export default function AboutUs() {
     return (
-        <div>About Us</div>
+        <>
+        <AboutUsSection />
+        </>
     )
 }
