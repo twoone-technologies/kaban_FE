@@ -216,6 +216,7 @@ svg:hover {
 .btn {
   background-color: var(--primary-color);
   border-radius: 5px;
+  font-size: inherit;
   color: var(--tertiary-color-1);
 }
 

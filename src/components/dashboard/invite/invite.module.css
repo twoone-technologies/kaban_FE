@@ -1,0 +1,16 @@
+.invite {
+  text-align: left;
+  padding-top: 2rem;
+}
+
+.referal {
+  background-color: var(--hover-color);
+}
+
+.invite_grp {
+  border: 1px solid var(--hover-color);
+}
+
+.invite_grp div:not(:last-child) {
+  border-bottom: 1px solid var(--hover-color);
+}

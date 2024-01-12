@@ -7,9 +7,10 @@ import { useNavigate } from 'react-router-dom';
 
 type ModalProps = {
   isVisible: boolean;
+  closeModal?: () => void;
 } & React.ComponentProps<'dialog'>;
 
-export default function Modal({ isVisible, children }: ModalProps) {
+export default function Modal({ isVisible, closeModal, children }: ModalProps) {
   const modal = useRef<HTMLDialogElement>(null);
   const navigate = useNavigate()
 
@@ -35,7 +36,8 @@ export default function Modal({ isVisible, children }: ModalProps) {
           className={`f-width ${styles.btn}`}
           onClick={() => {
             modal?.current?.close();
-            navigate(-1)
+            // navigate(-1)
+            closeModal && closeModal()
           }}
         >
           <Svg href={closeIcon} />

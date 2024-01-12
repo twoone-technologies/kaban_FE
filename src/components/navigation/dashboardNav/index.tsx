@@ -13,13 +13,17 @@ export default function NavBoard() {
   const header = route.charAt(0).toUpperCase() + route.slice(1);
 
   const { open, goingUp, navBar, setOpen } = useInteractiveNav();
-  if (open === true) document.body.style.overflowY = 'hidden'
-  else document.body.style.overflowY = ''
+  if (open === true) document.body.style.overflowY = 'hidden';
+  else document.body.style.overflowY = '';
 
   return (
     <>
-      <div className={`flex f-width s-btw align-y
-        ${goingUp && styles.slideUp} ${navBar && styles.slideBg} ${styles.navBar}`}>
+      <div
+        className={`flex f-width s-btw align-y
+        ${goingUp && styles.slideUp} ${navBar && styles.slideBg} ${
+          styles.navBar
+        }`}
+      >
         <h4>{header}</h4>
         <div className={`flex align-y gap-2`}>
           <div className={`flex gap ${styles.coinWrap}`}>
@@ -41,17 +45,22 @@ export default function NavBoard() {
           <Sidebar
             className={`${open && styles.isVisible} ${styles.mobileNav}`}
             koinNode={
-              <div className={`flex s-btw pad-15 ${styles.coinAlert}`}>
-                <div className={`flex gap ${styles.navCoinWrap}`}>
-                  <Svg href={kbtIcon} />
-                  <div className={`flex f-column ${styles.navCurrency}`}>
-                    <small>100.00</small>
-                    <small>≈ ₦1000</small>
+              <div className='flex f-column align-x pad-inline-1'>
+                <div className={`flex s-btw ${styles.coinAlert}`}>
+                  <div className={`flex gap ${styles.navCoinWrap}`}>
+                    <Svg href={kbtIcon} />
+                    <div className={`flex f-column ${styles.navCurrency}`}>
+                      <small>100.00</small>
+                      <small>≈ ₦1000</small>
+                    </div>
+                  </div>
+                  <div className={`flex align-y align-x ${styles.navBellWrap}`}>
+                    <Svg href={bellIcon} />
                   </div>
                 </div>
-                <div className={`flex align-y align-x ${styles.navBellWrap}`}>
-                  <Svg href={bellIcon} />
-                </div>
+                <Button className='pad-block-0'>
+                  post a property
+                </Button>
               </div>
             }
             onClick={() => setOpen(false)}
