@@ -1,7 +1,10 @@
+.table_wrap {
+  outline: 1px solid var(--hover-color);
+}
+
 table {
   width: 90%;
   font-size: 2vw;
-  outline: 1px solid var(--hover-color);
   border-collapse: collapse;
 }
 
@@ -13,8 +16,8 @@ table tr {
   color: var(--accent-color);
 }
 
-table tbody tr {
-  border-top: 1px solid var(--hover-color);
+tr {
+  border-bottom: 1px solid var(--hover-color);
 }
 
 table th {
@@ -23,8 +26,8 @@ table th {
   font-weight: 700;
 }
 
-table tr:hover {
-  /* background-color: var(--hover-color); */
+tr:hover {
+  background-color: var(--hover-color);
 }
 
 .margin {
@@ -69,12 +72,44 @@ table tr:hover {
 }
 
 .td {
-  padding-inline: 1rem;
+  padding-inline: 0.5rem;
+}
+
+.pagination {
+  color: var(--accent-color);
 }
 
 @media screen and (width >= 768px) {
   table {
     width: 70%;
     font-size: 1vw;
+  }
+}
+
+@media screen and (width <= 600px) {
+  th:nth-of-type(n+2) {
+    display: none;
+  }
+
+  td {
+    font-size: 1.2rem;
+  }
+
+  .address {
+    font-size: 1rem;
+  }
+
+  .address svg {
+    margin-top: 0.2rem;
+    width: 0.9rem;
+    height: 2rem;
+  }
+  
+  .address span {
+    margin-left: 1rem;
+  }
+
+  td:nth-of-type(n+2) {
+    display: none;
   }
 }
