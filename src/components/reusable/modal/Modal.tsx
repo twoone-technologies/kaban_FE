@@ -3,7 +3,6 @@ import Button from '~/components/reusable/Button';
 import styles from './modal.module.css';
 import Svg from '~/components/reusable/Svg';
 import { closeIcon } from '~/assets/icons';
-import { useNavigate } from 'react-router-dom';
 
 type ModalProps = {
   isVisible: boolean;
@@ -12,7 +11,6 @@ type ModalProps = {
 
 export default function Modal({ isVisible, closeModal, children }: ModalProps) {
   const modal = useRef<HTMLDialogElement>(null);
-  const navigate = useNavigate()
 
   useEffect(() => {
     if (isVisible) {
