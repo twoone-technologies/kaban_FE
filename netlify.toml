@@ -1,0 +1,3 @@
+[build]
+  command = "npm run build"  # Adjust the build command if necessary
+  publish = "dist"

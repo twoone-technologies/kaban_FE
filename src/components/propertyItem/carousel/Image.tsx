@@ -1,4 +1,4 @@
-import styles from './propertyItem.module.css';
+import styles from './carousel.module.css';
 
 type Props = {
   currentIndex: number;
@@ -8,7 +8,6 @@ type Props = {
 } & React.ComponentProps<'li'>;
 
 export default function Image({ num, currentIndex, src, onClick }: Props) {
-
   const image = onClick !== undefined ? (
     <li
       onClick={onClick}
@@ -26,7 +25,7 @@ export default function Image({ num, currentIndex, src, onClick }: Props) {
   ): (
     <li className={`${num === currentIndex ? styles.active : styles.slide}`}>
       {num === currentIndex && (
-        <img src={src} alt={src} className={styles.carousel_img} />
+        <img src={src} alt={src} className={`f-width ${styles.carousel_img}`} />
       )}
     </li>
   );

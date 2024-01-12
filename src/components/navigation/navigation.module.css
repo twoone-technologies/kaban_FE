@@ -18,11 +18,18 @@
   padding: 0 1rem;
   justify-content: space-between;
   align-items: center;
+  transition: all 0.4s ease-in-out;
   font-size: clamp(3px, 4vw, 0.8rem);
 }
 
 .nav_btm {
   border-bottom: 1px solid var(--hover-color);
+}
+
+.nav > a > svg {
+  position: absolute;
+  top: 0.5rem;
+  z-index: 2000;
 }
 
 .logo {
@@ -43,18 +50,9 @@
   z-index: 700;
   transition: all 300ms ease-in-out;
   padding: 12px 8px;
-  border-radius: 8px;
   background-color: transparent;
   justify-content: center;
   gap: var(--hamburger-gap);
-}
-
-.border {
-  outline: 2px solid var(--primary-color);
-}
-
-.border_1 {
-  outline: 2px solid var(--tertiary-color-1);
 }
 
 .line {
@@ -75,6 +73,10 @@
   rotate: 45deg;
   width: var(--bar-width);
   translate: 0.22rem calc(var(--bar-height) / -9);
+}
+
+.slideUp {
+  transform: translateY(-4rem);
 }
 
 .hide {
@@ -111,7 +113,7 @@
   width: 100%;
   padding-top: 5rem;
   background-color: var(--tertiary-color-1);
-  height: 100%;
+  height: 100vh;
   transition: var(--animation-timing);
 }
 
@@ -120,8 +122,25 @@
 }
 
 .reg {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
   margin-top: 1rem;
   padding: 1rem;
+}
+
+.loggedState {
+  width: 100%;
+  /* display: none; */
+}
+
+.toggleUser {
+  width: 100%;
+  /* display: none; */
+}
+
+.post_btn {
+  display: none;
 }
 
 .reg_btn {
@@ -129,6 +148,10 @@
   font-size: clamp(3px, 4vw, 0.8rem);
   width: 100%;
   cursor: pointer;
+}
+
+.bg_color::backdrop.bg {
+  background-color: white;
 }
 
 @media screen and (width >= 768px) {
@@ -146,6 +169,7 @@
     background-color: unset;
     position: relative;
     width: max-content;
+    height: 100%;
   }
 
   .hamburger_menu {
@@ -158,10 +182,27 @@
   }
 
   .reg {
+    position: static;
     justify-content: center;
     align-items: center;
     margin-top: 0;
     padding-right: 0;
+  }
+
+  .reg li {
+    width: unset;
+  }
+
+  .toggleUser {
+    width: 4rem;
+  }
+
+  .post_btn {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-size: clamp(3px, 4vw, 0.8rem);
+    width: 100%;
+    cursor: pointer;
   }
 }
 

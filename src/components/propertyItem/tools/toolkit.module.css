@@ -1,0 +1,64 @@
+.tools {
+  padding: 1rem 1%;
+  position: sticky;
+  top: 0;
+  transition: all 0.4s ease-in-out;
+  transform: translateX(-2.5px);
+  width: calc(100% + 7px);
+  z-index: 900;
+}
+
+.rotate {
+  rotate: 180deg;
+  background-color: unset;
+  color: var(--tertiary-color-2);
+  outline: 1px solid var(--hover-color);
+  border-radius: 50%;
+}
+
+.toolkit {
+  gap: 3.5rem;
+}
+
+.tooltip {
+  z-index: 1000;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  font-size: 3.2rem;
+  font-weight: 700;
+  padding: 3.3rem;
+  color: var(--tertiary-color-3);
+  border-radius: 5px;
+  background: linear-gradient(45deg, rgb(159, 183, 230), #0400ff, rgb(159, 183, 230));
+  transform-origin: 100% 100%;
+}
+
+.active {
+  opacity: 1;
+  transform: scale(3);
+}
+
+.slide {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.translateY {
+  transform: translate(-1.5px, 4rem);
+  background-color: var(--tertiary-color-3);
+}
+
+.translate0 {
+  transform: translateY(0);
+}
+
+.navstate {
+  background-color: var(--tertiary-color-3);
+}
+
+@media screen and (width >= 768px) {
+  .tools {
+    width: calc(100% + 16px);
+  }
+}

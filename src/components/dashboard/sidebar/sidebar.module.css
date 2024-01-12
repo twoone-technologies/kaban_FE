@@ -1,0 +1,73 @@
+.sidebar {
+  background-color: var(--tertiary-color-1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 27vw;
+  height: 100vh;
+  z-index: 2000;
+  padding: 0;
+  outline: 1px solid var(--hover-color);
+  overflow: scroll;
+}
+
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+.link {
+  font-weight: 600;
+  color: var(--accent-color-1);
+}
+
+.link:hover {
+  border-left: 3px solid var(--primary-color);
+  color: var(--primary-color);
+  background-color: var(--tertiary-color-5);
+  transition: color 300ms ease-in-out;
+}
+
+.isActive {  
+  border-left: 3px solid var(--primary-color);
+  color: var(--primary-color);
+  background-color: var(--tertiary-color-5);
+}
+
+.refer {
+  background-color: var(--dashboard-col);
+  margin: 1rem;
+  color: var(--tertiary-color-1);
+}
+
+.refer button {
+  background-color: var(--tertiary-color-1);
+  color: var(--dashboard-col);
+  font-size: 1rem;
+  font-weight: 600;
+  padding-block: 0.6rem;
+}
+
+.svgWrap {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  color: var(--primary-color);
+  background-color: var(--tertiary-color-1);
+}
+
+.cardAgentInfo {
+  border-top: 1px solid var(--hover-color);
+  background-color: unset;
+  margin-top: 1rem;
+}
+
+.img {
+  width: 3rem;
+  height: 3rem;
+}
+
+@media screen and (width <= 800px) {
+  .sidebar {
+    display: none;
+  }
+}

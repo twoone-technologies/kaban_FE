@@ -34,7 +34,10 @@ export const showerIcon = `${shower}#img`;
 import toilet from "./Toilet.svg";
 export const toiletIcon = `${toilet}#img`;
 
-import car from "./Car.svg";
+import square from "./square.svg"; 
+export const squareIcon = `${square}#img`;
+
+import car from "./Car.svg"; 
 export const carIcon = `${car}#img`;
 
 import arrowRight from "./arrow-right.svg";
@@ -94,6 +97,9 @@ export const gridIcon = `${grid}#img`;
 import map from "./map.svg";
 export const mapIcon = `${map}#img`;
 
+import mapPin from "./mapIcon.svg";
+export const mapPinIcon = `${mapPin}#img`;
+
 // form icons
 import tick from "./tick.svg";
 export const tickIcon = `${tick}#img`;
@@ -113,3 +119,65 @@ export const grommetIcon = `${grommet}#img`;
 
 import transparency from "./transparency.svg";
 export const transparencyIcon = `${transparency}#img`;
+
+import googleSvg from "./googleSvg.svg";
+export const googleSvgIcon = `${googleSvg}#img`;
+
+//agent icons & dashboard
+import bookmark from "./bookmark.svg";
+export const bookmarkIcon = `${bookmark}#img`;
+
+import buildings from "./buildings.svg";
+export const buildingsIcon = `${buildings}#img`;
+
+import external_ink from "./externalLink.svg";
+export const exLinkIcon = `${external_ink}#img`;
+
+import mail from "./mail.svg";
+export const mailIcon = `${mail}#img`;
+
+import whatsapp from "./whatsapp.svg";
+export const whatsappIcon = `${whatsapp}#img`;
+
+import phone from "./phone.svg";
+export const phoneIcon = `${phone}#img`;
+
+import star from "./star.svg";
+export const starIcon = `${star}#img`;
+
+import verify from "./verify.svg";
+export const verifyIcon = `${verify}#img`;
+
+// dashboard icons
+import dashboard from "./dashboard.svg";
+export const dashboardIcon = `${dashboard}#img`;
+
+import support from "./support.svg";
+export const supportIcon = `${support}#img`;
+
+import invite from "./invite.svg";
+export const inviteIcon = `${invite}#img`;
+
+import gift from "./gift.svg";
+export const giftIcon = `${gift}#img`;
+
+import edit from "./edit.svg";
+export const editIcon = `${edit}#img`;
+
+import eye from "./eye.svg";
+export const eyeIcon = `${eye}#img`;
+
+import kbt from "./kbt.svg";
+export const kbtIcon = `${kbt}#img`;
+
+import sign_out from "./sign_out.svg";
+export const sign_outIcon = `${sign_out}#img`;
+
+import insights from "./insights.svg";
+export const insightsIcon = `${insights}#img`;
+
+import wallet from "./wallet.svg";
+export const walletIcon = `${wallet}#img`;
+
+import houseView from "./houseView.svg";
+export const houseViewIcon = `${houseView}#img`;

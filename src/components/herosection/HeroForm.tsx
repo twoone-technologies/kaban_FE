@@ -1,13 +1,10 @@
 import { useState } from "react";
 import Button from "~/components/reusable/Button";
 import styles from "./hero.module.css";
-import Svg from "../reusable/Svg";
-import { searchIcon } from "~/assets/icons";
-import HeroFormItem from "./HeroFormItem";
 import { Form } from "react-router-dom";
+import HeroFormItem from "~/components/herosection/HeroFormItem";
 
 export default function HeroForm() {
-
   const [status, setStatus] = useState<'rent' | 'sale'>('rent')
   function handleStatus(status: 'rent' | 'sale') {
     setStatus(status);

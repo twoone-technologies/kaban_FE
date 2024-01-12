@@ -1,0 +1,18 @@
+.invite {
+  align-items: center;
+  border: 1px solid var(--primary-color);
+  background-color: var(--tertiary-color-5, #437EF7);
+}
+
+@media screen and (width <= 600px) {
+  .invite {
+    gap: 1rem;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .invite button {
+    width: 100%;
+    justify-content: center;
+  }
+}

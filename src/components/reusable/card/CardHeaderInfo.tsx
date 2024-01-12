@@ -5,7 +5,7 @@ type Props = {
   type: string;
   num: number;
   featured: boolean;
-  stat: string;
+  stat: "featured" | "sale" | "rent";
 };
 
 const setNums = (num: number) => {
@@ -20,9 +20,8 @@ export default function CardHeaderInfo({type, num, featured, stat}: Props) {
       <div className="flex align-y s-btw">
         <h3>₦{setNums(num)}</h3>
         <div className={`flex gap ${styles.status_grp}`}>
-          {featured ? 
-          <Label type="featured" text="FEATURED" /> : null}
-          <Label type="status" text={`FOR ${stat}`} />
+          {featured ? <Label type="featured" /> : null}
+          <Label type={stat} />
         </div>
       </div>
     </div>

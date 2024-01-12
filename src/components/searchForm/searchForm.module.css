@@ -51,7 +51,6 @@
 
 .input {
   padding: 0.7rem 0.5rem;
-  height: 100%;
 }
 
 .input[name="advanced search"] {
@@ -203,6 +202,11 @@ input[type=range]::-webkit-slider-thumb {
   gap: 1rem;
   font-size: clamp(3px, 4vw, 0.7rem);
   grid-template-columns: repeat(2, 1fr);
+}
+
+.label {
+  display: flex;
+  width: 100%;
 }
 
 @media screen and (600px <= width <= 880px) {

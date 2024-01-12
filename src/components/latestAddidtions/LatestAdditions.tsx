@@ -1,4 +1,4 @@
-import Card from "../reusable/card/Card";
+import Card, { HouseCard } from "../reusable/card/Card";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow"
@@ -11,6 +11,7 @@ import Svg from "../reusable/Svg";
 import { arrowIcon} from "~/assets/icons";
 
 export default function LatestAdditions() {
+  const arr = dummyObj as HouseCard[]
   return (
     <section className="container-pad">
     <Container element="div">
@@ -47,7 +48,7 @@ export default function LatestAdditions() {
         }}
         className="swiper_container"
       >
-        {dummyObj.map(item => (
+        {arr.map(item => (
           <SwiperSlide className="carousel_item" key={item.id}>
             <Card card={item} />
           </SwiperSlide>

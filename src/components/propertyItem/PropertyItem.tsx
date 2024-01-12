@@ -1,55 +1,68 @@
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
-import Container from '../reusable/Container';
+import Container, { Ads } from '../reusable/Container';
 import { dummyObj } from '../reusable/dummyObj';
 import styles from './propertyItem.module.css';
-import Gallery from './Gallery';
-import Svg from '../reusable/Svg';
-import { alarmIcon, arrowIcon, shareIcon } from '~/assets/icons';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import Modal from './modal/Modal';
-import useModal from '~/hooks/useModal';
+import Modal from '../reusable/modal/Modal';
+import ReportForm from './itemInfo/ReportForm';
+import VideoMap from './itemInfo/VideoMap';
+import { HouseCard } from '../reusable/card/Card';
+import Toolkit from './tools/Toolkits';
+import Text from './micellenous/Text';
+import GalleryAndHeader from './micellenous/GalleryAndHeader';
+import PropertyDetails from './micellenous/PropertyDetails';
+import DescriptionAndFeatures from './micellenous/DescriptionAndFeatures';
+import AgentDetails from './micellenous/AgentDetails';
+import SimilarItems from './micellenous/SimilarItems';
+import Tooltip from '../reusable/Tooltip';
 
 export default function PropertyItem() {
+  const [show, setShow] = useState(false);
   const [copy, setCopy] = useState(false);
-  const { id } = useParams();
-  const listingItem = dummyObj.find((item) => parseInt(item.id) === Number(id));
+  const { id } = useParams<{ id: string }>();
+
+  const listing = dummyObj.find((item) => parseInt(item.id) === Number(id));
+  const listingItem = listing as HouseCard;
+  const listingArray = dummyObj as HouseCard[];
+
+  const filterObj = () => {
+    const similarItems = listingArray.filter(
+      (card) => listingItem?.property_type === card.property_type
+    );
+    similarItems.sort((a, b) => a.price.amount - b.price.amount);
+    return similarItems;
+  };
 
   const tooltip = () => {
     setCopy(true);
     setTimeout(() => {
       setCopy(false);
-    }, 4000);
+    }, 3000);
   };
-
-  // const [ref, onOpen, onClose] = useModal();
-  console.log(location.href);
 
   return (
     <Container element="section" className={styles.wrapper}>
-      {/* <Modal ref={ref} onClose={onClose}>
-        <h1>Hello CodeSandbox</h1>
-        <h2>Start editing to see some magic happen!</h2>
-      </Modal> */}
-      <div className={`flex s-btw f-width ${styles.tools}`}>
-        <Link to={'/'} className={`flex align-y c-pad ${styles.rotate}`}>
-          <Svg href={arrowIcon} />
-        </Link>
-        <div className={`flex align-y ${styles.toolkit}`}>
-          <i
-            className={`c-pad ${styles.tooltip}
-            ${copy === true ? styles.active : styles.slide}`}
-          >
-            Copied
-          </i>
-          <CopyToClipboard text={location.href} onCopy={tooltip}>
-            <Svg href={shareIcon} />
-          </CopyToClipboard>
-          <Svg href={alarmIcon} />
+      <Modal isVisible={show} onClose={() => setShow(false)}>
+        <h2>Report Listing</h2>
+        <ReportForm />
+      </Modal>
+      <Toolkit onClick={() => setShow(true)} onCopy={tooltip} />
+      <div className={`flex f-width ${styles.pg_layout}`}>
+        <div className={`f-width flex f-column gap ${styles.item_details}`}>
+          <GalleryAndHeader item={listingItem} />
+          <PropertyDetails item={listingItem} />
+          <DescriptionAndFeatures item={listingItem} />
+          <VideoMap item={listingItem} properties={listingArray} />
+        </div>
+        <div className={`flex f-column gap ${styles.item_details}`}>
+          <AgentDetails item={listingItem} object={listingArray} />
+          <Text />
+          <Ads adContent={<h1 className={styles.content}></h1>} />
         </div>
       </div>
-      <Gallery item={listingItem} />
+      <Tooltip copy={copy} />
+      <SimilarItems similar={filterObj()} />
+      <Ads adContent={<h1 className={styles.content}></h1>} />
     </Container>
   );
 }

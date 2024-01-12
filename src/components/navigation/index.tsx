@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { logoIcon } from '~/assets/icons';
 import Button from '~/components/reusable/Button';
 import styles from './navigation.module.css';
@@ -7,81 +7,79 @@ import navbarData from './navbarData';
 import Svg from '~/components/reusable/Svg';
 import NavItem from './navitem';
 import Container from '../reusable/Container';
+import useInteractiveNav from '~/hooks/useInteractiveNav';
+import { SignInModal, SignUpModal } from './register/ModalRegister';
+import HamburgerMenu from './HamburgerMenu';
+import NavBoard from './dashboardNav';
 
 function Navigation() {
-  const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
   const [dropDown, setDropDown] = useState(-1);
-  const [navBar, setNavBar] = useState(false);
-  const [goingUp, setGoingUp] = useState(false);
-  const [scroll, setScroll] = useState(0);
+  const [user] = useState('kk');
+  const [login, setLogIn] = useState<'sign_in' | 'sign_up'>('sign_up');
+  const { navBar, goingUp, open, setOpen } = useInteractiveNav();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (scroll < currentScrollY && !goingUp) {
-        setGoingUp(true);
-      }
-      if (scroll > currentScrollY && goingUp) {
-        setGoingUp(false);
-      }
-      setScroll(currentScrollY);
-    };
-
-    const colorSwap = () => {
-      window.scrollY >= 70 ? setNavBar(true) : setNavBar(false);
-    };
-
-    const navStatus = () => {
-      colorSwap();
-      handleScroll();
-    };
-
-    return () => {
-      window.addEventListener('scroll', navStatus);
-    };
-  }, [goingUp, scroll]);
-
+  if (open === true) document.body.style.overflowY = 'hidden'
+  else document.body.style.overflowY = ''
+  
   const onClickHandler = () => {
     setOpen(!open);
   };
 
-  const location = useLocation();
-  let content;
+  // useEffect(() => {
+  //   if (user) {
+  //     console.log(user);
+  //     setUser(user);
+  //   }
 
-  location.pathname === '/'
-    ? (content = (
-        <Container element='nav'
-          className={`flex f-width ${styles.nav} ${navBar ? `bg-tertiary` : ''}
-      ${goingUp ? styles.hide : styles.see}`}
+  //   setLogIn('sign_up');
+
+  //   return () => {
+  //     login;
+  //   };
+  // }, [login, user]);
+
+  // const fName = user[0]?.fullName?.split(' ')[0]?.split('')[0];
+  // const lName = user[0]?.fullName?.split(' ')[1]?.split('')[0];
+  // const fullName = user[0]?.fullName;
+  // const email = user[1]?.email;
+  // console.log({ fName, lName, fullName, email });
+
+  const background =
+    location.pathname === '/'
+      ? `${navBar && `bg-tertiary`}`
+      : `bg-tertiary ${styles.nav_btm}`;
+
+  const linkColor =
+    location.pathname === '/'
+      ? `${navBar || open === true ? `bg-primary` : styles.logo}`
+      : 'bg-primary';
+
+  const txtColor = location.pathname === '/' ? navBar : true;
+
+  return (
+    <>
+      {location.pathname.includes('dashboard') ? (
+        <NavBoard />
+      ) : (
+        <Container
+          element="nav"
+          className={`flex f-width ${styles.nav}
+      ${background} ${goingUp && styles.slideUp}`}
         >
-          <Link to={'/'}>
+          <Link to={'/'} onClick={() => setOpen(false)}>
             <Svg
               href={logoIcon}
               width="100px"
               height="40px"
-              className={`${navBar ? `bg-primary` : styles.logo}`}
+              className={linkColor}
             />
           </Link>
-          <Button
-            type="button"
-            title="menu"
+          <HamburgerMenu
             onClick={onClickHandler}
-            className={`flex f-column ${styles.hamburger_menu}
-        ${open || navBar ? styles.border : styles.border_1}`}
-          >
-            <span
-              className={`${styles.line} ${open ? styles.tilt : ''} 
-        ${navBar || open ? styles.hue_1 : styles.hue_2}`}
-            ></span>
-            <span
-              className={`${styles.line} ${open ? styles.hide : styles.see} 
-        ${navBar || open ? styles.hue_1 : styles.hue_2}`}
-            ></span>
-            <span
-              className={`${styles.line} ${open ? styles.rtilt : ''} 
-        ${navBar || open ? styles.hue_1 : styles.hue_2}`}
-            ></span>
-          </Button>
+            open={open}
+          />
           <ul
             className={`flex ${styles.nav_content} ${
               open ? styles.open : styles.close
@@ -91,6 +89,7 @@ function Navigation() {
               <NavItem
                 key={key}
                 title={key}
+                closeNav={setOpen}
                 href={val.href}
                 subItems={val.subItems}
                 drop={dropDown === idx}
@@ -100,83 +99,58 @@ function Navigation() {
                 mouseOver={() =>
                   setDropDown((prev) => (prev === idx ? -1 : idx))
                 }
-                navState={navBar}
+                navState={txtColor}
               />
             ))}
-            <li className={`flex ${styles.reg}`}>
-              <Button type="submit" className={styles.reg_btn}>
-                Register
-              </Button>
-            </li>
-          </ul>
-        </Container>
-      ))
-    : (content = (
-        <Container element='nav'
-          className={`flex f-width bg-tertiary ${styles.nav}
-          ${goingUp ? styles.hide : styles.see} ${styles.nav_btm}`} 
-        >
-          <Link to={'/'}>
-            <Svg
-              href={logoIcon}
-              width="100px"
-              height="40px"
-              className="bg-primary"
-            />
-          </Link>
-          <Button
-            type="button"
-            title="menu"
-            onClick={onClickHandler}
-            className={`flex f-column ${styles.hamburger_menu} ${styles.border}`}
-          >
-            <span
-              className={`${styles.line} ${open ? styles.tilt : ''} ${
-                styles.hue_1
-              }`}
-            ></span>
-            <span
-              className={`${styles.line} ${open ? styles.hide : styles.see} ${
-                styles.hue_1
-              }`}
-            ></span>
-            <span
-              className={`${styles.line} ${open ? styles.rtilt : ''} ${
-                styles.hue_1
-              }`}
-            ></span>
-          </Button>
-          <ul
-            className={`flex ${styles.nav_content} ${
-              open ? styles.open : styles.close
-            }`}
-          >
-            {Object.entries(navbarData).map(([key, val], idx) => (
-              <NavItem
-                key={key}
-                title={key}
-                href={val.href}
-                subItems={val.subItems}
-                drop={dropDown === idx}
-                handleClick={() =>
-                  setDropDown((prev) => (prev === idx ? -1 : idx))
-                }
-                mouseOver={() =>
-                  setDropDown((prev) => (prev === idx ? -1 : idx))
-                }
-                navState={true}
+            <ul className={`flex gap ${styles.reg}`}>
+              {user ? (
+                <li className={`flex gap align-y ${styles.loggedState}`}>
+                  <Button className={styles.post_btn}>Post a property</Button>
+                  {/* <UserItem
+                className={styles.toggleUser}
+                closeNav={setOpen}
+                firstLetter={fName}
+                lastLetter={lName}
+                drop={tooltip}
+                email={email}
+                subItems={userData}
+                handleClick={() => setToolTip(!tooltip)}
+                mouseOver={() => setToolTip(!tooltip)}
+                verified={true}
+                agentName={fullName}
+              /> */}
+                </li>
+              ) : (
+                <Button
+                  type="submit"
+                  className={styles.reg_btn}
+                  onClick={() => {
+                    setOpen(false);
+                    setLogIn('sign_in');
+                    navigate({ search: `?auth=${login}` });
+                  }}
+                >
+                  Register
+                </Button>
+              )}
+              <SignInModal
+                isVisible={location.search.split('=')[1] === `sign_in`}
+                signUpUrl={() => {
+                  navigate({ search: `?auth=sign_up` });
+                }}
               />
-            ))}
-            <li className={`flex ${styles.reg}`}>
-              <Button type="submit" className={styles.reg_btn}>
-                Register
-              </Button>
-            </li>
+              <SignUpModal
+                isVisible={location.search.split('=')[1] === `sign_up`}
+                signInUrl={() => {
+                  navigate({ search: `?auth=sign_in` });
+                }}
+              />
+            </ul>
           </ul>
         </Container>
-      ));
-
-  return <>{content}</>;
+      )}
+    </>
+  );
 }
 
 export default Navigation;

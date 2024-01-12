@@ -1,0 +1,123 @@
+/* carousel images */
+.carousel_wrap {
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+.carousel_wrap2 {
+  display: none;
+  overflow-x: scroll;
+}
+
+.carousel_wrap2::-webkit-scrollbar {
+  display: none;
+}
+
+.btn_grp {
+  padding: 0.4rem 2.5rem;
+  position: absolute;
+  bottom: 7rem;
+  height: 4.3rem;
+}
+
+.carousel_img {
+  height: 250px;
+}
+
+.bg {
+  background-color: unset;
+}
+
+.fg {
+  background-color: rgba(0, 0, 0, 0.457);
+}
+
+.active {
+  opacity: 1;
+}
+
+.slide {
+  opacity: 0;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+}
+
+.carousel_img2 {
+  height: 150px;
+  width: 230px;
+}
+
+.carousel_wrapper {
+  position: relative;
+}
+
+.carousel_btn {
+  z-index: 600;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.605);
+  border-radius: 50%;
+  color: var(--tertiary-color-1);
+}
+
+.disable {
+  opacity: 0.4;
+  pointer-events: none;
+  appearance: none;
+  visibility: collapse;
+}
+
+.enable {
+  background-color: rgba(0, 0, 0, 0.605);
+}
+
+.carousel_btn:hover {
+  transform: scale(1.2);
+}
+
+.carousel_btn svg:hover  {
+  color: var(--tertiary-color-1);
+}
+
+.carousel_btn:nth-of-type(1) {
+  rotate: 180deg;
+}
+
+.img_no {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  color: var(--tertiary-color-1);
+  background-color: rgba(0, 0, 0, 0.30);
+}
+
+.dateLikes {
+  position: absolute;
+  top: 0.5rem;
+  color: var(--tertiary-color-1);
+}
+
+.date {
+  background-color: rgba(0, 0, 0, 0.30);
+}
+
+@media screen and (width >= 768px) {
+  .carousel_wrap {
+    position: relative;
+  }
+
+  .carousel_wrap2 {
+    display: flex;
+  }
+}
+
+@media screen and (width >= 1024px) {
+  .carousel_img {
+    height: 400px;
+  }
+}

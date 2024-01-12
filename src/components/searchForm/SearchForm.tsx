@@ -7,23 +7,31 @@ import SearchFormItem from './SearchFormItem';
 import CheckboxGroup from './CheckboxGroup';
 import FormInput from '../reusable/FormInput';
 
-export default function SearchForm({className}: {className: string}) {
-  const [formStyle, setFormStyle] = useState<'open' | 'close'>('close');
+export default function SearchForm({
+  className,
+  onSubmit,
+  defaultCity
+}: {
+  className: string;
+  defaultCity?: string;
+  onSubmit?: () => void;
+}) {
+  const [formStyle, setFormStyle] = useState(false);
   const [otherItems, setOtherItems] = useState(false);
 
   const handleOtherItems = () => setOtherItems(!otherItems);
-  const handleStyle = (formStyle: 'open' | 'close') => setFormStyle(formStyle);
+  const handleStyle = () => setFormStyle(!formStyle);
 
   // const storeSearch = () => {}
 
   const extras = otherItems ? styles.plus : styles.minus;
-  const isActive = formStyle === 'close' ? styles.close_form : styles.open_form;
-  const formActive =
-    formStyle === 'close' ? styles.closeForm : styles.open_form;
+  const isActive = formStyle === false ? styles.close_form : styles.open_form;
+  const formActive = formStyle === false ? styles.closeForm : styles.open_form;
 
   return (
     <Form
       method="post"
+      onSubmit={onSubmit}
       className={`b-radius f-width flex f-column
       ${styles.form} ${formActive} ${className}`}
     >
@@ -32,9 +40,9 @@ export default function SearchForm({className}: {className: string}) {
         type={'text'}
         link={arrowIcon}
         title={'Advanced search'}
-        onFocus={() => handleStyle('open')}
+        onFocus={() => handleStyle()}
       />
-      <SearchFormItem formStyle={formStyle} />
+      <SearchFormItem defaultCity={defaultCity} formStyle={formStyle} />
       <div className={`flex align-y gap ${isActive}`}>
         <Button
           type="button"
@@ -46,13 +54,13 @@ export default function SearchForm({className}: {className: string}) {
         <span>other features</span>
       </div>
       <CheckboxGroup className={`f-height ${isActive} ${extras}`} />
-        <Button
-          type="submit"
-          className={`${styles.btn} ${isActive} f-width`}
-          onClick={() => handleStyle('close')}
-        >
-          Search
-        </Button>
+      <Button
+        type="submit"
+        className={`${styles.btn} ${isActive} f-width`}
+        onClick={() => handleStyle()}
+      >
+        Search
+      </Button>
     </Form>
   );
 }

@@ -2,63 +2,71 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { bedIcon, showerIcon, carIcon } from '~/assets/icons';
 import styles from './card.module.css';
-import AgentInfo from './CardAgentInfo';
+import CardAgentInfo from './CardAgentInfo';
 import CardIcons from './CardIcons';
-import HeaderInfo from './CardHeaderInfo';
-import Address from './CardAddress';
+import CardHeaderInfo from './CardHeaderInfo';
+import CardAddress from './CardAddress';
 import CardImg from './CardImg';
 
 export type HouseCard = {
+  find?(arg0: (item: { realtor: { agentName: string; }; }) => void): unknown;
   location: {
     type: string;
-    coordinates: number[];
+    coordinates: [number, number] | number[];
   };
   _id: string;
   realtor: {
     agentImg: string;
     agentName: string;
+    whatsAppLink: string,
+    email: string,
+    contact: string;
+    location: string;
+    rating: number;
+    verified: boolean;
   };
   title: string;
   property_category: string;
   property_type: string;
-  status: string;
+  description: string;
+  status: "featured" | "sale" | "rent";
   featured: boolean;
   price: {
     amount: number;
   };
   address: string;
   city: string;
-  images: [
-    {
+  images: {
       url: string;
       cover: boolean;
       _id: string;
       id: string;
-    },
-  ];
+    }[];
   details: {
     bedroom: number;
     bathroom: number;
     land_area: string;
     parking_space: number;
-    features: [
-      {
+    features: {
         title: string;
         checked: boolean;
-      },
-    ];
+      }[];
   };
+  videoLink: string;
   street_view: boolean;
-  report: [];
+  report: string[];
   createdAt: string;
   id: string;
 };
 
 export default function Card({
-  card, mapState = false,
+  card,
+  className,
+  mapState = false,
   orientation = 'portrait',
 }: {
   card: HouseCard;
+  className?: string;
   orientation?: string;
   mapState?: boolean;
 }) {
@@ -74,11 +82,11 @@ export default function Card({
       : styles.landscape_1;
 
   return (
-    <div
+    <div id={`property-${card.id}`}
       onMouseEnter={onHoverHandler}
       onMouseLeave={onHoverHandler}
       onClick={() => navigate(`/property-item/${card.id}`)}
-      className={`b-radius box_shadow ${styles.card} ${borders} ${cardState}`}
+      className={`b-radius box_shadow ${styles.card} ${borders} ${className} ${cardState}`}
     >
       <div
         className={`flex f-column s-btw ${styles.above} 
@@ -94,14 +102,14 @@ export default function Card({
       </div>
 
       <div className={`flex f-column c_pad s-btw ${styles.below}`}>
-        <HeaderInfo
+        <CardHeaderInfo
           type={card.property_type}
           num={card.price.amount}
           featured={card.featured}
           stat={card.status}
         />
         <div className={`flex f-column s-btw gap ${styles.iconWrap}`}>
-          <Address title={card.title} address={card.address} />
+          <CardAddress title={card.title} address={card.address} />
           <div className={`flex f-width ${styles.icons}`}>
             <CardIcons
               title="bedroom"
@@ -120,7 +128,7 @@ export default function Card({
             />
           </div>
         </div>
-        <AgentInfo
+        <CardAgentInfo
           src={card.realtor.agentImg}
           identity={card.realtor.agentName}
         />

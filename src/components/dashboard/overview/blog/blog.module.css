@@ -1,0 +1,9 @@
+.linkSvg svg {
+  color: var(--primary-color);
+}
+
+@media screen and (width <= 768px) {
+  .linkSvg {
+    width: 1.5rem;
+  }
+}

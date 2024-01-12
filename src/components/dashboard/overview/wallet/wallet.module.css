@@ -1,0 +1,46 @@
+.wallet {
+  min-width: 18rem;
+  border: 1px solid var(--hover-color);
+}
+
+.walletWrap {
+  position: relative;
+}
+
+.list {
+  padding-left: 1rem;
+}
+
+.listItem {
+  list-style-type: disc;
+  position: relative;
+}
+
+.listItem::marker {
+  color: var(--primary-color);
+}
+
+.listKbt {
+  position: absolute;
+  right: 0.5rem;
+}
+
+.svgWrapper {
+  position: relative;
+  text-align: center;
+}
+
+.kbtTotal {
+  top: -7rem;
+  position: relative;
+}
+
+.linkSvg svg {
+  color: var(--primary-color);
+}
+
+@media screen and (width <= 768px) {
+  .linkSvg {
+    width: 1.5rem;
+  }
+}

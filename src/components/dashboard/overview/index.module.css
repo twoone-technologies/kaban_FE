@@ -1,0 +1,49 @@
+.overview {
+  padding-block: 4.5rem;
+  gap: 2rem;
+}
+
+.agentStat {
+  grid-auto-columns: auto;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media screen and (width <= 1024px) {
+  .agentCard {
+    min-width: 30%;
+  }
+
+  .insights_wrap {
+    grid-column: 2 / 3;
+  }
+
+  .insightsDataWrap {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .walletBlog {
+    flex-direction: column;
+  }
+}
+
+@media screen and (width <= 768px) {
+  .agentStat {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+  }
+
+  .agentCard {
+    min-width: 30%;
+  }
+
+  .linkSvg {
+    width: 1.5rem;
+  }
+
+  .agentCard {
+    margin-inline: auto;
+    max-width: unset;
+    width: 100%;
+  }
+}

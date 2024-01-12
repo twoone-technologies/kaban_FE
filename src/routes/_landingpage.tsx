@@ -1,9 +1,9 @@
 import FeaturedList from "~/components/featuredListings/FeaturedList";
-import HeroSection from "~/components/heroSection/HeroSection";
 import ExploreCitiesSection from "~/components/exploreCitiesSection/ExploreCitiesSection";
 import LatestAdditions from "~/components/latestAddidtions/LatestAdditions";
 import PropertyTypeSection from "~/components/propertyTypeSection/PropertyTypeSection";
 import { ActionFunctionArgs, redirect } from "react-router-dom";
+import HeroSection from "~/components/herosection/HeroSection";
 
 export async function action({ request }: ActionFunctionArgs) {
   // get form data
@@ -12,7 +12,7 @@ export async function action({ request }: ActionFunctionArgs) {
     if (val) prev.push(`${key}=${val}`)
     return prev
   }, [] as string[]).join('&')
-  console.log(searchStr);
+  // console.log(searchStr);
 
   // const property_type = payload.propertyType;
   // const bedrooms = payload.bedrooms;
