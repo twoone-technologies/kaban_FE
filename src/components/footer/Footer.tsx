@@ -15,15 +15,14 @@ function Footer() {
                         <Link to="/">
                             <Svg className={styles.footer_logo} href={logoIcon} />
                         </Link>
-                        <p className={styles.footer_link}>To our esteem users who seek to rent or invest in the real estate,
-                            Kaban is here to help you ease the stress of finding a property that
-                            meets your satisfaction by bringing the best deals available to your screen.
+                        <p className={styles.footer_link}>
+                            As we strive to make real estate accessible and stress-free, Kaban welcomes our valued customers seeking rental or investment opportunities.
                         </p>
 
                     </div>
-                    <div className={`flex ${styles.link_container}`}>
+                    <div className={`grid grid-cols-2 md:grid-cols-4 mt-3 ${styles.link_container}`}>
                         <div className={`flex ${styles.mt_1}`}>
-                            <h4>Company</h4>
+                            <p className='text-white text-2xl font-bold'>Company</p>
                             <ul>
                                 <li>
                                     <Link className={styles.footer_link} to="/company/about-us">About Us</Link>
@@ -40,7 +39,7 @@ function Footer() {
                             </ul>
                         </div>
                         <div className={`flex ${styles.mt_1}`}>
-                            <h4>Property</h4>
+                            <p  className='text-white text-2xl font-bold'>Property</p>
                             <ul>
                                 <li>
                                     <Link className={styles.footer_link} to="/property/residential">Residential</Link>
@@ -54,7 +53,7 @@ function Footer() {
                             </ul>
                         </div>
                         <div className={`flex ${styles.mt_1}`}>
-                            <h4>Realtors</h4>
+                            <p  className='text-white text-2xl font-bold'>Realtors</p>
                             <ul>
                                 <li>
                                     <Link className={styles.footer_link} to="/realtors/agents">Agents</Link>
@@ -65,7 +64,7 @@ function Footer() {
                             </ul>
                         </div>
                         <div className={`flex ${styles.mt_1}`}>
-                            <h4>Contacts</h4>
+                            <p className='text-white text-2xl font-bold'>Contacts</p>
                             <ul>
                                 <li>
                                     <Link className={styles.footer_link} to="tel:2349163939777">+234 916 393-9777</Link>
