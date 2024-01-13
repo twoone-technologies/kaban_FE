@@ -1,19 +1,22 @@
-/* stylelint-disable csstree/validator */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* stylelint-disable csstree/validator */
 
 :root {
-  --dashboard-col: #437EF7;
+  --dashboard-col: #437ef7;
   --primary-color: #006aff; /* headlines & active states */
   --secondary-color: #141414; /* card text-color */
   --accent-color: #96999b; /* accent color */
-  --accent-color-1: #5F6D7E;
-  --hover-color: #EAEBF0;
-  --star-color: #F9B900;
+  --accent-color-1: #5f6d7e;
+  --hover-color: #eaebf0;
+  --star-color: #f9b900;
   --tertiary-color-1: #ffffff; /* text color (footer) */
   --tertiary-color-2: #3a424b; /* subtle text color */
   --tertiary-color-3: #fafafa; /* background color */
-  --tertiary-color-4: #41ae48; /* featured and savebtn color */ 
-  --tertiary-color-5: #E8EFFD; /* dashboard overlay color */
+  --tertiary-color-4: #41ae48; /* featured and savebtn color */
+  --tertiary-color-5: #e8effd; /* dashboard overlay color */
 }
 
 * {
@@ -47,6 +50,7 @@ h1 {
 h2 {
   font-size: clamp(0.7rem, 5vw, 2rem);
   color: var(--primary-color);
+  font-weight: 700;
 }
 
 p {
@@ -246,8 +250,8 @@ svg:hover {
   margin-left: 0;
 }
 
-input:focus+svg,
-input:hover+svg {
+input:focus + svg,
+input:hover + svg {
   display: none;
 }
 
