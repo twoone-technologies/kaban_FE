@@ -12,11 +12,11 @@ export default function PropertyTypeCard({ data }: {
     return (
         <Link to={data.link} className={style.card_container}>
             <div ref={cardRef} className={style.property_card}></div>
-            <div className={style.sm_card}>
-                <h3>{data.name}</h3>
-                <div className={style.sm_card_info}>
+            <div className={`absolute w-5/6 p-3 md:bottom-8 md:left-4 md:w-fit ${style.sm_card}`}>
+                <p className="font-semibold">{data?.name.toUpperCase()}</p>
+                <div className="flex gap-[2p] flex-wrap whitespace-nowrap font-normal bottom-10">
                     {data.type.map((dataTypeItem, id) => (
-                        <li key={id}>{dataTypeItem}</li>
+                        <p key={id} className="font-extralight">•{dataTypeItem}</p>
                     )
                     )}
                 </div>
