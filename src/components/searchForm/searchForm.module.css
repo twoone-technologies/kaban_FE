@@ -39,6 +39,7 @@
 }
 
 .form_input {
+  font-size: small;
   position: relative;
   align-items: center;
   border: 1px solid var(--hover-color);

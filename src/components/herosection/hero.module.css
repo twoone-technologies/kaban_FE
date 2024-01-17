@@ -8,6 +8,10 @@
   color: var(--tertiary-color-1);
 }
 
+.hero h1 {
+  font-weight: 700;
+}
+
 .form {
   margin: 1rem;
   padding: 1rem;
@@ -113,7 +117,11 @@ optgroup[label] {
   padding: 0.7rem 0.5rem;
 }
 
-@media screen and (600px <= width <= 880px) {
+@media screen and (600px <= width <= 1024px) {
+  .hero p {
+    font-size: 2vw;
+  }
+  
   .form {
     padding: 2rem;
     grid-template-columns: repeat(2, 1fr);
@@ -128,6 +136,28 @@ optgroup[label] {
   }
 }
 
+@media screen and (360px <= width <= 500px) {
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero span {
+    display: block;
+    text-align: center;
+  }
+}
+
+@media screen and (width <= 360px) {
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+  
+  .hero span {
+    display: block;
+    text-align: center;
+  }
+}
+
 @media screen and (width >= 768px) {
   .hero {
     padding-inline: 4rem;
@@ -138,7 +168,7 @@ optgroup[label] {
   }
 }
 
-@media screen and (width >= 880px) {
+@media screen and (width > 1024px) {
   .hero p {
     font-size: 1.5rem;
   }

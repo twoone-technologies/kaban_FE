@@ -6,7 +6,7 @@
 
 :root {
   --dashboard-col: #437ef7;
-  --primary-color: #006aff; /* headlines & active states */
+  --primary-color: #437EF7; /* headlines & active states */
   --secondary-color: #141414; /* card text-color */
   --accent-color: #96999b; /* accent color */
   --accent-color-1: #5f6d7e;
@@ -186,6 +186,11 @@ svg:hover {
 
 .f_line {
   outline: 1px solid var(--hover-color);
+}
+
+.slogan {
+  color: var(--accent-color-1);
+  font-size: 1rem;
 }
 
 /* carousel */

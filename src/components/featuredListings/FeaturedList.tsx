@@ -17,7 +17,7 @@ export default function FeaturedList() {
       <Container element="div">
         <div className="text-align header">
           <h2>Explore Our Featured Listings</h2>
-          <p>Properties considered worth your<br /> time by listing realtors</p>
+          <p className="slogan">Properties considered worth your<br /> time by listing realtors</p>
         </div>
         <Swiper
           grabCursor={true}
