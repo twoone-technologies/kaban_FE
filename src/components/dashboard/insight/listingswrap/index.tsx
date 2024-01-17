@@ -8,14 +8,28 @@ import {
   arrowRightIcon,
   exLinkIcon,
   locationIcon,
+  searchIcon,
 } from '~/assets/icons';
 import Label from '~/components/reusable/card/Label';
+import FormInput from '~/components/reusable/FormInput';
+import Button from '~/components/reusable/Button';
 
 export default function Listings() {
   return (
     <div>
-      <Form>
-        <input type="search" />
+      <Form className={`flex ${styles.form}`}>
+        <FormInput
+          width="17px"
+          height="17px"
+          type={'text'}
+          maxLength={30}
+          // link={searchIcon}
+          title={'search'}
+          className={styles.input}
+        />
+        <Button type="submit" className={styles.btn}>
+          <Svg href={searchIcon} />
+        </Button>
       </Form>
       <div className={`f-width b-radius ${styles.table_wrap}`}>
         <table className={`f-width b-radius ${styles.margin}`}>
