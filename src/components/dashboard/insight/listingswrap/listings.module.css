@@ -26,23 +26,27 @@ table th {
   font-weight: 700;
 }
 
-tr:hover {
+tr:hover,
+.btn:hover {
   background-color: var(--hover-color);
 }
 
-.margin {
-  /* border: 1px solid black; */
-  /* outline: 2px solid black; */
-  /* background-color: aqua; */
+.form {
+  position: relative;
 }
 
-/* .margins {
-  padding-inline: 1rem;
+.btn {
+  position: absolute;
+  right: 0;
   color: var(--accent-color);
-  background-color: var(--primary-color);
-  border-radius: 4px;
-  cursor: pointer;
-} */
+  background-color: inherit;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.input {
+  margin-bottom: 1.5rem;
+}
 
 .img {
   border-radius: unset;
@@ -83,6 +87,10 @@ tr:hover {
   table {
     width: 70%;
     font-size: 1vw;
+  }
+
+  .form {
+    width: calc(100% - 15rem);
   }
 }
 
