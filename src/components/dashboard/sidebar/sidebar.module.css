@@ -3,7 +3,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 27vw;
+  width: 17rem;
   height: 100vh;
   z-index: 2000;
   padding: 0;  
@@ -39,6 +39,10 @@
   color: var(--tertiary-color-1);
 }
 
+.refer h4 {
+  color: inherit;
+}
+
 .refer button {
   background-color: var(--tertiary-color-1);
   color: var(--dashboard-col);
@@ -69,5 +73,6 @@
 @media screen and (width <= 800px) {
   .sidebar {
     transform: translateX(-100%);
+    width: 100%;
   }
 }

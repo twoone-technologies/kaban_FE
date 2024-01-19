@@ -1,5 +1,85 @@
+import { arrowDownIcon, arrowIcon, searchIcon, sortIcon } from '~/assets/icons';
+import { Wrapper } from '~/components/reusable/Container';
+import FormInput from '~/components/reusable/FormInput';
+import styles from './listings.module.css';
+import { Form } from 'react-router-dom';
+import Button from '~/components/reusable/Button';
+import Svg from '~/components/reusable/Svg';
+import { sortOptions } from '~/components/searchForm/status';
+import { useState } from 'react';
+import Checkbox from '~/components/searchForm/checkbox/Checkbox';
+import ListingItem from './ListingItem';
+import { HouseCard } from '~/components/reusable/card/Card';
+
 export default function Listings() {
+  const [sortArr, setSortArr] = useState<HouseCard[]>([]);
+  const [active, setActive] = useState<'all' |'rent' | 'sale'>('all')
+console.log(active);
+  const activeState = () => {
+    // setIsActive(true)
+  }
+  const handleSort = (e: { target: { value: string } }) => {
+    if (e.target.value === 'Price Acending') {
+      setSortArr([...sortArr].sort((a, b) => a.price.amount - b.price.amount));
+    }
+    if (e.target.value === 'Price Decending') {
+      setSortArr([...sortArr].sort((a, b) => b.price.amount - a.price.amount));
+    }
+    if (e.target.value === 'Featured listings first') {
+      setSortArr(
+        [...sortArr].sort((a, b) => Number(b.featured) - Number(a.featured)),
+      );
+    }
+  };
+
   return (
-    <h1>Listings</h1>
-  )
+    <Wrapper element="section">
+      <div className={styles.search_order}>
+        <Form className={styles.form}>
+          <FormInput
+            required
+            width="17px"
+            height="17px"
+            type={'text'}
+            maxLength={30}
+            title={'search listing'}
+            className={`${styles.schBar}`}
+          />
+          <Button className={`flex align-x align-y ${styles.btn}`}>
+            <Svg href={searchIcon} />
+          </Button>
+        </Form>
+        <div className={`flex gap ${styles.sortOptionsWrap}`}>
+        <Svg href={sortIcon} className={styles.sortIcon} width="50px" height="30px" />
+        <FormInput
+          title={'sort'}
+          className={styles.sort}
+          header={'Sort'}
+          subItems={sortOptions}
+          onChange1={handleSort}
+          link={arrowIcon}
+        />
+        </div>
+      </div>
+      <div className={`b-radius ${styles.listingsWrap}`}>
+        <div className={`flex s-btw pad ${styles.listItem}`}>
+          <div className='flex'>
+            <Checkbox title1='select all' />
+            <Svg href={arrowDownIcon} />
+          </div>
+          <div className={`flex gap-1 c-pad b-radius ${styles.sortWrap}`}>
+            <span className={active === 'all' ? styles.active : ''} 
+              onClick={() => setActive('all')}>All(12)</span>
+            <span className={active === 'rent' ? styles.active : ''} 
+              onClick={() => setActive('rent')}>For Rent(13)</span>
+            <span className={active === 'sale' ? styles.active : ''} 
+              onClick={() => setActive('sale')}>For Sale(13)</span>
+          </div>
+        </div>
+        <div>
+          <ListingItem />
+        </div>
+      </div>
+    </Wrapper>
+  );
 }

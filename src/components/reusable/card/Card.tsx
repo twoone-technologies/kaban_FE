@@ -85,12 +85,13 @@ export default function Card({
     <div id={`property-${card.id}`}
       onMouseEnter={onHoverHandler}
       onMouseLeave={onHoverHandler}
-      onClick={() => navigate(`/property-item/${card.id}`)}
+      onClick={() => location.pathname.includes('dashboard') ?
+        null : navigate(`/property-item/${card.id}`)}
       className={`b-radius box_shadow ${styles.card} ${borders} ${className} ${cardState}`}
     >
       <div
         className={`flex f-column s-btw ${styles.above} 
-        ${orientation === 'portrait' ? styles.border_r : cardimgState}`}
+        ${orientation === 'portrait' ? styles.border_r : cardimgState && styles.maxWidth}`}
       >
         <CardImg
           enter={hover}
@@ -109,7 +110,10 @@ export default function Card({
           stat={card.status}
         />
         <div className={`flex f-column s-btw gap ${styles.iconWrap}`}>
-          <CardAddress title={card.title} address={card.address} />
+          <CardAddress title={card.title} address={card.address} 
+            onClick={() => { console.log('goat');
+              location.pathname.includes('dashboard') && navigate(`/property-item/${card.id}`)}
+          } />
           <div className={`flex f-width ${styles.icons}`}>
             <CardIcons
               title="bedroom"
@@ -128,10 +132,19 @@ export default function Card({
             />
           </div>
         </div>
-        <CardAgentInfo
+        {location.pathname.includes('dashboard') ? 
+          <div className='flex s-btw'>
+            <span>submited</span>
+            <span>expiring</span>
+            <span>expired</span>
+            <div>
+              {/* <Svg /> */}
+            </div>
+          </div> : 
+          <CardAgentInfo
           src={card.realtor.agentImg}
           identity={card.realtor.agentName}
-        />
+        />}
       </div>
     </div>
   );

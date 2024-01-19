@@ -1,3 +1,14 @@
+:root {
+  --stat-col-1: #437ef7; /* text color (footer) */
+  --bg-col-1: #f5faff;
+  --pending-col: #eea23e; /* subtle text color */
+  --bg-p-col: #FFF8EB;
+  --featured-col: #41ae48; /* featured and savebtn color */
+  --bg-f-col-4: #f0faf0;
+  --red-col: #E2341D; /*  dashboard overlay color */
+  --bg-r-col: #FFF2F0;
+}
+
 .card {
   min-width: 16rem;
   transition: all 300ms ease-in-out;
@@ -74,21 +85,30 @@
   top: 0.3rem;
 }
 
-.sale {
+.sale,
+.pending {
   font-size: 10px;
-  color: var(--primary-color);
-  background-color: #006aff2f;
+  color: var(--pending-col);
+  background-color: var(--bg-p-col);
 }
 
 .featured {
   font-size: 10px;
-  background-color: #41ae483f;
-  color: var(--tertiary-color-4);
+  background-color: var(--bg-f-col-4);
+  color: var(--featured-col);
 }
 
-.rent {
-  background-color: #FFF8EB;
-  color: #EEA23E;
+.rent,
+.published {
+  background-color: var(--bg-col-1);
+  color: var(--stat-col-1);
+}
+
+.draft,
+.expired,
+.disapproved {
+  background-color: var(--bg-r-col);
+  color: var(--red-col);
 }
 
 .below {
@@ -166,6 +186,11 @@
 
   .above {
     border-top-right-radius: unset;
+  }
+
+  .maxWidth {
+    max-width: 23rem;
+    border-bottom-left-radius: 8px;
   }
 
   .border_r {

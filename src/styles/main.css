@@ -5,8 +5,8 @@
 /* stylelint-disable csstree/validator */
 
 :root {
-  --dashboard-col: #437ef7;
-  --primary-color: #006aff; /* headlines & active states */
+  --dashboard-col: #437ef7; 
+  --primary-color: #437ef7; /* headlines & active states */
   --secondary-color: #141414; /* card text-color */
   --accent-color: #96999b; /* accent color */
   --accent-color-1: #5f6d7e;
@@ -275,9 +275,8 @@ input:hover + svg {
 
 @media screen and (width > 800px) {
   .wrapper {
-    padding-top: 3.5rem;
-    padding-inline: 1.3rem;
-    margin-left: 27vw;
+    padding-top: 4.5rem;
+    margin-left: 17rem;
   }
 }
 
