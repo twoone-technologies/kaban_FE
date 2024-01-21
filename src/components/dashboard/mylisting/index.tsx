@@ -68,7 +68,7 @@ export default function Listings() {
         />
         </div>
       </div>
-      {listingsObj.length === 0 ? 
+      {listingsObj.length !== 0 ? 
         <div className={`b-radius ${styles.listingsWrap}`}>
         <div className={`flex s-btw pad ${styles.listItem}`}>
           <div className='flex'>
