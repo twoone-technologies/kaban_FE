@@ -68,11 +68,50 @@
 
 .listItemGrp {
   align-items: self-start;
+  border-bottom: 1px solid var(--hover-color);
+}
+
+.iconGrp {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
 }
 
 .card {
   width: 100%;
-  margin-bottom: 3rem;
+  box-shadow: none;
+}
+
+/* prompt */
+.promptPage {
+  height: 100vh;
+}
+
+.prompt {
+  text-align: center;
+  padding: 2rem 4rem;
+}
+
+.prompt h3 {
+  font-weight: 700;
+}
+
+.prompt span {
+  color: var(--accent-color-1);
+}
+
+.svgWrap {
+  background-color: #dfecfe;
+  border: 2px solid;
+  opacity: 0.6;
+  border-radius: 50%;
+  padding: 1rem;
+  color: var(--primary-color);
+}
+
+.svg {
+  width: 3rem;
+  height: 3rem;
 }
 
 @media screen and (width <= 768px) {
@@ -82,5 +121,16 @@
 
   .schBar{
     width: 100%;
+  }
+}
+
+@media screen and (width >= 1024px) {
+  .prompt {
+    font-size: 1.5rem;
+  }
+
+  .svg {
+    width: 3.5rem;
+    height: 3.5rem;
   }
 }

@@ -72,7 +72,7 @@
 
 @media screen and (width <= 800px) {
   .sidebar {
-    transform: translateX(-100%);
+    transform: translateX(-200%);
     width: 100%;
   }
 }

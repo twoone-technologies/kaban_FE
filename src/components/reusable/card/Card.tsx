@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { bedIcon, showerIcon, carIcon } from '~/assets/icons';
 import styles from './card.module.css';
 import CardAgentInfo from './CardAgentInfo';
@@ -9,7 +9,8 @@ import CardAddress from './CardAddress';
 import CardImg from './CardImg';
 
 export type HouseCard = {
-  find?(arg0: (item: { realtor: { agentName: string; }; }) => void): unknown;
+  checked: boolean;
+  find?(arg0: (item: { realtor: { agentName: string } }) => void): unknown;
   location: {
     type: string;
     coordinates: [number, number] | number[];
@@ -18,8 +19,8 @@ export type HouseCard = {
   realtor: {
     agentImg: string;
     agentName: string;
-    whatsAppLink: string,
-    email: string,
+    whatsAppLink: string;
+    email: string;
     contact: string;
     location: string;
     rating: number;
@@ -29,7 +30,7 @@ export type HouseCard = {
   property_category: string;
   property_type: string;
   description: string;
-  status: "featured" | "sale" | "rent";
+  status: 'featured' | 'sale' | 'rent' | 'pending' | 'expiried' | 'published' | 'disapproved'| 'draft' | 'pending' | 'expired' | 'published' | 'disapproved';
   featured: boolean;
   price: {
     amount: number;
@@ -37,20 +38,20 @@ export type HouseCard = {
   address: string;
   city: string;
   images: {
-      url: string;
-      cover: boolean;
-      _id: string;
-      id: string;
-    }[];
+    url: string;
+    cover: boolean;
+    _id: string;
+    id: string;
+  }[];
   details: {
     bedroom: number;
     bathroom: number;
     land_area: string;
     parking_space: number;
     features: {
-        title: string;
-        checked: boolean;
-      }[];
+      title: string;
+      checked: boolean;
+    }[];
   };
   videoLink: string;
   street_view: boolean;
@@ -64,11 +65,13 @@ export default function Card({
   className,
   mapState = false,
   orientation = 'portrait',
+  statProps
 }: {
   card: HouseCard;
   className?: string;
   orientation?: string;
   mapState?: boolean;
+  statProps?: ReactNode;
 }) {
   const navigate = useNavigate();
   const [hover, setHover] = useState(false);
@@ -82,16 +85,24 @@ export default function Card({
       : styles.landscape_1;
 
   return (
-    <div id={`property-${card.id}`}
+    <div
+      id={`property-${card.id}`}
       onMouseEnter={onHoverHandler}
       onMouseLeave={onHoverHandler}
-      onClick={() => location.pathname.includes('dashboard') ?
-        null : navigate(`/property-item/${card.id}`)}
+      onClick={() =>
+        location.pathname.includes('dashboard')
+          ? null
+          : navigate(`/property-item/${card.id}`)
+      }
       className={`b-radius box_shadow ${styles.card} ${borders} ${className} ${cardState}`}
     >
       <div
         className={`flex f-column s-btw ${styles.above} 
-        ${orientation === 'portrait' ? styles.border_r : cardimgState && styles.maxWidth}`}
+        ${
+          orientation === 'portrait'
+            ? styles.border_r
+            : cardimgState && styles.maxWidth
+        }`}
       >
         <CardImg
           enter={hover}
@@ -103,48 +114,52 @@ export default function Card({
       </div>
 
       <div className={`flex f-column c_pad s-btw ${styles.below}`}>
-        <CardHeaderInfo
-          type={card.property_type}
-          num={card.price.amount}
-          featured={card.featured}
-          stat={card.status}
-        />
-        <div className={`flex f-column s-btw gap ${styles.iconWrap}`}>
-          <CardAddress title={card.title} address={card.address} 
-            onClick={() => { console.log('goat');
-              location.pathname.includes('dashboard') && navigate(`/property-item/${card.id}`)}
-          } />
-          <div className={`flex f-width ${styles.icons}`}>
-            <CardIcons
-              title="bedroom"
-              icon={bedIcon}
-              num={card.details.bedroom}
+        <div>
+          <CardHeaderInfo
+            type={card.property_type}
+            num={card.price.amount}
+            featured={card.featured}
+            stat={card.status}
+          />
+          <div className={`flex f-column s-btw ${styles.iconWrap}`}>
+            <CardAddress
+              title={card.title}
+              address={card.address}
+              onClick={() => {
+                console.log('goat');
+                location.pathname.includes('dashboard') &&
+                  navigate(`/property-item/${card.id}`);
+              }}
             />
-            <CardIcons
-              title="bathroom"
-              icon={showerIcon}
-              num={card.details.bathroom}
-            />
-            <CardIcons
-              title="parking spots"
-              icon={carIcon}
-              num={card.details.parking_space}
-            />
+            {location.pathname.includes('dashboard') ? null : (
+              <div className={`flex f-width ${styles.icons}`}>
+                <CardIcons
+                  title="bedroom"
+                  icon={bedIcon}
+                  num={card.details.bedroom}
+                />
+                <CardIcons
+                  title="bathroom"
+                  icon={showerIcon}
+                  num={card.details.bathroom}
+                />
+                <CardIcons
+                  title="parking spots"
+                  icon={carIcon}
+                  num={card.details.parking_space}
+                />
+              </div>
+            )}
           </div>
         </div>
-        {location.pathname.includes('dashboard') ? 
-          <div className='flex s-btw'>
-            <span>submited</span>
-            <span>expiring</span>
-            <span>expired</span>
-            <div>
-              {/* <Svg /> */}
-            </div>
-          </div> : 
+        {location.pathname.includes('dashboard') ? (
+          statProps
+        ) : (
           <CardAgentInfo
-          src={card.realtor.agentImg}
-          identity={card.realtor.agentName}
-        />}
+            src={card.realtor.agentImg}
+            identity={card.realtor.agentName}
+          />
+        )}
       </div>
     </div>
   );

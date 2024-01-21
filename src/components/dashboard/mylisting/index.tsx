@@ -10,14 +10,21 @@ import { useState } from 'react';
 import Checkbox from '~/components/searchForm/checkbox/Checkbox';
 import ListingItem from './ListingItem';
 import { HouseCard } from '~/components/reusable/card/Card';
+import { dummyObj } from '~/components/reusable/dummyObj';
+import PromptPage from './PromptPage';
 
 export default function Listings() {
   const [sortArr, setSortArr] = useState<HouseCard[]>([]);
   const [active, setActive] = useState<'all' |'rent' | 'sale'>('all')
-console.log(active);
-  const activeState = () => {
-    // setIsActive(true)
-  }
+
+  const listingArray = dummyObj as HouseCard[];
+  const [listingsObj, setListingsObj] = useState<HouseCard[]>(listingArray);
+
+  const handleCheckAll = () =>
+  setListingsObj((prev) =>
+    prev.map((item) => ({ ...item, checked: !item.checked }))
+  );
+
   const handleSort = (e: { target: { value: string } }) => {
     if (e.target.value === 'Price Acending') {
       setSortArr([...sortArr].sort((a, b) => a.price.amount - b.price.amount));
@@ -61,10 +68,11 @@ console.log(active);
         />
         </div>
       </div>
-      <div className={`b-radius ${styles.listingsWrap}`}>
+      {listingsObj.length === 0 ? 
+        <div className={`b-radius ${styles.listingsWrap}`}>
         <div className={`flex s-btw pad ${styles.listItem}`}>
           <div className='flex'>
-            <Checkbox title1='select all' />
+            <Checkbox onChange={handleCheckAll} title1='select all' />
             <Svg href={arrowDownIcon} />
           </div>
           <div className={`flex gap-1 c-pad b-radius ${styles.sortWrap}`}>
@@ -77,9 +85,13 @@ console.log(active);
           </div>
         </div>
         <div>
-          <ListingItem />
+          <ListingItem 
+            setItem={setListingsObj}
+            listArr={listingsObj}
+          />
         </div>
-      </div>
+      </div> : 
+      <PromptPage/>}
     </Wrapper>
   );
 }
