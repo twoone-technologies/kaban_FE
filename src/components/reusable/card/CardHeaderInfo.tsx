@@ -5,7 +5,7 @@ type Props = {
   type: string;
   num: number;
   featured: boolean;
-  stat: "featured" | "sale" | "rent" | "draft" | "pending" | "expiried" | "published" | "dissapproved";
+  stat: 'featured' | 'sale' | 'rent' | 'pending' | 'expiried' | 'published' | 'disapproved'| 'draft' | 'pending' | 'expired' | 'published' | 'disapproved';
 };
 
 const setNums = (num: number) => {
