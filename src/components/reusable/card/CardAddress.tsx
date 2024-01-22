@@ -12,7 +12,7 @@ export default function CardAddress({
 }) {
   return (
     <>
-      <span className="c-grey" onClick={() => onClick()}>{title}</span>
+      <span className="c-grey" onClick={onClick}>{title}</span>
       <div className="flex align-y c-grey">
         <Svg
           width_2="0.8rem"

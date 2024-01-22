@@ -5,8 +5,12 @@ type Props = {
   type: string;
   num: number;
   featured: boolean;
-  stat: 'featured' | 'sale' | 'rent' | 'pending' | 'expiried' | 'published' | 'disapproved'| 'draft' | 'pending' | 'expired' | 'published' | 'disapproved';
+  stat: GoodStat | EnlistStat | ErrorStat;
 };
+
+type GoodStat = 'featured' | 'sale' | 'rent' ;
+type EnlistStat = 'pending' |'published' |  'draft';
+type ErrorStat =  'expired' | 'disapproved';
 
 const setNums = (num: number) => {
   if (num === undefined || NaN || '') return '...';

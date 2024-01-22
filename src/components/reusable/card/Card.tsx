@@ -8,6 +8,10 @@ import CardHeaderInfo from './CardHeaderInfo';
 import CardAddress from './CardAddress';
 import CardImg from './CardImg';
 
+type GoodStat = 'featured' | 'sale' | 'rent' ;
+type EnlistStat = 'pending' |'published' |  'draft';
+type ErrorStat =  'expired' | 'disapproved';
+
 export type HouseCard = {
   checked: boolean;
   find?(arg0: (item: { realtor: { agentName: string } }) => void): unknown;
@@ -30,7 +34,7 @@ export type HouseCard = {
   property_category: string;
   property_type: string;
   description: string;
-  status: 'featured' | 'sale' | 'rent' | 'pending' | 'expiried' | 'published' | 'disapproved'| 'draft' | 'pending' | 'expired' | 'published' | 'disapproved';
+  status: GoodStat | EnlistStat | ErrorStat;
   featured: boolean;
   price: {
     amount: number;
