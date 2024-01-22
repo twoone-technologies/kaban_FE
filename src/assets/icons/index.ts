@@ -181,3 +181,12 @@ export const walletIcon = `${wallet}#img`;
 
 import houseView from "./houseView.svg";
 export const houseViewIcon = `${houseView}#img`;
+
+import publish from "./publish.svg";
+export const publishIcon = `${publish}#img`;
+
+import refresh from "./refresh.svg";
+export const refreshIcon = `${refresh}#img`;
+
+import trash from "./trash.svg";
+export const trashIcon = `${trash}#img`;

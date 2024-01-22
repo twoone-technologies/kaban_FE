@@ -1,0 +1,136 @@
+.search_order {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form,
+.listItem div {
+  position: relative;
+}
+
+.schBar{
+  width: 20rem;
+}
+
+.btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 3rem;
+  height: 3rem;
+  background-color: inherit;
+  color: var(--accent-color-1);
+}
+
+.sortOptionsWrap {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sort {
+  width: 10rem;
+}
+
+.sortIcon {
+  margin-top: 12px;
+}
+
+.sortWrap {
+  background-color: var(--tertiary-color-5);
+}
+
+.sortWrap span {
+  border-radius: 5px;
+  padding: 5px 13px;
+}
+
+.active {
+  background-color: var(--tertiary-color-1);
+}
+
+.listingsWrap {
+  background-color: var(--tertiary-color-1);
+  border: 1.4px solid var(--hover-color);
+  /* padding: 1rem; */
+  margin-top: 1rem;
+}
+
+.listItem div svg {
+  position: absolute;
+  top: 0.8rem;
+  right: -1.5rem;
+
+}
+
+.listItem:not(:last-child) {
+  border-bottom: 1px solid var(--hover-color);
+}
+
+.listItemGrp {
+  align-items: self-start;
+  border-bottom: 1px solid var(--hover-color);
+}
+
+.iconGrp {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.card {
+  width: 100%;
+  box-shadow: none;
+}
+
+/* prompt */
+.promptPage {
+  height: 100vh;
+}
+
+.prompt {
+  text-align: center;
+  padding: 2rem 4rem;
+}
+
+.prompt h3 {
+  font-weight: 700;
+}
+
+.prompt span {
+  color: var(--accent-color-1);
+}
+
+.svgWrap {
+  background-color: #dfecfe;
+  border: 2px solid;
+  opacity: 0.6;
+  border-radius: 50%;
+  padding: 1rem;
+  color: var(--primary-color);
+}
+
+.svg {
+  width: 3rem;
+  height: 3rem;
+}
+
+@media screen and (width <= 768px) {
+  .search_order {
+    flex-direction: column;
+  }
+
+  .schBar{
+    width: 100%;
+  }
+}
+
+@media screen and (width >= 1024px) {
+  .prompt {
+    font-size: 1.5rem;
+  }
+
+  .svg {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+}
