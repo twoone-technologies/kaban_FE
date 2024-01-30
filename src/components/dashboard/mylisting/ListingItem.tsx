@@ -19,6 +19,7 @@ export default function ListingItem({
   listArr,
   setItem,
 }: Props) {
+
   const handleChecked = (id: string) => {
     setItem((prev: HouseCard[]) =>
       prev.map((item: HouseCard) => {
@@ -33,7 +34,9 @@ export default function ListingItem({
   return (
     <>
       {listArr.map((item) => (
-        <div key={item.id} className={`pad flex ${styles.listItemGrp}`}>
+        <div key={item.id} id={`card-${item.id}`} 
+          className={`pad flex ${styles.listItemGrp}
+            ${location.hash.substring(1) === item.id ? styles.activeItem : ''}`}>
           <Checkbox
             checked={item.checked}
             onChange={() => handleChecked(item.id)}

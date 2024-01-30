@@ -27,31 +27,28 @@ export default function Sidebar({
 }: Props) {
   const route = location.pathname?.split('/')[2];
   const [invite, setInvite] = useState(false);
-  console.log(invite);
 
   return (
     <Container
       element="section"
       className={`flex f-column s-btw gap-05 ${className} ${styles.sidebar}`}
     >
-      <div>
+      <>
         <Link to={'/'} className="pad-1">
-          <Svg
+          <Svg width="5rem"
             href={logoIcon}
             height="2.5rem"
-            width="5rem"
             className="bg-primary"
           />
         </Link>
         {koinNode}
         <ul className="flex f-column">
           <li className={`flex pad-1 f-width align-y`}>
-            <h5>Main</h5>
+            <h3>Main</h3>
           </li>
           {sidebarArr.map((link) => (
             <li key={link.svg}>
-              <Link
-                onClick={onClick}
+              <Link onClick={onClick}
                 className={`flex gap-1 pad-1 f-width align-y ${styles.link}
               ${link.link === route && styles.isActive}`}
                 to={`dashboard/${link.link}`}
@@ -79,12 +76,10 @@ export default function Sidebar({
           </Button>
           <Invite isOpen={invite} exit={() => setInvite(false)} />
         </div>
-      </div>
+      </>
       <CardAgentInfo
-        star={4}
+        star={4} src={IkonIcon} imgClass={styles.img}
         className={`pad-1 ${agentClass} ${styles.cardAgentInfo}`}
-        imgClass={styles.img}
-        src={IkonIcon}
         identity={
           <div>
             <div className="flex gap">

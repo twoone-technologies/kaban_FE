@@ -249,6 +249,7 @@ svg:hover {
 .wrapper {
   padding: 4rem 1rem 1rem 1rem;
   margin-left: 0;
+  height: 100vh;
 }
 
 input:focus + svg,

@@ -19,6 +19,7 @@ import Insight from "./components/dashboard/insight"
 import Listings from "./components/dashboard/mylisting"
 import Wallet from "./components/dashboard/wallet"
 import Support from "./components/dashboard/support"
+import Notification from "./components/dashboard/notification"
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -42,6 +43,7 @@ export const router = createBrowserRouter(
       <Route path="dashboard/listings" element={<Listings />} />
       <Route path="dashboard/wallet" element={<Wallet />} />
       <Route path="dashboard/support" element={<Support />} />
+      <Route path="dashboard/notification" element={<Notification />} />
     </Route>
   )
 )

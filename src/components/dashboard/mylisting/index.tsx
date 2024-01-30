@@ -1,12 +1,12 @@
+import { useEffect, useState } from 'react';
+import { Form, useLocation } from 'react-router-dom';
 import { arrowDownIcon, arrowIcon, searchIcon, sortIcon } from '~/assets/icons';
 import { Wrapper } from '~/components/reusable/Container';
 import FormInput from '~/components/reusable/FormInput';
 import styles from './listings.module.css';
-import { Form } from 'react-router-dom';
 import Button from '~/components/reusable/Button';
 import Svg from '~/components/reusable/Svg';
 import { sortOptions } from '~/components/searchForm/status';
-import { useState } from 'react';
 import Checkbox from '~/components/searchForm/checkbox/Checkbox';
 import ListingItem from './ListingItem';
 import { HouseCard } from '~/components/reusable/card/Card';
@@ -19,6 +19,22 @@ export default function Listings() {
 
   const listingArray = dummyObj as HouseCard[];
   const [listingsObj, setListingsObj] = useState<HouseCard[]>(listingArray);
+
+  const location = useLocation();
+  
+  useEffect(() => {
+    console.log(location.hash);
+    const idFromHash = location.hash.substring(1);
+    if (idFromHash) {
+      const element = document.getElementById(`card-${idFromHash}`);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // Scroll to top if no hash is provided
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [location]);
 
   const handleCheckAll = () =>
   setListingsObj((prev) =>
@@ -38,6 +54,7 @@ export default function Listings() {
       );
     }
   };
+
 
   return (
     <Wrapper element="section">

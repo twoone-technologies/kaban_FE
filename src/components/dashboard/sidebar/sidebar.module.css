@@ -15,7 +15,8 @@
   display: none;
 }
 
-.link {
+.link,
+.sidebar h3 {
   font-weight: 600;
   color: var(--accent-color-1);
 }
