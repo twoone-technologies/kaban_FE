@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Container from '~/components/reusable/Container';
 import { Link } from 'react-router-dom';
 import Card, { HouseCard } from '~/components/reusable/card/Card';
@@ -7,6 +7,7 @@ import styles from '~/components/reusable/resultsContainer/results.module.css';
 import MapLoader from '~/components/map/MapLoader';
 import MobileMapControl from './MobileMapControl';
 import SwitchGroup from './SwitchGroup';
+import useSortSwitch from '~/hooks/useSortSwitch';
 
 type ResultsProps = {
   city: string;
@@ -32,31 +33,11 @@ export default function ResultsWrap({
   const [stack, setStack] = useState<'listings' | 'map'>('listings');
   const [map, setMap] = useState(false);
   const [selectItem, setSelectItem] = useState(0);
-  const [sortArr, setSortArr] = useState<HouseCard[]>([]);
 
-  useEffect(() => {
-    if (object) {
-      setSortArr(object)
-    }
-  }, [object])
-
+  const { sortArr, handleSort } = useSortSwitch(object);
 
   const toggleMap = () => {
     setMap(!map);
-  };
-
-  const handleSort = (e: { target: { value: string } }) => {
-    if (e.target.value === 'Price Acending') {
-      setSortArr([...sortArr].sort((a, b) => a.price.amount - b.price.amount));
-    }
-    if (e.target.value === 'Price Decending') {
-      setSortArr([...sortArr].sort((a, b) => b.price.amount - a.price.amount));
-    }
-    if (e.target.value === 'Featured listings first') {
-      setSortArr(
-        [...sortArr].sort((a, b) => Number(b.featured) - Number(a.featured)),
-      );
-    }
   };
 
   const listingsPage = stack === 'listings' ? '' : styles.stack;
@@ -76,6 +57,7 @@ export default function ResultsWrap({
     <Container
       element="section"
       className={`container-pad ${styles.resultsWrap}
+      ${!map ? styles.pad_right : styles.pad_inline}
       ${stack === 'map' ? styles.c_reset : ''}`}
     >
       <div className={`${styles.map_section} ${renderMap} ${mapPage}`}>
@@ -93,17 +75,28 @@ export default function ResultsWrap({
             <Link to={'/'} className="bg-primary">
               Home
             </Link>
-            {status && <span>{' '}{'>'} For {status}</span>}
+            {status && (
+              <span>
+                {' '}
+                {'>'} For {status}
+              </span>
+            )}
             {!status && <span> {'>'} Sales & Rent</span>}
           </>
         )}
         <h3>
           {propertyCategory || (
-            <span>{city} {status}</span>
-            )}{' '}
+            <span>
+              {city} {status}
+            </span>
+          )}{' '}
           Listings {propertyCategory && city && `in ${city}`}
         </h3>
-        <SearchForm defaultCity={defaultCity} className={styles.f} onSubmit={onSubmit} />
+        <SearchForm
+          defaultCity={defaultCity}
+          className={styles.f}
+          onSubmit={onSubmit}
+        />
         <SwitchGroup
           onChange={handleSort}
           mapState={map}
@@ -114,19 +107,17 @@ export default function ResultsWrap({
           setOrientation={setPosition}
         />
         <div className={`${styles.listings_wrap} ${listingsPage} ${order}`}>
-          {sortArr.map((item) => (
+          {sortArr.map(item => 'location' in item &&
             <Card
-              card={item}
+              card={item as HouseCard}
               key={item.id}
               mapState={map}
               orientation={position}
-              className={
-                selectItem === parseInt(item.id)
-                ? styles.activeElement
-                : undefined
+              className={selectItem === parseInt(item.id)
+                ? styles.activeElement : undefined
               }
             />
-          ))}
+          )}
         </div>
       </div>
     </Container>
