@@ -82,16 +82,16 @@ export default function Listings() {
           </tbody>
         </table>
         <div className={`flex s-btw pad-1 ${styles.pagination}`}>
-          <div>
+          <div className='flex gap'>
             <Svg href={arrowLeftIcon} height="1.2rem" /> Prev
           </div>
-          <div>
+          <div className='flex gap'>
             <span className={styles.td}>2</span>
             <span className={styles.td}>3</span>
             <span className={styles.td}>4</span>
             <span className={styles.td}>5</span>
           </div>
-          <div>
+          <div className='flex gap'>
             Next <Svg href={arrowRightIcon} height="1.2rem" />
           </div>
         </div>

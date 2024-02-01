@@ -1,24 +1,27 @@
+import { useState } from 'react';
+import { Form } from 'react-router-dom';
 import { arrowDownIcon, arrowIcon, searchIcon, sortIcon } from '~/assets/icons';
 import { Wrapper } from '~/components/reusable/Container';
 import FormInput from '~/components/reusable/FormInput';
 import styles from './listings.module.css';
-import { Form } from 'react-router-dom';
 import Button from '~/components/reusable/Button';
 import Svg from '~/components/reusable/Svg';
 import { sortOptions } from '~/components/searchForm/status';
-import { useState } from 'react';
 import Checkbox from '~/components/searchForm/checkbox/Checkbox';
 import ListingItem from './ListingItem';
 import { HouseCard } from '~/components/reusable/card/Card';
 import { dummyObj } from '~/components/reusable/dummyObj';
 import PromptPage from './PromptPage';
+import useRouting from '~/hooks/useRouting';
 
 export default function Listings() {
   const [sortArr, setSortArr] = useState<HouseCard[]>([]);
   const [active, setActive] = useState<'all' |'rent' | 'sale'>('all')
+  useRouting();
 
   const listingArray = dummyObj as HouseCard[];
   const [listingsObj, setListingsObj] = useState<HouseCard[]>(listingArray);
+
 
   const handleCheckAll = () =>
   setListingsObj((prev) =>
@@ -38,6 +41,7 @@ export default function Listings() {
       );
     }
   };
+
 
   return (
     <Wrapper element="section">

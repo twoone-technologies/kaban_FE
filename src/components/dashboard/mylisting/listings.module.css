@@ -1,5 +1,6 @@
 .search_order {
   display: flex;
+  transition: all 300ms ease-in-out;
   justify-content: space-between;
 }
 
@@ -48,10 +49,14 @@
   background-color: var(--tertiary-color-1);
 }
 
+.activeItem {
+  box-shadow: 4px 1px 11px -2px var(--accent-color);
+  border-radius: 4px;
+}
+
 .listingsWrap {
   background-color: var(--tertiary-color-1);
   border: 1.4px solid var(--hover-color);
-  /* padding: 1rem; */
   margin-top: 1rem;
 }
 
@@ -67,6 +72,7 @@
 }
 
 .listItemGrp {
+  transition: all 300ms ease-out;
   align-items: self-start;
   border-bottom: 1px solid var(--hover-color);
 }
@@ -80,6 +86,10 @@
 .card {
   width: 100%;
   box-shadow: none;
+}
+
+.btmDetails {
+  color: var(--accent-color-1);
 }
 
 /* prompt */

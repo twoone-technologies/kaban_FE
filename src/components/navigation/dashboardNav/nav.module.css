@@ -24,11 +24,36 @@
 }
 
 .bellWrap {
+  position: relative;
   color: var(--tertiary-color-2);
   border: 1px solid var(--tertiary-color-5);
   width: 2.3rem;
   height: 2.3rem;
   border-radius: 50%;
+}
+
+.alert.bellWrap::before {
+  position: absolute;
+  top: 10px;
+  left: 19px;
+  background-color: red;
+  content: '';
+  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+}
+
+.bellWrap::after {
+  position: absolute;
+  top: 2.5rem;
+  content: '';
+  width: 2rem;
+  height: 3rem;
+}
+
+.active {
+  background-color:  var(--tertiary-color-5);
+  color: var(--primary-color);
 }
 
 .coinWrap {
@@ -37,9 +62,40 @@
   padding: 0.4rem 0.8rem;
 }
 
+
 @media screen and (width <= 500px) {
   .navBar {
     font-size: 3vw;
+  }
+}
+
+@media screen and (width <= 800px) {
+  .tooltip {
+    display: none;
+  }
+}
+
+@media screen and (width >= 768px) {
+  .hide {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .tooltip {
+    color: var(--accent-color-1);
+    position: absolute;
+    top: 4rem;
+    z-index: 4000;
+    transform: translateX(-18rem);
+    width: 28rem;
+    min-height: 5rem;
+    transition: all 200ms ease-in;
+  }
+}
+
+@media screen and (800px <= width <= 920px) {
+  .tooltip {
+    transform: translateX(-10rem);
   }
 }
 
@@ -49,21 +105,12 @@
     border-bottom: 1px solid var(--tertiary-color-5);  
   }
 
-  .coinWrap {
-    display: none;
-  }
-
-  .bellWrap {
+  .coinWrap, .coinWrap ~ a {
     display: none;
   }
 
   .btn {
     display: none;
-  }
-
-  .mobile_btn {
-    /* width: calc(100% - 1rem); */
-    /* margin-inline: 1rem; */
   }
 
   .menuBtn {
