@@ -248,8 +248,7 @@ svg:hover {
 
 .wrapper {
   padding: 4rem 1rem 1rem 1rem;
-  margin-left: 0;
-  height: 100vh;
+  margin-left: 0
 }
 
 input:focus + svg,
@@ -268,7 +267,7 @@ input:hover + svg {
   .container {
     --gutter: 8rem;
     width: calc(100% - var(--gutter));
-    max-width: 1440px;
+    max-width: 1700px;
     padding-block: 2rem;
     margin-inline: auto;
   }
@@ -277,7 +276,8 @@ input:hover + svg {
 @media screen and (width > 800px) {
   .wrapper {
     padding-top: 4.5rem;
-    margin-left: 17rem;
+    margin-left: 17rem;;
+    height: 100vh;
   }
 }
 
