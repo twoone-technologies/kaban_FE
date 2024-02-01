@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Form, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { Form } from 'react-router-dom';
 import { arrowDownIcon, arrowIcon, searchIcon, sortIcon } from '~/assets/icons';
 import { Wrapper } from '~/components/reusable/Container';
 import FormInput from '~/components/reusable/FormInput';
@@ -12,28 +12,15 @@ import ListingItem from './ListingItem';
 import { HouseCard } from '~/components/reusable/card/Card';
 import { dummyObj } from '~/components/reusable/dummyObj';
 import PromptPage from './PromptPage';
+import useRouting from '~/hooks/useRouting';
 
 export default function Listings() {
   const [sortArr, setSortArr] = useState<HouseCard[]>([]);
   const [active, setActive] = useState<'all' |'rent' | 'sale'>('all')
+  useRouting();
 
   const listingArray = dummyObj as HouseCard[];
   const [listingsObj, setListingsObj] = useState<HouseCard[]>(listingArray);
-
-  const location = useLocation();
-  
-  useEffect(() => {
-    const idFromHash = location.hash.substring(1);
-    if (idFromHash) {
-      const element = document.getElementById(`card-${idFromHash}`);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    } else {
-      // Scroll to top if no hash is provided
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  }, [location]);
 
   const handleCheckAll = () =>
   setListingsObj((prev) =>
