@@ -1,0 +1,90 @@
+.datatWrap {
+  padding: 1rem;
+  background-color: var(--tertiary-color-1);
+}
+
+.datatWrap h3 {
+  font-weight: 600;
+}
+
+.inputWrap {
+  border: none;
+  outline: none;
+}
+
+.inputWrap label {
+  color: black;
+  font-weight: 500;
+}
+
+.input {
+  border: 1px solid var(--hover-color);
+}
+
+.description {
+  height: 7rem;
+}
+
+.salesRent {
+  flex-direction: row;
+}
+
+.svg {
+  position: absolute;
+  top: 2.3rem;
+}
+
+.details {
+  display: grid;
+  gap: 1rem;
+}
+
+.btnGrp {
+  font-weight: 500;
+  margin-bottom: 1rem;
+  justify-content: flex-end;
+}
+
+.btnGrp button {
+  width: 10rem;
+}
+
+.cancleBtn {
+  color: var(--tertiary-color-2);
+  background-color: var(--tertiary-color-1);
+  border: 2px solid var(--hover-color);
+}
+
+@media screen and (width <= 768px) {
+  .datatWrap {
+    padding: 0.5rem;
+  }
+
+  .statType {
+    flex-direction: column;
+  }
+
+  .salesRent {
+    flex-direction: column;
+  }
+}
+
+@media screen and (600px < width < 900px) {
+  .details {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .areaSuffix {
+    grid-column: 1 / 3;
+  }
+}
+
+@media screen and (width >= 900px) {
+  .details {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .areaSuffix {
+    grid-column: 2 / 4;
+  }
+}

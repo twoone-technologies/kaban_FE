@@ -277,7 +277,7 @@ input:hover + svg {
   .wrapper {
     padding-top: 4.5rem;
     margin-left: 17rem;;
-    height: 100vh;
+    min-height: 100vh;
   }
 }
 

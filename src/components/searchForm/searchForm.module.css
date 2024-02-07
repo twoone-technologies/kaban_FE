@@ -69,6 +69,10 @@
   outline: 2px solid var(--primary-color);
 }
 
+textarea:focus-within {
+  outline: 2px solid var(--primary-color);
+}
+
 .svgIcon {
   position: absolute;
   right: 0.4rem;

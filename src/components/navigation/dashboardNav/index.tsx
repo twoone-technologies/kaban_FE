@@ -60,7 +60,7 @@ export default function NavBoard() {
               ${location.pathname === '/dashboard/notification' ? styles.hide : ''}`}
             markAll={handleMarkAll}      
           />
-          <Button className={`c-pad ${styles.btn}`}>Post a Property</Button>
+          <Link to={'dashboard/post'} className={`c-pad b-radius ${styles.btn}`}>post a property</Link>
           <HamburgerMenu
             className={styles.menuBtn}
             open={open}
