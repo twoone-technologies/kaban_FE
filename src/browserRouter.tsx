@@ -1,25 +1,39 @@
-import { Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom"
-import LandingPage, { action as listingSearch } from "./routes/_landingpage"
-import Root, {action as signResults } from "./routes/_index"
-import Blog from "./routes/blog"
-import Commercial, {action as comResults } from "./routes/_property.commercial"
-import Industrial, {action as indResults } from "./routes/_property.industrial"
-import Residential, {action as resResults } from "./routes/_property.residential"
-import AboutUs from "./routes/_company.about-us"
-import ContactUs from "./routes/_company.contact-us"
-import FAQs from "./routes/_company.faqs"
-import Agents from "./routes/_realtors.agents"
-import Agencies from "./routes/_realtors.agencies"
-import SearchResults, {action as results } from "./routes/search_results"
-import PropertyItem from "./components/propertyItem/PropertyItem"
-import CityName, {action as cityResults, loader as citiesLoader} from "./routes/cities.$cityName"
-import Overview from "./components/dashboard/overview"
-import Dashboard, {action as srchRes} from "./components/dashboard"
-import Insight from "./components/dashboard/insight"
-import Listings from "./components/dashboard/mylisting"
-import Wallet from "./components/dashboard/wallet"
-import Support from "./components/dashboard/support"
-import Notification from "./components/dashboard/notification"
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from 'react-router-dom';
+import LandingPage, { action as listingSearch } from './routes/_landingpage';
+import Root, { action as signResults } from './routes/_index';
+import Blog from './routes/blog';
+import Commercial, {
+  action as comResults,
+} from './routes/_property.commercial';
+import Industrial, {
+  action as indResults,
+} from './routes/_property.industrial';
+import Residential, {
+  action as resResults,
+} from './routes/_property.residential';
+import AboutUs from './routes/_company.about-us';
+import ContactUs from './routes/_company.contact-us';
+import FAQs from './routes/_company.faqs';
+import Agents from './routes/_realtors.agents';
+import Agencies from './routes/_realtors.agencies';
+import SearchResults, { action as results } from './routes/search_results';
+import PropertyItem from './components/propertyItem/PropertyItem';
+import CityName, {
+  action as cityResults,
+  loader as citiesLoader,
+} from './routes/cities.$cityName';
+import Overview from './components/dashboard/overview';
+import Dashboard, { action as srchRes } from './components/dashboard';
+import Insight from './components/dashboard/insight';
+import Listings from './components/dashboard/mylisting';
+import Wallet from './components/dashboard/wallet';
+import Support from './components/dashboard/support';
+import Notification from './components/dashboard/notification';
+import Post from './components/dashboard/postproperty';
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -44,6 +58,7 @@ export const router = createBrowserRouter(
       <Route path="dashboard/wallet" element={<Wallet />} />
       <Route path="dashboard/support" element={<Support />} />
       <Route path="dashboard/notification" element={<Notification />} />
-    </Route>
-  )
-)
+      <Route path="dashboard/post" element={<Post />} />
+    </Route>,
+  ),
+);

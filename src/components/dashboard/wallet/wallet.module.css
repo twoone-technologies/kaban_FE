@@ -1,0 +1,47 @@
+.tokenBalance {
+  background-color: var(--tertiary-color-1);
+  border: 1px solid var(--hover-color);
+}
+
+.tokenBalance > span {
+  color: var(--accent-color-1);
+}
+
+.tokenBalance > h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.tokenBalance > h3 > span {
+  font-size: 1rem;
+}
+
+.tokenBalance button {
+  margin-top: 0.7rem;
+  font-size: 0.7rem;
+  width: max-content;
+}
+
+.table_wrap {
+  background-color: var(--tertiary-color-1);
+  margin-block: 2rem;
+  border: 1px solid var(--hover-color);
+}
+
+.table_wrap h3 {
+  font-weight: 700;
+  color: var(--accent-color-1);
+}
+
+.inputSort {
+  padding: 0.4rem;
+}
+
+.margin {
+  border-top: 1px solid var(--hover-color);
+}
+
+.pagination {
+  font-size: 0.8rem;
+  color: var(--accent-color);
+}

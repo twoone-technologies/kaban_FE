@@ -22,7 +22,6 @@ export default function Listings() {
   const listingArray = dummyObj as HouseCard[];
   const [listingsObj, setListingsObj] = useState<HouseCard[]>(listingArray);
 
-
   const handleCheckAll = () =>
   setListingsObj((prev) =>
     prev.map((item) => ({ ...item, checked: !item.checked }))

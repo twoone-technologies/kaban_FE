@@ -29,7 +29,8 @@ type Props = {
   onChange?: () => void;
   onChange1?: (e: never) => void;
 } & React.ComponentProps<'select'> &
-  React.ComponentProps<'input'>;
+  React.ComponentProps<'input'> &
+  React.ComponentProps<'textarea'>;
 
 export default function FormInput({
   svgI,
@@ -91,12 +92,13 @@ export default function FormInput({
   const textArea = (
     <textarea
       onChange={onChange1}
-      id="message"
+      id={title_1}
       className={textAreaClass}
       required
       maxLength={500}
-      name="message"
-      placeholder="write your message here"
+      name={title_1}
+      {...restProps}
+      // placeholder="write your message here"
     />
   );
 
@@ -137,7 +139,7 @@ export default function FormInput({
       {header || subItems || title === 'propertyType' ? select : null}
       {type === 'range' ? output : null}
       {type ? input : null}
-      {title_1 === 'Message'? textArea : null}
+      {title_1 === 'Message' || title_1 === 'Description' ? textArea : null}
       {link ? svg : null}
     </div>
   );
