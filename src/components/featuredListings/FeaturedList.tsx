@@ -53,8 +53,8 @@ export default function FeaturedList() {
               <Card card={item} />
             </SwiperSlide>
           ))}
-          <div className={`flex gap s-btw align-y carousel-btn-grp`}>
-            <div className="flex gap">
+          <div className={`flex gap w-full align-y carousel-btn-grp`}>
+            <div className="flex carousel-nav gap">
               <div className="carousel-btn flex align-y">
                 <Svg className="btn-prev" href={arrowIcon} />
               </div>

@@ -66,3 +66,18 @@ export const figures = [
     value: "9",
   },
 ]
+
+export const headers = [
+  {
+    type: "Basic",
+    value: "0",
+  },
+  {
+    type: "Media",
+    value: "1",
+  },
+  {
+    type: "Location",
+    value: "2",
+  },
+]
