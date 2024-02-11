@@ -55,6 +55,68 @@
   border: 2px solid var(--hover-color);
 }
 
+.uploadWrap {
+  border: 1px dashed var(--primary-color);
+}
+
+.upload {
+  position: relative;
+  font-size: 1.2rem;
+}
+
+.upload b {
+  text-decoration: underline;
+}
+
+.imgWrap {
+  position: relative;
+  background-color: var(--hover-color);
+}
+
+.imgControl {
+  bottom: 1rem;
+  position: absolute;
+}
+
+.svgWrap {
+  font-size: 11px;
+  color: var(--tertiary-color-1);
+  background-color: rgba(0, 0, 0, 0.471);
+  padding: 6px;
+  border-radius: 50%;
+}
+
+.starColor {
+  color: yellow;
+}
+
+.imgWrap span {
+  color: var(--tertiary-color-1);
+  border: 1px solid var(--hover-color);
+  border: 1px solid;
+  border-radius: 50%;
+  width: 1.8rem;
+  height: 1.8rem;
+  flex-wrap: wrap;
+  background-color: rgba(0, 0, 0, 0.471);
+}
+
+.img {
+  margin-inline: auto;
+  height: 14rem;
+  width: 100%;
+  max-width: 330px;
+}
+
+.fileInput {
+  border: 1px solid;
+  position: absolute;
+  left: 0;
+  width: 12rem;
+  opacity: 0;
+  font-size: 17px;
+}
+
 @media screen and (width <= 768px) {
   .datatWrap {
     padding: 0.5rem;

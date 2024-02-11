@@ -79,10 +79,6 @@ svg:active {
   transition: scale 100ms ease-in;
 }
 
-svg:hover {
-  color: var(--primary-color);
-}
-
 /* $-Utility classes-$ */
 .grid {
   display: grid;
@@ -263,6 +259,21 @@ input:hover + svg {
   margin-bottom: 1rem;
 }
 
+@media screen and (width < 768px) {
+  .carousel-btn-grp {
+    flex-direction: row;
+  }
+
+  .carousel-nav {
+    width: 100%;
+    justify-content: space-between;
+  } 
+
+  .c-pagination {
+    display: none;
+  }
+}
+
 @media screen and (width >= 768px) {
   .container {
     --gutter: 8rem;
@@ -270,6 +281,10 @@ input:hover + svg {
     max-width: 1700px;
     padding-block: 2rem;
     margin-inline: auto;
+  }
+
+  svg:hover {
+    color: var(--primary-color);
   }
 }
 

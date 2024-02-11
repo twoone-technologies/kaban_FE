@@ -5,12 +5,16 @@ import { figures, propertyTypes, suffix } from './suffix';
 import { statusArr } from '~/components/searchForm/status';
 import { arrowIcon } from '~/assets/icons';
 import CheckboxGroup from '~/components/searchForm/CheckboxGroup';
-import Button from '~/components/reusable/Button';
+import ContinueOrCancel from './ContinueOrCancel';
 
-export default function Basic() {
+type props = {
+  className: string;
+}
+
+export default function Basic({className}: props) {
 
   return (
-    <div className="flex f-column gap-2">
+    <div className={`flex f-column transition ease-in-out  gap-2 ${className}`}>
       <InputWrap>
         <h3>Property Description</h3>
         <FormInput
@@ -125,10 +129,7 @@ export default function Basic() {
         <h3>Features</h3>
         <CheckboxGroup />
       </InputWrap>
-      <div className={`flex gap-1 ${styles.btnGrp}`}>
-        <Button className={`c-pad ${styles.cancleBtn}`}>Cancel</Button>
-        <Button className='c-pad'>Continue</Button>
-      </div>
+      <ContinueOrCancel />
     </div>
   );
 }

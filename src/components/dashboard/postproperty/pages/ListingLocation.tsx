@@ -1,5 +1,10 @@
-export default function ListingLocation() {
+
+type props = {
+  className: string;
+}
+
+export default function ListingLocation({className}: props) {
   return (
-    <div>Location</div>
+    <div className={className}>Location</div>
   )
 }

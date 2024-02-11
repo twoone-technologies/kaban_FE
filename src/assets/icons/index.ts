@@ -190,3 +190,9 @@ export const refreshIcon = `${refresh}#img`;
 
 import trash from "./trash.svg";
 export const trashIcon = `${trash}#img`;
+
+import uploadImg from "./uploadImg.svg";
+export const uploadImgIcon = `${uploadImg}#img`;
+
+import coverStar from "./coverStar.svg";
+export const coverStarIcon = `${coverStar}#img`;

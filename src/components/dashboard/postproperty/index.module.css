@@ -1,0 +1,44 @@
+.wrapper {
+  padding-top: 8rem;
+}
+
+.formNav {
+  position: absolute;
+  top: 4.5rem;
+  left: 0;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  border-bottom: 1.5px solid var(--hover-color);
+}
+
+.header {
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.underline {
+  position: absolute;
+  bottom: -2.5px;
+  height: 4px;
+  width: 3.5rem;
+  background-color: var(--primary-color); 
+  transition: all 0.3s;
+}
+
+.hidden {
+  visibility: hidden;
+  overflow: hidden;
+  max-height: 0;
+  max-width: 0;
+}
+
+@media screen and (width >= 800px) {
+  .formNav {
+    padding-left: 18.5rem;
+  }
+}
