@@ -3,7 +3,7 @@ import InputWrap from './InputWrap';
 import styles from './post.module.css';
 import { coverStarIcon, uploadImgIcon } from '~/assets/icons';
 import FormInput from '~/components/reusable/FormInput';
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
@@ -17,37 +17,49 @@ type props = {
   className: string;
 }
 
-export default function Media({className}) {
-  const [images, setImages] = useState([]);
+type File = {
+  id?: number;
+  url?: string | undefined;
+  lastModified?: number,
+  lastModifiedDate?: Date,
+  name: string,
+  size: number,
+  type: string,
+  webkitRelativePath: string,
+}
+
+export default function Media({className}: props) {
+  const [images, setImages] = useState<File[]>([]);
   const [isDragging, setIsDragging] = useState(false);
   const [cover, setCover] = useState(-1);
 
-  const handleImage = (e) => {
-    const files = e.target.files;
-    if (files.length === 0) return;
-    for (let i = 0; i < files.length; i++) {
-      if (files[i].type.split('/')[0] !== 'image') continue;
-      if (!images.some((e) => e.name === files[i].name)) {
-        setImages((prev) => [
-          ...prev,
-          {
-            id: i,
-            name: files[i].name,
-            url: URL.createObjectURL(files[i]),
-            cover: false,
-            size: files[i].size,
-            type: files[i].type,
-            lastModified: files[i].lastModified,
-            lastModifiedDate: files[i].lastModifiedDate,
-            webkitRelativePath: files[i].webkitRelativePath,
-          },
-        ]);
-      }
+const handleImage = (e: ChangeEvent<HTMLInputElement>) => {
+  const files: FileList | null = e.target.files;
+  console.log(files);
+  if (!files || files.length === 0) return;
+  for (let i = 0; i < files.length; i++) {
+    const file: File = files[i];
+    if (file.type.split('/')[0] !== 'image') continue;
+    if (!images.some((e) => e.name === file.name)) {
+      setImages((prev) => [
+        ...prev,
+        {
+          id: i,
+          name: file.name,
+          url: URL.createObjectURL(file as unknown as Blob),
+          cover: false,
+          size: file.size,
+          type: file.type,
+          lastModified: file.lastModified,
+          lastModifiedDate: file.lastModifiedDate,
+          webkitRelativePath: file.webkitRelativePath,
+        },
+      ]);
     }
-  };
-  // console.log(images);
+  }
+};
 
-  const handleCoverImg = (id) => {
+  const handleCoverImg = (id: number) => {
     setCover(id);
     setImages((prev) => {
       return prev.map((image) => {
@@ -65,18 +77,18 @@ export default function Media({className}) {
     setImages((prev) => prev.filter((_, idx) => idx !== id));
   };
 
-  function onDragOver(e) {
+  function onDragOver(e: { preventDefault: () => void; dataTransfer: { dropEffect: string; }; }) {
     e.preventDefault();
     setIsDragging(true);
     e.dataTransfer.dropEffect = 'copy';
   }
 
-  function onDragLeave(e) {
+  function onDragLeave(e: { preventDefault: () => void; }) {
     e.preventDefault();
     setIsDragging(false);
   }
 
-  function onDrop(e) {
+  function onDrop(e: { preventDefault: () => void; dataTransfer: { files: FileList; }; }) {
     e.preventDefault();
     setIsDragging(false);
     const files = e.dataTransfer.files;
@@ -94,7 +106,6 @@ export default function Media({className}) {
             size: files[i].size,
             type: files[i].type,
             lastModified: files[i].lastModified,
-            lastModifiedDate: files[i].lastModifiedDate,
             webkitRelativePath: files[i].webkitRelativePath,
           },
         ]);
