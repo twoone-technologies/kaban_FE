@@ -24,6 +24,7 @@
     "swiper": "^10.0.4"
   },
   "devDependencies": {
+    "@types/google.maps": "^3.55.3",
     "@types/node": "^20.3.1",
     "@types/react": "^18.0.37",
     "@types/react-copy-to-clipboard": "^5.0.5",

@@ -1,8 +1,9 @@
 import React, { useCallback } from 'react';
-import { GoogleMap, useLoadScript } from '@react-google-maps/api';
+import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
 import styles from './map.module.css';
 import { mapPinIcon } from '~/assets/icons';
 import { HouseCard } from '../reusable/card/Card';
+import { useLocation } from 'react-router-dom';
 
 type MapProps = {
   location?: {
@@ -10,13 +11,15 @@ type MapProps = {
     coordinates: [number, number];
   };
   onClick?: (select: number) => void;
+  onMapClick?: (e: google.maps.MapMouseEvent) => void;
+  markerPosition: { lat: number, lng: number };
   idx?: string;
   object?: HouseCard[];
   active?: number;
   zoomLevel?: number;
 } & React.ComponentProps<'div'>;
 
-export default function Map({ className, idx, onClick, object }: MapProps) {
+export default function Map({ className, idx, onClick, onMapClick, markerPosition, object }: MapProps) {
 
   const API_KEY = import.meta.env.VITE_API_KEY || '';
   const { isLoaded, loadError } = useLoadScript({
@@ -137,11 +140,22 @@ export default function Map({ className, idx, onClick, object }: MapProps) {
   return (
     <div className={`${styles.map}`}>
       <GoogleMap
+        onClick={onMapClick}
         zoom={10}
         center={center}
         onLoad={onLoad}
         mapContainerClassName={`${styles.google_map} ${className}`}
-      />
+      >
+        {markerPosition && (
+          <Marker
+            position={markerPosition}
+            icon={{
+              url: mapPinIcon,
+              scaledSize: new window.google.maps.Size(40, 40),
+            }}
+          />
+        )}
+      </GoogleMap>
     </div>
   );
 }
