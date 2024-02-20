@@ -2,19 +2,20 @@ import { useEffect } from 'react';
 import { useLoadScript, Libraries } from '@react-google-maps/api';
 
 interface UseGoogleApiOptions {
-  apiKey: string;
-  libraries: Libraries;
-  onLoad?: () => void; // New onLoad callback prop
+  onLoad?: () => void | undefined; // New onLoad callback prop
 }
 
-interface UseGoogleApiResult {
-  isLoaded: boolean;
-  loadError: Error | undefined;
-}
+// interface UseGoogleApiResult {
+//   isLoaded: boolean;
+//   loadError: Error | undefined;
+// }
 
-export default function useGoogleApi({ apiKey, libraries, onLoad }: UseGoogleApiOptions): UseGoogleApiResult {
+const API_KEY = import.meta.env.VITE_API_KEY || '';
+const libraries: Libraries = ["places"];
+
+export default function useGoogleApi({ onLoad }: UseGoogleApiOptions) {
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: apiKey,
+    googleMapsApiKey: API_KEY,
     libraries: libraries,
   });
 

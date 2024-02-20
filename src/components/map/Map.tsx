@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { GoogleMap, Marker, Libraries} from '@react-google-maps/api';
+import { GoogleMap, Marker } from '@react-google-maps/api';
 import styles from './map.module.css';
 import { mapPinIcon } from '~/assets/icons';
 import { HouseCard } from '../reusable/card/Card';
@@ -19,9 +19,6 @@ type MapProps = {
   zoomLevel?: number;
 } & React.ComponentProps<'div'>;
 
-const API_KEY = import.meta.env.VITE_API_KEY || '';
-const libraries: Libraries = ["places"];
-
 export default function Map({
   className,
   idx,
@@ -30,10 +27,7 @@ export default function Map({
   markerPosition,
   object,
 }: MapProps) {
-  const { isLoaded, loadError } = useGoogleApi({
-    apiKey: API_KEY,
-    libraries: libraries,
-  });
+  const { isLoaded, loadError } = useGoogleApi({});
 
   const onLoad = useCallback(
     (map: google.maps.Map) => {
@@ -78,6 +72,7 @@ export default function Map({
           };
 
           map.setCenter(center);
+          map.setZoom(15)
         }
       } else {
         object?.map((markerData: HouseCard) => {
@@ -94,14 +89,15 @@ export default function Map({
           });
 
           marker.addListener('click', () => {
+            map.setCenter(marker.getPosition() as google.maps.LatLng);
+            map.setZoom(15);
             const cardElement = document.querySelector(
               `#property-${markerData.id}`,
             );
 
-            if (cardElement) {
-              cardElement.scrollIntoView({ behavior: 'smooth' });
-            }
+            if (cardElement) cardElement.scrollIntoView({ behavior: 'smooth' });
             onClick && onClick(parseInt(markerData.id));
+            
             infoWindow.setPosition({
               lat: markerData.location.coordinates[0],
               lng: markerData.location.coordinates[1],
@@ -130,6 +126,7 @@ export default function Map({
           const avgLng = sumLng / object?.length;
 
           map.setCenter({ lat: avgLat, lng: avgLng });
+          map.setZoom(10)
         }
       }
     },
@@ -145,7 +142,7 @@ export default function Map({
     <div className={`${styles.map}`}>
       <GoogleMap
         onClick={onMapClick}
-        zoom={markerPosition ? 15 : 6}
+        zoom={markerPosition ? 15 : 10}
         center={markerPosition ? markerPosition : { lat: 10.00000000, lng: 8.00000000 }}
         onLoad={onLoad}
         mapContainerClassName={`${styles.google_map} ${className}`}

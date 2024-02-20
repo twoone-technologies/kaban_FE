@@ -3,7 +3,6 @@ import usePlacesAutocomplete from 'use-places-autocomplete';
 import PlacesAutocomplete from '.';
 import FormInput from '../FormInput';
 import useGoogleApi from '~/hooks/useGoogleApi';
-import { Libraries } from '@react-google-maps/api';
 import styles from '~/components/dashboard/postproperty/pages/post.module.css'
 import { alarmIcon, closeIcon } from '~/assets/icons';
 import Svg from '../Svg';
@@ -18,9 +17,6 @@ type GoogleAddressProps = {
   setMarker: Dispatch<SetStateAction<{ lat: number; lng: number } | null>>, 
 };
 
-const API_KEY = import.meta.env.VITE_API_KEY || '';
-const libraries: Libraries = ['places'];
-
 export default function Address({setMarker, className, city, state, title}: GoogleAddressProps) {
   const {
     value,
@@ -33,8 +29,6 @@ export default function Address({setMarker, className, city, state, title}: Goog
   });
 
   const { isLoaded } = useGoogleApi({
-    apiKey: API_KEY,
-    libraries: libraries,
     onLoad: () => init(),
   });
 
@@ -77,7 +71,7 @@ export default function Address({setMarker, className, city, state, title}: Goog
             
           />
           <Tooltip copy={hover} popOver={true} 
-            text={<span className={styles.tooltipMsg}>select <i>set pin manually</i> in <i>Map Address</i> to set the landmark and click the property on the map</span>}
+            text={<span className={styles.tooltipMsg}>select <i>set pin manually</i> in <i>Map Address</i> to set the landmark and click the location on the map</span>}
           />
         </div>
       }
