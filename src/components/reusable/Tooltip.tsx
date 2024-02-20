@@ -1,7 +1,7 @@
 import styles from './utils.module.css';
 import { ReactNode } from 'react';
 
-type TooltipProps = { copy?: boolean, popOver: boolean, text: string | ReactNode }
+type TooltipProps = { copy?: boolean, popOver?: boolean, text: string | ReactNode }
 
 export default function Tooltip({ copy, text, popOver }: TooltipProps) {
   return (
