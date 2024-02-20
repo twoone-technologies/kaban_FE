@@ -3,26 +3,41 @@ import InputWrap from './InputWrap';
 import styles from './post.module.css';
 import MapLoader from '~/components/map/MapLoader';
 import { useState } from 'react';
+import usePlacesAutocomplete from 'use-places-autocomplete';
+import { mapOptions } from './mapOptions';
+import { arrowIcon } from '~/assets/icons';
+import Address from '~/components/reusable/placesAutocomplete/Address';
 
 type props = {
   className: string;
 };
 
 export default function ListingLocation({ className }: props) {
+  const { clearSuggestions } = usePlacesAutocomplete();
+
   const [marker, setMarker] = useState<google.maps.LatLngLiteral | null>(null);
+  const [pin, setPin] = useState(false);
 
-  const handleMapClick = (latLng: google.maps.MapMouseEvent) => {
-    if (!latLng.latLng) return; // Ensure latLng is defined
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+  const [mapCenter, setMapCenter] = useState({ lat: 10.00000000, lng: 8.00000000 })
 
+  const handlePinSelect = (string: 'select pin manually' | 'same as above') => {
+    string === 'select pin manually' ? setPin(true) : setPin(false) 
+  }
+
+  const handleMapClick = (e: google.maps.MapMouseEvent) => { 
+    if (!e.latLng) return
     const obj: google.maps.LatLngLiteral = {
-      lat: latLng.latLng.lat(),
-      lng: latLng.latLng.lng(),
-    }
+      lat: e.latLng.lat(),
+      lng: e.latLng.lng(),
+    };
     setMarker(obj);
+    setMapCenter({ lat: obj.lat, lng: obj.lng });
   };
 
   return (
-    <div className={className}>
+    <div className={className} onClick={() => clearSuggestions()}>
       <InputWrap>
         <h3>Location</h3>
         <div className={`gap ${styles.locationData}`}>
@@ -32,6 +47,7 @@ export default function ListingLocation({ className }: props) {
             title_1="State"
             title={'state'}
             type="text"
+            onChange1={(e: React.ChangeEvent<HTMLInputElement>) => setState(e.target.value)}
             placeholder="Akwa Ibom, Lagos, Rivers"
           />
           <FormInput
@@ -40,23 +56,15 @@ export default function ListingLocation({ className }: props) {
             title_1="City"
             title={'city'}
             type="text"
+            onChange1={(e: React.ChangeEvent<HTMLInputElement>) => setCity(e.target.value)}
             placeholder="Uyo, Ikeja, Port Harcourt"
           />
-          <FormInput
-            className={`gap-0 f-column ${styles.inputWrap}`}
-            inputClass={styles.input}
-            title_1="Address"
-            title={'address'}
-            type="text"
-            placeholder="Enter Address"
-          />
-          <FormInput
-            className={`gap-0 f-column ${styles.inputWrap}`}
-            inputClass={styles.input}
-            title_1="Landmark"
-            title={'landmark'}
-            type="text"
-            placeholder="Nearest major road/Landmark"
+          <Address
+            className={styles.address}
+            setMarker={setMarker}
+            city={city}
+            state={state}
+            title='address'
           />
         </div>
       </InputWrap>
@@ -65,27 +73,36 @@ export default function ListingLocation({ className }: props) {
         <div className={`gap-x-0.5 ${styles.mapData}`}>
           <div className={styles.mapWrap}>
             <MapLoader
+              center={mapCenter}
               markerPosition={marker}
-              onMapClick={e => {console.log(e);
-                handleMapClick(e)
-              }}
+              onMapClick={pin === true ? handleMapClick : undefined} 
             />
           </div>
-          <div className='flex flex-col justify-between'>
+          <div className="flex gap flex-col justify-between">
             <FormInput
               className={`gap-0 f-column ${styles.inputWrap}`}
-              inputClass={styles.input}
+              selectClass={styles.input}
               title_1="Map Address"
+              link={arrowIcon}
+              svgI={'top-9'}
               title={'mapAddress'}
-              type="text"
-              placeholder="Enter address"
+              onChange1={(e: React.ChangeEvent<HTMLInputElement>) => 
+                handlePinSelect(e.target.value as 'select pin manually' | 'same as above')}
+              header='map options'
+              subItems={mapOptions}
             />
+            {pin && <Address
+              setMarker={setMarker}
+              city={city}
+              state={state}
+              title='landmark'
+            />}
             <FormInput
               className={`gap-0 f-column ${styles.inputWrap}`}
               inputClass={styles.input}
               title_1="Longitude"
               title={'longitude'}
-              value={marker?.lng}
+              defaultValue={marker?.lng}
               type="number"
             />
             <FormInput
@@ -94,7 +111,7 @@ export default function ListingLocation({ className }: props) {
               title_1="Latitude"
               title={'latitude'}
               type="number"
-              value={marker?.lat}
+              defaultValue={marker?.lat}
             />
           </div>
         </div>

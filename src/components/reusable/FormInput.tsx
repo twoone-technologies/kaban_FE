@@ -3,7 +3,6 @@ import Svg from './Svg';
 import Checkbox from '../searchForm/checkbox/Checkbox';
 import styles from '~/components/searchForm/searchForm.module.css';
 import { property_type } from '~/components/herosection/formData';
-
 type Props = {
   id?: string;
   svgI?: string

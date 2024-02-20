@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react';
-import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
+import { GoogleMap, Marker, Libraries} from '@react-google-maps/api';
 import styles from './map.module.css';
 import { mapPinIcon } from '~/assets/icons';
 import { HouseCard } from '../reusable/card/Card';
-import { useLocation } from 'react-router-dom';
+import useGoogleApi from '~/hooks/useGoogleApi';
 
 type MapProps = {
   location?: {
@@ -12,22 +12,28 @@ type MapProps = {
   };
   onClick?: (select: number) => void;
   onMapClick?: (e: google.maps.MapMouseEvent) => void;
-  markerPosition: { lat: number, lng: number };
+  markerPosition?: { lat: number; lng: number };
   idx?: string;
   object?: HouseCard[];
   active?: number;
   zoomLevel?: number;
 } & React.ComponentProps<'div'>;
 
-export default function Map({ className, idx, onClick, onMapClick, markerPosition, object }: MapProps) {
+const API_KEY = import.meta.env.VITE_API_KEY || '';
+const libraries: Libraries = ["places"];
 
-  const API_KEY = import.meta.env.VITE_API_KEY || '';
-  const { isLoaded, loadError } = useLoadScript({
-    id: 'google-map-script',
-    googleMapsApiKey: API_KEY,
+export default function Map({
+  className,
+  idx,
+  onClick,
+  onMapClick,
+  markerPosition,
+  object,
+}: MapProps) {
+  const { isLoaded, loadError } = useGoogleApi({
+    apiKey: API_KEY,
+    libraries: libraries,
   });
-
-  const center = { lat: 5.020495237740932, lng: 7.925467457407156 };
 
   const onLoad = useCallback(
     (map: google.maps.Map) => {
@@ -101,12 +107,12 @@ export default function Map({ className, idx, onClick, onMapClick, markerPositio
               lng: markerData.location.coordinates[1],
             });
             infoWindow.setContent(`
-            <div>
-              <h5>${markerData.address}</h5>
-              <small>${markerData.title},</small>
-              <small>${markerData.property_type}</small>
-            </div>
-          `);
+              <div>
+                <h5>${markerData.address}</h5>
+                <small>${markerData.title},</small>
+                <small>${markerData.property_type}</small>
+              </div>
+            `);
             infoWindow.open(map, marker);
           });
         });
@@ -133,22 +139,20 @@ export default function Map({ className, idx, onClick, onMapClick, markerPositio
   if (loadError) {
     return <div>Error loading Google Maps: {loadError.message}</div>;
   }
-  if (!isLoaded) {
-    return <div>Loading...</div>;
-  }
+  if (!isLoaded) return <div>Loading...</div>
 
   return (
     <div className={`${styles.map}`}>
       <GoogleMap
         onClick={onMapClick}
-        zoom={10}
-        center={center}
+        zoom={markerPosition ? 15 : 6}
+        center={markerPosition ? markerPosition : { lat: 10.00000000, lng: 8.00000000 }}
         onLoad={onLoad}
         mapContainerClassName={`${styles.google_map} ${className}`}
       >
         {markerPosition && (
           <Marker
-            position={markerPosition}
+            position={(markerPosition)}
             icon={{
               url: mapPinIcon,
               scaledSize: new window.google.maps.Size(40, 40),

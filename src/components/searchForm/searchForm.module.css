@@ -49,23 +49,26 @@
   color: var(--primary-color);
 }
 
-.input {
+select, input {
   padding: 0.7rem 0.5rem;
 }
 
-.input[name="advanced search"] {
+input[name="advanced search"] {
   color: var(--accent-color);
 }
 
-.input::placeholder {
+select::placeholder,
+input::placeholder {
   color: var(--accent-color);
 }
 
-.input:hover {
+select:hover,
+input:hover {
   background-color: #dae0e692;
 }
 
-.input:focus-within {
+select:focus-within,
+input:focus-within {
   outline: 2px solid var(--primary-color);
 }
 
