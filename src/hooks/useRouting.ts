@@ -5,7 +5,6 @@ export default function useRouting() {
   const location = useLocation();
   
   useEffect(() => {
-    console.log(location.hash);
     const idFromHash = location.hash.substring(1);
     if (idFromHash) {
       const element = document.getElementById(`card-${idFromHash}`);
