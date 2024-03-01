@@ -11,7 +11,7 @@ export default function Container<El extends keyof JSX.IntrinsicElements>({
   const Comp = element as string;
 
   return (
-    <Comp className={`container ${className}`} {...rest}>
+    <Comp className={`containerClass ${className}`} {...rest}>
       {children}
     </Comp>
   );

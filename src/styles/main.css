@@ -236,7 +236,7 @@ svg:active {
   padding-block: 3rem;
 }
 
-.container {
+.containerClass {
   --gutter: 5%;
   width: calc(100% - 1 * var(--gutter));
   margin-inline: auto;
@@ -275,7 +275,7 @@ input:hover + svg {
 }
 
 @media screen and (width >= 768px) {
-  .container {
+  .containerClass {
     --gutter: 8rem;
     width: calc(100% - var(--gutter));
     max-width: 1700px;
