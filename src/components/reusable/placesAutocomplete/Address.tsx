@@ -1,23 +1,27 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import usePlacesAutocomplete from 'use-places-autocomplete';
 import PlacesAutocomplete from '.';
-import FormInput from '../FormInput';
 import useGoogleApi from '~/hooks/useGoogleApi';
-import styles from '~/components/dashboard/postproperty/pages/post.module.css'
+import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css'
 import { alarmIcon, closeIcon } from '~/assets/icons';
 import Svg from '../Svg';
 import Tooltip from '../Tooltip';
 import useResponsiveNav from '~/hooks/useResponsiveNav';
+import FormControl from '../FormControl';
+import { useActionData } from 'react-router-dom';
+import { ErrorObj } from '~/components/dashboard/postproperty';
 
 type GoogleAddressProps = {
   city: string, 
   state: string,
   title: string,
+  error?: string,
   className?: string;
   setMarker: Dispatch<SetStateAction<{ lat: number; lng: number } | null>>, 
 };
 
-export default function Address({setMarker, className, city, state, title}: GoogleAddressProps) {
+export default function Address(
+  {setMarker, className, city, state, title}: GoogleAddressProps) {
   const {
     value,
     init,
@@ -32,6 +36,8 @@ export default function Address({setMarker, className, city, state, title}: Goog
     onLoad: () => init(),
   });
 
+  
+  const errors = useActionData() as ErrorObj
   const [address, setAddress] = useState('');
   const [close, setClose] = useState(false)
   const [hover, setHover] = useState(false)
@@ -43,15 +49,17 @@ export default function Address({setMarker, className, city, state, title}: Goog
 
   return (
     <div className={`relative ${className}`}>
-      <FormInput 
+      <FormControl 
+        as='input'
         type="text"
-        inputClass={styles.input}
+        className={styles.input}
         value={address.split(',')[0]}
-        className={`gap-0 f-column ${styles.inputWrap}`}
-        title={title === 'address' ? 'address' : 'landmark'}
+        error={errors?.address != undefined && title === 'address' ? errors.address[0] : undefined}
+        containerClass={`gap-0 f-column ${styles.inputWrap}`}
+        name={title === 'address' ? 'address' : 'landmark'}
         placeholder={title === "address" ? "Enter Address" : "Nearest major road/Landmark"}
-        title_1={ title === 'address' ? 'Address' : 'Landmark'}
-        onChange1={(e: React.ChangeEvent<HTMLInputElement>) => {
+        labelText={ title === 'address' ? 'Address' : 'Landmark'}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           if (title === 'address') {
             setAddress(e.target.value)
             setClose(false)
@@ -91,9 +99,7 @@ export default function Address({setMarker, className, city, state, title}: Goog
           setInputAddress={setAddress}
           clearOptions={clearSuggestions}
         />
-      ) : (
-        ''
-      )}
+      ) : ('')}
     </div>
   );
 }

@@ -26,6 +26,12 @@
   background-color: var(--hover-color);
 }
 
+.wrap input {
+  position: absolute;
+  visibility: hidden;
+  overflow: hidden;
+}
+
 .wrap input:checked ~ .checkmark {
   background-image: url('~/assets/icons/tick.svg');
   background-repeat: no-repeat;

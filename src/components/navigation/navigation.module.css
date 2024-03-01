@@ -10,7 +10,7 @@
 .nav {
   z-index: 1000;
   position: fixed;
-  width: -webkit-fill-available;
+  min-width: -webkit-fill-available;
   top: 0;
   left: 0;
   right: 0;
