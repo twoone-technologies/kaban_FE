@@ -3,7 +3,7 @@ import styles from './checkbox.module.css';
 type Props = {
   title1?: string;
   onBlur?: () => void;
-  onChange?: () => void;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
   checked?: boolean;
 } & React.ComponentProps<'input'>;
 

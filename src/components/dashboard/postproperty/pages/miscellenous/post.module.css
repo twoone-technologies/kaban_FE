@@ -1,5 +1,7 @@
+/* inputwrap component */
 .datatWrap {
   padding: 1rem;
+  border: 1px solid var(--hover-color);
   background-color: var(--tertiary-color-1);
 }
 
@@ -7,6 +9,7 @@
   font-weight: 600;
 }
 
+/* formcontrol class */
 .inputWrap {
   border: none;
   outline: none;
@@ -21,17 +24,17 @@
   border: 1px solid var(--hover-color);
 }
 
-.description {
-  height: 7rem;
-}
-
+/* salesRentPrice */
 .salesRent {
   flex-direction: row;
 }
 
+/* svg class */
 .svg {
   position: absolute;
   top: 2.3rem;
+  right: 1rem;
+  transform: rotate(90deg);
 }
 
 .alarmSvg {
@@ -61,6 +64,7 @@
   color: var(--primary-color);
 }
 
+
 .details {
   display: grid;
   gap: 1rem;
@@ -72,11 +76,8 @@
   justify-content: flex-end;
 }
 
-.btnGrp button {
-  width: 10rem;
-}
-
 .cancleBtn {
+  width: 10rem;
   color: var(--tertiary-color-2);
   background-color: var(--tertiary-color-1);
   border: 2px solid var(--hover-color);
@@ -84,6 +85,8 @@
 
 .uploadWrap {
   border: 1px dashed var(--primary-color);
+  line-height: 2rem;
+  text-align: center;
 }
 
 .upload {
@@ -95,14 +98,15 @@
   text-decoration: underline;
 }
 
+.carousel_btn_grp {
+  position: fixed;
+  width: calc(100% - 24rem);
+  flex-direction: row-reverse;
+}
+
 .imgWrap {
   position: relative;
   background-color: var(--hover-color);
-}
-
-.imgControl {
-  bottom: 1rem;
-  position: absolute;
 }
 
 .svgWrap {
@@ -128,6 +132,10 @@
   background-color: rgba(0, 0, 0, 0.471);
 }
 
+.coverImg {
+  height: 14rem;
+}
+
 .img {
   margin-inline: auto;
   height: 14rem;
@@ -136,12 +144,23 @@
 }
 
 .fileInput {
-  border: 1px solid;
   position: absolute;
+  top: -12px;
   left: 0;
-  width: 12rem;
   opacity: 0;
+  height: 35px;
+  max-width: 12rem;
   font-size: 17px;
+}
+
+.coverFileInput {
+  position: absolute;
+  height: 1.5rem;
+  left: 0;
+  opacity: 0;
+  top: 65%;
+  width: 100%;
+  border: 1px solid;
 }
 
 /* location */
@@ -155,7 +174,6 @@
 
 .see {
   visibility: visible;
-  /* opacity: 1; */
 }
 
 .hide {
@@ -179,6 +197,14 @@
 
 .autocomplete {
   border: 1px solid;
+}
+
+.submitBtn {
+  position: absolute;
+  transform: scaleX(0);
+  opacity: 0;
+  visibility: collapse;
+  width: 0;
 }
 
 @media screen and (width <= 768px) {
