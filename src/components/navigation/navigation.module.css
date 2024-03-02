@@ -36,13 +36,8 @@
   color: var(--tertiary-color-1);
 }
 
-.open {
-  animation: slide-in-blurred-right 500ms ease;
-}
-
 .close {
   transform: translate(110%);
-  animation: slide-out-blurred-right 500ms ease-in-out;
 }
 
 .hamburger_menu {
@@ -131,12 +126,10 @@
 
 .loggedState {
   width: 100%;
-  /* display: none; */
 }
 
 .toggleUser {
   width: 100%;
-  /* display: none; */
 }
 
 .post_btn {
