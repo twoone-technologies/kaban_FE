@@ -69,6 +69,12 @@
   text-align: center;
 }
 
+@media screen and (width < 768px) {
+  .city_card {
+    height: 268px;
+  }
+}
+
 @media screen and (width >= 600px) {
   .grid_container {
     display: grid;

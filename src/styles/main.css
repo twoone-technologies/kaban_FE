@@ -262,15 +262,20 @@ input:hover + svg {
 @media screen and (width < 768px) {
   .carousel-btn-grp {
     flex-direction: row;
+    justify-content: center;
   }
 
   .carousel-nav {
     width: 100%;
     justify-content: space-between;
+    display: none;
   } 
 
   .c-pagination {
-    display: none;
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
   }
 }
 

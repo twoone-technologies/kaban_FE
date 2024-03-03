@@ -1,37 +1,3 @@
-.grid_container {
-  display: grid;
-  grid-template-areas:
-    "a b"
-    "c c";
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-}
-
-.card_container {
-  border-radius: 12px;
-  position: relative;
-  overflow: hidden;
-}
-
-.section_title {
-  padding-bottom: 2rem;
-  text-align: center;
-}
-
-.card_container:nth-child(1) {
-  grid-area: a;
-  aspect-ratio: 16/9;
-}
-.card_container:nth-child(2) {
-  grid-area: b;
-  aspect-ratio: 16/9;
-}
-
-.card_container:nth-child(3) {
-  grid-area: c;
-  aspect-ratio: 19/7;
-}
-
 .property_card {
   background-color: rgb(100, 90, 77);
   background-image: var(--background-img);
@@ -44,8 +10,14 @@
   cursor: pointer;
   transition: scale 250ms ease-in-out;
 }
+
 .property_card:hover {
   scale: 1.03;
+  border-radius: 12px;
+}
+
+.card_container {
+  border-radius: 12px;
 }
 
 .sm_card {
@@ -54,34 +26,56 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0.5rem;
   z-index: 1;
-
   color: rgb(255, 255, 255);
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (width > 768px) {
   .grid_container {
-    grid-template-areas: "a" "b" "c";
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-areas:
+      "a b"
+      "c c";
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
-
+  
+  .card_container {
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .section_title {
+    padding-bottom: 2rem;
+    text-align: center;
+  }
+  
   .card_container:nth-child(1) {
-    width: 100%;
-    height: 260px;
-    /* aspect-ratio: 4/3; */
+    grid-area: a;
+    aspect-ratio: 16/9;
   }
-
   .card_container:nth-child(2) {
-    width: 100%;
-    height: 260px;
-    /* aspect-ratio: 4/3; */
+    grid-area: b;
+    aspect-ratio: 16/9;
   }
-
+  
   .card_container:nth-child(3) {
-    width: 100%;
-    height: 260px;
-    /* aspect-ratio: 4/3; */
+    grid-area: c;
+    aspect-ratio: 19/7;
   }
+  
+  .sm_card {
+    left: 1rem;
+    bottom: 1rem;
+  }
+}
 
+
+@media screen and (width <= 769px) {
+  .property_card {
+    border-radius: 12px;
+    height: 260px;
+  }
   .sm_card {
     top: 80%;
     transform: translate(-50%, -50%);
