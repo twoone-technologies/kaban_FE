@@ -2,14 +2,12 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
-import { arrowIcon } from '~/assets/icons';
+import { SwiperSlide } from 'swiper/react';
 import Svg from '~/components/reusable/Svg';
 import { coverStarIcon } from '~/assets/icons';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
+import CarouselWrap from '~/components/reusable/CarouselWrap';
 import { ImageFile } from '~/components/dashboard/postproperty/pages/media';
 import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
-import CarouselWrap from '~/components/reusable/CarouselWrap';
 
 type Props = {
   imageArr: ImageFile[];
