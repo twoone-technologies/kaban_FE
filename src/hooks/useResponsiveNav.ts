@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 type MediaSize = 'mobile' | 'desktop'
 
 export default function useResponsiveNav({ onClick, onMouseEnter, onMouseLeave }:
-  { onClick: () => void, onMouseEnter: () => void, onMouseLeave: () => void }) {
+  { onClick?: () => void, onMouseEnter?: () => void, onMouseLeave?: () => void }) {
   const [mediaSize, setmediaSize] = useState<MediaSize>('mobile');
 
   useEffect(() => {
@@ -17,6 +17,6 @@ export default function useResponsiveNav({ onClick, onMouseEnter, onMouseLeave }
     }
   }, []);
   return mediaSize === 'mobile'
-    ? { onClick }
-    : { onMouseEnter, onMouseLeave };
+    ? { onClick, mediaSize }
+    : { onMouseEnter, onMouseLeave, mediaSize };
 }
