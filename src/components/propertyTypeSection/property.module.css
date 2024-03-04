@@ -70,14 +70,13 @@
   }
 }
 
-
 @media screen and (width <= 769px) {
   .property_card {
     border-radius: 12px;
     height: 260px;
   }
   .sm_card {
-    top: 80%;
+    bottom: -7%;
     transform: translate(-50%, -50%);
     left: 50%;
   }
