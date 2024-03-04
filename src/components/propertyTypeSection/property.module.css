@@ -1,3 +1,8 @@
+.section_title {
+  padding-bottom: 2rem;
+  text-align: center;
+}
+
 .property_card {
   background-color: rgb(100, 90, 77);
   background-image: var(--background-img);
@@ -44,12 +49,7 @@
     position: relative;
     overflow: hidden;
   }
-  
-  .section_title {
-    padding-bottom: 2rem;
-    text-align: center;
-  }
-  
+    
   .card_container:nth-child(1) {
     grid-area: a;
     aspect-ratio: 16/9;
