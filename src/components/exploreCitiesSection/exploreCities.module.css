@@ -69,7 +69,7 @@
   text-align: center;
 }
 
-@media screen and (width < 768px) {
+@media screen and (width <= 768px) {
   .city_card {
     height: 268px;
   }
