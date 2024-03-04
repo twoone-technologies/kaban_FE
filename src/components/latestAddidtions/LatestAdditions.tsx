@@ -11,8 +11,7 @@ import Card, { HouseCard } from "../reusable/card/Card";
 export default function LatestAdditions() {
   const arr = dummyObj as HouseCard[]
   return (
-    <section className="container-pad">
-    <Container element="div">
+    <Container element="div" className='container-pad'>
       <div className="text-align header">
         <h2>Tour our Latest Additions </h2>
         <p>Experience the newest and most recent listings first hand by taking a captivating <br /> tour of our latest additions as they are being published live by realtors.</p>
@@ -25,6 +24,5 @@ export default function LatestAdditions() {
         ))}
       </CarouselWrap>
     </Container>
-  </section>
   )
 }
