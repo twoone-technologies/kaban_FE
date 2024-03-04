@@ -142,7 +142,7 @@ optgroup[label] {
   }
 }
 
-@media screen and (width >= 880px) {
+@media screen and (width > 880px) {
   .hero p {
     font-size: 1.5rem;
   }
