@@ -5,6 +5,7 @@ import SalesRentPrice from '~/components/dashboard/postproperty/pages/basic/Sale
 import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
 import PropertyDescription from '~/components/dashboard/postproperty/pages/basic/PropertyDescription';
 import ContinueOrCancel from '~/components/dashboard/postproperty/pages/miscellenous/ContinueOrCancel';
+import { useState } from 'react';
 
 type BasicProps = {
   className: string;
@@ -18,12 +19,13 @@ export default function Basic({
   setNewIndex,
 }: BasicProps) {
   const svg = <Svg className={styles.svg} href={arrowIcon} />;
-
+  const [details, setDetails] = useState(false);
+  console.log(details);
   return (
     <div className={`flex f-column transition ease-in-out  gap-2 ${className}`}>
-      <PropertyDescription svg={svg} />
+      <PropertyDescription svg={svg} setDetails={setDetails} />
       <SalesRentPrice svg={svg} />
-      <Details svg={svg} />
+      <Details land={details} svg={svg} />
       <ContinueOrCancel activeIndex={activeIndex} setNewIndex={setNewIndex} />
     </div>
   );
