@@ -13,7 +13,6 @@ export default function Details({ svg, land}: {
   svg: ReactNode;
   land?: boolean;
 }) {
-  console.log(land);
   return (
     <InputWrap className="gap-1">
       <h3>Details</h3>

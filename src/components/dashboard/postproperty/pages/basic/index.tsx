@@ -20,7 +20,6 @@ export default function Basic({
 }: BasicProps) {
   const svg = <Svg className={styles.svg} href={arrowIcon} />;
   const [details, setDetails] = useState(false);
-  console.log(details);
   return (
     <div className={`flex f-column transition ease-in-out  gap-2 ${className}`}>
       <PropertyDescription svg={svg} setDetails={setDetails} />
