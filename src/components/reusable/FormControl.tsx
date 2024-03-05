@@ -19,7 +19,10 @@ type ControlProps = (
   error?: string;
 };
 
-function isSelect(as: FormControlElement, props: unknown): props is SelectProps {
+function isSelect(
+  as: FormControlElement,
+  props: unknown,
+): props is SelectProps {
   return as === 'select' && props === props;
 }
 function isInput(as: FormControlElement, props: unknown): props is InputProps {
@@ -77,14 +80,14 @@ export default function FormControl({
       onFocus={onContainerFocus}
       className={`flex b-radius f-width ${styles.form_input} ${containerClass}`}
     >
-      <div className="w-full flex space-between">
-        {labelText ? (
-          <label htmlFor={props.name}>
-            {labelText}
-          </label>
-        ) : null}
-        {error ? <span className={`text-red-600 ${styles.errorText}`}>{error}</span> : null}
-      </div>
+      {labelText ? (
+        <div className="w-full flex space-between">
+          <label htmlFor={props.name}>{labelText}</label>
+        </div>
+      ) : null}
+      {error ? (
+        <span className={`text-red-600 ${styles.errorText}`}>{error}</span>
+      ) : null}
       {content}
       {icon}
     </div>

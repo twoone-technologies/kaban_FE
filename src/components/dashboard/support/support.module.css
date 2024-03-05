@@ -1,0 +1,26 @@
+.wrapper {
+  /* padding: 1rem; */
+}
+
+.inputWrap {
+  /* width: 0; */
+}
+
+.header {
+  padding: 1rem;
+  background-color: var(--tertiary-color-5);
+}
+
+.supportData {
+  gap: 7px;
+  font-size: 5px;
+}
+.supportData svg {
+  height: 1.4rem;
+}
+
+.supportData div:nth-of-type(1) {
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
