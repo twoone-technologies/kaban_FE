@@ -17,7 +17,7 @@ type Props = {
   >;
 };
 
-type StateCitiesMap = { [key: string]: string[] };
+export type StateCitiesMap = { [key: string]: string[] };
 
 export default function HoodAddress({
   svg,

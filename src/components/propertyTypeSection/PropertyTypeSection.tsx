@@ -7,14 +7,14 @@ import useResponsiveNav from '~/hooks/useResponsiveNav';
 import { propertyTypeData } from '../data/properyTypeData';
 
 export default function PropertyTypeSection() {
-  const { mediaSize } = useResponsiveNav({});
+  const { mediasize } = useResponsiveNav({});
   return (
     <Container element="div" className='container-pad'>
       <div className={style.section_title}>
         <h2>Property Types</h2>
         <p>Explore properties listings nationwide under this categories</p>
       </div>
-      {mediaSize === 'mobile' ? (
+      {mediasize === 'mobile' ? (
         <CarouselWrap>
           {propertyTypeData.map((data) => (
             <SwiperSlide key={data.name}>
