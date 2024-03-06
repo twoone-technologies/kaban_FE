@@ -20,14 +20,6 @@
   row-gap: 1.5rem;
 }
 
-.svgWrap{
-  height: 2rem;
-  width: 2rem;
-  border-radius: 50%;
-  background-color: var(--primary-color);
-  color: var(--tertiary-color-1);
-}
-
 @media (width >= 768px) {
   .cardGrp {
     grid-template-columns: repeat(2, 1fr);

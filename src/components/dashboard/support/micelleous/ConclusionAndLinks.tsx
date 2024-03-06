@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { facebookIcon, instagramIcon, linkedinIcon, twitterIcon } from '~/assets/icons';
 import Svg from '~/components/reusable/Svg';
-import styles from './support.module.css';
+import styles from '~/components/dashboard/support/micelleous/styles.module.css';
 
 export default function ConclusionAndLinks() {
   return (

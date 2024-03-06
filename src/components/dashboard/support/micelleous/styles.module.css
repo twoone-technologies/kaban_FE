@@ -23,3 +23,11 @@
   line-height: 20px;
   max-width: 22rem;
 }
+
+.svgWrap{
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: var(--tertiary-color-1);
+}
