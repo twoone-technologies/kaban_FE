@@ -1,0 +1,11 @@
+.supportCard {
+  border: 1px solid var(--hover-color);
+  padding: 1rem;
+  background-color: var(--tertiary-color);
+}
+
+.supportCard ul {
+  list-style-type: disc;
+  padding-left: 1rem;
+  font-size: clamp(0.8rem, 1vw, 1rem);
+}

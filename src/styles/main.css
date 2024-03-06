@@ -17,6 +17,7 @@
   --tertiary-color-3: #fafafa; /* background color */
   --tertiary-color-4: #41ae48; /* featured and savebtn color */
   --tertiary-color-5: #e8effd; /* dashboard overlay color */
+  --font-size-1: clamp(0.7rem, 1vw, 1rem);
 }
 
 * {
@@ -53,8 +54,8 @@ h2 {
   font-weight: 700;
 }
 
-p {
-  font-size: clamp(3px, 4vw, 0.9rem);
+p, span {
+  font-size: clamp(0.8rem, 1vw, 1rem);
 }
 
 .box_shadow {

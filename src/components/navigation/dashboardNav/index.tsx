@@ -1,7 +1,6 @@
 import { bellIcon, kbtIcon } from '~/assets/icons';
 import styles from './nav.module.css';
 import Svg from '~/components/reusable/Svg';
-import Button from '~/components/reusable/Button';
 import { useLocation } from 'react-router-dom';
 import HamburgerMenu from '../HamburgerMenu';
 import useInteractiveNav from '~/hooks/useInteractiveNav';
@@ -89,7 +88,12 @@ export default function NavBoard() {
                     </Link>
                   </div>
                 </div>
-                <Button className="pad-block-0">post a property</Button>
+                <Link onClick={() => setOpen(false)} 
+                  to={'/dashboard/post'} 
+                  className={`pad-block-0 ${styles.postBtn}`}
+                >
+                  post a property
+                </Link>
               </div>
             }
             onClick={() => setOpen(false)}

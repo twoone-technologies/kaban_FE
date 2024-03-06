@@ -1,13 +1,4 @@
-.wrapper {
-  /* padding: 1rem; */
-}
-
-.inputWrap {
-  /* width: 0; */
-}
-
 .header {
-  padding: 1rem;
   background-color: var(--tertiary-color-5);
 }
 
@@ -22,5 +13,44 @@
 .supportData div:nth-of-type(1) {
   height: 2.5rem;
   width: 2.5rem;
+}
+
+.cardGrp {
+  gap: 1rem;
+  row-gap: 1.5rem;
+}
+
+.feedbackBtn {
+  font-size: var(--font-size-1);
+  height: 2rem;
+  padding-inline: 1rem;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  background-color: var(--tertiary-color-1);
+}
+
+.helpQuest {
+  line-height: 20px;
+  max-width: 22rem;
+}
+
+.svgWrap{
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: var(--tertiary-color-1);
+}
+
+@media (width >= 768px) {
+  .cardGrp {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 1024px) {
+  .cardGrp {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
