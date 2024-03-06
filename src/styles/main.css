@@ -44,18 +44,18 @@ a {
 }
 
 h1 {
-  font-size: clamp(0.7rem, 5vw, 2.6rem);
+  font-size: clamp(0.8rem, 5vw, 2.6rem);
   margin-block: 0.5rem;
 }
 
 h2 {
-  font-size: clamp(0.7rem, 5vw, 2rem);
+  font-size: clamp(0.8rem, 5vw, 1.5rem);
   color: var(--primary-color);
   font-weight: 700;
 }
 
 p, span {
-  font-size: clamp(0.8rem, 1vw, 1rem);
+  font-size: clamp(0.7rem, 1vw, 1rem);
 }
 
 .box_shadow {
@@ -294,7 +294,7 @@ input:hover + svg {
   }
 
   svg:hover {
-    color: var(--primary-color);
+    transform: scale(1.1);
   }
 }
 

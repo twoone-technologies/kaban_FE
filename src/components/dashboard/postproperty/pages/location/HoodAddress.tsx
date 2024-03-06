@@ -3,7 +3,7 @@ import OptGroup from '~/components/herosection/Optgroup';
 import FormControl from '~/components/reusable/FormControl';
 import Address from '~/components/reusable/placesAutocomplete/Address';
 import InputWrap from '~/components/dashboard/postproperty/pages/miscellenous/InputWrap';
-import styles from '~/components/dashboard/postproperty/pages/miscellenous//post.module.css';
+import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
 import { citiesInNigeria, statesInNigeria } from '~/components/dashboard/postproperty/pages/miscellenous//mapProps';
 
 type Props = {

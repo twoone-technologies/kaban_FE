@@ -40,17 +40,16 @@
 }
 
 .form_input {
-  position: relative;
   align-items: center;
   border: 1px solid var(--hover-color);
-  color: var(--accent-color);
 }
 
 .hover {
   color: var(--primary-color);
 }
 
-select, input {
+select, input, textarea {
+  color: var(--accent-color);
   padding: 0.7rem 0.5rem;
 }
 
@@ -170,6 +169,21 @@ input[type=range] {
 .plus {
   opacity: 1;
   max-height: 10rem;
+}
+
+/* formcontrol class */
+.inputWrap {
+  border: none;
+  outline: none;
+}
+
+.inputWrap label {
+  color: black;
+  font-weight: 500;
+}
+
+.input {
+  border: 1px solid var(--hover-color);
 }
 
 input[type=range]::-webkit-slider-runnable-track {
