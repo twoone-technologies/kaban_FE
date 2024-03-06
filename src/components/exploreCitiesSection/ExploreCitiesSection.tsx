@@ -7,11 +7,11 @@ import useResponsiveNav from '~/hooks/useResponsiveNav';
 import CarouselWrap from "../reusable/CarouselWrap";
 
 export default function ExploreCitiesSection() {  
-  const { mediaSize } = useResponsiveNav({});
+  const { mediasize } = useResponsiveNav({});
   return (
     <section className="section bg-grey">
       <Container element="div">
-        {mediaSize === 'mobile' ? (
+        {mediasize === 'mobile' ? (
           <div>
             <div className={`flex f-column ${style.city_card_container}`}>
               <h2>Explore Cities</h2>

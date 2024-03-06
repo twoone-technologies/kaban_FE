@@ -2,12 +2,12 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
+import { SwiperSlide } from 'swiper/react';
 import Svg from '~/components/reusable/Svg';
 import { coverStarIcon } from '~/assets/icons';
-import { SwiperSlide } from 'swiper/react';
+import CarouselWrap from '~/components/reusable/CarouselWrap';
 import { ImageFile } from '~/components/dashboard/postproperty/pages/media';
 import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
-import CarouselWrap from '~/components/reusable/CarouselWrap';
 
 type Props = {
   imageArr: ImageFile[];
@@ -17,29 +17,35 @@ type Props = {
 
 export default function Carousel({ imageArr, coverImage, deleteImage }: Props) {
   return (
-    <div className={styles.imageWrapper}>
-      {coverImage.url ? (
-        <div className="relative">
-          <img
-            src={coverImage.url}
-            alt={coverImage.name}
-            className={styles.coverImg}
-          />
-          <Svg href={coverStarIcon}
-            className={`absolute bottom-4 left-4 ${styles.starColor}`}
-          />
-        </div>
-      ) : undefined}
-      {imageArr.length > 0 ? (
+    <div>
+      {coverImage.url || imageArr.length > 0 ? (
         <CarouselWrap>
+          {coverImage.url ? (
+            <SwiperSlide className="relative">
+              <img
+                src={coverImage.url}
+                alt={coverImage.name}
+                className={`b-radius ${styles.img}`}
+              />
+              <div className={`absolute bottom-2 left-4 ${styles.starColor}`}>
+                <Svg href={coverStarIcon} />
+              </div>
+            </SwiperSlide>
+          ) : undefined}
           {imageArr.map((image, id) => (
             <SwiperSlide className="carousel_item" key={id}>
               <div className={styles.imgWrap}>
-                <img src={image.url} alt={image.name} className={`b-radius ${styles.img}`} />
-                <span onClick={() => deleteImage(id)}
+                <img
+                  src={image.url}
+                  alt={image.name}
+                  className={`b-radius ${styles.img}`}
+                />
+                <span
+                  onClick={() => deleteImage(id)}
                   className="flex align-x align-y absolute bottom-2 left-6"
                 >
-                  {' '}&times;
+                  {' '}
+                  &times;
                 </span>
               </div>
             </SwiperSlide>

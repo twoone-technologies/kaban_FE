@@ -118,6 +118,10 @@
 
 .starColor {
   color: yellow;
+  background-color: rgba(0, 0, 0, 0.471);
+  border-radius: 50%;
+  padding: 3px;
+  border: 1px solid var(--tertiary-color-1);
 }
 
 .imgWrap span {
@@ -129,10 +133,6 @@
   height: 1.8rem;
   flex-wrap: wrap;
   background-color: rgba(0, 0, 0, 0.471);
-}
-
-.coverImg {
-  height: 14rem;
 }
 
 .img {

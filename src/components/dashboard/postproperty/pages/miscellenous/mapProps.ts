@@ -36,20 +36,36 @@ export const areaSuffix = [
   },
 ]
 
-export const propertyTypes = [
-  {
-    type: "/Week",
-    value: "/Week",
-  },
-  {
-    type: "/Month",
-    value: "/Month",
-  },
-  {
-    type: "/Annum",
-    value: "/Annum",
-  }
+export const propertyCategory = [
+  { type: "Commercial", value: "Commercial" },
+  { type: "Industrial", value: "Industrial" },
+  { type: "Residential", value: "Residential" },
 ]
+
+
+export const propertyType = {
+  "Commercial": [
+    'Land',
+    'Shops',
+    'Hotel',
+    'Office',
+    'School',
+    'Resturant',
+    'Event Centre',
+    'Medical Complex',
+    'Filling Station',
+    'Supermarket/Mall',
+  ],
+  'Residential': [
+    'Apartment',
+    'Self-Contain',
+    'Detached House',
+    'Terraced House',
+    'Semi-detached House',
+  ],
+  'Industrial': ['Factory', 'Warehouse', 'Show-room'],
+}
+
 
 export const figures = [
   {
@@ -117,43 +133,43 @@ export const mapOptions = [
 ]
 
 export const statesInNigeria = [
-  {type: "Abia", "value": "Abia"},
-  {type: "Adamawa", "value": "Adamawa"},
-  {type: "Akwa Ibom", "value": "Akwa Ibom"},
-  {type: "Anambra", "value": "Anambra"},
-  {type: "Bauchi", "value": "Bauchi"},
-  {type: "Bayelsa", "value": "Bayelsa"},
-  {type: "Benue", "value": "Benue"},
-  {type: "Borno", "value": "Borno"},
-  {type: "Cross River", "value": "Cross River"},
-  {type: "Delta", "value": "Delta"},
-  {type: "Ebonyi", "value": "Ebonyi"},
-  {type: "Edo", "value": "Edo"},
-  {type: "Ekiti", "value": "Ekiti"},
-  {type: "Enugu", "value": "Enugu"},
-  {type: "Gombe", "value": "Gombe"},
-  {type: "Imo", "value": "Imo"},
-  {type: "Jigawa", "value": "Jigawa"},
-  {type: "Kaduna", "value": "Kaduna"},
-  {type: "Kano", "value": "Kano"},
-  {type: "Katsina", "value": "Katsina"},
-  {type: "Kebbi", "value": "Kebbi"},
-  {type: "Kogi", "value": "Kogi"},
-  {type: "Kwara", "value": "Kwara"},
-  {type: "Lagos", "value": "Lagos"},
-  {type: "Nasarawa", "value": "Nasarawa"},
-  {type: "Niger", "value": "Niger"},
-  {type: "Ogun", "value": "Ogun"},
-  {type: "Ondo", "value": "Ondo"},
-  {type: "Osun", "value": "Osun"},
-  {type: "Oyo", "value": "Oyo"},
-  {type: "Plateau", "value": "Plateau"},
-  {type: "Rivers", "value": "Rivers"},
-  {type: "Sokoto", "value": "Sokoto"},
-  {type: "Taraba", "value": "Taraba"},
-  {type: "Yobe", "value": "Yobe"},
-  {type: "Zamfara", "value": "Zamfara"},
-  {type: "Federal Capital Territory", "value": "Federal Capital Territory"}
+  { type: "Abia", "value": "Abia" },
+  { type: "Adamawa", "value": "Adamawa" },
+  { type: "Akwa Ibom", "value": "Akwa Ibom" },
+  { type: "Anambra", "value": "Anambra" },
+  { type: "Bauchi", "value": "Bauchi" },
+  { type: "Bayelsa", "value": "Bayelsa" },
+  { type: "Benue", "value": "Benue" },
+  { type: "Borno", "value": "Borno" },
+  { type: "Cross River", "value": "Cross River" },
+  { type: "Delta", "value": "Delta" },
+  { type: "Ebonyi", "value": "Ebonyi" },
+  { type: "Edo", "value": "Edo" },
+  { type: "Ekiti", "value": "Ekiti" },
+  { type: "Enugu", "value": "Enugu" },
+  { type: "Gombe", "value": "Gombe" },
+  { type: "Imo", "value": "Imo" },
+  { type: "Jigawa", "value": "Jigawa" },
+  { type: "Kaduna", "value": "Kaduna" },
+  { type: "Kano", "value": "Kano" },
+  { type: "Katsina", "value": "Katsina" },
+  { type: "Kebbi", "value": "Kebbi" },
+  { type: "Kogi", "value": "Kogi" },
+  { type: "Kwara", "value": "Kwara" },
+  { type: "Lagos", "value": "Lagos" },
+  { type: "Nasarawa", "value": "Nasarawa" },
+  { type: "Niger", "value": "Niger" },
+  { type: "Ogun", "value": "Ogun" },
+  { type: "Ondo", "value": "Ondo" },
+  { type: "Osun", "value": "Osun" },
+  { type: "Oyo", "value": "Oyo" },
+  { type: "Plateau", "value": "Plateau" },
+  { type: "Rivers", "value": "Rivers" },
+  { type: "Sokoto", "value": "Sokoto" },
+  { type: "Taraba", "value": "Taraba" },
+  { type: "Yobe", "value": "Yobe" },
+  { type: "Zamfara", "value": "Zamfara" },
+  { type: "Federal Capital Territory", "value": "Federal Capital Territory" }
 ]
 
 
