@@ -25,7 +25,10 @@ export const helpData = [
     data: [
       'Navigating Our Platform With Ease',
       'Tips for a Complelling Realtor Profile',
-      'Setting Up your Realtor Profile'
+      'Setting Up your Realtor Profile',
+      'Important things to do after ¨Sign in¨',
+      'Setting Up Your Realtor Profile',
+      'How to Create a Realtor Account',
     ]
   },
   {
@@ -34,7 +37,13 @@ export const helpData = [
     data: [
       'How to list a property',
       'Why you should upgrade to ¨Featured¨...',
-      'Managing your listings'
+      'Managing your listings',
+      'How to create and manage listings',
+      'Tips for optimising property description and photo',
+      'Strategies for enhancing your listing\'s visibility',
+      'Analysing listings performance metrics',
+      'Pricing strategies for listings',
+      'Optimising listings for mobile users.'
     ]
   },
   {

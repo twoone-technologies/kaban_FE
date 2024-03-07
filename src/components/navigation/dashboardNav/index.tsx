@@ -15,7 +15,7 @@ export default function NavBoard() {
   const route = location.pathname.split('/')[2];
   const header = route.charAt(0).toUpperCase() + route.slice(1);
 
-  const { open, goingUp, navBar, setOpen } = useInteractiveNav();
+  const { open, goingUp, setOpen } = useInteractiveNav();
   if (open === true) document.body.style.overflowY = 'hidden';
   else document.body.style.overflowY = '';
 
@@ -25,9 +25,7 @@ export default function NavBoard() {
     <>
       <div
         className={`flex f-width s-btw align-y
-        ${goingUp && styles.slideUp} ${navBar && styles.slideBg} ${
-          styles.navBar
-        }`}
+        ${goingUp && styles.slideUp} ${styles.navBar}`}
       >
         <h3><b>{header}</b></h3>
         <div className={`flex align-y gap-2`}>

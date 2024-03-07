@@ -8,15 +8,12 @@
   top: 0;
   left: 0;
   right: 0;
+  background-color: var(--tertiary-color-1);
   transition: all 0.4s ease-in-out;
 }
 
 .slideUp {
   transform: translateY(-4rem);
-}
-
-.slideBg {
-  background-color: var(--tertiary-color-1);
 }
 
 .currency {

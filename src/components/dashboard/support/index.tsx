@@ -40,7 +40,16 @@ export default function Support() {
       <FeedbackAndSuggestion />
       <div className={`grid ${styles.cardGrp}`}>
         {helpData.map((item) => (
-          <SupportCards key={item.id} header={item.title} content={item.data} />
+          <SupportCards
+            link={`/dashboard/support/${
+              item.title.includes(' ')
+                ? item.title.replace(/ /g, '_')
+                : item.title
+            }`}
+            key={item.id}
+            header={item.title}
+            content={item.data}
+          />
         ))}
       </div>
       <ConclusionAndLinks />

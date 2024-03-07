@@ -1,10 +1,17 @@
 .supportCard {
   border: 1px solid var(--hover-color);
   padding: 1rem;
-  background-color: var(--tertiary-color);
+  background-color: var(--tertiary-color-1);
 }
 
-.supportCard ul {
+.supportShowCard {
+  padding: 5.5rem 1rem;
+  background-color: var(--tertiary-color-1);
+}
+
+.supportCard ul,
+.supportShowCard ul {
+  margin-top: 4px;
   list-style-type: disc;
   padding-left: 1rem;
   font-size: clamp(0.8rem, 1vw, 1rem);
@@ -30,4 +37,34 @@
   border-radius: 50%;
   background-color: var(--primary-color);
   color: var(--tertiary-color-1);
+}
+
+/* show page */
+.supportCardWrap {
+  padding: 0;
+}
+
+.contents {
+  padding: 5.5rem 1rem;
+}
+
+@media screen and (width < 800px) {
+  .supportCardWrap {
+    height: 100vh;
+  }
+
+  .supportShowCard {
+    width: 100%;
+  }
+
+  .contents {
+    position: absolute;
+    background-color: var(--tertiary-color-3);
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .showTips {
+    display: none;
+  }
 }
