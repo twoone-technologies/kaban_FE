@@ -34,6 +34,7 @@ import Wallet from './components/dashboard/wallet';
 import Support from './components/dashboard/support';
 import Notification from './components/dashboard/notification';
 import Post, { action as postForm } from './components/dashboard/postproperty';
+import SupportCard from './components/dashboard/support/supportCard';
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -57,6 +58,7 @@ export const router = createBrowserRouter(
       <Route path="dashboard/listings" element={<Listings />} />
       <Route path="dashboard/wallet" element={<Wallet />} />
       <Route path="dashboard/support" element={<Support />} />
+      <Route path="dashboard/support/:title" element={<SupportCard />} />
       <Route path="dashboard/notification" element={<Notification />} />
       <Route path="dashboard/post" element={<Post />} action={postForm} />
     </Route>,

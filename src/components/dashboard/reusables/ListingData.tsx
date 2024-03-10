@@ -8,7 +8,7 @@ export default function ListingData({
   title,
   className
 }: {
-  data: string;
+  data?: string;
   title: string;
   href?: string;
   className?: string;

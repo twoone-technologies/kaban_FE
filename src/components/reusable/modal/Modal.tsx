@@ -34,7 +34,6 @@ export default function Modal({ isVisible, closeModal, children }: ModalProps) {
           className={`f-width ${styles.btn}`}
           onClick={() => {
             modal?.current?.close();
-            // navigate(-1)
             closeModal && closeModal()
           }}
         >

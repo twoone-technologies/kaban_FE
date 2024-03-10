@@ -8,15 +8,12 @@
   top: 0;
   left: 0;
   right: 0;
+  background-color: var(--tertiary-color-1);
   transition: all 0.4s ease-in-out;
 }
 
 .slideUp {
   transform: translateY(-4rem);
-}
-
-.slideBg {
-  background-color: var(--tertiary-color-1);
 }
 
 .currency {
@@ -49,6 +46,15 @@
   content: '';
   width: 2rem;
   height: 3rem;
+}
+
+.postBtn {
+  text-align: center;
+  background-color: var(--primary-color);
+  color: var(--tertiary-color-1);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
 }
 
 .active {

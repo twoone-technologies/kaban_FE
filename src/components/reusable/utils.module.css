@@ -27,3 +27,27 @@
   opacity: 0;
   transform: scale(0);
 }
+
+/* backBtn */
+@media screen and (width > 800px) {
+  .backBtn {
+    display: none;
+  }
+  
+}
+
+.svgWrap {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  color: var(--primary-color);
+  transform: rotate(180deg);
+  border: 1.5px solid var(--hover-color);
+  background-color: var(--tertiary-color-1);
+}
+
+.svgWrap svg {
+  position: relative;
+  top: 2px;
+  left: 0.5px;
+}

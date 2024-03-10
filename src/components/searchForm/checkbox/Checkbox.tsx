@@ -1,7 +1,8 @@
+import { ReactNode } from 'react';
 import styles from './checkbox.module.css';
 
 type Props = {
-  title1?: string;
+  title1?: string | ReactNode;
   onBlur?: () => void;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   checked?: boolean;

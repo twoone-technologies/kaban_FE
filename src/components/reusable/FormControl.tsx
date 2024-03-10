@@ -1,5 +1,6 @@
 import styles from '~/components/searchForm/searchForm.module.css';
 import Checkbox from '../searchForm/checkbox/Checkbox';
+import { useLocation } from 'react-router-dom';
 
 type FormControlElement = 'input' | 'select' | 'textarea';
 type InputProps = React.ComponentPropsWithoutRef<'input'>;
@@ -19,13 +20,15 @@ type ControlProps = (
   error?: string;
 };
 
-function isSelect(as: FormControlElement, props: unknown): props is SelectProps {
+function isSelect(
+  as: FormControlElement,
+  props: unknown,
+): props is SelectProps {
   return as === 'select' && props === props;
 }
 function isInput(as: FormControlElement, props: unknown): props is InputProps {
   return as === 'input' && props === props;
 }
-
 export default function FormControl({
   as,
   icon,
@@ -36,6 +39,12 @@ export default function FormControl({
   error,
   ...props
 }: ControlProps) {
+  const location = useLocation();
+  const formWrapStyle =
+    location.pathname !== '/' && location.pathname !== '/search_results'
+      ? `gap-0 f-column ${styles.inputWrap}`
+      : styles.form_input;
+
   let content;
   if (isSelect(as, props)) {
     content = (
@@ -67,6 +76,7 @@ export default function FormControl({
         {...props}
         id={props.id ?? 'message'}
         name={props.name ?? 'message'}
+        className={`flex b-radius f-width h-24 ${props.className} ${styles.input}`}
         placeholder={props.placeholder ?? 'write your message here'}
       />
     );
@@ -75,16 +85,16 @@ export default function FormControl({
   return (
     <div
       onFocus={onContainerFocus}
-      className={`flex b-radius f-width ${styles.form_input} ${containerClass}`}
+      className={`flex b-radius f-width relative ${formWrapStyle} ${containerClass}`}
     >
-      <div className="w-full flex space-between">
-        {labelText ? (
-          <label htmlFor={props.name}>
-            {labelText}
-          </label>
-        ) : null}
-        {error ? <span className={`text-red-600 ${styles.errorText}`}>{error}</span> : null}
-      </div>
+      {labelText ? (
+        <div className="w-full flex space-between">
+          <label htmlFor={props.name}>{labelText}</label>
+        </div>
+      ) : null}
+      {error ? (
+        <span className={`text-red-600 ${styles.errorText}`}>{error}</span>
+      ) : null}
       {content}
       {icon}
     </div>
