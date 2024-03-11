@@ -4,7 +4,7 @@ import Svg from '~/components/reusable/Svg';
 import usePlacesAutocomplete from 'use-places-autocomplete';
 import Checkbox from '~/components/searchForm/checkbox/Checkbox';
 import Location from '~/components/dashboard/postproperty/pages/location/HoodAddress';
-import InputWrap from '~/components/dashboard/postproperty/pages/miscellenous/InputWrap';
+import InputWrap from '~/components/dashboard/reusables/InputWrap';
 import MapAddress from '~/components/dashboard/postproperty/pages/location/MapAddress';
 import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
 import ContinueOrCancel from '~/components/dashboard/postproperty/pages/miscellenous/ContinueOrCancel';
@@ -39,13 +39,14 @@ export default function ListingLocation({
 
   const handleAgreement = (e: { target: { checked: boolean } }) => {
     e.target.checked === true && marker != null
-    ? setCanSubmit(1)
-    : setCanSubmit(0);
+      ? setCanSubmit(1)
+      : setCanSubmit(0);
   };
   const svg = <Svg className={styles.svg} href={arrowIcon} />;
 
   return (
-    <div onClick={() => clearSuggestions()}
+    <div
+      onClick={() => clearSuggestions()}
       className={`flex flex-col gap-6 ${className}`}
     >
       <Location

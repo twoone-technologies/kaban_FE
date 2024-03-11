@@ -1,14 +1,3 @@
-/* inputwrap component */
-.datatWrap {
-  padding: 1rem;
-  border: 1px solid var(--hover-color);
-  background-color: var(--tertiary-color-1);
-}
-
-.datatWrap h3 {
-  font-weight: 600;
-}
-
 /* formcontrol class */
 .inputWrap {
   border: none;
@@ -207,10 +196,6 @@
 }
 
 @media screen and (width <= 768px) {
-  .datatWrap {
-    padding: 0.5rem;
-  }
-
   .noti {
     font-size: 13px;
   }

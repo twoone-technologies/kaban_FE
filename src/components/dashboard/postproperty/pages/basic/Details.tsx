@@ -2,14 +2,17 @@ import { ReactNode } from 'react';
 import OptGroup from '~/components/herosection/Optgroup';
 import FormControl from '~/components/reusable/FormControl';
 import CheckboxGroup from '~/components/searchForm/CheckboxGroup';
-import InputWrap from '~/components/dashboard/postproperty/pages/miscellenous/InputWrap';
+import InputWrap from '~/components/dashboard/reusables/InputWrap';
 import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
 import {
   areaSuffix,
   figures,
 } from '~/components/dashboard/postproperty/pages/miscellenous/mapProps';
 
-export default function Details({ svg, land}: {
+export default function Details({
+  svg,
+  land,
+}: {
   svg: ReactNode;
   land?: boolean;
 }) {

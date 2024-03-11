@@ -4,7 +4,7 @@ import OptGroup from '~/components/herosection/Optgroup';
 import { statusArr } from '~/components/searchForm/status';
 import FormControl from '~/components/reusable/FormControl';
 import { ErrorObj } from '~/components/dashboard/postproperty';
-import InputWrap from '~/components/dashboard/postproperty/pages/miscellenous/InputWrap';
+import InputWrap from '~/components/dashboard/reusables/InputWrap';
 import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
 import {
   propertyCategory,

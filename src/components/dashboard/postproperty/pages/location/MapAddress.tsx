@@ -6,7 +6,7 @@ import OptGroup from '~/components/herosection/Optgroup';
 import FormControl from '~/components/reusable/FormControl';
 import Address from '~/components/reusable/placesAutocomplete/Address';
 import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
-import InputWrap from '~/components/dashboard/postproperty/pages/miscellenous/InputWrap';
+import InputWrap from '~/components/dashboard/reusables/InputWrap';
 import { mapOptions } from '~/components/dashboard/postproperty/pages/miscellenous//mapProps';
 
 type Props = {

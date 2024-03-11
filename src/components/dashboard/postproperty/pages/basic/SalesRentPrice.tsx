@@ -5,7 +5,7 @@ import OptGroup from '~/components/herosection/Optgroup';
 import FormControl from '~/components/reusable/FormControl';
 import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
 import { suffix } from '~/components/dashboard/postproperty/pages/miscellenous/mapProps';
-import InputWrap from '~/components/dashboard/postproperty/pages/miscellenous/InputWrap';
+import InputWrap from '~/components/dashboard/reusables/InputWrap';
 
 export default function SalesRentPrice({ svg }: { svg: ReactNode }) {
   const errors = useActionData() as ErrorObj;
@@ -19,7 +19,9 @@ export default function SalesRentPrice({ svg }: { svg: ReactNode }) {
         className={styles.input}
         labelText={'Sales / Rent Price (₦)*'}
         containerClass={`gap-0 f-column ${styles.inputWrap}`}
-        error={errors?.salesRentPrice != undefined ? errors.salesRentPrice[0] : ''}
+        error={
+          errors?.salesRentPrice != undefined ? errors.salesRentPrice[0] : ''
+        }
       />
       <FormControl
         icon={svg}

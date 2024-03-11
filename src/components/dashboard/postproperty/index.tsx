@@ -94,7 +94,6 @@ export default function Post() {
       setActiveIndex(0);
     else if (errors?.upload || errors?.videoUrl) setActiveIndex(1);
     else if (errors?.address) setActiveIndex(2);
-    // return pace
   }, [errors]);
 
   const underlineStyle = {

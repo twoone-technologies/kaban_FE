@@ -4,7 +4,7 @@ import FormControl from '~/components/reusable/FormControl';
 import { ErrorObj } from '~/components/dashboard/postproperty';
 import Carousel from '~/components/dashboard/postproperty/pages/media/Carousel';
 import UploadImages from '~/components/dashboard/postproperty/pages/media/UploadImages';
-import InputWrap from '~/components/dashboard/postproperty/pages/miscellenous/InputWrap';
+import InputWrap from '~/components/dashboard/reusables/InputWrap';
 import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
 import ContinueOrCancel from '~/components/dashboard/postproperty/pages/miscellenous/ContinueOrCancel';
 
@@ -140,7 +140,7 @@ export default function Media({
           coverImage={coverImage}
           deleteImage={deleteImage}
         />
-        <UploadImages 
+        <UploadImages
           onDrop={onDrop}
           dragging={isDragging}
           onDragOver={onDragOver}
