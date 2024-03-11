@@ -84,7 +84,7 @@ export default function Sidebar({
           <div>
             <div className="flex gap">
               <h4>pkqmdkwemg</h4>
-              <Svg href={verifyIcon} className={styles.svg} />
+              <Svg href={verifyIcon} height='1.4rem' className={styles.svg} />
             </div>
             <span>nksdnksjd@dd.com</span>
           </div>

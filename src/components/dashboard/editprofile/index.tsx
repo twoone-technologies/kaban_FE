@@ -1,5 +1,9 @@
+import { Wrapper } from "~/components/reusable/Container";
+
 export default function Edit() {
   return (
-    <h1>Edit</h1>
+    <Wrapper element='section'>
+      Edit
+    </Wrapper>
   )
 }

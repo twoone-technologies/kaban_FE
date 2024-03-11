@@ -196,3 +196,6 @@ export const uploadImgIcon = `${uploadImg}#img`;
 
 import coverStar from "./coverStar.svg";
 export const coverStarIcon = `${coverStar}#img`;
+
+import profile from "./profile.svg";
+export const profileIcon = `${profile}#img`;
