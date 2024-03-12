@@ -109,15 +109,15 @@ export const figures = [
 export const headers = [
   {
     type: "Basic",
-    value: "0",
+    value: 0,
   },
   {
     type: "Media",
-    value: "1",
+    value: 1,
   },
   {
     type: "Location",
-    value: "2",
+    value: 2,
   },
 ]
 

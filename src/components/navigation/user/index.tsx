@@ -66,7 +66,7 @@ const UserItem = ({
                 {verified ? (
                   <Svg
                     href={verifyIcon}
-                    height="1.8em"
+                    height="1.8rem"
                     className={styles.svg}
                   />
                 ) : null}
@@ -94,7 +94,7 @@ const UserItem = ({
                   {verified ? (
                     <Svg
                       href={verifyIcon}
-                      height="1.8em"
+                      height="1.8rem"
                       className={styles.svg}
                     />
                   ) : null}
