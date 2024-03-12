@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { ActionFunctionArgs, useNavigate } from 'react-router-dom';
+import { ActionFunctionArgs } from 'react-router-dom';
 import { Wrapper } from '~/components/reusable/Container';
 import { Form, redirect, useActionData } from 'react-router-dom';
 import Basic from '~/components/dashboard/postproperty/pages/basic';
@@ -8,6 +8,7 @@ import ListingLocation from '~/components/dashboard/postproperty/pages/location'
 import styles from '~/components/dashboard/postproperty/index.module.css';
 import { headers } from '~/components/dashboard/postproperty/pages/miscellenous/mapProps';
 import useTabulation from '~/hooks/useTabulation';
+import Tabulation from '~/components/reusable/tabulation/Tabulation';
 
 export type ErrorObj = {
   [fieldName: string]: string[];
@@ -83,7 +84,6 @@ export async function action({ request }: ActionFunctionArgs) {
 }
 
 export default function Post() {
-  const navigate = useNavigate();
   const errors = useActionData() as ErrorObj;
   const { activeIndex, prevId, setActiveIndex, handleHeaderClick } =
     useTabulation();
@@ -102,23 +102,12 @@ export default function Post() {
 
   return (
     <Wrapper element="section" className={styles.wrapper}>
-      <ul className={`flex w-full ${styles.formNav}`}>
-        {headers.map((header) => (
-          <li
-            key={header.value}
-            onClick={() => {
-              handleHeaderClick(header.value, headers);
-              navigate(`/dashboard/post/${header.type.toLocaleLowerCase()}`);
-            }}
-            className={`flex align-x ${styles.header} ${
-              header.value === activeIndex ? styles.active : ''
-            }`}
-          >
-            {header.type}
-          </li>
-        ))}
-        <div className={styles.underline} style={underlineStyle} />
-      </ul>
+      <Tabulation
+        idx={activeIndex}
+        style={underlineStyle}
+        headerArr={headers}
+        headerSwitch={handleHeaderClick}
+      />
       <Form
         encType="application/form-data"
         method="post"

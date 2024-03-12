@@ -40,14 +40,6 @@
   height: 6px;
 }
 
-.bellWrap::after {
-  position: absolute;
-  top: 2.5rem;
-  content: '';
-  width: 2rem;
-  height: 3rem;
-}
-
 .postBtn {
   text-align: center;
   background-color: var(--primary-color);

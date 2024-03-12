@@ -1,0 +1,75 @@
+.wrapper {
+  padding-top: 8rem;
+}
+
+.tabulation > li,
+.tabulation > div {
+  min-width: 150px;
+}
+
+.formNav {
+  position: absolute;
+  top: 4.5rem;
+  left: 0;
+  overflow-x: auto;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  padding-left: 18rem;
+  border-bottom: 1.5px solid var(--hover-color);
+}
+
+.formNav::-webkit-scrollbar {
+  width: 0;
+  height: 2px;
+}
+
+.formNav::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
+  border-radius: 10px;
+}
+
+.header {
+  font-size: 1.3rem;
+  min-width: 6.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.cardAgentInfo {
+  background-color: var(--tertiary-color-1);
+  width: max-content;
+}
+
+.cardAgentInfo > div > div:first-of-type {
+  width: 6rem;
+  height: 6rem;
+  border: 1px solid var(--tertiary-color-2);
+}
+
+.btn {
+  background-color: var(--primary-color-1);
+  color: var(--tertiary-color-2);
+  padding: 0.5rem 1rem;
+  border: 1.4px solid var(--hover-color);
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--hover-color);
+}
+
+.agentFileInput {
+  position: absolute;
+  height: 2.5rem;
+  left: 0;
+  opacity: 0;
+  top: 2rem;
+  width: 9rem;
+  border: 1px solid;
+}
+
+@media screen and (800px < width < 885px) {
+  .agentProfileInfo {
+    flex-direction: column;
+  }
+}

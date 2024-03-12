@@ -2,68 +2,9 @@
   padding-top: 8rem;
 }
 
-.formNav {
-  position: absolute;
-  top: 4.5rem;
-  left: 0;
-  overflow-x: auto;
-  padding-inline: 1rem;
-  padding-block: 0.5rem;
-  border-bottom: 1.5px solid var(--hover-color);
-}
-
-.formNav::-webkit-scrollbar {
-  width: 0;
-  height: 2px;
-}
-
-.formNav::-webkit-scrollbar-thumb {
-  background-color: var(--accent-color);
-  border-radius: 10px;
-}
-
-.header {
-  font-size: 1.3rem;
-  min-width: 6.5rem;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.active {
-  font-weight: bold;
-}
-
-.underline {
-  position: absolute;
-  bottom: 0;
-  height: 4px;
-  width: 6.5rem;
-  background-color: var(--primary-color); 
-  transition: all 0.3s;
-}
-
 .hidden {
   visibility: hidden;
   overflow: hidden;
   max-height: 0;
   max-width: 0;
-}
-
-.tabHeader li span.active {
-  height: 2px;
-  background: black;
-  position: absolute;
-  width: 100%;
-  bottom: -5px;
-  left: 0;
-}
-
-@media screen and (width >= 800px) {
-  .formNav {
-    padding-left: 18.5rem;
-  }
-  .underline {
-    position: absolute;
-    bottom: -2.5px; 
-  }
 }

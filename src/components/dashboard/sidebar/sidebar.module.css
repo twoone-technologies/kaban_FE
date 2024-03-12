@@ -19,6 +19,7 @@
 .sidebar h3 {
   font-weight: 600;
   color: var(--accent-color-1);
+  border-left: 3px solid var(--tertiary-color-1);
 }
 
 .link:hover {
