@@ -45,7 +45,7 @@ export async function action({ request }: ActionFunctionArgs) {
     const fileObject = JSON.parse(file as string) as File[];
     fileObject.forEach((item) => {
       const newFile = new File([item], item.name, { type: item.type });
-      newArray.push(['listingImage', newFile]);
+      newArray.push(['images', newFile]);
     });
   });
   formData.delete('listingImages');
