@@ -1,22 +1,23 @@
 import { ReactNode, useState } from 'react';
-import { useActionData } from 'react-router-dom';
 import OptGroup from '~/components/herosection/Optgroup';
-import { statusArr } from '~/components/searchForm/status';
-import FormControl from '~/components/reusable/FormControl';
-import { ErrorObj } from '~/components/dashboard/postproperty';
-import InputWrap from '~/components/dashboard/reusables/InputWrap';
-import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
-import {
-  propertyCategory,
-  propertyType,
-} from '~/components/dashboard/postproperty/pages/miscellenous/mapProps';
 import { StateCitiesMap } from '../location/HoodAddress';
+import { statusArr } from '~/components/searchForm/status';
+import InputWrap from '~/components/dashboard/reusables/InputWrap';
+import FormControl, { InputErrors, Register } from '~/components/reusable/FormControl';
+import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
+import { propertyCategory, propertyType,} from '~/components/dashboard/postproperty/pages/miscellenous/mapProps';
 
 export default function PropertyDescription({
+  id,
   svg,
+  error,
+  register,
   setDetails,
 }: {
+  id: number;
   svg: ReactNode;
+  error: InputErrors;
+  register: Register;
   setDetails: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const allPropertyType: StateCitiesMap = { ...propertyType };
@@ -34,22 +35,26 @@ export default function PropertyDescription({
       setTypeOptions(cities);
     }
   };
-  const errors = useActionData() as ErrorObj;
+
   return (
     <InputWrap>
       <h3>Property Description</h3>
       <FormControl
+        required={id === 0}
         as="input"
         type="text"
-        labelText="Title"
         name="title"
-        maxLength={25}
-        error={errors?.title !== undefined ? errors.title[0] : ''}
+        labelText="Title"
+        register={register}
         className={styles.input}
         placeholder="Write a title"
+        error={error.title && error.title.message}
         containerClass={`gap-0 f-column ${styles.inputWrap}`}
+        registerOptions={{
+          maxLength: { value: 25, message: 'Title is too long' },
+        }}
       />
-      <div className={`flex gap ${styles.statType}`}>
+      <fieldset className={`flex gap ${styles.statType}`}>
         <FormControl
           as="select"
           name="status"
@@ -88,15 +93,17 @@ export default function PropertyDescription({
         >
           <OptGroup header="propertyType" subItems={typeOptions} />
         </FormControl>
-      </div>
+      </fieldset>
       <FormControl
-        error={errors?.description != undefined ? errors.description[0] : ''}
+        required={id === 0}
         as="textarea"
-        containerClass={`gap-0 f-column ${styles.inputWrap}`}
-        className={`f-width b-radius c-pad h-28 ${styles.input}`}
         name="description"
+        register={register}
         labelText="Description"
         placeholder="Brief description of the property"
+        containerClass={`gap-0 f-column ${styles.inputWrap}`}
+        error={error.description && error.description.message}
+        className={`f-width b-radius c-pad h-28 ${styles.input}`}
       />
     </InputWrap>
   );

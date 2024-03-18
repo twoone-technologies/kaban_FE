@@ -34,5 +34,15 @@ export default function useTabulation(pace = 104) {
     setActiveIndex(id);
   }
 
-  return { activeIndex, prevId, setActiveIndex, handleHeaderClick }
+  const next = () => {
+    setPrevId((prev) => prev + pace);
+    setActiveIndex((prev) => prev + 1);
+  }
+
+  const prev = () => {
+    setPrevId((prev) => prev - pace);
+    setActiveIndex((prev) => prev - 1);
+  }
+
+  return { activeIndex, prevId, setActiveIndex, handleHeaderClick, next, prev }
 }

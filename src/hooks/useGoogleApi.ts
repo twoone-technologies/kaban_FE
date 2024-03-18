@@ -5,11 +5,6 @@ interface UseGoogleApiOptions {
   onLoad?: () => void | undefined; // New onLoad callback prop
 }
 
-// interface UseGoogleApiResult {
-//   isLoaded: boolean;
-//   loadError: Error | undefined;
-// }
-
 const API_KEY = import.meta.env.VITE_API_KEY || '';
 const libraries: Libraries = ["places"];
 

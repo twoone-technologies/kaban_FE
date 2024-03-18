@@ -5,7 +5,7 @@ type Props = {
   className?: string;
   style: React.CSSProperties;
   headerArr: { value: number; type: string }[];
-  headerSwitch: (
+  headerSwitch?: (
     value: number,
     headerArr: { value: number; type: string }[],
   ) => void;
@@ -24,7 +24,7 @@ export default function Tabulation({
       {headerArr.map((header) => (
         <li
           key={header.value}
-          onClick={() => headerSwitch(header.value, headerArr)}
+          onClick={() => headerSwitch && headerSwitch(header.value, headerArr)}
           className={`flex align-x ${styles.header} ${
             header.value === idx ? styles.active : ''
           }`}

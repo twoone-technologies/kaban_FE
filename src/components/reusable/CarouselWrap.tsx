@@ -9,10 +9,17 @@ import { arrowIcon } from '~/assets/icons';
 import { useLocation } from 'react-router';
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 
-export default function CarouselWrap({ children }: { children: ReactNode }) {
+export default function CarouselWrap({
+  children,
+  setActiveImg,
+}: {
+  children: ReactNode;
+  setActiveImg?: React.Dispatch<React.SetStateAction<number>>;
+}) {
   const location = useLocation();
   return (
     <Swiper
+      onSlideChangeTransitionEnd={(swiper) => setActiveImg && setActiveImg(swiper.activeIndex)}
       grabCursor={true}
       slidesPerView={'auto'}
       loop={false}

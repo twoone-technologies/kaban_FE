@@ -3,15 +3,21 @@ import Svg from '~/components/reusable/Svg';
 import { SetStateAction, useState } from 'react';
 import MapLoader from '~/components/map/MapLoader';
 import OptGroup from '~/components/herosection/Optgroup';
-import FormControl from '~/components/reusable/FormControl';
+import FormControl, {
+  InputErrors,
+  Register,
+} from '~/components/reusable/FormControl';
 import Address from '~/components/reusable/placesAutocomplete/Address';
 import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
 import InputWrap from '~/components/dashboard/reusables/InputWrap';
 import { mapOptions } from '~/components/dashboard/postproperty/pages/miscellenous//mapProps';
 
 type Props = {
+  idx: number;
   city: string;
   state: string;
+  register?: Register;
+  error: InputErrors;
   mapCenter: { lat: number; lng: number };
   marker: google.maps.LatLngLiteral | null;
   handleMapClick: (e: google.maps.MapMouseEvent) => void;
@@ -21,6 +27,7 @@ type Props = {
 export default function MapAddress({
   city,
   state,
+  error,
   marker,
   mapCenter,
   setMarker,
@@ -73,6 +80,7 @@ export default function MapAddress({
             className={styles.input}
             labelText="Longitude"
             placeholder="Longitude"
+            error={error?.longitude && error.longitude.message}
             defaultValue={marker?.lng}
             type="number"
           />
@@ -83,6 +91,7 @@ export default function MapAddress({
             className={styles.input}
             labelText="Latitude"
             placeholder="Latitude"
+            error={error.latitude && error.latitude.message}
             type="number"
             defaultValue={marker?.lat}
           />

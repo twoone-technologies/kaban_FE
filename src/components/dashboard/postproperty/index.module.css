@@ -3,8 +3,5 @@
 }
 
 .hidden {
-  visibility: hidden;
-  overflow: hidden;
-  max-height: 0;
-  max-width: 0;
+  display: none;
 }

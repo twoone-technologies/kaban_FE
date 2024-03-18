@@ -1,31 +1,35 @@
 import { ChangeEvent } from 'react';
 import Svg from '~/components/reusable/Svg';
 import { uploadImgIcon } from '~/assets/icons';
-import { useActionData } from 'react-router-dom';
-import { ErrorObj } from '~/components/dashboard/postproperty';
 import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
+import { InputErrors, Register } from '~/components/reusable/FormControl';
 
 type Props = {
+  idx: number;
   dragging: boolean;
+  error: InputErrors;
+  register: Register;
   carouselHandler: (e: ChangeEvent<HTMLInputElement>) => void;
   coverImageHandler: (e: ChangeEvent<HTMLInputElement>) => void;
-} & React.ComponentProps<'div'> 
+} & React.ComponentProps<'div'>;
 
 export default function UploadImages({
+  idx,
+  error,
   dragging,
+  register,
   carouselHandler,
   coverImageHandler,
   ...rest
 }: Props) {
-  const errors = useActionData() as ErrorObj;
   return (
     <div {...rest}>
       <span>Upload Images</span>
       <p className="text-red-600">
-        {errors?.coverImg != undefined ? errors.coverImg[0] : ''}
+        {error?.coverImg && error?.coverImg.message}
       </p>
       <p className="text-red-600">
-        {errors?.listingImg != undefined ? errors.listingImg[0] : ''}
+        {error?.listingImages && error?.listingImages.message}
       </p>
       <div
         className={`flex f-column pad-block-2 pad-inline-1 b-radius align-x align-y ${styles.uploadWrap}`}
@@ -35,25 +39,36 @@ export default function UploadImages({
           {dragging ? (
             <span>Drop Image here</span>
           ) : (
-            <span>
-              <b>Click here to upload</b> or drag and drop <br />
-              <b>Click here to set cover image</b>
-            </span>
+            <>
+              <label className="cursor-pointer" htmlFor="listingImg">
+                <b>Click here to upload</b> or drag and drop
+              </label>{' '}
+              <br />
+              <label className="cursor-pointer" htmlFor="coverImg">
+                <b>Click here to set cover image</b>
+              </label>
+            </>
           )}
           <input
+            hidden
             multiple
-            className={styles.fileInput}
-            name="listingImg"
+            id="listingImg"
+            onChange={carouselHandler}
             accept=".jpg, .jpeg, .png"
             type="file"
-            onChange={carouselHandler}
           />
+          <input type="text" required hidden {...register('listingImages')} />
           <input
-            className={styles.coverFileInput}
+            required={idx === 1}
+            hidden
+            id="coverImg"
+            {...register('coverImg', {
+              required: true && idx === 1,
+              onChange: coverImageHandler,
+            })}
             name="coverImg"
             accept=".jpg, .jpeg, .png"
             type="file"
-            onChange={coverImageHandler}
           />
         </div>
         <span>PNG, JPG (max. 1440x900px)</span>
