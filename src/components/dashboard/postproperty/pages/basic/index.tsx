@@ -1,31 +1,40 @@
+import { useState } from 'react';
 import { arrowIcon } from '~/assets/icons';
 import Svg from '~/components/reusable/Svg';
 import Details from '~/components/dashboard/postproperty/pages/basic/Details';
 import SalesRentPrice from '~/components/dashboard/postproperty/pages/basic/SalesRentPrice';
 import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
 import PropertyDescription from '~/components/dashboard/postproperty/pages/basic/PropertyDescription';
-import ContinueOrCancel from '~/components/dashboard/postproperty/pages/miscellenous/ContinueOrCancel';
-import { useState } from 'react';
+import { InputErrors, Register } from '~/components/reusable/FormControl';
 
 type BasicProps = {
+  error: InputErrors;
   className: string;
   activeIndex: number;
-  setNewIndex: (num: number) => void;
+  register: Register;
 };
 
 export default function Basic({
   className,
   activeIndex,
-  setNewIndex,
+  register,
+  error,
 }: BasicProps) {
   const svg = <Svg className={styles.svg} href={arrowIcon} />;
   const [details, setDetails] = useState(false);
   return (
-    <div className={`flex f-column transition ease-in-out  gap-2 ${className}`}>
-      <PropertyDescription svg={svg} setDetails={setDetails} />
-      <SalesRentPrice svg={svg} />
-      <Details land={details} svg={svg} />
-      <ContinueOrCancel activeIndex={activeIndex} setNewIndex={setNewIndex} />
-    </div>
+    <fieldset
+      className={`flex f-column transition ease-in-out  gap-2 ${className}`}
+    >
+      <PropertyDescription
+        id={activeIndex}
+        register={register}
+        error={error}
+        svg={svg}
+        setDetails={setDetails}
+      />
+      <SalesRentPrice register={register} error={error} svg={svg} />
+      <Details register={register} error={error} land={details} svg={svg} />
+    </fieldset>
   );
 }

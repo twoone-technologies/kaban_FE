@@ -1,0 +1,59 @@
+.formNav {
+  position: absolute;
+  top: 4.5rem;
+  left: 0;
+  overflow-x: auto;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  border-bottom: 1.5px solid var(--hover-color);
+}
+
+.formNav::-webkit-scrollbar {
+  width: 0;
+  max-height: 2.5px;
+  border-radius: 50%;
+}
+
+.formNav::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
+  border-radius: 10px;
+}
+
+
+.formNav::-webkit-scrollbar-thumb:hover {
+  max-height: 4px;
+  background-color: var(--primary-color);
+}
+
+.header {
+  font-size: clamp(11px, 1.5vw, 14px);
+  min-width: 104px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.underline {
+  position: absolute;
+  bottom: 0;
+  height: 4px;
+  width: 104px;
+  background-color: var(--primary-color); 
+  transition: all 0.3s;
+}
+
+.hidden {
+  visibility: hidden;
+  overflow: hidden;
+  max-height: 0;
+  max-width: 0;
+}
+
+@media screen and (width >= 800px) {
+  .formNav {
+    padding-left: 18.5rem;
+  }
+}

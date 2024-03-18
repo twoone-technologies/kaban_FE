@@ -1,17 +1,22 @@
-import { ChangeEvent, useState } from 'react';
-import { useActionData } from 'react-router-dom';
-import FormControl from '~/components/reusable/FormControl';
-import { ErrorObj } from '~/components/dashboard/postproperty';
+import { ChangeEvent, useEffect, useState } from 'react';
+import FormControl, {
+  InputErrors,
+  Register,
+} from '~/components/reusable/FormControl';
+import { Inputs } from '~/components/dashboard/postproperty';
 import Carousel from '~/components/dashboard/postproperty/pages/media/Carousel';
 import UploadImages from '~/components/dashboard/postproperty/pages/media/UploadImages';
-import InputWrap from '~/components/dashboard/postproperty/pages/miscellenous/InputWrap';
+import InputWrap from '~/components/dashboard/reusables/InputWrap';
 import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
-import ContinueOrCancel from '~/components/dashboard/postproperty/pages/miscellenous/ContinueOrCancel';
+import { UseFormSetValue } from 'react-hook-form';
 
 type MediaProps = {
   className: string;
+  register: Register;
+  error: InputErrors;
   activeIndex: number;
-  setNewIndex: (num: number) => void;
+  setMinNum: React.Dispatch<React.SetStateAction<boolean>>;
+  setValue: UseFormSetValue<Inputs>;
 };
 
 export type ImageFile = {
@@ -27,8 +32,11 @@ export type ImageFile = {
 
 export default function Media({
   className,
+  register,
+  error,
+  setValue,
+  setMinNum,
   activeIndex,
-  setNewIndex,
 }: MediaProps) {
   const [coverImage, setCoverImage] = useState<ImageFile>({
     name: '',
@@ -40,12 +48,18 @@ export default function Media({
     webkitRelativePath: '',
   });
   const [images, setImages] = useState<ImageFile[]>([]);
+  const [activeImg, setActiveImg] = useState<number>(1);
   const [isDragging, setIsDragging] = useState(false);
-  const errors = useActionData() as ErrorObj;
+  setValue('listingImages', JSON.stringify(images));
+
+  useEffect(() => {
+    images.length > 5 && coverImage.name != ''
+      ? setMinNum(true)
+      : setMinNum(false);
+  }, [coverImage.name, images, setMinNum]);
 
   const handleImage = (e: ChangeEvent<HTMLInputElement>) => {
     const files: FileList | null = e.target.files;
-    console.log(files);
     if (!files || files.length === 0) return;
     for (let i = 0; i < files.length; i++) {
       const file: ImageFile = files[i];
@@ -57,7 +71,6 @@ export default function Media({
             id: i,
             name: file.name,
             url: URL.createObjectURL(file as unknown as Blob),
-            cover: false,
             size: file.size,
             type: file.type,
             lastModified: file.lastModified,
@@ -120,7 +133,6 @@ export default function Media({
             id: i,
             name: files[i].name,
             url: URL.createObjectURL(files[i]),
-            cover: false,
             size: files[i].size,
             type: files[i].type,
             lastModified: files[i].lastModified,
@@ -134,32 +146,47 @@ export default function Media({
   return (
     <div className={`flex flex-col gap-2 ${className}`}>
       <InputWrap>
-        <h3>Media</h3>
+        <div className="flex s-btw">
+          <h3>Media</h3>
+          <span>{`${activeImg} / ${images.length}`}</span>
+        </div>
         <Carousel
           imageArr={images}
+          setActiveImg={setActiveImg}
           coverImage={coverImage}
           deleteImage={deleteImage}
         />
-        <UploadImages 
+        <UploadImages
+          error={error}
           onDrop={onDrop}
+          idx={activeIndex}
+          register={register}
           dragging={isDragging}
           onDragOver={onDragOver}
           onDragLeave={onDragLeave}
           carouselHandler={handleImage}
           coverImageHandler={handleCoverImg}
         />
-        <h3>Video URL</h3>
         <FormControl
           as="input"
           type="text"
           name="videoUrl"
+          register={register}
+          labelText="Video URL"
           className={styles.input}
+          registerOptions={{
+            pattern: {
+              value:
+                /^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/(?!.*watch\?)(.+)/,
+              message:
+                'Please enter a valid YouTube link (e.g., https://youtu.be/vdZVPS-jLpA)',
+            },
+          }}
           placeholder="Example: https://youtu.be/vdZVPS-jLpA"
-          error={errors?.videoUrl != undefined ? errors.videoUrl[0] : ''}
+          error={error.videoUrl && error.videoUrl.message}
           containerClass={`gap-0 f-column ${styles.areaSuffix} ${styles.inputWrap}`}
         />
       </InputWrap>
-      <ContinueOrCancel activeIndex={activeIndex} setNewIndex={setNewIndex} />
     </div>
   );
 }

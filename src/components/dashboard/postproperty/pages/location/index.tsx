@@ -4,25 +4,31 @@ import Svg from '~/components/reusable/Svg';
 import usePlacesAutocomplete from 'use-places-autocomplete';
 import Checkbox from '~/components/searchForm/checkbox/Checkbox';
 import Location from '~/components/dashboard/postproperty/pages/location/HoodAddress';
-import InputWrap from '~/components/dashboard/postproperty/pages/miscellenous/InputWrap';
+import InputWrap from '~/components/dashboard/reusables/InputWrap';
 import MapAddress from '~/components/dashboard/postproperty/pages/location/MapAddress';
 import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
-import ContinueOrCancel from '~/components/dashboard/postproperty/pages/miscellenous/ContinueOrCancel';
+import { InputErrors, Register } from '~/components/reusable/FormControl';
+import { Inputs } from '../..';
+import { UseFormSetValue } from 'react-hook-form';
 
 type LocationProps = {
   className: string;
+  error: InputErrors;
+  register?: Register;
+  valid: boolean;
+  setValue: UseFormSetValue<Inputs>;
   activeIndex: number;
-  setNewIndex: (num: number) => void;
 };
 
 export default function ListingLocation({
+  register,
+  error,
+  setValue,
   className,
   activeIndex,
-  setNewIndex,
 }: LocationProps) {
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
-  const [canSubmit, setCanSubmit] = useState(0);
   const { clearSuggestions } = usePlacesAutocomplete();
   const [mapCenter, setMapCenter] = useState({ lat: 10.0, lng: 8.0 });
   const [marker, setMarker] = useState<google.maps.LatLngLiteral | null>(null);
@@ -36,30 +42,33 @@ export default function ListingLocation({
     setMarker(obj);
     setMapCenter({ lat: obj.lat, lng: obj.lng });
   };
+  setValue('latitude', String(marker?.lat));
+  setValue('longitude', String(marker?.lng));
 
-  const handleAgreement = (e: { target: { checked: boolean } }) => {
-    e.target.checked === true && marker != null
-    ? setCanSubmit(1)
-    : setCanSubmit(0);
-  };
   const svg = <Svg className={styles.svg} href={arrowIcon} />;
-
   return (
-    <div onClick={() => clearSuggestions()}
+    <fieldset
+      onClick={() => clearSuggestions()}
       className={`flex flex-col gap-6 ${className}`}
     >
       <Location
+        idx={activeIndex}
         svg={svg}
         city={city}
         state={state}
+        error={error}
         setCity={setCity}
+        register={register}
         setState={setState}
         setMarker={setMarker}
       />
       <MapAddress
         city={city}
+        error={error}
         state={state}
         marker={marker}
+        idx={activeIndex}
+        register={register}
         mapCenter={mapCenter}
         setMarker={setMarker}
         handleMapClick={handleMapClick}
@@ -67,18 +76,17 @@ export default function ListingLocation({
       <InputWrap>
         <h3>Agreement</h3>
         <div className="flex gap">
-          <Checkbox name="consent" onChange={handleAgreement} />
+          <Checkbox
+            name="consent"
+            required={activeIndex === 2}
+            register={register}
+          />
           <span>
             I consent that I am an authorized marketing representative of the
             above described real estate property.
           </span>
         </div>
       </InputWrap>
-      <ContinueOrCancel
-        disabled={canSubmit}
-        activeIndex={activeIndex}
-        setNewIndex={setNewIndex}
-      />
-    </div>
+    </fieldset>
   );
 }

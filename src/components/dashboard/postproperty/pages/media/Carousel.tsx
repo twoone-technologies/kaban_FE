@@ -13,13 +13,14 @@ type Props = {
   imageArr: ImageFile[];
   coverImage: ImageFile;
   deleteImage: (id: number) => void;
+  setActiveImg?: React.Dispatch<React.SetStateAction<number>>;
 };
 
-export default function Carousel({ imageArr, coverImage, deleteImage }: Props) {
+export default function Carousel({ imageArr, coverImage, deleteImage, setActiveImg }: Props) {
   return (
     <div>
       {coverImage.url || imageArr.length > 0 ? (
-        <CarouselWrap>
+        <CarouselWrap setActiveImg={setActiveImg}>
           {coverImage.url ? (
             <SwiperSlide className="relative">
               <img
@@ -40,12 +41,10 @@ export default function Carousel({ imageArr, coverImage, deleteImage }: Props) {
                   alt={image.name}
                   className={`b-radius ${styles.img}`}
                 />
-                <span
+                <span className="flex align-x align-y absolute bottom-2 left-6"
                   onClick={() => deleteImage(id)}
-                  className="flex align-x align-y absolute bottom-2 left-6"
                 >
-                  {' '}
-                  &times;
+                {' '}&times;
                 </span>
               </div>
             </SwiperSlide>

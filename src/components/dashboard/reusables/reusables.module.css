@@ -27,6 +27,17 @@
   font-size: 1vw;
 }
 
+/* inputwrap component */
+.datatWrap {
+  padding: 1rem;
+  border: 1px solid var(--hover-color);
+  background-color: var(--tertiary-color-1);
+}
+
+.datatWrap h3 {
+  font-weight: 600;
+}
+
 @media screen and (width <= 1024px) {
   .listingData h4 {
     font-size: clamp(1rem, 4vw, 1.4rem);
@@ -44,6 +55,9 @@
 @media screen and (width <= 768px) {
   .listingData span {
     font-size: 13px;
+  }
+  .datatWrap {
+    padding: 0.5rem;
   }
 }
 

@@ -1,15 +1,25 @@
 import { ReactNode, useState } from 'react';
 import OptGroup from '~/components/herosection/Optgroup';
-import FormControl from '~/components/reusable/FormControl';
+import FormControl, {
+  InputErrors,
+  Register,
+} from '~/components/reusable/FormControl';
 import Address from '~/components/reusable/placesAutocomplete/Address';
-import InputWrap from '~/components/dashboard/postproperty/pages/miscellenous/InputWrap';
+import InputWrap from '~/components/dashboard/reusables/InputWrap';
 import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
-import { citiesInNigeria, statesInNigeria } from '~/components/dashboard/postproperty/pages/miscellenous//mapProps';
+import {
+  citiesInNigeria,
+  statesInNigeria,
+} from '~/components/dashboard/postproperty/pages/miscellenous//mapProps';
 
 type Props = {
   city: string;
+  idx: number;
   state: string;
   svg: ReactNode;
+  error: InputErrors;
+  register?: Register;
+  // setAddressValue:  UseFormSetValue<Inputs>;
   setCity: React.Dispatch<React.SetStateAction<string>>;
   setState: React.Dispatch<React.SetStateAction<string>>;
   setMarker: React.Dispatch<
@@ -20,8 +30,11 @@ type Props = {
 export type StateCitiesMap = { [key: string]: string[] };
 
 export default function HoodAddress({
+  idx,
   svg,
   city,
+  error,
+  register,
   state,
   setCity,
   setState,
@@ -74,6 +87,9 @@ export default function HoodAddress({
           <OptGroup subItems={cityOptions} header={'Cities'} />
         </FormControl>
         <Address
+          idx={idx}
+          error={error}
+          register={register}
           className={styles.address}
           setMarker={setMarker}
           city={city}

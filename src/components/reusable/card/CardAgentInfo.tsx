@@ -48,7 +48,7 @@ export default function CardAgentInfo({
       {location.pathname.includes('/dashboard') &&
         <div className={`b-radius w-full transition-all absolute ${styles.dropdown} ${dropDown === false ? styles.close : styles.open }`}>
           <div className='flex gap align-y p-4'
-          onClick={() => navigate('/dashboard/profile_edit/profile')}
+          onClick={() => navigate('/dashboard/profile_edit')}
           >
             <Svg href={profileIcon} />
             <span>Profile</span>

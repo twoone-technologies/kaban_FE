@@ -61,8 +61,8 @@ export const router = createBrowserRouter(
       <Route path="dashboard/support" element={<Support />} />
       <Route path="dashboard/support/:title" element={<SupportCard />} />
       <Route path="dashboard/notification" element={<Notification />} />
-      <Route path="dashboard/post/:id" element={<Post />} action={postForm} />
-      <Route path="dashboard/profile_edit/:id" element={<Edit />} />
+      <Route path="dashboard/post" element={<Post />} action={postForm} />
+      <Route path="dashboard/profile_edit" element={<Edit />} />
     </Route>,
   ),
 );

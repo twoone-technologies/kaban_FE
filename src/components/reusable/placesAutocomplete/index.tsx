@@ -41,7 +41,7 @@ export default function PlacesAutocomplete({
 
   return (
     <div className={`absolute w-full b-radius z-50 ${styles.autoCompleteDropDown}`}>
-      <input hidden readOnly value={inputValue} />
+      <input  readOnly hidden value={inputValue} />
       <>{currStat === 'OK' && dataArr.map((item) => (
         <li className={`px-2 py-1 ${styles.srchres}`}
             onClick={handleClick}
