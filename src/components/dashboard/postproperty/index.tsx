@@ -52,8 +52,7 @@ export async function action({ request }: ActionFunctionArgs) {
 
   const finalFormData = [...formData.entries(), ...newArray];
   // Push finalFormData to backend
-  // console.log(...finalFormData);
-
+  console.log(...finalFormData);
   // Return error object if validation fails
 
   return 'success';
