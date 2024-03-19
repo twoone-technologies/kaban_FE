@@ -15,7 +15,7 @@ type Props = {
   koinNode?: ReactNode;
   agentClass?: string;
   referClass?: string;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   onClick?: () => void;
 };
 
