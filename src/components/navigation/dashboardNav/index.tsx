@@ -64,6 +64,7 @@ export default function NavBoard() {
             onClick={() => setOpen(!open)}
           />
           <Sidebar
+            setOpen={setOpen}
             className={`${open && styles.isVisible} ${styles.mobileNav}`}
             koinNode={
               <div className="flex f-column align-x pad-inline-1">

@@ -26,7 +26,7 @@ export default function UploadImages({
     <div {...rest}>
       <span>Upload Images</span>
       <p className="text-red-600">
-        {error?.coverImg && error?.coverImg.message}
+        {error?.coverImage && error?.coverImage.message}
       </p>
       <p className="text-red-600">
         {error?.listingImages && error?.listingImages.message}
@@ -62,14 +62,11 @@ export default function UploadImages({
             required={idx === 1}
             hidden
             id="coverImg"
-            {...register('coverImg', {
-              required: true && idx === 1,
-              onChange: coverImageHandler,
-            })}
-            name="coverImg"
+            onChange={coverImageHandler}
             accept=".jpg, .jpeg, .png"
             type="file"
           />
+          <input type="text" required hidden {...register('coverImage')} />
         </div>
         <span>PNG, JPG (max. 1440x900px)</span>
       </div>
