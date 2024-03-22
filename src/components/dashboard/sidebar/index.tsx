@@ -15,12 +15,14 @@ type Props = {
   koinNode?: ReactNode;
   agentClass?: string;
   referClass?: string;
+  setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   onClick?: () => void;
 };
 
 export default function Sidebar({
   className,
   koinNode,
+  setOpen,
   agentClass,
   referClass,
   onClick,
@@ -77,7 +79,7 @@ export default function Sidebar({
           <Invite isOpen={invite} exit={() => setInvite(false)} />
         </div>
       </>
-      <CardAgentInfo
+      <CardAgentInfo setOpen={setOpen}
         star={4} src={IkonIcon} imgClass={styles.img}
         className={`pad-1 ${agentClass} ${styles.cardAgentInfo}`}
         identity={
