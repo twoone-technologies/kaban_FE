@@ -199,3 +199,6 @@ export const coverStarIcon = `${coverStar}#img`;
 
 import profile from "./profile.svg";
 export const profileIcon = `${profile}#img`;
+
+import fileUpload from "./fileUpload.svg";
+export const fileUploadIcon = `${fileUpload}#img`;

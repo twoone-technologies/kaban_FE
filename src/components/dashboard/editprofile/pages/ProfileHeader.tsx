@@ -2,10 +2,24 @@ import styles from '../edit.module.css';
 import CardAgentInfo from '~/components/reusable/card/CardAgentInfo';
 import Button from '~/components/reusable/Button';
 import InputWrap from '../../reusables/InputWrap';
-import useImageUpload from '~/hooks/useImageUpload';
+import useImageUpload from '~/hooks/useFileUpload';
+import { UseFormRegister, UseFormSetValue } from 'react-hook-form';
+import { EditProfileInputs } from '..';
 
-export default function ProfileHeader() {  
-  const { coverImage, deleteImage, handleCoverImg } = useImageUpload();
+type ProfileHeaderProps = {
+  id: number;
+  register: UseFormRegister<EditProfileInputs>;
+  setValue: UseFormSetValue<EditProfileInputs>;
+};
+
+export default function ProfileHeader({
+  id,
+  register,
+  setValue,
+}: ProfileHeaderProps) {
+  const { coverImage, setCoverImage, handleCoverImg } = useImageUpload();
+  setValue('agent_image', JSON.stringify(coverImage));
+
   return (
     <InputWrap
       className={`flex s-btw flex-col sm:flex-row ${styles.agentProfileInfo}`}
@@ -21,13 +35,13 @@ export default function ProfileHeader() {
           </div>
         }
       />
-      <div className="relative flex align-y gap">
+      {id === 0 && <div className={`relative flex align-y gap ${id !== 0 ? 'hidden' : ''}`}>
         <label htmlFor="agentImg" className={`b-radius ${styles.btn}`}>
           Upload picture
         </label>
         <Button
-          type="reset"
-          onClick={() => deleteImage()}
+          type="button"
+          onClick={() => setCoverImage([])}
           className={styles.btn}
         >
           Remove
@@ -35,12 +49,18 @@ export default function ProfileHeader() {
         <input
           hidden
           id="agentImg"
-          name="agentImg"
           accept=".jpg, .jpeg, .png"
           type="file"
           onChange={handleCoverImg}
         />
-      </div>
+        <input
+          type="text"
+          required
+          {...register('agent_image')}
+          hidden
+          name="agent_name"
+        />
+      </div>}
     </InputWrap>
   );
 }

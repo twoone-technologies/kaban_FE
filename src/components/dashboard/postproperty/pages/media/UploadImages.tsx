@@ -3,13 +3,20 @@ import Svg from '~/components/reusable/Svg';
 import { uploadImgIcon } from '~/assets/icons';
 import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
 import { InputErrors, Register } from '~/components/reusable/FormControl';
+import { ImageFile } from '~/hooks/useFileUpload';
 
 type Props = {
   idx: number;
   dragging: boolean;
   error: InputErrors;
+  image: ImageFile[];
   register: Register;
-  carouselHandler: (e: ChangeEvent<HTMLInputElement>) => void;
+  setImg: React.Dispatch<React.SetStateAction<ImageFile[]>>;
+  carouselHandler: (
+    e: ChangeEvent<HTMLInputElement>,
+    image: ImageFile[],
+    setImg: React.Dispatch<React.SetStateAction<ImageFile[]>>,
+  ) => void;
   coverImageHandler: (e: ChangeEvent<HTMLInputElement>) => void;
 } & React.ComponentProps<'div'>;
 
@@ -18,6 +25,8 @@ export default function UploadImages({
   error,
   dragging,
   register,
+  image,
+  setImg,
   carouselHandler,
   coverImageHandler,
   ...rest
@@ -53,7 +62,7 @@ export default function UploadImages({
             hidden
             multiple
             id="listingImg"
-            onChange={carouselHandler}
+            onChange={(e) => carouselHandler(e, image, setImg)}
             accept=".jpg, .jpeg, .png"
             type="file"
           />

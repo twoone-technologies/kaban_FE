@@ -53,7 +53,6 @@
   color: var(--primary-color);
 }
 
-
 .details {
   display: grid;
   gap: 1rem;
@@ -128,6 +127,14 @@
   margin-inline: auto;
   height: 14rem;
   width: 100%;
+  max-width: 330px;
+}
+
+.pdf {
+  margin-inline: auto;
+  height: 14rem;
+  width: 100%;
+  background-color: var(--hover-color);
   max-width: 330px;
 }
 

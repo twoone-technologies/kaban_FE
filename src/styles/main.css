@@ -240,6 +240,7 @@ svg:active {
 }
 
 .wrapper {
+  height: 100dvh;
   padding: 4rem 1rem 1rem 1rem;
   margin-left: 0;
 }

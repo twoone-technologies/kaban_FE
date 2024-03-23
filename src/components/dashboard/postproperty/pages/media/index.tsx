@@ -9,7 +9,7 @@ import InputWrap from '~/components/dashboard/reusables/InputWrap';
 import Carousel from '~/components/dashboard/postproperty/pages/media/Carousel';
 import UploadImages from '~/components/dashboard/postproperty/pages/media/UploadImages';
 import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
-import useImageUpload from '~/hooks/useImageUpload';
+import useImageUpload from '~/hooks/useFileUpload';
 
 type MediaProps = {
   className: string;
@@ -31,8 +31,10 @@ export default function Media({
   const {
     coverImage,
     images,
+    setImages,
     isDragging,
     handleImage,
+    setCoverImage,
     handleCoverImg,
     deleteImage,
     onDragOver,
@@ -58,13 +60,16 @@ export default function Media({
         </div>
         <Carousel
           imageArr={images}
-          setActiveImg={setActiveImg}
           coverImage={coverImage}
+          setCoverImg={setCoverImage}
+          setListingImg={setImages}
+          setActiveImg={setActiveImg}
           deleteImage={deleteImage}
         />
         <UploadImages
           error={error}
-          onDrop={onDrop}
+          image={images}
+          setImg={setImages}
           idx={activeIndex}
           register={register}
           dragging={isDragging}
@@ -72,6 +77,7 @@ export default function Media({
           onDragLeave={onDragLeave}
           carouselHandler={handleImage}
           coverImageHandler={handleCoverImg}
+          onDrop={(e) => onDrop(e, images, setImages)}
         />
         <FormControl
           as="input"

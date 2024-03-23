@@ -18,21 +18,27 @@ export default function Tabulation({
   className,
   headerSwitch,
 }: Props) {
-
   return (
     <ul className={`flex w-full ${styles.formNav} ${className}`}>
       {headerArr.map((header) => (
         <li
           key={header.value}
           onClick={() => headerSwitch && headerSwitch(header.value, headerArr)}
-          className={`flex align-x ${styles.header} ${
-            header.value === idx ? styles.active : ''
-          }`}
+          className={`flex align-x ${styles.header} 
+          ${header.value === idx ? styles.active : ''}
+          ${header.type === 'Deactivate Account' ? `text-red-700` : ''}`}
         >
           {header.type}
         </li>
       ))}
-      <li className={styles.underline} style={style} />
+      <li
+        className={`${styles.underline} ${
+          headerArr[4].type === 'Deactivate Account' && idx === 4
+            ? 'bg-red-700'
+            : 'bg-primary-1'
+        }`}
+        style={style}
+      />
     </ul>
   );
 }

@@ -11,11 +11,15 @@
   position: absolute;
   top: 4.5rem;
   left: 0;
-  overflow-x: auto;
+  overflow: hidden;
   padding-inline: 1rem;
   padding-block: 0.5rem;
   padding-left: 18rem;
   border-bottom: 1.5px solid var(--hover-color);
+}
+
+.formNav:hover {
+  overflow-x: auto;
 }
 
 .formNav::-webkit-scrollbar {
