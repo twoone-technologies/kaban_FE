@@ -24,7 +24,7 @@ export default function Basic({
   const [details, setDetails] = useState(false);
   return (
     <fieldset
-      className={`flex f-column transition ease-in-out  gap-2 ${className}`}
+      className={`flex f-column transition ease-in-out gap-2 ${className}`}
     >
       <PropertyDescription
         id={activeIndex}

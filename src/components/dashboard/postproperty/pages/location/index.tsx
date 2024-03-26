@@ -15,7 +15,6 @@ type LocationProps = {
   className: string;
   error: InputErrors;
   register?: Register;
-  valid: boolean;
   setValue: UseFormSetValue<Inputs>;
   activeIndex: number;
 };

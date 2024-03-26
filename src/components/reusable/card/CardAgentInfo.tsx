@@ -1,9 +1,6 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode } from 'react';
 import styles from './card.module.css';
 import Rating from '~/components/propertyItem/micellenous/Rating';
-import { useLocation, useNavigate } from 'react-router-dom';
-import Svg from '../Svg';
-import { profileIcon, sign_outIcon } from '~/assets/icons';
 
 type AgentProps = {
   src?: string | undefined;
@@ -12,7 +9,7 @@ type AgentProps = {
   identity: string | undefined | ReactNode;
   star?: number;
   imgClass?: string;
-  setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  onClick?: React.ChangeEventHandler<HTMLDivElement> & React.MouseEventHandler<HTMLDivElement>
 } & React.ComponentProps<'div'>;
 
 export default function CardAgentInfo({
@@ -21,16 +18,13 @@ export default function CardAgentInfo({
   firstLetter,
   lastLetter,
   star,
-  setOpen,
+  onClick,
   imgClass,
   className,
 }: AgentProps) {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const [dropDown, setDropDown] = useState(false);
   return (
     <div
-      onClick={() => setDropDown(!dropDown)}
+      onClick={onClick}
       className={`cursor-pointer flex s-btw f-width align-y b-radius c-pad relative ${className} ${styles.agent}`}
     >
       <div className="flex align-y gap">
@@ -49,34 +43,6 @@ export default function CardAgentInfo({
           {star ? <Rating num={star} /> : null}
         </div>
       </div>
-      {location.pathname.includes('/dashboard') && (
-        <div
-          className={`b-radius w-full transition-all absolute ${
-            styles.dropdown
-          } ${dropDown === false ? styles.close : styles.open}`}
-        >
-          <div
-            className="flex gap align-y p-4"
-            onClick={() => {
-              navigate('/dashboard/profile_edit');
-              setOpen && setOpen(false);
-            }}
-          >
-            <Svg href={profileIcon} />
-            <span>Profile</span>
-          </div>
-          <div
-            className="flex gap align-y p-4"
-            onClick={() => {
-              navigate('/');
-              setOpen && setOpen(false);
-            }}
-          >
-            <Svg href={sign_outIcon} />
-            <span>Sign Out</span>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

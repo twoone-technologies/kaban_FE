@@ -9,6 +9,8 @@ import {
   UseFormRegister,
 } from 'react-hook-form';
 import { Inputs } from '../dashboard/postproperty';
+import { arrowIcon } from '~/assets/icons';
+import Svg from './Svg';
 
 type FormControlElement = 'input' | 'select' | 'textarea';
 type InputProps = React.ComponentPropsWithoutRef<'input'>;
@@ -54,6 +56,7 @@ export default function FormControl({
   ...props
 }: ControlProps) {
   const location = useLocation();
+  const svgIcon = <Svg className={styles.svg} href={arrowIcon} />;
   const formWrapStyle =
     location.pathname !== '/' && location.pathname !== '/search_results'
       ? `gap-0 f-column ${styles.inputWrap}`
@@ -124,7 +127,7 @@ export default function FormControl({
         </div>
       ) : null}
       {content}
-      {icon}
+      {as === 'select'? svgIcon : icon}
     </div>
   );
 }

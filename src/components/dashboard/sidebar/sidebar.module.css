@@ -72,6 +72,42 @@
   height: 3rem;
 }
 
+
+.dropdown {
+  color: var(--accent-color-1);
+  font-weight: 600;
+  max-width: 15rem;
+  background-color: var(--tertiary-color-1);
+  bottom: 7rem;
+  border: 1.5px solid var(--hover-color);
+}
+
+.dropdown > div:first-of-type {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.dropdown > div:last-child {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.dropdown div:hover {
+  color: var(--primary-color);
+  background-color: var(--tertiary-color-5);
+}
+
+.open {
+  transform: translateY(-1rem);
+}
+
+.close {
+  z-index: -1;
+  transform: translateY(4rem);
+  opacity: 0;
+}
+
+
 @media screen and (width <= 800px) {
   .sidebar {
     transform: translateX(-200%);

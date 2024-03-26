@@ -122,7 +122,6 @@ export default function Post() {
         />
         <ListingLocation
           error={errors}
-          valid={isValid}
           setValue={setValue}
           activeIndex={activeIndex}
           register={activeIndex === 2 ? register : undefined}

@@ -1,11 +1,11 @@
 import { ReactNode, useState } from 'react';
 import OptGroup from '~/components/herosection/Optgroup';
-import { StateCitiesMap } from '../location/HoodAddress';
 import { statusArr } from '~/components/searchForm/status';
 import InputWrap from '~/components/dashboard/reusables/InputWrap';
 import FormControl, { InputErrors, Register } from '~/components/reusable/FormControl';
 import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
 import { propertyCategory, propertyType,} from '~/components/dashboard/postproperty/pages/miscellenous/mapProps';
+import { StateCitiesMap } from '~/hooks/useStateCities';
 
 export default function PropertyDescription({
   id,

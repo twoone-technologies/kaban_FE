@@ -35,6 +35,7 @@
 }
 
 .datatWrap h3 {
+  font-size: Clamp(1.1rem, 4vw, 1.3rem);
   font-weight: 600;
 }
 

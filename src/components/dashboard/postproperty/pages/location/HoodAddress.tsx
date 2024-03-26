@@ -1,16 +1,14 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 import OptGroup from '~/components/herosection/Optgroup';
 import FormControl, {
   InputErrors,
   Register,
 } from '~/components/reusable/FormControl';
-import Address from '~/components/reusable/placesAutocomplete/Address';
+import useStateCities from '~/hooks/useStateCities';
 import InputWrap from '~/components/dashboard/reusables/InputWrap';
+import Address from '~/components/reusable/placesAutocomplete/Address';
 import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
-import {
-  citiesInNigeria,
-  statesInNigeria,
-} from '~/components/dashboard/postproperty/pages/miscellenous//mapProps';
+import { statesInNigeria } from '~/components/dashboard/postproperty/pages/miscellenous/mapProps';
 
 type Props = {
   city: string;
@@ -19,15 +17,12 @@ type Props = {
   svg: ReactNode;
   error: InputErrors;
   register?: Register;
-  // setAddressValue:  UseFormSetValue<Inputs>;
   setCity: React.Dispatch<React.SetStateAction<string>>;
   setState: React.Dispatch<React.SetStateAction<string>>;
   setMarker: React.Dispatch<
     React.SetStateAction<google.maps.LatLngLiteral | null>
   >;
 };
-
-export type StateCitiesMap = { [key: string]: string[] };
 
 export default function HoodAddress({
   idx,
@@ -40,21 +35,9 @@ export default function HoodAddress({
   setState,
   setMarker,
 }: Props) {
-  const allCities: StateCitiesMap = { ...citiesInNigeria };
-  const [cityOptions, setCityOptions] = useState(
-    allCities[statesInNigeria[0].value],
-  );
 
-  const handleCityChange = (stateCitiesMap: StateCitiesMap, value: string) => {
-    const stateKeys = Object.keys(stateCitiesMap);
-    const similarStateKey = stateKeys.find(
-      (key) => key.toLocaleLowerCase() === value.toLocaleLowerCase(),
-    );
-    if (similarStateKey) {
-      const cities = stateCitiesMap[similarStateKey];
-      setCityOptions(cities);
-    }
-  };
+  const { allCities, cityOptions, handleCityChange} = useStateCities();
+
   return (
     <InputWrap>
       <h3>Location</h3>
