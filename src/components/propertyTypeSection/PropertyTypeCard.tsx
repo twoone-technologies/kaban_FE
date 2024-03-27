@@ -10,9 +10,9 @@ export default function PropertyTypeCard({ data }: {
         cardRef.current?.style.setProperty('--background-img', `url(${data.image})`)
     }, [data.image])
     return (
-        <Link to={data.link} className={style.card_container}>
+        <Link to={data.link} className={`relative ${style.card_container}`}>
             <div ref={cardRef} className={style.property_card}></div>
-            <div className={`absolute w-5/6 p-3 md:bottom-8 md:left-4 md:w-fit ${style.sm_card}`}>
+            <div className={`absolute w-5/6 p-3 ${style.sm_card}`}>
                 <p className="font-semibold">{data?.name.toUpperCase()}</p>
                 <div className="flex gap-[2p] flex-wrap whitespace-nowrap font-normal bottom-10">
                     {data.type.map((dataTypeItem, id) => (

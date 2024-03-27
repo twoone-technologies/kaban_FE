@@ -71,6 +71,10 @@
   margin-top: 0.2rem;
 }
 
+.mt_1 h4 {
+  color: var(--tertiary-color-1);
+}
+
 .footer_bottom {
   padding: 1rem 0rem;
   justify-content: space-between;

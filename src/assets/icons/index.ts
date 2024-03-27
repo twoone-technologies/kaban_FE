@@ -181,3 +181,24 @@ export const walletIcon = `${wallet}#img`;
 
 import houseView from "./houseView.svg";
 export const houseViewIcon = `${houseView}#img`;
+
+import publish from "./publish.svg";
+export const publishIcon = `${publish}#img`;
+
+import refresh from "./refresh.svg";
+export const refreshIcon = `${refresh}#img`;
+
+import trash from "./trash.svg";
+export const trashIcon = `${trash}#img`;
+
+import uploadImg from "./uploadImg.svg";
+export const uploadImgIcon = `${uploadImg}#img`;
+
+import coverStar from "./coverStar.svg";
+export const coverStarIcon = `${coverStar}#img`;
+
+import profile from "./profile.svg";
+export const profileIcon = `${profile}#img`;
+
+import fileUpload from "./fileUpload.svg";
+export const fileUploadIcon = `${fileUpload}#img`;

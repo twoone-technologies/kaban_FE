@@ -50,8 +50,12 @@
   background-color: var(--primary-color);
 }
 
+.rent {
+  transform: translate(0.5rem);
+}
+
 .sale {
-  transform: translate(5.5rem);
+  transform: translate(6.5rem);
 }
 
 .form > div {
@@ -168,7 +172,7 @@ optgroup[label] {
   }
 }
 
-@media screen and (width > 1024px) {
+@media screen and (width > 880px) {
   .hero p {
     font-size: 1.5rem;
   }

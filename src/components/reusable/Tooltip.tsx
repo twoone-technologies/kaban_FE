@@ -1,12 +1,15 @@
 import styles from './utils.module.css';
+import { ReactNode } from 'react';
 
-export default function Tooltip({ copy }: { copy: boolean }) {
+type TooltipProps = { copy?: boolean, popOver?: boolean, text: string | ReactNode }
+
+export default function Tooltip({ copy, text, popOver }: TooltipProps) {
   return (
     <h3
-      className={`c-pad stack box-shadow ${styles.tooltip}
+      className={`c-pad stack box-shadow ${popOver ? styles.slideIn : styles.popOver}
       ${copy === true ? styles.active : styles.slide}`}
     >
-      Link copied to clipboard
+      {text}
     </h3>
   );
 }

@@ -42,3 +42,6 @@ export const phImg = ph;
 
 import uyo from "./uyo.png";
 export const uyoImg = uyo;
+
+import support from "./support.png";
+export const supportImg = support;

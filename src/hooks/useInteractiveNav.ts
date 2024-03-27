@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 
 export default function useInteractiveNav() {
   const [open, setOpen] = useState(false);
@@ -7,6 +7,14 @@ export default function useInteractiveNav() {
   const [scroll, setScroll] = useState(0);
 
   useEffect(() => {
+    const debounce = <F extends (...args: any[]) => void>(func: F, delay: number) => {
+      let timeoutId: NodeJS.Timeout;
+      return function (this: ThisParameterType<F>, ...args: Parameters<F>) {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => func.apply(this, args), delay);
+      };
+    };
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       if (scroll < currentScrollY && !goingUp) {
@@ -22,15 +30,16 @@ export default function useInteractiveNav() {
       window.scrollY >= 70 ? setNavBar(true) : setNavBar(false);
     };
 
-    const navStatus = () => {
+    const navStatus = debounce(() => {
       colorSwap();
       handleScroll();
-    };
+    }, 25); // Adjust the delay as needed
 
+    window.addEventListener("scroll", navStatus);
     return () => {
-      window.addEventListener('scroll', navStatus);
+      window.removeEventListener("scroll", navStatus);
     };
   }, [goingUp, scroll]);
 
-  return {navBar, goingUp, scroll, open, setOpen}
+  return { navBar, goingUp, scroll, open, setOpen };
 }

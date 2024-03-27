@@ -9,44 +9,50 @@ import CardAgentInfo from '~/components/reusable/card/CardAgentInfo';
 import { IkonIcon } from '~/assets/img';
 import { ReactNode, useState } from 'react';
 import Invite from '../invite';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { profileIcon, sign_outIcon } from '~/assets/icons';
 
 type Props = {
   className?: string;
   koinNode?: ReactNode;
   agentClass?: string;
   referClass?: string;
+  setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   onClick?: () => void;
 };
 
 export default function Sidebar({
   className,
   koinNode,
+  setOpen,
   agentClass,
   referClass,
   onClick,
 }: Props) {
+  const location = useLocation();
   const route = location.pathname?.split('/')[2];
   const [invite, setInvite] = useState(false);
-  console.log(invite);
+  const navigate = useNavigate();
+  const [dropDown, setDropDown] = useState(false);
 
   return (
     <Container
       element="section"
       className={`flex f-column s-btw gap-05 ${className} ${styles.sidebar}`}
     >
-      <div>
+      <>
         <Link to={'/'} className="pad-1">
           <Svg
+            width="5rem"
             href={logoIcon}
             height="2.5rem"
-            width="5rem"
             className="bg-primary"
           />
         </Link>
         {koinNode}
         <ul className="flex f-column">
           <li className={`flex pad-1 f-width align-y`}>
-            <h5>Main</h5>
+            <h3>Main</h3>
           </li>
           {sidebarArr.map((link) => (
             <li key={link.svg}>
@@ -79,22 +85,55 @@ export default function Sidebar({
           </Button>
           <Invite isOpen={invite} exit={() => setInvite(false)} />
         </div>
-      </div>
-      <CardAgentInfo
-        star={4}
-        className={`pad-1 ${agentClass} ${styles.cardAgentInfo}`}
-        imgClass={styles.img}
-        src={IkonIcon}
-        identity={
-          <div>
-            <div className="flex gap">
-              <h4>pkqmdkwemg</h4>
-              <Svg href={verifyIcon} className={styles.svg} />
+      </>
+      <div className='relative'>
+        <CardAgentInfo
+          onClick={() => setDropDown(!dropDown)}
+          star={4}
+          src={IkonIcon}
+          imgClass={styles.img}
+          className={`pad-1 ${agentClass} ${styles.cardAgentInfo}`}
+          identity={
+            <div>
+              <div className="flex gap">
+                <h4>pkqmdkwemg</h4>
+                <Svg href={verifyIcon} height="1.4rem" className={styles.svg} />
+              </div>
+              <span>nksdnksjd@dd.com</span>
             </div>
-            <span>nksdnksjd@dd.com</span>
+          }
+        />
+        {location.pathname.includes('/dashboard') && (
+          <div
+            className={`b-radius w-full transition-all absolute 
+          ${styles.dropdown} 
+          ${dropDown === false ? styles.close : styles.open}`}
+          >
+            <div
+              className="flex gap align-y p-4"
+              onClick={() => {
+                navigate('/dashboard/profile_edit');
+                setOpen && setOpen(false);
+                setDropDown(false);
+              }}
+            >
+              <Svg href={profileIcon} />
+              <span>Profile</span>
+            </div>
+            <div
+              className="flex gap align-y p-4"
+              onClick={() => {
+                navigate('/');
+                setOpen && setOpen(false);
+                setDropDown(false);
+              }}
+            >
+              <Svg href={sign_outIcon} />
+              <span>Sign Out</span>
+            </div>
           </div>
-        }
-      />
+        )}
+      </div>
     </Container>
   );
 }

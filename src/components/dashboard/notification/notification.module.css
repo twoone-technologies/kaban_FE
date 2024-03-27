@@ -1,0 +1,133 @@
+.notification {
+  padding-inline: 0;
+}
+
+/* msg tooltip */
+.msgItem:hover {
+  background-color: var(--hover-color);
+}
+
+.header h3 {
+  font-size: large;
+  font-weight: 700;
+}
+
+.header span {
+  color: var(--accent-color-1);
+}
+
+.header span:nth-of-type(1) {
+  text-decoration: underline;
+}
+
+.select {
+  position: relative;
+  border-bottom: 2.5px solid var(--hover-color);
+}
+
+.select div {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.all {
+  width: 3.5rem;
+}
+
+.unread {
+  width: 5.3rem;
+  transform: translate(5.15rem);
+}
+
+.isActive {
+  color: var(--primary-color);
+}
+
+.label {
+  bottom: -2.1px;
+  position: absolute;
+  content: "";
+  height: 4px;
+  transition: all 300ms ease-in-out;
+  background-color: var(--primary-color);
+}
+
+.svgWrap {
+  border: 1px solid;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: #dfe8f5;
+  color: var(--primary-color);
+}
+
+.msgItem {
+  border-bottom: 1px solid var(--hover-color);
+  cursor: pointer;
+}
+
+.notRead {
+  font-weight: 600;
+}
+
+.notActive {
+  color: var(--accent-color-1);
+}
+
+.svgWrap svg {
+  width: 11px;
+  height: 22px;
+}
+
+.clearMsg {
+  margin: 0.5rem;
+  background-color: #F5F8FE;
+}
+
+.nil {
+  display: none;
+}
+
+.msgOrder {
+  flex-direction: column;
+}
+
+/* alertdetails */
+.alertDetails h3 a {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.alertDetails h3 {
+  font-weight: 500;
+}
+
+@media screen and (width <= 500px) {
+  .options {
+    font-size: 3vw;
+    align-items: end;
+    gap: 1rem;
+  }
+}
+
+@media screen and (width >= 800px) {
+  .hide {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .notification {
+    background: var(--tertiary-color-1);
+    padding-bottom: 1rem;
+  }
+
+  .mailbox {
+    overflow: auto;
+    max-height: 20rem;
+  }
+
+  .msgOrder {
+    justify-content: space-between;
+    flex-direction: row;
+  }
+}

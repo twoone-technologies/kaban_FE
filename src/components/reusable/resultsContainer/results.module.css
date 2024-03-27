@@ -69,7 +69,7 @@
   }
 
   .results {
-    width: 100%;
+    width: 100vw;
   }
 
   .map_control {
@@ -130,8 +130,18 @@
 }
 
 @media screen and (width >= 768px) {
+  .pad_right {
+    width: 100%;
+    padding-inline-end: 4rem;
+  }
+
+  .pad_inLine {
+    width: 100%;
+    padding-inline: 4rem;
+  }
+
   .map_section {
-    width: 40%;
+    width: 45%;
   }
 
   .mapWrap {
@@ -141,8 +151,7 @@
   }
 
   .results {
-    right: 0;
-    width: 60%;
+    width: 55%;
   }
 
   .results_full {

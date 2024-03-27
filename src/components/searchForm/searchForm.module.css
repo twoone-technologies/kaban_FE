@@ -1,5 +1,6 @@
 .form {
   gap: 1rem;
+  padding-inline: 1rem;
   margin-bottom: 1rem;
   color: var(--tertiary-color-2);
   background-color: var(--tertiary-color-1);
@@ -39,40 +40,53 @@
 }
 
 .form_input {
-  font-size: small;
-  position: relative;
   align-items: center;
   border: 1px solid var(--hover-color);
-  color: var(--accent-color);
 }
 
 .hover {
   color: var(--primary-color);
 }
 
-.input {
+select, input, textarea {
+  color: var(--accent-color);
   padding: 0.7rem 0.5rem;
 }
 
-.input[name="advanced search"] {
+input[name="advanced search"] {
   color: var(--accent-color);
 }
 
-.input::placeholder {
+select::placeholder,
+input::placeholder {
   color: var(--accent-color);
 }
 
-.input:hover {
+select:hover,
+input:hover {
   background-color: #dae0e692;
 }
 
-.input:focus-within {
+select:focus-within,
+input:focus-within {
+  outline: 2px solid var(--primary-color);
+}
+
+textarea:focus-within {
   outline: 2px solid var(--primary-color);
 }
 
 .svgIcon {
   position: absolute;
   right: 0.4rem;
+}
+
+.svg {
+  position: absolute;
+  top: 2.3rem;
+  right: 1rem;
+  color: var(--accent-color);
+  transform: rotate(90deg);
 }
 
 select {
@@ -165,6 +179,21 @@ input[type=range] {
   max-height: 10rem;
 }
 
+/* formcontrol class */
+.inputWrap {
+  border: none;
+  outline: none;
+}
+
+.inputWrap label {
+  color: black;
+  font-weight: 500;
+}
+
+.input {
+  border: 1px solid var(--hover-color);
+}
+
 input[type=range]::-webkit-slider-runnable-track {
   height: 6px;
   border-radius: 1.3px;
@@ -205,9 +234,8 @@ input[type=range]::-webkit-slider-thumb {
   grid-template-columns: repeat(2, 1fr);
 }
 
-.label {
-  display: flex;
-  width: 100%;
+.errorText {
+  font-size: clamp(3px, 3.4vw, 1rem);
 }
 
 @media screen and (600px <= width <= 880px) {

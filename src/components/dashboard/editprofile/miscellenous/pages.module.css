@@ -1,0 +1,32 @@
+.btnGrp {
+  direction: rtl;
+}
+
+.uploadWrap {
+  align-self: flex-end;
+  border: 2px dashed var(--primary-color);
+  line-height: 2rem;
+  text-align: center;
+}
+
+.inputHeader,
+.inputHeader > h4 {
+  line-height: 1.2rem;
+  color: var(--accent-color);
+}
+
+.disabled {
+  background-color: var(--tertiary-color-5);
+}
+
+.deactivateBtn {
+  background-color: rgb(185, 11, 11);
+  color: white;
+}
+
+.notActiveBtn {
+  outline: 1.5px solid rgb(185, 11, 11);
+  cursor: not-allowed;
+  background-color: var(--tertiary-color-1);
+  color: rgb(185, 11, 11)
+}

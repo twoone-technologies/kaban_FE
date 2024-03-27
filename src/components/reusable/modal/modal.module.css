@@ -13,8 +13,7 @@
 .modal {
   margin-top: 10%;
   background-color: var(--tertiary-color-1);
-  border-radius: 1rem;
-  padding: 2rem 1rem;
+  padding: 1rem;
   font-size: 11px;
 }
 
@@ -129,8 +128,7 @@
   .modal {
     margin-top: 0;
     background-color: var(--tertiary-color-1);
-    border-radius: 1.5rem;
-    padding: 2rem 4rem;
+    padding: 2rem;
   }
 
   .input_wrap {

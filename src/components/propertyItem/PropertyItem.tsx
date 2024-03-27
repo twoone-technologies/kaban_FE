@@ -60,7 +60,7 @@ export default function PropertyItem() {
           <Ads adContent={<h1 className={styles.content}></h1>} />
         </div>
       </div>
-      <Tooltip copy={copy} />
+      <Tooltip copy={copy} text={'Link copied to clipboard '} />
       <SimilarItems similar={filterObj()} />
       <Ads adContent={<h1 className={styles.content}></h1>} />
     </Container>

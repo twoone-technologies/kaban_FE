@@ -1,8 +1,9 @@
 import React, { useCallback } from 'react';
-import { GoogleMap, useLoadScript } from '@react-google-maps/api';
+import { GoogleMap, Marker } from '@react-google-maps/api';
 import styles from './map.module.css';
 import { mapPinIcon } from '~/assets/icons';
 import { HouseCard } from '../reusable/card/Card';
+import useGoogleApi from '~/hooks/useGoogleApi';
 
 type MapProps = {
   location?: {
@@ -10,21 +11,23 @@ type MapProps = {
     coordinates: [number, number];
   };
   onClick?: (select: number) => void;
+  onMapClick?: (e: google.maps.MapMouseEvent) => void;
+  markerPosition?: { lat: number; lng: number };
   idx?: string;
   object?: HouseCard[];
   active?: number;
   zoomLevel?: number;
 } & React.ComponentProps<'div'>;
 
-export default function Map({ className, idx, onClick, object }: MapProps) {
-
-  const API_KEY = import.meta.env.VITE_API_KEY || '';
-  const { isLoaded, loadError } = useLoadScript({
-    id: 'google-map-script',
-    googleMapsApiKey: API_KEY,
-  });
-
-  const center = { lat: 5.020495237740932, lng: 7.925467457407156 };
+export default function Map({
+  className,
+  idx,
+  onClick,
+  onMapClick,
+  markerPosition,
+  object,
+}: MapProps) {
+  const { isLoaded, loadError } = useGoogleApi({});
 
   const onLoad = useCallback(
     (map: google.maps.Map) => {
@@ -69,6 +72,7 @@ export default function Map({ className, idx, onClick, object }: MapProps) {
           };
 
           map.setCenter(center);
+          map.setZoom(15)
         }
       } else {
         object?.map((markerData: HouseCard) => {
@@ -85,25 +89,26 @@ export default function Map({ className, idx, onClick, object }: MapProps) {
           });
 
           marker.addListener('click', () => {
+            map.setCenter(marker.getPosition() as google.maps.LatLng);
+            map.setZoom(15);
             const cardElement = document.querySelector(
               `#property-${markerData.id}`,
             );
 
-            if (cardElement) {
-              cardElement.scrollIntoView({ behavior: 'smooth' });
-            }
+            if (cardElement) cardElement.scrollIntoView({ behavior: 'smooth' });
             onClick && onClick(parseInt(markerData.id));
+            
             infoWindow.setPosition({
               lat: markerData.location.coordinates[0],
               lng: markerData.location.coordinates[1],
             });
             infoWindow.setContent(`
-            <div>
-              <h5>${markerData.address}</h5>
-              <small>${markerData.title},</small>
-              <small>${markerData.property_type}</small>
-            </div>
-          `);
+              <div>
+                <h5>${markerData.address}</h5>
+                <small>${markerData.title},</small>
+                <small>${markerData.property_type}</small>
+              </div>
+            `);
             infoWindow.open(map, marker);
           });
         });
@@ -121,6 +126,7 @@ export default function Map({ className, idx, onClick, object }: MapProps) {
           const avgLng = sumLng / object?.length;
 
           map.setCenter({ lat: avgLat, lng: avgLng });
+          map.setZoom(10)
         }
       }
     },
@@ -130,18 +136,27 @@ export default function Map({ className, idx, onClick, object }: MapProps) {
   if (loadError) {
     return <div>Error loading Google Maps: {loadError.message}</div>;
   }
-  if (!isLoaded) {
-    return <div>Loading...</div>;
-  }
+  if (!isLoaded) return <div>Loading...</div>
 
   return (
     <div className={`${styles.map}`}>
       <GoogleMap
-        zoom={10}
-        center={center}
+        onClick={onMapClick}
+        zoom={markerPosition ? 15 : 10}
+        center={markerPosition ? markerPosition : { lat: 10.00000000, lng: 8.00000000 }}
         onLoad={onLoad}
         mapContainerClassName={`${styles.google_map} ${className}`}
-      />
+      >
+        {markerPosition && (
+          <Marker
+            position={(markerPosition)}
+            icon={{
+              url: mapPinIcon,
+              scaledSize: new window.google.maps.Size(40, 40),
+            }}
+          />
+        )}
+      </GoogleMap>
     </div>
   );
 }

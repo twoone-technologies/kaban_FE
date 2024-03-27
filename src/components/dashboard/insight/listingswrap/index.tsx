@@ -8,14 +8,28 @@ import {
   arrowRightIcon,
   exLinkIcon,
   locationIcon,
+  searchIcon,
 } from '~/assets/icons';
 import Label from '~/components/reusable/card/Label';
+import FormInput from '~/components/reusable/FormInput';
+import Button from '~/components/reusable/Button';
 
 export default function Listings() {
   return (
     <div>
-      <Form>
-        <input type="search" />
+      <Form className={`flex ${styles.form}`}>
+        <FormInput
+          width="17px"
+          height="17px"
+          type={'text'}
+          maxLength={30}
+          // link={searchIcon}
+          title={'search'}
+          className={styles.input}
+        />
+        <Button type="submit" className={styles.btn}>
+          <Svg href={searchIcon} />
+        </Button>
       </Form>
       <div className={`f-width b-radius ${styles.table_wrap}`}>
         <table className={`f-width b-radius ${styles.margin}`}>
@@ -68,16 +82,16 @@ export default function Listings() {
           </tbody>
         </table>
         <div className={`flex s-btw pad-1 ${styles.pagination}`}>
-          <div>
+          <div className='flex gap'>
             <Svg href={arrowLeftIcon} height="1.2rem" /> Prev
           </div>
-          <div>
+          <div className='flex gap'>
             <span className={styles.td}>2</span>
             <span className={styles.td}>3</span>
             <span className={styles.td}>4</span>
             <span className={styles.td}>5</span>
           </div>
-          <div>
+          <div className='flex gap'>
             Next <Svg href={arrowRightIcon} height="1.2rem" />
           </div>
         </div>

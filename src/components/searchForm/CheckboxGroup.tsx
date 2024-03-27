@@ -3,7 +3,7 @@ import Checkbox from './checkbox/Checkbox';
 import styles from './searchForm.module.css';
 import { otherFeatures } from './status';
 
-export default function CheckboxGroup({className}: {className: string}) {
+export default function CheckboxGroup({className}: {className?: string}) {
   const [features, setFeatures] = useState(otherFeatures);
 
   const handleCheckAll = () =>

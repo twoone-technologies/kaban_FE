@@ -12,7 +12,6 @@ type Props = {
 };
 
 export default function CardImg({ enter, src, title, date, imgNo }: Props) {
-
   return (
     <>
       <div
@@ -24,10 +23,14 @@ export default function CardImg({ enter, src, title, date, imgNo }: Props) {
         src={src}
         className={`${styles.img} ${enter ? styles.scale : ''}`}
       />
-      <div className={`flex s-btw f-width`}>
-        <small className={`b-radius stack c-pad ${styles.date}`}>{dateHandler(date)}</small>
-        <Svg className={`stack`} href={heartIcon} />
-      </div>
+      {location.pathname.includes('dashboard') ? null : (
+        <div className={`flex s-btw f-width`}>
+          <small className={`b-radius stack c-pad ${styles.date}`}>
+            {dateHandler(date)}
+          </small>
+          <Svg className={`stack`} href={heartIcon} />
+        </div>
+      )}
       <div className="flex stack align-y">
         <Svg href={cameraIcon} />
         <span>{imgNo}</span>

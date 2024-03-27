@@ -1,0 +1,51 @@
+export const msg = [
+  {
+    id: '1',
+    entity: 'listings::5',
+    viewed: false,
+    note: 'Your listings Modern Loft Apartment has been Published.',
+    createdAt: "2024-01-13T18:57:48.921Z",
+  },
+  {
+    id: '2',
+    entity: 'listings::8',
+    viewed: true,
+    note: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    createdAt: "2024-01-29T10:57:48.921Z",
+  },
+  {
+    id: '3',
+    entity: 'listings::3',
+    viewed: true,
+    note: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    createdAt: "2024-01-13T18:57:48.921Z",
+  },
+  {
+    id: '4',
+    entity: 'listings::6',
+    viewed: false,
+    note: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    createdAt: "2024-01-13T18:57:48.921Z",
+  },
+  {
+    id: '5',
+    entity: 'listings::1',
+    viewed: false,
+    note: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    createdAt: "2024-01-29T10:57:48.921Z",
+  },
+  {
+    id: '6',
+    entity: 'listings::13',
+    viewed: true,
+    note: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    createdAt: "2024-01-13T18:57:48.921Z",
+  },
+  {
+    id: '7',
+    entity: 'listings::14',
+    viewed: false,
+    note: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    createdAt: "2024-01-13T18:57:48.921Z",
+  },
+];

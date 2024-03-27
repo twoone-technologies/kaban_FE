@@ -113,6 +113,7 @@ export const dummyObj = [
         },
       ]
     },
+    checked: false,
     videoLink: 'https://youtu.be/Rgt-uRFUV7Q?si=8JA8V1ReznRO9G8x',
     street_view: false,
     report: [],
@@ -142,7 +143,7 @@ export const dummyObj = [
     property_category: "commercial",
     property_type: "shops",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
-    status: "sale",
+    status: "expired",
     featured: true,
     price: {
       amount: 3000000
@@ -221,6 +222,7 @@ export const dummyObj = [
         },
       ]
     },
+    checked: false,
     videoLink: 'https://youtu.be/_noJ6pLvimU',
     street_view: false,
     report: [],
@@ -329,6 +331,7 @@ export const dummyObj = [
         },
       ]
     },
+    checked: false,
     videoLink: 'https://youtu.be/Rgt-uRFUV7Q?si=8JA8V1ReznRO9G8x',
     street_view: false,
     report: [],
@@ -437,6 +440,7 @@ export const dummyObj = [
         },
       ]
     },
+    checked: false,
     videoLink: 'https://youtu.be/7x0PiPBFADk',
     street_view: false,
     report: [],
@@ -545,6 +549,7 @@ export const dummyObj = [
         },
       ]
     },
+    checked: false,
     videoLink: 'https://youtu.be/Rgt-uRFUV7Q?si=8JA8V1ReznRO9G8x',
     street_view: false,
     report: [],
@@ -574,7 +579,7 @@ export const dummyObj = [
     property_category: "residential",
     property_type: "Apartment",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
-    status: "rent",
+    status: "draft",
     featured: true,
     price: {
       amount: 260000
@@ -653,6 +658,7 @@ export const dummyObj = [
         },
       ]
     },
+    checked: false,
     videoLink: 'https://youtu.be/7x0PiPBFADk',
     street_view: false,
     report: [],
@@ -761,6 +767,7 @@ export const dummyObj = [
         },
       ]
     },
+    checked: false,
     videoLink: 'https://youtu.be/Rgt-uRFUV7Q?si=8JA8V1ReznRO9G8x',
     street_view: false,
     report: [],
@@ -869,6 +876,7 @@ export const dummyObj = [
         },
       ]
     },
+    checked: false,
     videoLink: 'https://youtu.be/Rgt-uRFUV7Q?si=8JA8V1ReznRO9G8x',
     street_view: false,
     report: [],
@@ -977,6 +985,7 @@ export const dummyObj = [
         },
       ]
     },
+    checked: false,
     videoLink: 'https://youtu.be/Rgt-uRFUV7Q?si=8JA8V1ReznRO9G8x',
     street_view: false,
     report: [],
@@ -1085,6 +1094,7 @@ export const dummyObj = [
         },
       ]
     },
+    checked: false,
     videoLink: 'https://youtu.be/Rgt-uRFUV7Q?si=8JA8V1ReznRO9G8x',
     street_view: false,
     report: [],
@@ -1193,6 +1203,7 @@ export const dummyObj = [
         },
       ]
     },
+    checked: false,
     videoLink: 'https://youtu.be/Rgt-uRFUV7Q?si=8JA8V1ReznRO9G8x',
     street_view: false,
     report: [],
@@ -1301,6 +1312,7 @@ export const dummyObj = [
         },
       ]
     },
+    checked: false,
     videoLink: 'https://youtu.be/Rgt-uRFUV7Q?si=8JA8V1ReznRO9G8x',
     street_view: false,
     report: [],
@@ -1409,6 +1421,7 @@ export const dummyObj = [
         },
       ]
     },
+    checked: false,
     videoLink: 'https://youtu.be/Rgt-uRFUV7Q?si=8JA8V1ReznRO9G8x',
     street_view: false,
     report: [],
@@ -1517,6 +1530,7 @@ export const dummyObj = [
         },
       ]
     },
+    checked: false,
     videoLink: 'https://youtu.be/Rgt-uRFUV7Q?si=8JA8V1ReznRO9G8x',
     street_view: false,
     report: [],

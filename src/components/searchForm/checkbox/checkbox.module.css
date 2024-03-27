@@ -6,6 +6,7 @@
   -ms-user-select: none;
   user-select: none;
   gap: 8px;
+  font-size: 13px;
 }
 
 .wrap input {
@@ -22,6 +23,12 @@
 
 .wrap:hover input ~ .checkmark {
   background-color: var(--hover-color);
+}
+
+.wrap input {
+  position: absolute;
+  visibility: hidden;
+  overflow: hidden;
 }
 
 .wrap input:checked ~ .checkmark {
