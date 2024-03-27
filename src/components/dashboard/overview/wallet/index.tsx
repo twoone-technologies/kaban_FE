@@ -63,7 +63,7 @@ export default function Wallet() {
       visit={
         <div className="flex pad-1 s-btw">
           <h5>Total Balances</h5>
-          <Link className="flex bg-primary gap" to={''}>
+          <Link className="flex bg-primary gap" to={'/dashboard/wallet'}>
             Open <Svg href={exLinkIcon} />
           </Link>
         </div>

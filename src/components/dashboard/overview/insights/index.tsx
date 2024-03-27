@@ -35,7 +35,7 @@ export default function Insights() {
       visit={
         <div className="flex pad-1 s-btw">
           <h5>Performance</h5>
-          <Link className="flex bg-primary gap" to={''}>
+          <Link className="flex bg-primary gap" to={'/dashboard/insights'}>
             View insights <Svg href={exLinkIcon} />
           </Link>
         </div>

@@ -54,7 +54,8 @@ h2 {
   font-weight: 700;
 }
 
-p, span {
+p,
+span {
   font-size: clamp(0.7rem, 1vw, 1rem);
 }
 
@@ -245,7 +246,7 @@ svg:active {
 }
 
 .wrapper {
-  height: 100dvh;
+  min-height: 100dvh;
   padding: 4rem 1rem 1rem 1rem;
   margin-left: 0;
 }
@@ -307,6 +308,7 @@ input:hover + svg {
 @media screen and (width > 800px) {
   .wrapper {
     padding-top: 4.5rem;
+    padding-bottom: 1rem;
     margin-left: 17rem;
     min-height: 100vh;
   }
