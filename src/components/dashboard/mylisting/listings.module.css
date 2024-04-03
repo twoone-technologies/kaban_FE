@@ -1,11 +1,4 @@
-.search_order {
-  display: flex;
-  transition: all 300ms ease-in-out;
-  justify-content: space-between;
-}
-
-.form,
-.listItem div {
+.form {
   position: relative;
 }
 
@@ -26,10 +19,6 @@
 .sortOptionsWrap {
   display: flex;
   justify-content: flex-end;
-}
-
-.sort {
-  width: 10rem;
 }
 
 .sortIcon {
@@ -58,17 +47,6 @@
   background-color: var(--tertiary-color-1);
   border: 1.4px solid var(--hover-color);
   margin-top: 1rem;
-}
-
-.listItem div svg {
-  position: absolute;
-  top: 0.8rem;
-  right: -1.5rem;
-
-}
-
-.listItem:not(:last-child) {
-  border-bottom: 1px solid var(--hover-color);
 }
 
 .listItemGrp {

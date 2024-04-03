@@ -56,15 +56,23 @@ export default function FormControl({
   ...props
 }: ControlProps) {
   const location = useLocation();
-  const svgIcon = <Svg className={styles.svg} href={arrowIcon} />;
+  const svgIcon = (
+    <Svg
+      className={`${styles.svg} ${
+        labelText ? styles.labeltxt : styles.noLabeltxt
+      }`}
+      href={arrowIcon}
+    />
+  );
   const formWrapStyle =
     location.pathname !== '/' && location.pathname !== '/search_results'
       ? `gap-0 f-column ${styles.inputWrap}`
       : styles.form_input;
 
-  let content; let notice;
+  let content;
+  let notice;
   if (isSelect(as, props)) {
-    props.required ? notice = '*' : '';
+    props.required ? (notice = '*') : '';
     content = (
       <select
         {...props}
@@ -78,7 +86,7 @@ export default function FormControl({
       </select>
     );
   } else if (isInput(as, props)) {
-    props.required ? notice = '*' : '';
+    props.required ? (notice = '*') : '';
     content = radius ? (
       <>
         <Checkbox id={props.name} onChange={props.onChange} />
@@ -97,7 +105,7 @@ export default function FormControl({
       />
     );
   } else {
-    props.required ? notice = '*' : '';
+    props.required ? (notice = '*') : '';
     content = (
       <textarea
         maxLength={500}
@@ -120,14 +128,17 @@ export default function FormControl({
     >
       {labelText ? (
         <div className="w-full flex space-between">
-          <label htmlFor={props.name}>{labelText}{notice}</label>
+          <label htmlFor={props.name}>
+            {labelText}
+            {notice}
+          </label>
           {error ? (
             <span className={`text-red-600 ${styles.errorText}`}>{error}</span>
           ) : null}
         </div>
       ) : null}
       {content}
-      {as === 'select'? svgIcon : icon}
+      {as === 'select' ? svgIcon : icon}
     </div>
   );
 }

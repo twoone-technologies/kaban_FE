@@ -27,7 +27,7 @@ export default function Listings() {
           title={'search'}
           className={styles.input}
         />
-        <Button type="submit" className={styles.btn}>
+        <Button type="submit" className={`flex align-x align-y ${styles.btn}`}>
           <Svg href={searchIcon} />
         </Button>
       </Form>
@@ -75,14 +75,14 @@ export default function Listings() {
               <td>22</td>
               <td>22</td>
               <td>22</td>
-              <td>
+              <td className='cursor-pointer'>
                 <Svg href={exLinkIcon} height="1.3rem" />
               </td>
             </tr>
           </tbody>
         </table>
         <div className={`flex s-btw pad-1 ${styles.pagination}`}>
-          <div className='flex gap'>
+          <div className='flex gap cursor-pointer'>
             <Svg href={arrowLeftIcon} height="1.2rem" /> Prev
           </div>
           <div className='flex gap'>
@@ -91,7 +91,7 @@ export default function Listings() {
             <span className={styles.td}>4</span>
             <span className={styles.td}>5</span>
           </div>
-          <div className='flex gap'>
+          <div className='flex gap cursor-pointer'>
             Next <Svg href={arrowRightIcon} height="1.2rem" />
           </div>
         </div>

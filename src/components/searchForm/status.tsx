@@ -1,64 +1,95 @@
 export const statusArr = [
   {
     type: 'For Rent',
-    value: 'rent'
+    value: 'rent',
   },
   {
     type: 'For Sale',
-    value: 'sale'
+    value: 'sale',
   },
-]
+];
 
 export const sortOptions = [
   {
     type: 'Default order',
-    value: 'Default order'
+    value: 'Default order',
   },
   {
     type: 'Price Decending',
-    value: 'Price Decending'
+    value: 'Price Decending',
   },
   {
     type: 'Price Acending',
-    value: 'Price Acending'
+    value: 'Price Acending',
   },
   {
     type: 'Featured listings first',
-    value: 'Featured listings first'
+    value: 'Featured listings first',
   },
-]
+];
+
+export const listingOptions = [
+  {
+    type: 'For sale',
+    value: 'sale',
+  },
+  {
+    type: 'For rent',
+    value: 'rent',
+  },
+  {
+    type: 'Featured',
+    value: 'featured',
+  },
+  {
+    type: 'Pending',
+    value: 'pending',
+  },
+  {
+    type: 'Draft',
+    value: 'draft',
+  },
+  {
+    type: 'Expired',
+    value: 'expired',
+  },
+  {
+    type: 'Disapproved',
+    value: 'disapproved',
+  },
+];
 
 export const otherFeatures = [
   {
-    title: 'Swimming pool', 
-    checked: false
+    title: 'Swimming pool',
+    checked: false,
   },
   {
     title: 'Fitted kitchen',
-    checked: false
+    checked: false,
   },
   {
-    title: 'In-built speaker', 
-    checked: false
+    title: 'In-built speaker',
+    checked: false,
   },
   {
     title: 'En-suite',
-    checked: false
+    checked: false,
   },
   {
-    title: 'Boys quarter', 
-    checked: false
+    title: 'Boys quarter',
+    checked: false,
   },
   {
     title: 'Gym',
-    checked: false
+    checked: false,
   },
   {
     title: 'CCTV Cameras',
-    checked: false
+    checked: false,
   },
   {
     title: 'Security',
-    checked: false 
+    checked: false,
   },
-]
+];

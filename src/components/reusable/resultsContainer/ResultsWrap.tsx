@@ -98,7 +98,7 @@ export default function ResultsWrap({
           onSubmit={onSubmit}
         />
         <SwitchGroup
-          onChange={handleSort}
+          onChange={(e) => handleSort(e.target.value)}
           mapState={map}
           onClick={toggleMap}
           listingObject={object}

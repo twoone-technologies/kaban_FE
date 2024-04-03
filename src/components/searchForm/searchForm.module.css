@@ -83,10 +83,17 @@ textarea:focus-within {
 
 .svg {
   position: absolute;
-  top: 2.3rem;
   right: 1rem;
   color: var(--accent-color);
   transform: rotate(90deg);
+}
+
+.labeltxt {
+  top: 2.3rem;  
+}
+
+.noLabeltxt {
+  top: 0.8rem;
 }
 
 select {

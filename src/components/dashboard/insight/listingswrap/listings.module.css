@@ -1,6 +1,8 @@
 .table_wrap {
   outline: 1px solid var(--hover-color);
+  background-color: var(--tertiary-color-1);
 }
+
 
 table {
   width: 90%;
@@ -40,8 +42,8 @@ tr:hover,
   right: 0;
   color: var(--accent-color);
   background-color: inherit;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3rem;
+  height: 3rem;
 }
 
 .input {
@@ -76,6 +78,7 @@ tr:hover,
 }
 
 .td {
+  cursor: pointer;
   padding-inline: 0.5rem;
 }
 

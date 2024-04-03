@@ -1,11 +1,12 @@
 import Button from '~/components/reusable/Button';
 import styles from './wallet.module.css';
 import { Wrapper } from '~/components/reusable/Container';
-import FormInput from '~/components/reusable/FormInput';
 import Svg from '~/components/reusable/Svg';
-import { arrowIcon, arrowLeftIcon, arrowRightIcon, sortIcon } from '~/assets/icons';
+import { arrowLeftIcon, arrowRightIcon, sortIcon } from '~/assets/icons';
 import { sortToken, transactionArr } from './tokenHistory';
 import useSortSwitch from '~/hooks/useSortSwitch';
+import OptGroup from '~/components/herosection/Optgroup';
+import FormControl from '~/components/reusable/FormControl';
 
 export type Transaction = {
   id: string;
@@ -17,7 +18,6 @@ export type Transaction = {
 
 export default function Wallet() {
   const { sortArr, handleSort } = useSortSwitch(transactionArr);
-
   return (
     <Wrapper element="section">
       <div className={`b-radius flex f-column pad gap-0 ${styles.tokenBalance}`}>
@@ -35,15 +35,14 @@ export default function Wallet() {
               width="50px"
               height="30px"
             />
-            <FormInput
-              title={'sort'}
-              className={styles.sort}
-              selectClass={styles.inputSort}
-              header={'Sort by'}
-              subItems={sortToken}
-              onChange1={handleSort}
-              link={arrowIcon}
-            />
+            <FormControl
+              as="select"
+              containerClass={styles.sort}
+              className={styles.inputSort}
+              onChange={(e) => handleSort(e.target.value)}
+            >
+              <OptGroup header="Sort options" subItems={sortToken} />
+            </FormControl>
           </div>
         </div>
         <table className={`f-width b-radius ${styles.margin}`}>

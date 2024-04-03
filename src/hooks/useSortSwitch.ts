@@ -17,52 +17,57 @@ export default function useSortSwitch(object: ObjectTypes) {
     return Array.isArray(arr) && arr.length > 0 && 'price' in arr[0];
   };
 
-  const handleSort = (e: { target: { value: string } }) => {
+  const handleSort = (value: string) => {
     if (isHouseCardArray(sortArr)) {
-      if (e.target.value === 'Price Acending') {
+      if (value === 'Price Acending') {
         setSortArr([...sortArr].sort((a, b) => a.price.amount - b.price.amount));
       }
-      if (e.target.value === 'Price Decending') {
+      if (value === 'Price Decending') {
         setSortArr([...sortArr].sort((a, b) => b.price.amount - a.price.amount));
       }
-      if (e.target.value === 'Featured listings first') {
+      if (value === 'Featured listings first') {
         setSortArr(
           [...sortArr].sort((a, b) => Number(b.featured) - Number(a.featured)),
         );
       }
     }
     if (!isHouseCardArray(sortArr)) {
-      if (e.target.value === 'all action') setSortArr(
-          [...sortArr].sort((a, b) => Number(a.id) - Number(b.id)),
-      )
-      if (e.target.value === 'publication') {
+      if (value !== 'all action') {
         setSortArr(
-          [...sortArr].sort((a, b) => Number(b.action === 'publication') - Number(a.action === 'publication')),
+          [...sortArr].sort((a, b) => {
+            const statusA = a.action === value;
+            const statusB = b.action === value;
+            if (statusA && statusB) return 0;
+            if (statusA) return -1;
+            if (statusB) return 1;
+            return 0;
+          })
         );
-      }
-      if (e.target.value === 'deposit') {
+      } else {
         setSortArr(
-          [...sortArr].sort((a, b) => Number(b.action === 'deposit') - Number(a.action === 'deposit')),
+          [...sortArr].sort((a, b) => Number(a.id) - Number(b.id))
+        );      
+      }
+    }
+    if(isHouseCardArray(sortArr) && location.pathname.includes('listings')) {
+      if (value !== 'featured') {
+        setSortArr(
+          [...sortArr].sort((a, b) => {
+            const statusA = a.status === value;
+            const statusB = b.status === value;
+            if (statusA && statusB) return 0;
+            if (statusA) return -1;
+            if (statusB) return 1;
+            return 0;
+          }),
         );
-      }
-      if (e.target.value === 'refund') {
+      } else {
         setSortArr(
-          [...sortArr].sort((a, b) => Number(b.action === 'refund') - Number(a.action === 'refund')),
-        );
-      }
-      if (e.target.value === 'referral') {
-        setSortArr(
-          [...sortArr].sort((a, b) => Number(b.action === 'referral') - Number(a.action === 'referral')),
-        );
-      }
-      if (e.target.value === 'feature upgrade') {
-        setSortArr(
-          [...sortArr].sort((a, b) => Number(b.action === 'feature upgrade') - Number(a.action === 'feature upgrade')),
-        );
-      }
-      if (e.target.value === 'account Verification') {
-        setSortArr(
-          [...sortArr].sort((a, b) => Number(b.action === 'account Verification') - Number(a.action === 'account Verification')),
+          [...sortArr].sort((a, b) => {
+            const aValue = a[value.toLowerCase()] as number;
+            const bValue = b[value.toLowerCase()] as number;
+            return bValue - aValue;
+          }),
         );
       }
     }
