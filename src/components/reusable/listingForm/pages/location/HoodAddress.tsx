@@ -7,8 +7,8 @@ import FormControl, {
 import useStateCities from '~/hooks/useStateCities';
 import InputWrap from '~/components/dashboard/reusables/InputWrap';
 import Address from '~/components/reusable/placesAutocomplete/Address';
-import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
-import { statesInNigeria } from '~/components/dashboard/postproperty/pages/miscellenous/mapProps';
+import styles from '~/components/reusable/listingForm/pages/miscellenous/listingForm.module.css';
+import { statesInNigeria } from '~/components/reusable/listingForm/pages/miscellenous/mapProps';
 
 type Props = {
   city: string;
@@ -35,8 +35,7 @@ export default function HoodAddress({
   setState,
   setMarker,
 }: Props) {
-
-  const { allCities, cityOptions, handleCityChange} = useStateCities();
+  const { allCities, cityOptions, handleCityChange } = useStateCities();
 
   return (
     <InputWrap>

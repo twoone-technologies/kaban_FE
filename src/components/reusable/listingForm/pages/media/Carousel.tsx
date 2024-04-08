@@ -6,7 +6,7 @@ import { SwiperSlide } from 'swiper/react';
 import Svg from '~/components/reusable/Svg';
 import { coverStarIcon, exLinkIcon, fileUploadIcon } from '~/assets/icons';
 import CarouselWrap from '~/components/reusable/CarouselWrap';
-import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
+import styles from '~/components/reusable/listingForm/pages/miscellenous/listingForm.module.css';
 import { ImageFile } from '~/hooks/useFileUpload';
 import React from 'react';
 

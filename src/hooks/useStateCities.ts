@@ -2,7 +2,7 @@ import { useState } from "react";
 import {
   citiesInNigeria,
   statesInNigeria,
-} from '~/components/dashboard/postproperty/pages/miscellenous/mapProps';
+} from '~/components/reusable/listingForm/pages/miscellenous/mapProps';
 
 
 export type StateCitiesMap = { [key: string]: string[] };

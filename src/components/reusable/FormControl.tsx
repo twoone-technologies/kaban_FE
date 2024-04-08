@@ -8,9 +8,9 @@ import {
   RegisterOptions,
   UseFormRegister,
 } from 'react-hook-form';
-import { Inputs } from '../dashboard/postproperty';
 import { arrowIcon } from '~/assets/icons';
 import Svg from './Svg';
+import { Inputs } from './listingForm';
 
 type FormControlElement = 'input' | 'select' | 'textarea';
 type InputProps = React.ComponentPropsWithoutRef<'input'>;

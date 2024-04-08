@@ -1,38 +1,38 @@
 export const suffix = [
   {
-    type: "/Week",
-    value: "/Week",
+    type: "week",
+    value: "week",
   },
   {
-    type: "/Month",
-    value: "/Month",
+    type: "month",
+    value: "month",
   },
   {
-    type: "/Annum",
-    value: "/Annum",
+    type: "annum",
+    value: "annum",
   }
 ]
 
 export const areaSuffix = [
   {
-    type: "/Sq m",
-    value: "/Sq m",
+    type: "sq m",
+    value: "sq m",
   },
   {
-    type: "/Sq ft",
-    value: "/Sq ft",
+    type: "sq ft",
+    value: "sq ft",
   },
   {
-    type: "/Sq yd",
-    value: "/Sq yd",
+    type: "sq yd",
+    value: "sq yd",
   },
   {
-    type: "/Acres",
-    value: "/Acres",
+    type: "acres",
+    value: "acres",
   },
   {
-    type: "/Hectares",
-    value: "/Hectares",
+    type: "hectares",
+    value: "hectares",
   },
 ]
 

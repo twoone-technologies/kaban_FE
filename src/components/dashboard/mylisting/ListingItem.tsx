@@ -2,6 +2,7 @@ import styles from './listings.module.css';
 import Card, { HouseCard } from '~/components/reusable/card/Card';
 import { editIcon, publishIcon, refreshIcon, trashIcon } from '~/assets/icons';
 import Svg from '~/components/reusable/Svg';
+import { Link } from 'react-router-dom';
 
 type Props = {
   submited?: string;
@@ -19,9 +20,12 @@ export default function ListingItem({
   return (
     <>
       {listArr.map((item) => (
-        <div key={item.id} id={`card-${item.id}`} 
+        <div
+          key={item.id}
+          id={`card-${item.id}`}
           className={`pad flex ${styles.listItemGrp}
-            ${location.hash.substring(1) === item.id ? styles.activeItem : ''}`}>
+            ${location.hash.substring(1) === item.id ? styles.activeItem : ''}`}
+        >
           <Card
             card={item}
             orientation="landscape"
@@ -43,7 +47,9 @@ export default function ListingItem({
                     <Svg href={publishIcon} />
                   )}
                   {item.status === 'expired' && <Svg href={refreshIcon} />}
-                  <Svg href={editIcon} />
+                  <Link to={`/dashboard/property_edit/${item.id}`}>
+                    <Svg href={editIcon} />
+                  </Link>
                 </div>
               </div>
             }

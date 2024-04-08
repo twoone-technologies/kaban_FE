@@ -1,10 +1,7 @@
 import { dotIcon } from "~/assets/icons"
 import styles from "./card.module.css"
 import Svg from "../Svg"
-
-type GoodStat = 'featured' | 'sale' | 'rent' ;
-type EnlistStat = 'pending' |'published' |  'draft';
-type ErrorStat =  'expired' | 'disapproved';
+import { GoodStat, EnlistStat, ErrorStat } from "./Card"
 
 export default function Label({ type }: { type: GoodStat | EnlistStat | ErrorStat}) {
   return (

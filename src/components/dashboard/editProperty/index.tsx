@@ -1,28 +1,30 @@
 import { ActionFunctionArgs } from 'react-router-dom';
+import { dummyObj } from '~/components/reusable/dummyObj';
+import { HouseCard } from '~/components/reusable/card/Card';
 import ListingForm from '~/components/reusable/listingForm';
 
-// export type ErrorObj = {
-//   [fieldName: string]: string[];
-// };
+export type ErrorObj = {
+  [fieldName: string]: string[];
+};
 
-// export type Inputs = {
-//   title: string;
-//   status: string;
-//   category: string;
-//   type: string;
-//   description: string;
-//   salesRentPrice: number;
-//   priceSuffix: string;
-//   areaSize: number;
-//   coverImage: string;
-//   listingImages: string;
-//   videoUrl?: string;
-//   state: string;
-//   city: string;
-//   address: string;
-//   latitude: string;
-//   longitude: string;
-// };
+export type Inputs = {
+  title: string;
+  status: string;
+  category: string;
+  type: string;
+  description: string;
+  salesRentPrice: number;
+  priceSuffix: string;
+  areaSize: number;
+  coverImage: string;
+  listingImages: string;
+  videoUrl?: string;
+  state: string;
+  city: string;
+  address: string;
+  latitude: string;
+  longitude: string;
+};
 
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
@@ -51,4 +53,7 @@ export async function action({ request }: ActionFunctionArgs) {
   return 'success';
 }
 
-export default function Post() {return (<ListingForm />)}
+export default function EditProperty() {
+  const listingItem = dummyObj as unknown as HouseCard[];
+  return (<ListingForm listingArray={listingItem} />);
+}
