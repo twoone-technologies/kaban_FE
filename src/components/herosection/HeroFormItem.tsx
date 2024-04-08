@@ -1,30 +1,34 @@
-import { arrowIcon, searchIcon } from '~/assets/icons';
+import { searchIcon } from '~/assets/icons';
 import styles from './hero.module.css';
-import FormInput from '../reusable/FormInput';
-import { roomAndPrice } from './formData';
+import { property_type, roomAndPrice } from './formData';
+import FormControl from '../reusable/FormControl';
+import Svg from '../reusable/Svg';
+import OptGroup from './Optgroup';
 
 export default function HeroFormItem() {
   return (
     <>
-      <FormInput
+      <FormControl
+        as="input"
         required
-        width="17px"
-        height="17px"
-        type={'text'}
+        type={'search'}
         maxLength={30}
-        link={searchIcon}
         title={'location'}
+        placeholder="location"
         className={styles.location}
+        icon={<Svg className={'absolute top-4 right-4'} href={searchIcon} />}
       />
-      <FormInput title={'propertyType'} link={arrowIcon} />
+      <FormControl as="select" title={'propertyType'}>
+        {Object.entries(property_type).map(([key, val], id) => (
+          <OptGroup key={id} header={key} subItems={val.subItems} />
+        ))}
+      </FormControl>
       {Object.entries(roomAndPrice).map(([key, val], id) => (
-        <FormInput
-          key={id}
-          title={key}
-          subItems={val}
-          link={arrowIcon}
-          className={styles.h_input}
-        />
+        <div className={styles.priceOpt}>
+          <FormControl key={id} as="select" className={styles.h_input}>
+            <OptGroup className={styles.optgroup} title={key} subItems={val} />
+          </FormControl>
+        </div>
       ))}
     </>
   );

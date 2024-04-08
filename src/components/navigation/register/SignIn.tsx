@@ -1,15 +1,21 @@
 import { Form, useNavigate } from 'react-router-dom';
 import styles from '~/components/reusable/modal/modal.module.css';
 import { googleSvgIcon, logoIcon } from '~/assets/icons';
-import FormInput from '~/components/reusable/FormInput';
 import Svg from '~/components/reusable/Svg';
 import Checkbox from '~/components/searchForm/checkbox/Checkbox';
 import LineText from './LineText';
 import { Link } from 'react-router-dom';
 import Button from '~/components/reusable/Button';
+import FormControl from '~/components/reusable/FormControl';
 
-export default function SignIn({ signUpUrl, isLogged }: { signUpUrl?: () => void, isLogged: () => void }) {
-  const navigate = useNavigate()
+export default function SignIn({
+  signUpUrl,
+  isLogged,
+}: {
+  signUpUrl?: () => void;
+  isLogged: () => void;
+}) {
+  const navigate = useNavigate();
   return (
     <>
       <h2>Welcome</h2>
@@ -20,21 +26,19 @@ export default function SignIn({ signUpUrl, isLogged }: { signUpUrl?: () => void
         className={styles.k_logo}
       />
       <Form method="post" className={`flex f-column gap ${styles.form}`}>
-        <FormInput
+        <FormControl
+          as="input"
           required
-          className={`f-column ${styles.input}`}
           title="email"
-          inputClass={styles.inputClass}
-          title_1="Email"
+          labelText="Email"
           type="email"
           placeholder="smith@example.com"
         />
-        <FormInput
+        <FormControl
+          as="input"
           required
-          className={`f-column ${styles.input}`}
           title="password"
-          inputClass={styles.inputClass}
-          title_1="Password"
+          labelText="Password"
           type="password"
           placeholder="8+ characters"
         />
@@ -49,10 +53,12 @@ export default function SignIn({ signUpUrl, isLogged }: { signUpUrl?: () => void
         </div>
         <input
           onClick={() => isLogged()}
-          name='intent'
+          name="intent"
           value={'Sign In'}
-          type="submit" 
-          className={'flex bg-primary-1 b-radius bg-grey c-tertiary align-x c-pad'}
+          type="submit"
+          className={
+            'flex bg-primary-1 b-radius bg-grey c-tertiary align-x c-pad'
+          }
         />
         <LineText text="Or continue with" />
         <Button
@@ -69,7 +75,7 @@ export default function SignIn({ signUpUrl, isLogged }: { signUpUrl?: () => void
           <span
             className={`bg-primary ${styles.span}`}
             onClick={() => {
-              signUpUrl && signUpUrl()
+              signUpUrl && signUpUrl();
             }}
           >
             Sign Up

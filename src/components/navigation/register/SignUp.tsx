@@ -1,15 +1,15 @@
 import { Form, useNavigate } from 'react-router-dom';
 import styles from '~/components/reusable/modal/modal.module.css';
 import { googleSvgIcon, logoIcon } from '~/assets/icons';
-import FormInput from '~/components/reusable/FormInput';
 import Svg from '~/components/reusable/Svg';
 import Checkbox from '~/components/searchForm/checkbox/Checkbox';
 import LineText from './LineText';
 import { Link } from 'react-router-dom';
 import Button from '~/components/reusable/Button';
+import FormControl from '~/components/reusable/FormControl';
 
 export default function SignUp({ signInUrl }: { signInUrl?: () => void }) {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <>
       <h2>Get Started</h2>
@@ -21,32 +21,29 @@ export default function SignUp({ signInUrl }: { signInUrl?: () => void }) {
       />
       <LineText className={styles.getStarted} text="sign up as a realtor" />
       <Form method="post" className={`flex f-column gap ${styles.form}`}>
-        <FormInput
-          className={`f-column ${styles.input}`}
+        <FormControl
+          as="input"
           title="fullName"
-          inputClass={styles.inputClass}
-          title_1="Full Name"
+          labelText="Full Name"
           type="text"
           placeholder="fullname"
         />
-        <FormInput
-          className={`f-column ${styles.input}`}
+        <FormControl
+          as='input'
           title="email"
-          inputClass={styles.inputClass}
-          title_1="Email"
+          labelText="Email"
           type="email"
           placeholder="smith@example.com"
         />
-        <FormInput
-          className={`f-column ${styles.input}`}
-          title="create_password"
-          inputClass={styles.inputClass}
-          title_1="Create Password"
+        <FormControl
+          as='input'
           type="password"
+          title="create_password"
+          labelText="Create Password"
           placeholder="8+ characters"
         />
         <div className="flex">
-          <Checkbox name='termsPolicy' title="termsPolicy" />
+          <Checkbox name="termsPolicy" title="termsPolicy" />
           <span className={styles.termsPolicy}>
             By creating an account you agree to Kaban{' '}
             <Link className="bg-primary" to={''}>
@@ -58,16 +55,18 @@ export default function SignUp({ signInUrl }: { signInUrl?: () => void }) {
             </Link>
           </span>
         </div>
-        <input 
-          name='intent'
-          value='Sign Up'
-          type="submit" 
+        <input
+          name="intent"
+          value="Sign Up"
+          type="submit"
           onClick={() => {
             setTimeout(() => {
-              navigate({ search: `?auth=sign_in`})
+              navigate({ search: `?auth=sign_in` });
             }, 500);
           }}
-          className={'flex bg-primary-1 b-radius bg-grey c-tertiary align-x c-pad'}
+          className={
+            'flex bg-primary-1 b-radius bg-grey c-tertiary align-x c-pad'
+          }
         />
         <LineText text="Or continue with" />
         <Button

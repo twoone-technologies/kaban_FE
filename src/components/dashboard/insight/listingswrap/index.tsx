@@ -11,19 +11,17 @@ import {
   searchIcon,
 } from '~/assets/icons';
 import Label from '~/components/reusable/card/Label';
-import FormInput from '~/components/reusable/FormInput';
 import Button from '~/components/reusable/Button';
+import FormControl from '~/components/reusable/FormControl';
 
 export default function Listings() {
   return (
     <div>
       <Form className={`flex ${styles.form}`}>
-        <FormInput
-          width="17px"
-          height="17px"
+        <FormControl
+          as='input'
           type={'text'}
           maxLength={30}
-          // link={searchIcon}
           title={'search'}
           className={styles.input}
         />

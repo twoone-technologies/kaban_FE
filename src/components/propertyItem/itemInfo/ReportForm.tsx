@@ -1,57 +1,48 @@
 import { Form } from 'react-router-dom';
-import FormInput from '../../reusable/FormInput';
 import styles from '~/components/reusable/modal/modal.module.css';
 import { reasonArr } from '../reason';
-import { arrowIcon } from '~/assets/icons';
 import Button from '../../reusable/Button';
+import FormControl from '~/components/reusable/FormControl';
+import OptGroup from '~/components/herosection/Optgroup';
 
 export default function ReportForm() {
   return (
-    <Form 
-      method="post"
-      className={`flex f-column gap ${styles.form}`}>
+    <Form method="post" className={`flex f-column gap ${styles.form}`}>
       <div className={`${styles.input_wrap}`}>
-        <FormInput
-          className={`f-column ${styles.input}`}
+        <FormControl
+          as="input"
           title="fullName"
-          inputClass={styles.inputClass}
-          title_1="Full Name"
+          labelText="Full Name"
           type="text"
           placeholder="fullname"
         />
-        <FormInput
-          className={`f-column ${styles.input}`}
+        <FormControl
+          as="input"
           title="phone"
-          inputClass={styles.inputClass}
-          title_1="Phone"
+          labelText="Phone"
           type="number"
           placeholder="+234 xxx xxx xxxx"
         />
-        <FormInput
-          className={`f-column ${styles.input}`}
+        <FormControl
+          as="input"
           title="email"
-          inputClass={styles.inputClass}
-          title_1="Email"
+          labelText="Email"
           type="email"
           placeholder="Smith@example.com"
         />
-        <FormInput
-          className={`f-column ${styles.input}`}
+        <FormControl
+          as="select"
           title="reason"
-          title_1="Reason"
-          subItems={reasonArr}
+          labelText="Reason"
           placeholder="fullname"
-          header="Select reason"
-          selectClass={styles.select_input}
-          link={arrowIcon}
-          svgI={styles.svg}
-        />
+        >
+          <OptGroup subItems={reasonArr} header="Select reason" />
+        </FormControl>
       </div>
-      <FormInput
-        className={`f-column ${styles.input}`}
+      <FormControl
+        as="textarea"
         title="message"
-        title_1="Message"
-        textAreaClass={`f-width b-radius ${styles.input_msg}`}
+        labelText="Message"
       />
       <Button type="submit" className={'pad'}>
         Submit Report

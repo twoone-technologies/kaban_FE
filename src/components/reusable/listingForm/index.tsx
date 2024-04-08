@@ -60,7 +60,7 @@ export default function ListingForm({
     if (success) {
       hideTimeout = setTimeout(() => {
         setSuccess(false);
-        navigate('/reusable/listings');
+        navigate('/dashboard/listings');
       }, 2000);
     }
     return () => {
