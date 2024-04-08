@@ -8,9 +8,9 @@ import CardHeaderInfo from './CardHeaderInfo';
 import CardAddress from './CardAddress';
 import CardImg from './CardImg';
 
-type GoodStat = 'featured' | 'sale' | 'rent' ;
-type EnlistStat = 'pending' |'published' |  'draft';
-type ErrorStat =  'expired' | 'disapproved';
+export type GoodStat = 'sale' | 'rent' | 'featured';
+export type EnlistStat = 'pending' |'published' |  'draft';
+export type ErrorStat =  'expired' | 'disapproved';
 
 export type HouseCard = {
   [x: string]: unknown;
@@ -39,6 +39,7 @@ export type HouseCard = {
   featured: boolean;
   price: {
     amount: number;
+    per: string;
   };
   address: string;
   city: string;
@@ -51,7 +52,8 @@ export type HouseCard = {
   details: {
     bedroom: number;
     bathroom: number;
-    land_area: string;
+    land_area: number;
+    area_suffix: string;
     parking_space: number;
     features: {
       title: string;
@@ -84,6 +86,8 @@ export default function Card({
   const borders = orientation === 'portrait' ? styles.border_r : '';
   const cardState =
     orientation === 'landscape' && mapState === false ? styles.portrait : '';
+  const statusOrder =
+    orientation === 'landscape' && mapState === false ? 'flex-col' : '';
   const cardimgState =
     orientation === 'landscape' && mapState === false
       ? styles.landscape_2
@@ -121,6 +125,7 @@ export default function Card({
       <div className={`flex f-column c_pad s-btw ${styles.below}`}>
         <div>
           <CardHeaderInfo
+            className={statusOrder}
             type={card.property_type}
             num={card.price.amount}
             featured={card.featured}

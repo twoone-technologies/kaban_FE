@@ -30,7 +30,7 @@ export async function action({ request }: ActionFunctionArgs) {
 
 export default function Commercial() {
   const {category, city, cityStatus, stat} = useHeader();
-  const commercial = dummyObj as HouseCard[]
+  const commercial = dummyObj as unknown as HouseCard[]
   commercial.filter(
     (items) => items.property_category === 'commercial',
   );

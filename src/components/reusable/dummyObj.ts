@@ -24,14 +24,15 @@ export const dummyObj = [
       rating: 4,
       verified: false
     },
-    title: "Self contained apartment",
+    title: "Shopping stalls",
     property_category: "commercial",
     property_type: "shops",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "sale",
     featured: true,
     price: {
-      amount: 3000000
+      amount: 3000000,
+      per: 'annum'
     },
     address: "2 Ekamba Nsukkara, Uyo",
     city: "uyo",
@@ -76,7 +77,8 @@ export const dummyObj = [
     details: {
       bedroom: 1,
       bathroom: 1,
-      land_area: "25 sq. meters",
+      land_area: "25",
+      area_suffix: '/sq m',
       parking_space: 0,
       features: [
         {
@@ -105,7 +107,7 @@ export const dummyObj = [
         },
         {
           title: 'CCTV Cameras',
-          checked: true
+          checked: false
         },
         {
           title: 'Security',
@@ -139,14 +141,15 @@ export const dummyObj = [
       rating: 4,
       verified: false
     },
-    title: "Loft apartment",
+    title: "Loft shops",
     property_category: "commercial",
     property_type: "shops",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "expired",
     featured: true,
     price: {
-      amount: 3000000
+      amount: 3000000,
+      per: 'annum'
     },
     address: "Nwaniba Road, Uyo. Akwa Ibom State",
     city: "uyo",
@@ -185,7 +188,8 @@ export const dummyObj = [
     details: {
       bedroom: 1,
       bathroom: 1,
-      land_area: "25 sq. meters",
+      land_area: "25",
+      area_suffix: '/sq m',
       parking_space: 0,
       features: [
         {
@@ -249,13 +253,14 @@ export const dummyObj = [
       verified: false
     },
     title: "Spacious apartment",
-    property_category: "commercial",
-    property_type: "shops",
+    property_category: "residential",
+    property_type: "apartment",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
     featured: true,
     price: {
-      amount: 1000000
+      amount: 1000000,
+      per: 'annum'
     },
     address: "34 Nwaniba Road, Uyo. Akwa Ibom State",
     city: "uyo",
@@ -294,7 +299,8 @@ export const dummyObj = [
     details: {
       bedroom: 3,
       bathroom: 2,
-      land_area: "25 sq. meters",
+      land_area: "25",
+      area_suffix: '/sq m',
       parking_space: 2,
       features: [
         {
@@ -364,7 +370,8 @@ export const dummyObj = [
     status: "rent",
     featured: true,
     price: {
-      amount: 340000
+      amount: 340000,
+      per: 'annum'
     },
     address: "21 Aka Road, Uyo. Akwa Ibom State",
     city: "uyo",
@@ -403,7 +410,8 @@ export const dummyObj = [
     details: {
       bedroom: 3,
       bathroom: 2,
-      land_area: "20 sq. meters",
+      land_area: "20",
+      area_suffix: '/sq m',
       parking_space: 4,
       features: [
         {
@@ -473,7 +481,8 @@ export const dummyObj = [
     status: "rent",
     featured: true,
     price: {
-      amount: 260000
+      amount: 260000,
+      per: 'annum'
     },
     address: "21 Aka Road, Uyo. Akwa Ibom State",
     city: "port harcourt",
@@ -512,7 +521,8 @@ export const dummyObj = [
     details: {
       bedroom: 1,
       bathroom: 2,
-      land_area: "50 sq. meters",
+      land_area: "50",
+      area_suffix: '/sq m',
       parking_space: 2,
       features: [
         {
@@ -582,7 +592,8 @@ export const dummyObj = [
     status: "draft",
     featured: true,
     price: {
-      amount: 260000
+      amount: 260000,
+      per: 'annum'
     },
     address: "55 Aka Road, Uyo. Akwa Ibom State",
     city: "port harcourt",
@@ -621,7 +632,8 @@ export const dummyObj = [
     details: {
       bedroom: 2,
       bathroom: 2,
-      land_area: "70 sq. meters",
+      land_area: "70",
+      area_suffix: '/sq m',
       parking_space: 1,
       features: [
         {
@@ -691,7 +703,8 @@ export const dummyObj = [
     status: "rent",
     featured: false,
     price: {
-      amount: 150000
+      amount: 150000,
+      per: 'annum'
     },
     address: "16 Aka Road, Uyo. Akwa Ibom State",
     city: "port harcourt",
@@ -730,7 +743,8 @@ export const dummyObj = [
     details: {
       bedroom: 1,
       bathroom: 2,
-      land_area: "19 sq. meters",
+      land_area: "19",
+      area_suffix: '/sq m',
       parking_space: 8,
       features: [
         {
@@ -800,7 +814,8 @@ export const dummyObj = [
     status: "rent",
     featured: false,
     price: {
-      amount: 280000
+      amount: 280000,
+      per: 'annum'
     },
     address: "55 Aka Road, Uyo. Akwa Ibom State",
     city: "port harcourt",
@@ -839,7 +854,8 @@ export const dummyObj = [
     details: {
       bedroom: 2,
       bathroom: 2,
-      land_area: "70 sq. meters",
+      land_area: "70",
+      area_suffix: '/sq m',
       parking_space: 1,
       features: [
         {
@@ -909,7 +925,8 @@ export const dummyObj = [
     status: "rent",
     featured: false,
     price: {
-      amount: 150000
+      amount: 150000,
+      per: 'annum'
     },
     address: "16 Aka Road, Uyo. Akwa Ibom State",
     city: "asaba",
@@ -948,7 +965,8 @@ export const dummyObj = [
     details: {
       bedroom: 1,
       bathroom: 2,
-      land_area: "19 sq. meters",
+      land_area: "19",
+      area_suffix: '/sq m',
       parking_space: 8,
       features: [
         {
@@ -1018,7 +1036,8 @@ export const dummyObj = [
     status: "rent",
     featured: true,
     price: {
-      amount: 280000
+      amount: 280000,
+      per: 'annum'
     },
     address: "11 Aka Road, Uyo. Akwa Ibom State",
     city: "asaba",
@@ -1057,7 +1076,8 @@ export const dummyObj = [
     details: {
       bedroom: 2,
       bathroom: 2,
-      land_area: "30 sq. meters",
+      land_area: "30",
+      area_suffix: '/sq m',
       parking_space: 3,
       features: [
         {
@@ -1127,7 +1147,8 @@ export const dummyObj = [
     status: "rent",
     featured: false,
     price: {
-      amount: 150000
+      amount: 150000,
+      per: 'annum'
     },
     address: "16 Aka Road, Uyo. Akwa Ibom State",
     city: "asaba",
@@ -1166,7 +1187,8 @@ export const dummyObj = [
     details: {
       bedroom: 1,
       bathroom: 2,
-      land_area: "19 sq. meters",
+      land_area: "19",
+      area_suffix: '/sq m',
       parking_space: 8,
       features: [
         {
@@ -1236,7 +1258,8 @@ export const dummyObj = [
     status: "rent",
     featured: false,
     price: {
-      amount: 280000
+      amount: 280000,
+      per: 'annum'
     },
     address: "51 Aka Road, Uyo. Akwa Ibom State",
     city: "uyo",
@@ -1275,7 +1298,8 @@ export const dummyObj = [
     details: {
       bedroom: 2,
       bathroom: 2,
-      land_area: "36 sq. meters",
+      land_area: "36",
+      area_suffix: '/sq m',
       parking_space: 5,
       features: [
         {
@@ -1345,7 +1369,8 @@ export const dummyObj = [
     status: "rent",
     featured: false,
     price: {
-      amount: 150000
+      amount: 150000,
+      per: 'annum'
     },
     address: "16 Aka Road, Uyo. Akwa Ibom State",
     city: "uyo",
@@ -1384,7 +1409,8 @@ export const dummyObj = [
     details: {
       bedroom: 1,
       bathroom: 2,
-      land_area: "19 sq. meters",
+      land_area: "19",
+      area_suffix: '/sq m',
       parking_space: 8,
       features: [
         {
@@ -1454,7 +1480,8 @@ export const dummyObj = [
     status: "rent",
     featured: false,
     price: {
-      amount: 156000
+      amount: 156000,
+      per: 'annum'
     },
     address: "40 Aka Road, Uyo. Akwa Ibom State",
     city: "uyo",
@@ -1493,7 +1520,8 @@ export const dummyObj = [
     details: {
       bedroom: 1,
       bathroom: 2,
-      land_area: "20 sq. meters",
+      land_area: "20",
+      area_suffix: '/sq m',
       parking_space: 4,
       features: [
         {

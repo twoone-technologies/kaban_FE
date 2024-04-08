@@ -30,7 +30,7 @@ export async function action({ request }: ActionFunctionArgs) {
 
 export default function Residential() {
   const { category, city, cityStatus, stat } = useHeader();
-  const residential = dummyObj as HouseCard[]
+  const residential = dummyObj as unknown as HouseCard[]
   return (
     <ResultsWrap
       city={city}

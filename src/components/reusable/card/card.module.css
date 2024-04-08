@@ -126,13 +126,13 @@
 }
 
 .header p {
-  font-size: clamp(12px, 4vw, 0.5rem);
+  font-size: clamp(12px, 4vw, 0.8rem);
   font-weight: 500;
   margin-bottom: 0.2rem;
 }
 
 .header h3 {
-  font-size: clamp(12px, 4vw, 1rem);
+  font-size: clamp(14px, 4vw, 1.1rem);
 }
 
 .icons {

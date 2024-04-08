@@ -1,40 +1,54 @@
-import { ReactNode, useState } from 'react';
+import { useEffect, useState } from 'react';
 import OptGroup from '~/components/herosection/Optgroup';
 import { statusArr } from '~/components/searchForm/status';
 import InputWrap from '~/components/dashboard/reusables/InputWrap';
-import FormControl, { InputErrors, Register } from '~/components/reusable/FormControl';
-import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
-import { propertyCategory, propertyType,} from '~/components/dashboard/postproperty/pages/miscellenous/mapProps';
+import FormControl, {
+  InputErrors,
+  Register,
+} from '~/components/reusable/FormControl';
+import styles from '~/components/reusable/listingForm/pages/miscellenous/listingForm.module.css';
+import {
+  propertyCategory,
+  propertyType,
+} from '~/components/reusable/listingForm/pages/miscellenous/mapProps';
 import { StateCitiesMap } from '~/hooks/useStateCities';
+import { GoodStat, HouseCard } from '~/components/reusable/card/Card';
+
+type PropertyProps = {
+  id: number;
+  error: InputErrors;
+  register: Register;
+  listing?: HouseCard;
+  setListing?: React.Dispatch<React.SetStateAction<HouseCard>>;
+  setDetails: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 export default function PropertyDescription({
   id,
-  svg,
   error,
   register,
+  listing,
+  setListing,
   setDetails,
-}: {
-  id: number;
-  svg: ReactNode;
-  error: InputErrors;
-  register: Register;
-  setDetails: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
+}: PropertyProps) {
   const allPropertyType: StateCitiesMap = { ...propertyType };
   const [typeOptions, setTypeOptions] = useState(
     allPropertyType[propertyCategory[0].value],
   );
 
-  const handleCityChange = (categoryTypes: StateCitiesMap, value: string) => {
-    const categoryKeys = Object.keys(categoryTypes);
+  useEffect(() => {
+    const categoryKeys = Object.keys(allPropertyType);
     const similarCategoryKey = categoryKeys.find(
-      (key) => key.toLocaleLowerCase() === value.toLocaleLowerCase(),
+      (key) =>
+        key.toLocaleLowerCase() ===
+        listing?.property_category.toLocaleLowerCase(),
     );
     if (similarCategoryKey) {
-      const cities = categoryTypes[similarCategoryKey];
+      const cities = allPropertyType[similarCategoryKey];
       setTypeOptions(cities);
     }
-  };
+    typeOptions[0] === 'Land' ? setDetails(true) : setDetails(false);
+  }, [listing?.property_category]);
 
   return (
     <InputWrap>
@@ -48,10 +62,15 @@ export default function PropertyDescription({
         register={register}
         className={styles.input}
         placeholder="Write a title"
+        value={listing?.title}
         error={error.title && error.title.message}
         containerClass={`gap-0 f-column ${styles.inputWrap}`}
         registerOptions={{
           maxLength: { value: 25, message: 'Title is too long' },
+          onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+            listing &&
+            setListing &&
+            setListing({ ...listing, title: e.target.value }),
         }}
       />
       <fieldset className={`flex gap ${styles.statType}`}>
@@ -61,7 +80,12 @@ export default function PropertyDescription({
           labelText="Status"
           className={styles.input}
           containerClass={`gap-0 f-column ${styles.inputWrap}`}
-          icon={svg}
+          value={listing?.status}
+          onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+            listing &&
+            setListing &&
+            setListing({ ...listing, status: e.target.value as GoodStat })
+          }
         >
           <OptGroup header="status" subItems={statusArr} />
         </FormControl>
@@ -70,11 +94,16 @@ export default function PropertyDescription({
           name="category"
           labelText="Category"
           className={styles.input}
+          value={
+            listing &&
+            listing?.property_category.charAt(0).toUpperCase() +
+              listing?.property_category.slice(1)
+          }
           containerClass={`gap-0 f-column ${styles.inputWrap}`}
-          icon={svg}
           onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-            handleCityChange(allPropertyType, e.target.value);
-            typeOptions[0] === 'Land' ? setDetails(true) : setDetails(false);
+            listing &&
+              setListing &&
+              setListing({ ...listing, property_category: e.target.value });
           }}
         >
           <OptGroup header="propertyCategory" subItems={propertyCategory} />
@@ -84,10 +113,16 @@ export default function PropertyDescription({
           name="type"
           labelText="Type"
           className={styles.input}
+          value={
+            listing &&
+            listing?.property_type.charAt(0).toUpperCase() +
+              listing?.property_type.slice(1)
+          }
           containerClass={`gap-0 f-column ${styles.inputWrap}`}
-          icon={svg}
           onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-            console.log(e.target.value);
+            listing &&
+              setListing &&
+              setListing({ ...listing, property_type: e.target.value });
             e.target.value !== 'Land' ? setDetails(true) : setDetails(false);
           }}
         >
@@ -99,7 +134,15 @@ export default function PropertyDescription({
         as="textarea"
         name="description"
         register={register}
+        value={listing?.description}
         labelText="Description"
+        registerOptions={{
+          maxLength: { value: 200, message: 'Description is too long' },
+          onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) =>
+            listing &&
+            setListing &&
+            setListing({ ...listing, description: e.target.value }),
+        }}
         placeholder="Brief description of the property"
         containerClass={`gap-0 f-column ${styles.inputWrap}`}
         error={error.description && error.description.message}

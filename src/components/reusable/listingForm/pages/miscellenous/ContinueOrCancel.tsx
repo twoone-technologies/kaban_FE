@@ -1,5 +1,5 @@
 import Button from '~/components/reusable/Button';
-import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
+import styles from '~/components/reusable/listingForm/pages/miscellenous/listingForm.module.css';
 
 type ContinueBtnProps = {
   activeIndex: number;
@@ -19,11 +19,12 @@ export default function ContinueOrCancel({
   prev,
   next,
 }: ContinueBtnProps) {
-  const validState = valid && activeIndex !== 1
-    ? valid
-      ? ''
-      : `cursor-not-allowed hidden ${styles.disabled}`
-    : valid && minImg
+  const validState =
+    valid && activeIndex !== 1
+      ? valid
+        ? ''
+        : `cursor-not-allowed hidden ${styles.disabled}`
+      : valid && minImg
       ? ''
       : `cursor-not-allowed  ${styles.disabled}`;
 
@@ -39,7 +40,9 @@ export default function ContinueOrCancel({
       <Button
         onClick={() => setSuccess(true)}
         type="submit"
-        className={`c-pad w-full max-w-40 transition-all ${activeIndex === 2 ? '' : 'hidden'}
+        className={`c-pad w-full max-w-40 transition-all ${
+          activeIndex === 2 ? '' : 'hidden'
+        }
         ${validState}`}
       >
         Submit
