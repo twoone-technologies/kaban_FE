@@ -40,7 +40,7 @@ export default function AgentStat() {
       </div>
       <div className={`flex s-btw pad-15 ${styles.report}`}>
         <small>Your property portfolio report</small>
-        <Link to={''}>
+        <Link to={'/dashboard/listings'}>
           <small className="flex align-y bg-primary gap">
             View listings <Svg href={exLinkIcon} height="1.5rem" width="1rem" />
           </small>

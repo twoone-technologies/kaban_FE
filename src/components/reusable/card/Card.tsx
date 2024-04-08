@@ -13,6 +13,7 @@ type EnlistStat = 'pending' |'published' |  'draft';
 type ErrorStat =  'expired' | 'disapproved';
 
 export type HouseCard = {
+  [x: string]: unknown;
   checked: boolean;
   find?(arg0: (item: { realtor: { agentName: string } }) => void): unknown;
   location: {

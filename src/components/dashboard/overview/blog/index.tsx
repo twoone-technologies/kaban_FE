@@ -64,7 +64,7 @@ export default function Blog() {
           visit={
             <div className="flex pad-1 s-btw">
               <b></b>
-              <Link className="flex bg-primary gap" to={''}>
+              <Link className="flex bg-primary gap" to={'/dashboard/support/Resources'}>
                 See all blogs <Svg href={exLinkIcon} />
               </Link>
             </div>

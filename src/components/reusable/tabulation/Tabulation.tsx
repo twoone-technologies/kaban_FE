@@ -26,14 +26,21 @@ export default function Tabulation({
           onClick={() => headerSwitch && headerSwitch(header.value, headerArr)}
           className={`flex align-x ${styles.header} 
           ${header.value === idx ? styles.active : ''}
-          ${header.type === 'Deactivate Account' ? `text-red-700` : ''}`}
+          ${
+            location.pathname === '/dashboard/profile_edit' &&
+            header.type === 'Deactivate Account'
+              ? `text-red-700`
+              : ''
+          }`}
         >
           {header.type}
         </li>
       ))}
       <li
         className={`${styles.underline} ${
-          headerArr[4].type === 'Deactivate Account' && idx === 4
+          location.pathname === '/dashboard/profile_edit' &&
+          headerArr[4].type === 'Deactivate Account' &&
+          idx === 4
             ? 'bg-red-700'
             : 'bg-primary-1'
         }`}

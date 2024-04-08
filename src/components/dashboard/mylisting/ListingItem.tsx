@@ -1,4 +1,3 @@
-import Checkbox from '~/components/searchForm/checkbox/Checkbox';
 import styles from './listings.module.css';
 import Card, { HouseCard } from '~/components/reusable/card/Card';
 import { editIcon, publishIcon, refreshIcon, trashIcon } from '~/assets/icons';
@@ -9,7 +8,6 @@ type Props = {
   expiring?: string;
   expired?: string;
   listArr: HouseCard[];
-  setItem: React.Dispatch<React.SetStateAction<HouseCard[]>>;
 };
 
 export default function ListingItem({
@@ -17,30 +15,13 @@ export default function ListingItem({
   expiring,
   expired,
   listArr,
-  setItem,
 }: Props) {
-
-  const handleChecked = (id: string) => {
-    setItem((prev: HouseCard[]) =>
-      prev.map((item: HouseCard) => {
-        if (item.id === id) {
-          return { ...item, checked: !item.checked };
-        }
-        return item;
-      }),
-    );
-  };
-
   return (
     <>
       {listArr.map((item) => (
         <div key={item.id} id={`card-${item.id}`} 
           className={`pad flex ${styles.listItemGrp}
             ${location.hash.substring(1) === item.id ? styles.activeItem : ''}`}>
-          <Checkbox
-            checked={item.checked}
-            onChange={() => handleChecked(item.id)}
-          />
           <Card
             card={item}
             orientation="landscape"

@@ -12,18 +12,18 @@
   border: 1px solid var(--hover-color);
 }
 
+.insightWrap {
+  border: 1px solid var(--hover-color);
+  background-color: var(--tertiary-color-1);
+}
+
 .listKbt {
   position: absolute;
   right: 0.5rem;
 }
 
-.svgWrapper {
-  position: relative;
-  text-align: center;
-}
-
 .kbtTotal {
-  top: -7rem;
+  top: -10rem;
   position: relative;
 }
 
@@ -55,6 +55,14 @@
 .c_rate {
   position: absolute;
   top: 0;
+}
+
+@media screen and (width >= 1024px) {
+  .donut {
+    border-right: 1px solid var(--hover-color);
+    max-width: 330px;
+    margin-right: 1%;
+  }  
 }
 
 @media screen and (width <= 1024px) {

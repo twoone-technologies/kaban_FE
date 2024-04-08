@@ -1,58 +1,35 @@
 import { useState } from 'react';
 import { Form } from 'react-router-dom';
-import { arrowDownIcon, arrowIcon, searchIcon, sortIcon } from '~/assets/icons';
+import { searchIcon, sortIcon } from '~/assets/icons';
 import { Wrapper } from '~/components/reusable/Container';
-import FormInput from '~/components/reusable/FormInput';
 import styles from './listings.module.css';
 import Button from '~/components/reusable/Button';
 import Svg from '~/components/reusable/Svg';
-import { sortOptions } from '~/components/searchForm/status';
-import Checkbox from '~/components/searchForm/checkbox/Checkbox';
+import { listingOptions } from '~/components/searchForm/status';
 import ListingItem from './ListingItem';
 import { HouseCard } from '~/components/reusable/card/Card';
 import { dummyObj } from '~/components/reusable/dummyObj';
 import PromptPage from './PromptPage';
 import useRouting from '~/hooks/useRouting';
+import FormControl from '~/components/reusable/FormControl';
+import OptGroup from '~/components/herosection/Optgroup';
+import useSortSwitch from '~/hooks/useSortSwitch';
 
 export default function Listings() {
-  const [sortArr, setSortArr] = useState<HouseCard[]>([]);
-  const [active, setActive] = useState<'all' |'rent' | 'sale'>('all')
   useRouting();
-
+  const [active, setActive] = useState<'all' | 'rent' | 'sale'>('all');
   const listingArray = dummyObj as HouseCard[];
-  const [listingsObj, setListingsObj] = useState<HouseCard[]>(listingArray);
-
-  const handleCheckAll = () =>
-  setListingsObj((prev) =>
-    prev.map((item) => ({ ...item, checked: !item.checked }))
-  );
-
-  const handleSort = (e: { target: { value: string } }) => {
-    if (e.target.value === 'Price Acending') {
-      setSortArr([...sortArr].sort((a, b) => a.price.amount - b.price.amount));
-    }
-    if (e.target.value === 'Price Decending') {
-      setSortArr([...sortArr].sort((a, b) => b.price.amount - a.price.amount));
-    }
-    if (e.target.value === 'Featured listings first') {
-      setSortArr(
-        [...sortArr].sort((a, b) => Number(b.featured) - Number(a.featured)),
-      );
-    }
-  };
-
+  const { sortArr, handleSort } = useSortSwitch(listingArray);
 
   return (
     <Wrapper element="section">
-      <div className={styles.search_order}>
+      <div className={'flex flex-col gap-1 space-between sm:flex-row'}>
         <Form className={styles.form}>
-          <FormInput
-            required
-            width="17px"
-            height="17px"
+          <FormControl
+            as="input"
             type={'text'}
             maxLength={30}
-            title={'search listing'}
+            placeholder={'search listing'}
             className={`${styles.schBar}`}
           />
           <Button className={`flex align-x align-y ${styles.btn}`}>
@@ -60,41 +37,50 @@ export default function Listings() {
           </Button>
         </Form>
         <div className={`flex gap ${styles.sortOptionsWrap}`}>
-        <Svg href={sortIcon} className={styles.sortIcon} width="50px" height="30px" />
-        <FormInput
-          title={'sort'}
-          className={styles.sort}
-          header={'Sort'}
-          subItems={sortOptions}
-          onChange1={handleSort}
-          link={arrowIcon}
-        />
+          <Svg
+            href={sortIcon}
+            className={styles.sortIcon}
+            width="50px"
+            height="30px"
+          />
+          <FormControl
+            as="select"
+            title={'sort'}
+            disabled={active !== 'all'}
+            className={`${active !== 'all' ? 'cursor-not-allowed' : ''} ${styles.sort}`}
+            onChange={(e) => handleSort(e.target.value)}
+          >
+            <OptGroup header="Sort options" subItems={listingOptions} />
+          </FormControl>
         </div>
       </div>
-      {listingsObj.length !== 0 ? 
+      {sortArr.length !== 0 ? (
         <div className={`b-radius ${styles.listingsWrap}`}>
-        <div className={`flex s-btw pad ${styles.listItem}`}>
-          <div className='flex'>
-            <Checkbox onChange={handleCheckAll} title1='select all' />
-            <Svg href={arrowDownIcon} />
+          <div className={`flex gap-1 c-pad justify-end ${styles.sortWrap}`}>
+            <span
+              className={`cursor-pointer ${active === 'all' ? styles.active : ''}`}
+              onClick={() => setActive('all')}
+            >
+              All(12)
+            </span>
+            <span
+              className={`cursor-pointer ${active === 'rent' ? styles.active : ''}`}
+              onClick={() => {setActive('rent'); handleSort('rent')}}
+            >
+              For Rent(13)
+            </span>
+            <span
+              className={`cursor-pointer ${active === 'sale' ? styles.active : ''}`}
+              onClick={() => {setActive('sale'); handleSort('sale')}}
+            >
+              For Sale(13)
+            </span>
           </div>
-          <div className={`flex gap-1 c-pad b-radius ${styles.sortWrap}`}>
-            <span className={active === 'all' ? styles.active : ''} 
-              onClick={() => setActive('all')}>All(12)</span>
-            <span className={active === 'rent' ? styles.active : ''} 
-              onClick={() => setActive('rent')}>For Rent(13)</span>
-            <span className={active === 'sale' ? styles.active : ''} 
-              onClick={() => setActive('sale')}>For Sale(13)</span>
-          </div>
+          <ListingItem listArr={sortArr as HouseCard[]} />
         </div>
-        <div>
-          <ListingItem 
-            setItem={setListingsObj}
-            listArr={listingsObj}
-          />
-        </div>
-      </div> : 
-      <PromptPage/>}
+      ) : (
+        <PromptPage />
+      )}
     </Wrapper>
   );
 }

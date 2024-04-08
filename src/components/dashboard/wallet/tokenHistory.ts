@@ -2,7 +2,7 @@ export const transactionArr = [
   {
     id: '1',
     title: 'token',
-    action: 'account Verification',
+    action: 'account verification',
     tokenQuantity: '60',
     date: '2021-09-06 10:54:21',
   },
@@ -16,7 +16,7 @@ export const transactionArr = [
   {
     id: '3',
     title: 'token',
-    action: 'account Verification',
+    action: 'account verification',
     tokenQuantity: '60',
     date: '2021-09-06 10:54:21',
   },
@@ -71,7 +71,7 @@ export const sortToken = [
   },
   {
     type: 'Account Verification',
-    value: 'account Verification',
+    value: 'account verification',
   },
   {
     type: 'Publication',
