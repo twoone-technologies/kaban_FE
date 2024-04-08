@@ -72,7 +72,7 @@ export default function FormControl({
   let content;
   let notice;
   if (isSelect(as, props)) {
-    props.required ? (notice = '*') : '';
+    notice = props.required ? '*': '';
     content = (
       <select
         {...props}
@@ -86,7 +86,7 @@ export default function FormControl({
       </select>
     );
   } else if (isInput(as, props)) {
-    props.required ? (notice = '*') : '';
+    notice = props.required ? '*': '';
     content = radius ? (
       <>
         <Checkbox id={props.name} onChange={props.onChange} />
@@ -105,7 +105,7 @@ export default function FormControl({
       />
     );
   } else {
-    props.required ? (notice = '*') : '';
+    notice = props.required ? '*': '';
     content = (
       <textarea
         maxLength={500}
