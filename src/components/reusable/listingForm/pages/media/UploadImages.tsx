@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react';
 import Svg from '~/components/reusable/Svg';
 import { uploadImgIcon } from '~/assets/icons';
-import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
+import styles from '~/components/reusable/listingForm/pages/miscellenous/listingForm.module.css';
 import { InputErrors, Register } from '~/components/reusable/FormControl';
 import { ImageFile } from '~/hooks/useFileUpload';
 

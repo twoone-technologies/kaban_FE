@@ -1,23 +1,11 @@
 import {
   ActionFunctionArgs,
-  LoaderFunctionArgs,
   redirect,
 } from 'react-router-dom';
 import { HouseCard } from '~/components/reusable/card/Card';
 import { dummyObj } from '~/components/reusable/dummyObj';
 import ResultsWrap from '~/components/reusable/resultsContainer/ResultsWrap';
 import useHeader from '~/hooks/useHeader';
-
-export async function loader({ }: LoaderFunctionArgs) {
-  // Create getURLData function that will 
-  // get the city from params and other query params
-  // const { city } = getURLData(request.url);
-  // const commercial = dummyObj.filter(
-  //   (items) => items.city === city.toLocaleLowerCase(),
-  // );
-  // return { commercial };
-  return ''
-}
 
 export async function action({ request }: ActionFunctionArgs) {
   // get form data
@@ -45,7 +33,7 @@ export async function action({ request }: ActionFunctionArgs) {
 
 export default function CityName() {
   const { cityStatus, stat, city } = useHeader();
-  const commercial = dummyObj as HouseCard[]
+  const commercial = dummyObj as unknown as HouseCard[]
   commercial.filter(
     (items) => items.city === city.toLocaleLowerCase(),
   );

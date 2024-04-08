@@ -7,7 +7,7 @@ import useResponsiveNav from '~/hooks/useResponsiveNav';
 import { Dispatch, SetStateAction, useState } from 'react';
 import usePlacesAutocomplete from 'use-places-autocomplete';
 import FormControl, { InputErrors, Register } from '../FormControl';
-import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
+import styles from '~/components/reusable/listingForm/pages/miscellenous/listingForm.module.css';
 
 type GoogleAddressProps = {
   idx?: number;
@@ -61,8 +61,8 @@ export default function Address({
       setStreetAddress(e.target.value);
       setValue(`${streetAddress}, ${city}`);
     }
-  }
-// console.log(streetAddress);
+  };
+  // console.log(streetAddress);
   return (
     <div className={`relative ${className}`}>
       <FormControl

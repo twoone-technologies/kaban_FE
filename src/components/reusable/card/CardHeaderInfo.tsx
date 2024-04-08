@@ -1,29 +1,29 @@
 import Label from './Label';
 import styles from './card.module.css';
+import { GoodStat, EnlistStat, ErrorStat } from './Card';
 
 type Props = {
   type: string;
   num: number;
   featured: boolean;
+  className: string;
   stat: GoodStat | EnlistStat | ErrorStat;
 };
-
-type GoodStat = 'featured' | 'sale' | 'rent' ;
-type EnlistStat = 'pending' |'published' |  'draft';
-type ErrorStat =  'expired' | 'disapproved';
 
 const setNums = (num: number) => {
   if (num === undefined || NaN || '') return '...';
   return num.toLocaleString();
 };
 
-export default function CardHeaderInfo({type, num, featured, stat}: Props) {
+export default function CardHeaderInfo({ type, num, featured, stat, className }: Props) {
   return (
-    <div className={`flex f-column ${styles.header}`}>
-      <p>{type}</p>
-      <div className="flex align-y s-btw">
+    <div className={`flex space-between ${styles.header}`}>
+      <div className="flex flex-col align-x">
+        <p>{type}</p>
         <h3>₦{setNums(num)}</h3>
-        <div className={`flex gap ${styles.status_grp}`}>
+      </div>
+      <div className="flex align-y s-btw">
+        <div className={`flex gap ${className} ${styles.status_grp}`}>
           {featured ? <Label type="featured" /> : null}
           <Label type={stat} />
         </div>

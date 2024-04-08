@@ -9,7 +9,7 @@ import CarouselWrap from "../reusable/CarouselWrap";
 import Card, { HouseCard } from "../reusable/card/Card";
 
 export default function LatestAdditions() {
-  const arr = dummyObj as HouseCard[]
+  const arr = dummyObj as unknown as HouseCard[]
   return (
     <Container element="div" className='container-pad'>
       <div className="text-align header">

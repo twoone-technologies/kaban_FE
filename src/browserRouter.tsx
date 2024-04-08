@@ -24,7 +24,6 @@ import SearchResults, { action as results } from './routes/search_results';
 import PropertyItem from './components/propertyItem/PropertyItem';
 import CityName, {
   action as cityResults,
-  loader as citiesLoader,
 } from './routes/cities.$cityName';
 import Overview from './components/dashboard/overview';
 import Dashboard, { action as srchRes } from './components/dashboard';
@@ -36,12 +35,19 @@ import Notification from './components/dashboard/notification';
 import Post, { action as postForm } from './components/dashboard/postproperty';
 import Edit, { action as editForm } from './components/dashboard/editprofile';
 import SupportCard from './components/dashboard/support/supportCard';
+import EditProperty, {
+  action as editPropertyForm,
+} from './components/dashboard/editProperty';
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />} action={signResults}>
       <Route index element={<LandingPage />} action={listingSearch} />
-      <Route path="search_results" element={<SearchResults />} action={results} />
+      <Route
+        path="search_results"
+        element={<SearchResults />}
+        action={results}
+      />
       <Route path="property-item/:id" element={<PropertyItem />} />
       <Route path="blog" element={<Blog />} />
       <Route path="commercial" element={<Commercial />} action={comResults} />
@@ -52,7 +58,11 @@ export const router = createBrowserRouter(
       <Route path="about-us" element={<AboutUs />} />
       <Route path="contact-us" element={<ContactUs />} />
       <Route path="faqs" element={<FAQs />} />
-      <Route path="cities/:cityName" element={<CityName />} loader={citiesLoader} action={cityResults} />
+      <Route
+        path="cities/:cityName"
+        element={<CityName />}
+        action={cityResults}
+      />
       <Route path="dashboard" element={<Dashboard />} action={srchRes} />
       <Route path="dashboard/overview" element={<Overview />} />
       <Route path="dashboard/insights" element={<Insight />} />
@@ -62,7 +72,16 @@ export const router = createBrowserRouter(
       <Route path="dashboard/support/:title" element={<SupportCard />} />
       <Route path="dashboard/notification" element={<Notification />} />
       <Route path="dashboard/post" element={<Post />} action={postForm} />
-      <Route path="dashboard/profile_edit" element={<Edit />} action={editForm} />
+      <Route
+        path="dashboard/property_edit/:id"
+        element={<EditProperty />}
+        action={editPropertyForm}
+      />
+      <Route
+        path="dashboard/profile_edit"
+        element={<Edit />}
+        action={editForm}
+      />
     </Route>,
   ),
 );

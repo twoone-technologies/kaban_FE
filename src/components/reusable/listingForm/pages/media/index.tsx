@@ -4,11 +4,11 @@ import FormControl, {
   Register,
 } from '~/components/reusable/FormControl';
 import { UseFormSetValue } from 'react-hook-form';
-import { Inputs } from '~/components/dashboard/postproperty';
+import { Inputs } from '~/components/reusable/listingForm';
 import InputWrap from '~/components/dashboard/reusables/InputWrap';
-import Carousel from '~/components/dashboard/postproperty/pages/media/Carousel';
-import UploadImages from '~/components/dashboard/postproperty/pages/media/UploadImages';
-import styles from '~/components/dashboard/postproperty/pages/miscellenous/post.module.css';
+import Carousel from '~/components/reusable/listingForm/pages/media/Carousel';
+import UploadImages from '~/components/reusable/listingForm/pages/media/UploadImages';
+import styles from '~/components/reusable/listingForm/pages/miscellenous/listingForm.module.css';
 import useImageUpload from '~/hooks/useFileUpload';
 
 type MediaProps = {

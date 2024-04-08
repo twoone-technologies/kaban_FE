@@ -141,7 +141,7 @@
   }
 
   .map_section {
-    width: 45%;
+    width: 65%;
   }
 
   .mapWrap {
@@ -151,7 +151,7 @@
   }
 
   .results {
-    width: 55%;
+    width: 45%;
   }
 
   .results_full {
@@ -194,7 +194,7 @@
 
 @media screen and (width >= 1150px) {
   .grid_style {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 
   .grid_style_2 {

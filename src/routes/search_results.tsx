@@ -31,7 +31,7 @@ export async function action({ request }: ActionFunctionArgs) {
 
 export default function SearchResults() {
   const { city, cityStatus, stat } = useHeader();
-  const arr = dummyObj as HouseCard[]
+  const arr = dummyObj as unknown as HouseCard[]
 
   return (
     <ResultsWrap

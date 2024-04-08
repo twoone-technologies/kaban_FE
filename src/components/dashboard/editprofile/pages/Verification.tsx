@@ -3,10 +3,10 @@ import InputWrap from '../../reusables/InputWrap';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import { Viewer, Worker } from '@react-pdf-viewer/core';
 import UploadWrapper from '../miscellenous/UploadWrapper';
-import Carousel from '../../postproperty/pages/media/Carousel';
 import useFileUpload, { ImageFile } from '~/hooks/useFileUpload';
 import { UseFormRegister, UseFormSetValue } from 'react-hook-form';
 import { EditProfileInputs } from '..';
+import Carousel from '~/components/reusable/listingForm/pages/media/Carousel';
 
 type VerificationProps = {
   idx: number;

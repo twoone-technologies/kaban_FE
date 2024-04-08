@@ -18,7 +18,7 @@ import useSortSwitch from '~/hooks/useSortSwitch';
 export default function Listings() {
   useRouting();
   const [active, setActive] = useState<'all' | 'rent' | 'sale'>('all');
-  const listingArray = dummyObj as HouseCard[];
+  const listingArray = dummyObj as unknown as HouseCard[];
   const { sortArr, handleSort } = useSortSwitch(listingArray);
 
   return (
