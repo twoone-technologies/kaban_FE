@@ -16,7 +16,7 @@ function Navigation() {
   const navigate = useNavigate();
   const location = useLocation();
   const [dropDown, setDropDown] = useState(-1);
-  const [user] = useState('kk');
+  const [user] = useState(null);
   const [login, setLogIn] = useState<'sign_in' | 'sign_up'>('sign_up');
   const { navBar, goingUp, open, setOpen } = useInteractiveNav();
 

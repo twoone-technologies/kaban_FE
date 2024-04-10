@@ -2,13 +2,12 @@ import { BaseQueryFn, createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/r
 
 import { RootState } from "../store"
 import { setCredentials } from '../slices/auth'
+import APIEndpoints from '~/utils/api-endpoints'
 
-export const PROXY = ""
 const baseQuery = fetchBaseQuery({
-    baseUrl: PROXY,
-    // credentials: 'include',
+    baseUrl: import.meta.env.VITE_API_ENDPOINT,
     prepareHeaders: (headers, { getState }) => {
-        const token = (getState() as RootState).auth.token
+        const token = (getState() as RootState).auth.accessToken
         if (token) headers.set("authorization", `Bearer ${token}`)
         return headers
     }
@@ -22,14 +21,15 @@ const baseQueryWithReauth: BaseQueryFn = async (args, api, extraOptions) => {
     // If you want, handle other status codes, too
     if (result?.error?.status === 403) {
         // send refresh token to get new access token
-        const refreshResult = await baseQuery('/users/refresh', api, extraOptions)
+        const refreshResult = await baseQuery(APIEndpoints.refresh, api, extraOptions)
         if (refreshResult.data) {
             // store the new token
-            api.dispatch(setCredentials({ ...refreshResult.data }))
+            api.dispatch(setCredentials({ ...refreshResult.data as { accessToken: string } }))
             // retry original query with new access token
             result = await baseQuery(args, api, extraOptions)
         }
     }
+    // setup 401 check for re-auth
     return result
 }
 

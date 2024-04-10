@@ -21,11 +21,7 @@ export function SignInModal({ isVisible, signUpUrl }: Props) {
     <Modal isVisible={isVisible}>
       <SignIn
         signUpUrl={signUpUrl}
-        isLogged={() => {''
-          // setTimeout(() => {
-          //   navigate({ search: `` });
-          // }, 1000);
-        }}
+        isLogged={() => ''}
       />
     </Modal>
   );

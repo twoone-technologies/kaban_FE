@@ -30,6 +30,7 @@ export default function SignIn({
           as="input"
           required
           title="email"
+          name="email"
           labelText="Email"
           type="email"
           placeholder="smith@example.com"
@@ -38,13 +39,14 @@ export default function SignIn({
           as="input"
           required
           title="password"
+          name="password"
           labelText="Password"
           type="password"
           placeholder="8+ characters"
         />
         <div className="flex s-btw">
           <div className="flex">
-            <Checkbox required title="keepMeLoggedIn" />
+            <Checkbox title="keepMeLoggedIn" name='keepMeLoggedIn' />
             <span>Keep me logged in</span>
           </div>
           <Link to={''} className="bg-primary">
@@ -54,7 +56,7 @@ export default function SignIn({
         <input
           onClick={() => isLogged()}
           name="intent"
-          value={'Sign In'}
+          value={'signin'}
           type="submit"
           className={
             'flex bg-primary-1 b-radius bg-grey c-tertiary align-x c-pad'
@@ -70,8 +72,7 @@ export default function SignIn({
           Sign In with Google
         </Button>
         <p>
-          {' '}
-          Not a Realtor?{' '}
+          Not yet registered?{' '}
           <span
             className={`bg-primary ${styles.span}`}
             onClick={() => {

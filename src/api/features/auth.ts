@@ -1,31 +1,28 @@
-import { setCredentials } from "../slices/auth"
 import { api } from "./api"
+import APIEndpoints from "~/utils/api-endpoints"
+import { store } from "../store"
+import { SigninDTO, SigninResponse, SignupDTO, SignupResponse } from "~/utils/types/auth.types"
+import { setCredentials } from "../slices/auth"
 
 export const authApi = api.injectEndpoints({
     endpoints: builder => ({
-        signup: builder.mutation({
+        signup: builder.mutation<SignupResponse, SignupDTO>({
             query: (credentials) => ({
-                url: '/users/signup',
+                url: APIEndpoints.signup,
                 method: 'POST',
                 body: credentials
             })
         }),
-        signin: builder.mutation({
+        signin: builder.mutation<SigninResponse, SigninDTO>({
             query: (credentials) => ({
-                url: '/users/signin',
+                url: APIEndpoints.signin,
                 method: 'POST',
                 body: credentials
-            }),
-        }),
-        refresh: builder.mutation({
-            query: () => ({
-                url: '/users/refresh',
-                method: 'GET',
             }),
             async onQueryStarted(_, { dispatch, queryFulfilled }) {
                 try {
                     const { data } = await queryFulfilled
-                    dispatch(setCredentials({ ...data }))
+                    dispatch(setCredentials(data))
                 } catch (err) {
                     console.log(err)
                 }
@@ -34,8 +31,12 @@ export const authApi = api.injectEndpoints({
     }),
 })
 
-export const {
-    useSigninMutation,
-    useRefreshMutation,
-    useSignupMutation,
-} = authApi
+export const {} = authApi
+
+export const signup = (payload: SignupDTO) => store.dispatch(
+    authApi.endpoints.signup.initiate(payload)
+)
+
+export const signin = (payload: SigninDTO) => store.dispatch(
+    authApi.endpoints.signin.initiate(payload)
+)

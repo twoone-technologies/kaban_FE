@@ -1,4 +1,5 @@
 import { ActionFunctionArgs, Outlet, useLocation } from "react-router-dom";
+import { signin } from "~/api/features/auth";
 import Sidebar from "~/components/dashboard/sidebar";
 import Footer from "~/components/footer/Footer";
 import Navigation from "~/components/navigation";
@@ -9,40 +10,28 @@ export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
   console.log(...formData);
 
-  // let user: { [x: string]: FormDataEntryValue; }[] = [];
-  let data: { [x: string]: FormDataEntryValue; }[] = [];
-  [...formData].map(([_, val]) => {
-    data = [...formData].map(([key, value]) => ({ [key]: value }));
-
-    switch (val) {
-      case 'Sign Up':
-        // send data to BE
-        localStorage.setItem('user', JSON.stringify(data));
-        console.log('foo');
-        break;
-
-      case 'Sign In': {
-        console.log('object');
-        // get data from BE
-        // user = JSON.parse(localStorage.getItem('user') ?? '')
-        // if (user) {
-        //   console.log(user);
-        //   return user
-        // }
-        break;
+  const intent = formData.get('intent')
+  switch (intent) {
+    case 'Sign Up':
+      console.log('signup');
+      // send data to BE
+      break;
+    case 'signin':
+      try {
+        await signin({
+          email: formData.get('email') as string,
+          password: formData.get('password') as string,
+        });
+      } catch (error) {
+        console.log(error);
+        // return error message for toast notification
       }
-
-      default: console.log('def');
-        break;
-    }
-    console.log(data);
-    return [{ data }]
-  })
-
-  console.log(data);
-
-  // redirect to prev page with the data
-  return data || null
+      break;
+    default:
+      console.log('unknown');
+      break;
+  }
+  return null
 }
 
 export default function Root() {
