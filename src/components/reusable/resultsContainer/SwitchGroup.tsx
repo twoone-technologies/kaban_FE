@@ -1,15 +1,15 @@
 import styles from '~/components/reusable/resultsContainer/results.module.css';
 import {
-  arrowIcon,
   gridIcon,
   mapIcon,
   sortIcon,
   vertIcon,
 } from '~/assets/icons';
-import FormInput from '../FormInput';
 import { sortOptions } from '~/components/searchForm/status';
 import Svg from '../Svg';
 import { HouseCard } from '../card/Card';
+import FormControl from '../FormControl';
+import OptGroup from '~/components/herosection/Optgroup';
 
 type Props = {
   mapState: boolean;
@@ -30,10 +30,10 @@ export default function SwitchGroup({
   setOrientation,
   orientation,
 }: Props) {
-    const handleClick = (orientation: 'portrait' | 'landscape') => {
+  const handleClick = (orientation: 'portrait' | 'landscape') => {
     setOrientation(orientation);
   };
-  
+
   const listingsPage = stackOrder === 'listings' ? '' : styles.stackOrder;
 
   return (
@@ -41,14 +41,14 @@ export default function SwitchGroup({
       <span className={styles.size}>{listingObject.length} results found</span>
       <div className={`flex align-y ${listingsPage}`}>
         <Svg href={sortIcon} width="50px" height="20px" />
-        <FormInput
+        <FormControl
+          as="select"
           title={'sort'}
           className={styles.sort}
-          header={'Sort'}
-          subItems={sortOptions}
-          onChange1={onChange}
-          link={arrowIcon}
-        />
+          onChange={onChange}
+        >
+          <OptGroup header={'Sort'} subItems={sortOptions} />
+        </FormControl>
         <div className={`gap c-pad flex ${styles.nil}`}>
           <div title="landscape">
             <Svg

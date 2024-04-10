@@ -31,6 +31,7 @@ export async function action({ request }: ActionFunctionArgs) {
 
 export default function SearchResults() {
   const { city, cityStatus, stat } = useHeader();
+  console.log(city, stat);
   const arr = dummyObj as unknown as HouseCard[]
 
   return (

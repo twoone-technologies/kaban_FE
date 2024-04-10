@@ -11,6 +11,7 @@ export default function HeroFormItem() {
       <FormControl
         as="input"
         required
+        name='location'
         type={'search'}
         maxLength={30}
         title={'location'}
@@ -18,14 +19,14 @@ export default function HeroFormItem() {
         className={styles.location}
         icon={<Svg className={'absolute top-4 right-4'} href={searchIcon} />}
       />
-      <FormControl as="select" title={'propertyType'}>
+      <FormControl as="select" name={'propertyType'} title={'propertyType'}>
         {Object.entries(property_type).map(([key, val], id) => (
           <OptGroup key={id} header={key} subItems={val.subItems} />
         ))}
       </FormControl>
       {Object.entries(roomAndPrice).map(([key, val], id) => (
-        <div className={styles.priceOpt}>
-          <FormControl key={id} as="select" className={styles.h_input}>
+        <div key={id} className={styles.priceOpt}>
+          <FormControl as="select" name={key} className={styles.h_input}>
             <OptGroup className={styles.optgroup} title={key} subItems={val} />
           </FormControl>
         </div>

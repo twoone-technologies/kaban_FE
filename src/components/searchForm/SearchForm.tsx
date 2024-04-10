@@ -5,7 +5,8 @@ import { arrowIcon } from '~/assets/icons';
 import { Form } from 'react-router-dom';
 import SearchFormItem from './SearchFormItem';
 import CheckboxGroup from './CheckboxGroup';
-import FormInput from '../reusable/FormInput';
+import FormControl from '../reusable/FormControl';
+import Svg from '../reusable/Svg';
 
 export default function SearchForm({
   className,
@@ -35,12 +36,16 @@ export default function SearchForm({
       className={`b-radius f-width flex f-column
       ${styles.form} ${formActive} ${className}`}
     >
-      <FormInput
+      <FormControl
         readOnly
+        as={'input'}
         type={'text'}
-        link={arrowIcon}
+        containerClass='cursor-pointer'
         title={'Advanced search'}
-        onFocus={() => handleStyle()}
+        name='advanced_search'
+        placeholder='Advanced search'
+        onClick={() => handleStyle()}
+        icon={<Svg className='absolute top-4 right-4 rotate-90' href={arrowIcon} />}
       />
       <SearchFormItem defaultCity={defaultCity} formStyle={formStyle} />
       <div className={`flex align-y gap ${isActive}`}>
