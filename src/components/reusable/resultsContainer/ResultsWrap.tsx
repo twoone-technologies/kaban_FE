@@ -86,9 +86,9 @@ export default function ResultsWrap({
         )}
         <h3>
           {propertyCategory || (
-            <span>
+            <b>
               {city} {status}
-            </span>
+            </b>
           )}{' '}
           Listings {propertyCategory && city && `in ${city}`}
         </h3>

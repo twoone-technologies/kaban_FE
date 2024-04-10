@@ -1,6 +1,5 @@
 import styles from '~/components/searchForm/searchForm.module.css';
 import Checkbox from '../searchForm/checkbox/Checkbox';
-import { useLocation } from 'react-router-dom';
 import {
   FieldErrors,
   FieldValues,
@@ -24,7 +23,8 @@ type ControlProps = (
   | ({ as: 'select' } & SelectProps)
   | ({ as: 'textarea' } & TextAreaProps)
 ) & {
-  icon?: React.ReactNode;
+  icon?: React.ReactNode
+  inputStyle?: boolean;
   onContainerFocus?: React.FocusEventHandler<HTMLDivElement>;
   containerClass?: string;
   labelText?: string;
@@ -49,13 +49,13 @@ export default function FormControl({
   error,
   radius,
   labelText,
+  inputStyle,
   containerClass,
   registerOptions,
   onContainerFocus,
   register = (() => ({})) as unknown as Register,
   ...props
 }: ControlProps) {
-  const location = useLocation();
   const svgIcon = (
     <Svg
       className={`${styles.svg} ${
@@ -64,15 +64,14 @@ export default function FormControl({
       href={arrowIcon}
     />
   );
-  const formWrapStyle =
-    location.pathname !== '/' && location.pathname !== '/search_results'
-      ? `gap-0 f-column ${styles.inputWrap}`
-      : styles.form_input;
+  const formWrapStyle = inputStyle
+    ? styles.form_input
+    : `gap-0 f-column ${styles.inputWrap}`;
 
   let content;
   let notice;
   if (isSelect(as, props)) {
-    notice = props.required ? '*': '';
+    notice = props.required ? '*' : '';
     content = (
       <select
         {...props}
@@ -86,7 +85,7 @@ export default function FormControl({
       </select>
     );
   } else if (isInput(as, props)) {
-    notice = props.required ? '*': '';
+    notice = props.required ? '*' : '';
     content = radius ? (
       <>
         <Checkbox id={props.name} onChange={props.onChange} />
@@ -105,7 +104,7 @@ export default function FormControl({
       />
     );
   } else {
-    notice = props.required ? '*': '';
+    notice = props.required ? '*' : '';
     content = (
       <textarea
         maxLength={500}
@@ -138,7 +137,7 @@ export default function FormControl({
         </div>
       ) : null}
       {content}
-      {as === 'select' ? svgIcon : icon}
+      {as === 'select' ? svgIcon : icon}      
     </div>
   );
 }

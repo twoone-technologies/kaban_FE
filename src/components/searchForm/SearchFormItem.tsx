@@ -1,12 +1,20 @@
 import { SetStateAction, useState } from 'react';
-import { arrowIcon, searchIcon } from '~/assets/icons';
-import { roomAndPrice } from '~/components/herosection/formData';
+import { searchIcon } from '~/assets/icons';
+import { property_type, roomAndPrice } from '~/components/herosection/formData';
 import { statusArr } from './status';
-import FormInput from '../reusable/FormInput';
 import styles from './searchForm.module.css';
+import FormControl from '../reusable/FormControl';
+import Checkbox from './checkbox/Checkbox';
+import Svg from '../reusable/Svg';
+import OptGroup from '../herosection/Optgroup';
 
-export default function SearchFormItem({formStyle, defaultCity}: {formStyle: boolean,
-  defaultCity?: string}) {
+export default function SearchFormItem({
+  formStyle,
+  defaultCity,
+}: {
+  formStyle: boolean;
+  defaultCity?: string;
+}) {
   const [isDisabled, setIsDisabled] = useState(false);
   const [radius, setRadius] = useState('');
 
@@ -20,34 +28,63 @@ export default function SearchFormItem({formStyle, defaultCity}: {formStyle: boo
 
   return (
     <div className={`${styles.form_content} ${isActive}`}>
-      <FormInput
-        min="0"
-        step="10"
-        max="100"
-        type={'range'}
-        radius={radius}
-        title={'radius'}
-        inputClass={radStat}
-        disabled={!isDisabled}
-        onChange1={handleRadius}
-        className={styles.slider}
-        onChange={handleRadiusStatus}
+      <div className={`flex ${styles.slider}`}>
+        <div className="flex items-center w-28">
+          <Checkbox onChange={handleRadiusStatus} />
+          <output className={styles.output}>Radius {radius}km</output>
+        </div>
+        <FormControl
+          as="input"
+          min="0"
+          step="10"
+          max="100"
+          type={'range'}
+          title={'radius'}
+          name={'radius'}
+          disabled={!isDisabled}
+          onChange={handleRadius}
+          containerClass={radStat}
+        />
+      </div>
+      <FormControl
+        as="input"
+        type={'search'}
+        title={'location'}
+        name={'location'}
+        placeholder="location"
+        defaultValue={defaultCity}
+        containerClass={styles.location}
+        icon={<Svg className="absolute top-4 right-4" href={searchIcon} />}
       />
-      <FormInput defaultValue={defaultCity}
-        width={'17px'} height={'17px'}
-        type={'search'} link={searchIcon}
-        title={'location'} className={styles.location}
-      />
-      <FormInput
-        title={'status'} link={arrowIcon}
-        header={'status'} subItems={statusArr}
-      />
-      <FormInput title={'propertyType'} link={arrowIcon} />
+      <FormControl as="select" title={'status'} name={'status'}>
+        <OptGroup header={'status'} subItems={statusArr} />
+      </FormControl>
+      <FormControl as="select" title={'propertyType'} name={'propertyType'}>
+        {Object.entries(property_type).map(([key, val], id) => (
+          <OptGroup key={id} header={key} subItems={val.subItems} />
+        ))}
+      </FormControl>
       {Object.entries(roomAndPrice).map(([key, val], id) => (
-        <FormInput key={id} title={key} subItems={val} link={arrowIcon} />
+        <div key={id} className={styles.priceOpt}>
+          <FormControl name={key} as="select" className={styles.h_input}>
+            <OptGroup className={styles.optgroup} title={key} subItems={val} />
+          </FormControl>
+        </div>
       ))}
-      <FormInput title={'Min.price'} type={'number'} link={arrowIcon} />
-      <FormInput title={'Max.price'} type={'number'} link={arrowIcon} />
+      <FormControl
+        as="input"
+        title={'Min.price'}
+        name={'min.price'}
+        placeholder={'Min.price'}
+        type={'number'}
+      />
+      <FormControl
+        as="input"
+        title={'Max.price'}
+        name={'max.price'}
+        placeholder={'Max.price'}
+        type={'number'}
+      />
     </div>
   );
 }

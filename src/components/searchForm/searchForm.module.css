@@ -119,7 +119,6 @@ optgroup[label] {
 }
 
 .save_btn {
-  /* padding: 0.7rem 0.5rem; */
   justify-content: center;
   background-color: var(--tertiary-color-4);
   min-width: 8rem;
@@ -245,7 +244,7 @@ input[type=range]::-webkit-slider-thumb {
   font-size: clamp(3px, 3.4vw, 1rem);
 }
 
-@media screen and (600px <= width <= 880px) {
+@media screen and (600px <= width <= 1024px) {
   .form_content {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -255,7 +254,7 @@ input[type=range]::-webkit-slider-thumb {
   }
 }
 
-@media screen and (width >= 880px) {
+@media screen and (width >= 1024px) {
   .form_content {
     grid-template-columns: repeat(4, 1fr);
   }

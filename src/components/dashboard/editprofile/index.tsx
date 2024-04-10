@@ -106,7 +106,6 @@ export default function Edit() {
     mode: 'all',
   });
 
-  console.log(isValid, minDocx);
   return (
     <Wrapper element="section" className={styles.wrapper}>
       <Tabulation
