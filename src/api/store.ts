@@ -1,5 +1,4 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { setupListeners } from '@reduxjs/toolkit/dist/query'
 import { persistStore, persistReducer } from 'redux-persist'
 // @ts-ignore
 import { CookieStorage } from 'redux-persist-cookie-storage'
@@ -7,6 +6,7 @@ import Cookies from 'cookies-js'
 
 import { api } from './features/api'
 import authReducer from './slices/auth'
+import { setupListeners } from '@reduxjs/toolkit/query'
 
 const persistConfig = {
     key: "kaban__session",
