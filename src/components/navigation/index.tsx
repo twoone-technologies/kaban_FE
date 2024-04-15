@@ -1,9 +1,14 @@
-import { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import {
+  Link,
+  useActionData,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
 import { logoIcon } from '~/assets/icons';
 import Button from '~/components/reusable/Button';
 import styles from './navigation.module.css';
-import navbarData from './navbarData';
+import navbarData, { userData } from './navbarData';
 import Svg from '~/components/reusable/Svg';
 import NavItem from './navitem';
 import Container from '../reusable/Container';
@@ -11,40 +16,52 @@ import useInteractiveNav from '~/hooks/useInteractiveNav';
 import { SignInModal, SignUpModal } from './register/ModalRegister';
 import HamburgerMenu from './HamburgerMenu';
 import NavBoard from './dashboardNav';
+import UserItem from './user';
+import Tooltip from '../reusable/Tooltip';
+import { useAppSelector } from '~/api/hooks';
+
+type UserData = {
+  fullName: string;
+  email: string;
+};
 
 function Navigation() {
   const navigate = useNavigate();
+  const alert = useActionData() as unknown as boolean;
   const location = useLocation();
+  const authState = useAppSelector((state) => state.auth);
   const [dropDown, setDropDown] = useState(-1);
-  const [user] = useState(null);
+  const [tooltip, setToolTip] = useState(false);
+  const [user, setUser] = useState<UserData | null>(null);
   const [login, setLogIn] = useState<'sign_in' | 'sign_up'>('sign_up');
   const { navBar, goingUp, open, setOpen } = useInteractiveNav();
-
-  if (open === true) document.body.style.overflowY = 'hidden'
-  else document.body.style.overflowY = ''
   
+  console.log(alert, authState);
+  if (alert) navigate({search: ''})//cityStatus('sign_in')
+  if (open === true) document.body.style.overflowY = 'hidden';
+  else document.body.style.overflowY = '';
+
   const onClickHandler = () => {
     setOpen(!open);
   };
 
-  // useEffect(() => {
-  //   if (user) {
-  //     console.log(user);
-  //     setUser(user);
-  //   }
+  useEffect(() => {
+    if (user) {
+      console.log(user);
+      setUser(user);
+    }
 
-  //   setLogIn('sign_up');
+    setLogIn('sign_up');
 
-  //   return () => {
-  //     login;
-  //   };
-  // }, [login, user]);
-
-  // const fName = user[0]?.fullName?.split(' ')[0]?.split('')[0];
-  // const lName = user[0]?.fullName?.split(' ')[1]?.split('')[0];
-  // const fullName = user[0]?.fullName;
-  // const email = user[1]?.email;
-  // console.log({ fName, lName, fullName, email });
+    return () => {
+      login;
+    };
+  }, [login, user]);
+  const fName = user && user?.fullName?.split(' ')[0]?.split('')[0];
+  const lName = user && user?.fullName?.split(' ')[1]?.split('')[0];
+  const fullName = user && user?.fullName;
+  const email = user && user?.email;
+  console.log({ fName, lName, fullName, email });
 
   const background =
     location.pathname === '/'
@@ -76,10 +93,7 @@ function Navigation() {
               className={linkColor}
             />
           </Link>
-          <HamburgerMenu
-            onClick={onClickHandler}
-            open={open}
-          />
+          <HamburgerMenu onClick={onClickHandler} open={open} />
           <ul
             className={`flex ${styles.nav_content} ${
               open ? styles.open : styles.close
@@ -103,22 +117,27 @@ function Navigation() {
               />
             ))}
             <ul className={`flex gap ${styles.reg}`}>
-              {user ? (
+              {user !== null ? (
                 <li className={`flex gap align-y ${styles.loggedState}`}>
-                  <Button className={styles.post_btn}>Post a property</Button>
-                  {/* <UserItem
-                className={styles.toggleUser}
-                closeNav={setOpen}
-                firstLetter={fName}
-                lastLetter={lName}
-                drop={tooltip}
-                email={email}
-                subItems={userData}
-                handleClick={() => setToolTip(!tooltip)}
-                mouseOver={() => setToolTip(!tooltip)}
-                verified={true}
-                agentName={fullName}
-              /> */}
+                  <Button
+                    onClick={() => navigate('/dashboard/post')}
+                    className={styles.post_btn}
+                  >
+                    Post a property
+                  </Button>
+                  <UserItem
+                    className={styles.toggleUser}
+                    closeNav={setOpen}
+                    firstLetter={fName}
+                    lastLetter={lName}
+                    drop={tooltip}
+                    email={email}
+                    subItems={userData}
+                    handleClick={() => setToolTip(!tooltip)}
+                    mouseOver={() => setToolTip(!tooltip)}
+                    verified={true}
+                    agentName={fullName}
+                  />
                 </li>
               ) : (
                 <Button
@@ -144,6 +163,12 @@ function Navigation() {
                 signInUrl={() => {
                   navigate({ search: `?auth=sign_in` });
                 }}
+              />
+              <Tooltip
+                popOver={alert}
+                // className={styles.tooltip}
+                text={'Welcome '}
+                // close={() => setToolTip(false)}
               />
             </ul>
           </ul>

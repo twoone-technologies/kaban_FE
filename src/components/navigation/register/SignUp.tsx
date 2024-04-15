@@ -1,4 +1,4 @@
-import { Form, useNavigate } from 'react-router-dom';
+import { Form } from 'react-router-dom';
 import styles from '~/components/reusable/modal/modal.module.css';
 import { googleSvgIcon, logoIcon } from '~/assets/icons';
 import Svg from '~/components/reusable/Svg';
@@ -9,7 +9,7 @@ import Button from '~/components/reusable/Button';
 import FormControl from '~/components/reusable/FormControl';
 
 export default function SignUp({ signInUrl }: { signInUrl?: () => void }) {
-  const navigate = useNavigate();
+
   return (
     <>
       <h2>Get Started</h2>
@@ -24,12 +24,14 @@ export default function SignUp({ signInUrl }: { signInUrl?: () => void }) {
         <FormControl
           as="input"
           title="fullName"
+          name='fullName'
           labelText="Full Name"
           type="text"
           placeholder="fullname"
         />
         <FormControl
           as='input'
+          name='email'
           title="email"
           labelText="Email"
           type="email"
@@ -37,6 +39,7 @@ export default function SignUp({ signInUrl }: { signInUrl?: () => void }) {
         />
         <FormControl
           as='input'
+          name='password'
           type="password"
           title="create_password"
           labelText="Create Password"
@@ -59,11 +62,6 @@ export default function SignUp({ signInUrl }: { signInUrl?: () => void }) {
           name="intent"
           value="Sign Up"
           type="submit"
-          onClick={() => {
-            setTimeout(() => {
-              navigate({ search: `?auth=sign_in` });
-            }, 500);
-          }}
           className={
             'flex bg-primary-1 b-radius bg-grey c-tertiary align-x c-pad'
           }

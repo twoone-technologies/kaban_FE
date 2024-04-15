@@ -3,6 +3,7 @@ import { BaseQueryFn, createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/r
 import { RootState } from "../store"
 import { setCredentials } from '../slices/auth'
 import APIEndpoints from '~/utils/api-endpoints'
+import { AuthState } from '~/utils/types/auth.types'
 
 const baseQuery = fetchBaseQuery({
     baseUrl: import.meta.env.VITE_API_ENDPOINT,
@@ -24,7 +25,7 @@ const baseQueryWithReauth: BaseQueryFn = async (args, api, extraOptions) => {
         const refreshResult = await baseQuery(APIEndpoints.refresh, api, extraOptions)
         if (refreshResult.data) {
             // store the new token
-            api.dispatch(setCredentials({ ...refreshResult.data as { accessToken: string } }))
+            api.dispatch(setCredentials({ ...refreshResult.data as AuthState }))
             // retry original query with new access token
             result = await baseQuery(args, api, extraOptions)
         }
@@ -39,4 +40,4 @@ export const api = createApi({
     endpoints: () => ({})
 })
 
-export const { } = api
+// export const { } = api
