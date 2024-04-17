@@ -4,6 +4,7 @@ import {
   useActionData,
   useLocation,
   useNavigate,
+  useSearchParams,
 } from 'react-router-dom';
 import { logoIcon } from '~/assets/icons';
 import Button from '~/components/reusable/Button';
@@ -27,6 +28,7 @@ type UserData = {
 
 function Navigation() {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const alert = useActionData() as unknown as boolean;
   const location = useLocation();
   const authState = useAppSelector((state) => state.auth);
@@ -35,9 +37,9 @@ function Navigation() {
   const [user, setUser] = useState<UserData | null>(null);
   const [login, setLogIn] = useState<'sign_in' | 'sign_up'>('sign_up');
   const { navBar, goingUp, open, setOpen } = useInteractiveNav();
-  
-  console.log(alert, authState);
-  if (alert) navigate({search: ''})//cityStatus('sign_in')
+
+  console.log(alert, authState, searchParams);
+  // if (alert) navigate({search: ''})//cityStatus('sign_in')
   if (open === true) document.body.style.overflowY = 'hidden';
   else document.body.style.overflowY = '';
 
@@ -45,18 +47,6 @@ function Navigation() {
     setOpen(!open);
   };
 
-  useEffect(() => {
-    if (user) {
-      console.log(user);
-      setUser(user);
-    }
-
-    setLogIn('sign_up');
-
-    return () => {
-      login;
-    };
-  }, [login, user]);
   const fName = user && user?.fullName?.split(' ')[0]?.split('')[0];
   const lName = user && user?.fullName?.split(' ')[1]?.split('')[0];
   const fullName = user && user?.fullName;
@@ -146,22 +136,39 @@ function Navigation() {
                   onClick={() => {
                     setOpen(false);
                     setLogIn('sign_in');
-                    navigate({ search: `?auth=${login}` });
+                    setSearchParams((prev) => {
+                      prev.append('auth', login);
+                      return prev;
+                    });
                   }}
                 >
                   Register
                 </Button>
               )}
               <SignInModal
-                isVisible={location.search.split('=')[1] === `sign_in`}
+                closeModal={() => setSearchParams((prev) => {
+                  const params = new URLSearchParams(prev);
+                  params.delete('auth');
+                  return params;
+                })}
+                isVisible={searchParams.get('auth') === `sign_in`}
                 signUpUrl={() => {
-                  navigate({ search: `?auth=sign_up` });
+                  setSearchParams((prev) => {
+                    const params = new URLSearchParams(prev);
+                    params.set('auth', 'sign_up');
+                    return params;
+                  });
                 }}
               />
               <SignUpModal
-                isVisible={location.search.split('=')[1] === `sign_up`}
+                closeModal={() => searchParams.delete('auth')}
+                isVisible={searchParams.get('auth') === `sign_up`}
                 signInUrl={() => {
-                  navigate({ search: `?auth=sign_in` });
+                  setSearchParams((prev) => {
+                    const params = new URLSearchParams(prev);
+                    params.set('auth', 'sign_in');
+                    return params;
+                  });
                 }}
               />
               <Tooltip

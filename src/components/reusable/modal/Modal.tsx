@@ -33,8 +33,8 @@ export default function Modal({ isVisible, closeModal, children }: ModalProps) {
         <Button
           className={`f-width ${styles.btn}`}
           onClick={() => {
-            modal?.current?.close();
             closeModal && closeModal()
+            modal?.current?.close();
           }}
         >
           <Svg href={closeIcon} />

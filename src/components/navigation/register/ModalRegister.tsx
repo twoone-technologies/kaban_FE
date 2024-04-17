@@ -4,21 +4,22 @@ import SignIn from './SignIn';
 
 type Props = {
   isVisible: boolean;
+  closeModal: () => void;
   signInUrl?: () => void;
   signUpUrl?: () => void;
 } & React.ComponentProps<'dialog'>;
 
-export function SignUpModal({ isVisible, signInUrl }: Props) {
+export function SignUpModal({ isVisible, signInUrl, closeModal }: Props) {
   return (
-    <Modal isVisible={isVisible}>
+    <Modal isVisible={isVisible} closeModal={closeModal}>
       <SignUp signInUrl={signInUrl} />
     </Modal>
   );
 }
 
-export function SignInModal({ isVisible, signUpUrl }: Props) {
+export function SignInModal({ isVisible, signUpUrl, closeModal }: Props) {
   return (
-    <Modal isVisible={isVisible}>
+    <Modal isVisible={isVisible} closeModal={closeModal}>
       <SignIn
         signUpUrl={signUpUrl}
         isLogged={() => ''}
