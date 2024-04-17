@@ -1,4 +1,4 @@
-import { Form, useNavigate, useSearchParams } from 'react-router-dom';
+import { Form, useNavigate } from 'react-router-dom';
 import styles from '~/components/reusable/modal/modal.module.css';
 import { googleSvgIcon, logoIcon } from '~/assets/icons';
 import Svg from '~/components/reusable/Svg';
@@ -16,7 +16,7 @@ export default function SignIn({
   isLogged: () => void;
 }) {
   const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
+  // const [searchParams, setSearchParams] = useSearchParams();
   return (
     <>
       <h2>Welcome</h2>

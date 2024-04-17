@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
   Link,
   useActionData,
@@ -19,7 +19,7 @@ import HamburgerMenu from './HamburgerMenu';
 import NavBoard from './dashboardNav';
 import UserItem from './user';
 import Tooltip from '../reusable/Tooltip';
-import { useAppSelector } from '~/api/hooks';
+// import { useAppSelector } from '~/api/hooks';
 
 type UserData = {
   fullName: string;
@@ -31,15 +31,13 @@ function Navigation() {
   const [searchParams, setSearchParams] = useSearchParams();
   const alert = useActionData() as unknown as boolean;
   const location = useLocation();
-  const authState = useAppSelector((state) => state.auth);
+  // const authState = useAppSelector((state) => state.auth);
   const [dropDown, setDropDown] = useState(-1);
   const [tooltip, setToolTip] = useState(false);
-  const [user, setUser] = useState<UserData | null>(null);
+  const [user, _] = useState<UserData | null>(null);
   const [login, setLogIn] = useState<'sign_in' | 'sign_up'>('sign_up');
   const { navBar, goingUp, open, setOpen } = useInteractiveNav();
 
-  console.log(alert, authState, searchParams);
-  // if (alert) navigate({search: ''})//cityStatus('sign_in')
   if (open === true) document.body.style.overflowY = 'hidden';
   else document.body.style.overflowY = '';
 
@@ -146,11 +144,13 @@ function Navigation() {
                 </Button>
               )}
               <SignInModal
-                closeModal={() => setSearchParams((prev) => {
-                  const params = new URLSearchParams(prev);
-                  params.delete('auth');
-                  return params;
-                })}
+                closeModal={() =>
+                  setSearchParams((prev) => {
+                    const params = new URLSearchParams(prev);
+                    params.delete('auth');
+                    return params;
+                  })
+                }
                 isVisible={searchParams.get('auth') === `sign_in`}
                 signUpUrl={() => {
                   setSearchParams((prev) => {
