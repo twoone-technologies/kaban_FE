@@ -161,7 +161,13 @@ function Navigation() {
                 }}
               />
               <SignUpModal
-                closeModal={() => searchParams.delete('auth')}
+                closeModal={() =>
+                  setSearchParams((prev) => {
+                    const params = new URLSearchParams(prev);
+                    params.delete('auth');
+                    return params;
+                  })
+                }
                 isVisible={searchParams.get('auth') === `sign_up`}
                 signInUrl={() => {
                   setSearchParams((prev) => {
