@@ -3,7 +3,6 @@ import Button from '~/components/reusable/Button';
 import styles from './modal.module.css';
 import Svg from '~/components/reusable/Svg';
 import { closeIcon } from '~/assets/icons';
-import { useSearchParams } from 'react-router-dom';
 
 type ModalProps = {
   isVisible: boolean;
@@ -12,7 +11,6 @@ type ModalProps = {
 
 export default function Modal({ isVisible, closeModal, children }: ModalProps) {
   const modal = useRef<HTMLDialogElement>(null);
-  const [_, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     if (isVisible) {
@@ -22,21 +20,11 @@ export default function Modal({ isVisible, closeModal, children }: ModalProps) {
     if (isVisible) document.body.style.overflowY = 'hidden';
     else document.body.style.overflowY = '';
 
-    modal.current?.addEventListener('keydown', (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setSearchParams((prev) => {
-          const params = new URLSearchParams(prev);
-          params.delete('auth');
-          return params;
-        });
-      }
-    });
-    
     return () => modal?.current?.close();
   }, [isVisible]);
 
   return (
-    <dialog className={`b-radius ${styles.modalWrap}`} ref={modal}>
+    <dialog className={`b-radius ${styles.modalWrap}`} onClose={closeModal} ref={modal}>
       <aside className={styles.modal}>
         {children}
         <Button
