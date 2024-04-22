@@ -3,7 +3,14 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import { RootState } from "../store"
 import { AuthState } from "~/utils/types/auth.types"
 
-const initialState: AuthState = { accessToken: null }
+const initialState: AuthState = {
+    accessToken: null,
+    email: "",
+    fullName: "",
+    rating: null,
+    realtor_pic: null,
+    verified: null
+}
 const authSlice = createSlice({
     name: 'auth',
     initialState,

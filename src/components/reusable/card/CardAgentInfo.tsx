@@ -4,8 +4,8 @@ import Rating from '~/components/propertyItem/micellenous/Rating';
 
 type AgentProps = {
   src?: string | undefined;
-  firstLetter?: string;
-  lastLetter?: string;
+  firstLetter?: string | null;
+  lastLetter?: string | null;
   identity: string | undefined | ReactNode;
   star?: number;
   imgClass?: string;

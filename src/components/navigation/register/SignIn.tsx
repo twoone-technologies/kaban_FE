@@ -11,13 +11,16 @@ import FormControl from '~/components/reusable/FormControl';
 export default function SignIn({
   signUpUrl,
   isLogged,
+  className,
 }: {
+  className?: string;
   signUpUrl?: () => void;
   isLogged: () => void;
 }) {
   const navigate = useNavigate();
+  // const [searchParams, setSearchParams] = useSearchParams();
   return (
-    <>
+    <div className={className}>
       <h2>Welcome</h2>
       <Svg
         href={logoIcon}
@@ -83,6 +86,6 @@ export default function SignIn({
           </span>
         </p>
       </Form>
-    </>
+    </div>
   );
 }

@@ -24,17 +24,14 @@ export default function Modal({ isVisible, closeModal, children }: ModalProps) {
   }, [isVisible]);
 
   return (
-    <dialog
-      className={`b-radius ${styles.modalWrap}`}
-      ref={modal}
-    >
+    <dialog className={`b-radius ${styles.modalWrap}`} onClose={closeModal} ref={modal}>
       <aside className={styles.modal}>
         {children}
         <Button
           className={`f-width ${styles.btn}`}
           onClick={() => {
+            closeModal && closeModal();
             modal?.current?.close();
-            closeModal && closeModal()
           }}
         >
           <Svg href={closeIcon} />

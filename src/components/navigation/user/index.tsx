@@ -7,12 +7,12 @@ import useResponsiveNav from '~/hooks/useResponsiveNav';
 import CardAgentInfo from '~/components/reusable/card/CardAgentInfo';
 
 type Props = {
-  firstLetter: string;
-  lastLetter: string;
+  firstLetter: string | null;
+  lastLetter: string | null;
   href?: string;
   verified: boolean;
-  email: string;
-  agentName: string;
+  email: string | null;
+  agentName: string | null;
   subItems?: {
     icon: string;
     name: string;
