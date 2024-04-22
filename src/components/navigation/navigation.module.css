@@ -147,6 +147,18 @@
   background-color: white;
 }
 
+.tooltip {
+  position: absolute;
+  bottom: -80dvh;
+  padding: 1rem;
+  font-weight: 500;
+  border-radius: 4px;
+  color: var(--tertiary-color-1);
+  background-color: var(--primary-color);
+  z-index: 1000;
+  transition: all 0.4s ease-in-out;
+}
+
 @media screen and (width >= 768px) {
   .nav {
     position: fixed;

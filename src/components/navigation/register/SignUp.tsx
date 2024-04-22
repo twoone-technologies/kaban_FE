@@ -8,10 +8,15 @@ import { Link } from 'react-router-dom';
 import Button from '~/components/reusable/Button';
 import FormControl from '~/components/reusable/FormControl';
 
-export default function SignUp({ signInUrl }: { signInUrl?: () => void }) {
-
+export default function SignUp({
+  signInUrl,
+  className,
+}: {
+  signInUrl?: () => void;
+  className?: string;
+}) {
   return (
-    <>
+    <div className={className}>
       <h2>Get Started</h2>
       <Svg
         href={logoIcon}
@@ -24,22 +29,22 @@ export default function SignUp({ signInUrl }: { signInUrl?: () => void }) {
         <FormControl
           as="input"
           title="fullName"
-          name='fullName'
+          name="fullName"
           labelText="Full Name"
           type="text"
           placeholder="fullname"
         />
         <FormControl
-          as='input'
-          name='email'
+          as="input"
+          name="email"
           title="email"
           labelText="Email"
           type="email"
           placeholder="smith@example.com"
         />
         <FormControl
-          as='input'
-          name='password'
+          as="input"
+          name="password"
           type="password"
           title="create_password"
           labelText="Create Password"
@@ -86,6 +91,6 @@ export default function SignUp({ signInUrl }: { signInUrl?: () => void }) {
           </span>
         </p>
       </Form>
-    </>
+    </div>
   );
 }

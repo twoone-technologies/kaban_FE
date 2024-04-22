@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {
   Link,
-  useActionData,
+  // useActionData,
   useLocation,
   useNavigate,
   useSearchParams,
@@ -14,12 +14,12 @@ import Svg from '~/components/reusable/Svg';
 import NavItem from './navitem';
 import Container from '../reusable/Container';
 import useInteractiveNav from '~/hooks/useInteractiveNav';
-import { SignInModal, SignUpModal } from './register/ModalRegister';
+import ModalRegister from './register/ModalRegister';
 import HamburgerMenu from './HamburgerMenu';
 import NavBoard from './dashboardNav';
 import UserItem from './user';
-import Tooltip from '../reusable/Tooltip';
-// import { useAppSelector } from '~/api/hooks';
+// import Tooltip from '../reusable/Tooltip';
+import { useAppSelector } from '~/api/hooks';
 
 type UserData = {
   fullName: string;
@@ -28,14 +28,13 @@ type UserData = {
 
 function Navigation() {
   const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const alert = useActionData() as unknown as boolean;
+  const [__, setSearchParams] = useSearchParams();
+  // const alert = useActionData() as unknown as boolean;
   const location = useLocation();
-  // const authState = useAppSelector((state) => state.auth);
+  const authState = useAppSelector((state) => state.auth);
   const [dropDown, setDropDown] = useState(-1);
   const [tooltip, setToolTip] = useState(false);
   const [user, _] = useState<UserData | null>(null);
-  const [login, setLogIn] = useState<'sign_in' | 'sign_up'>('sign_up');
   const { navBar, goingUp, open, setOpen } = useInteractiveNav();
 
   if (open === true) document.body.style.overflowY = 'hidden';
@@ -49,7 +48,7 @@ function Navigation() {
   const lName = user && user?.fullName?.split(' ')[1]?.split('')[0];
   const fullName = user && user?.fullName;
   const email = user && user?.email;
-  console.log({ fName, lName, fullName, email });
+  console.log({ fName, lName, fullName, email, authState });
 
   const background =
     location.pathname === '/'
@@ -129,21 +128,21 @@ function Navigation() {
                 </li>
               ) : (
                 <Button
-                  type="submit"
+                  type="button"
                   className={styles.reg_btn}
                   onClick={() => {
                     setOpen(false);
-                    setLogIn('sign_in');
                     setSearchParams((prev) => {
-                      prev.append('auth', login);
-                      return prev;
+                      const params = new URLSearchParams(prev);
+                      params.append('auth', 'sign_in');
+                      return params;
                     });
                   }}
                 >
                   Register
                 </Button>
               )}
-              <SignInModal
+              <ModalRegister
                 closeModal={() =>
                   setSearchParams((prev) => {
                     const params = new URLSearchParams(prev);
@@ -151,7 +150,6 @@ function Navigation() {
                     return params;
                   })
                 }
-                isVisible={searchParams.get('auth') === `sign_in`}
                 signUpUrl={() => {
                   setSearchParams((prev) => {
                     const params = new URLSearchParams(prev);
@@ -159,16 +157,6 @@ function Navigation() {
                     return params;
                   });
                 }}
-              />
-              <SignUpModal
-                closeModal={() =>
-                  setSearchParams((prev) => {
-                    const params = new URLSearchParams(prev);
-                    params.delete('auth');
-                    return params;
-                  })
-                }
-                isVisible={searchParams.get('auth') === `sign_up`}
                 signInUrl={() => {
                   setSearchParams((prev) => {
                     const params = new URLSearchParams(prev);
@@ -176,13 +164,15 @@ function Navigation() {
                     return params;
                   });
                 }}
+                isVisible={location.search.includes(`auth`)}
               />
-              <Tooltip
-                popOver={alert}
-                // className={styles.tooltip}
+              {/* <Tooltip
+                // popOver={true}
+                copy={true}
+                className={styles.tooltip}
                 text={'Welcome '}
                 // close={() => setToolTip(false)}
-              />
+              /> */}
             </ul>
           </ul>
         </Container>

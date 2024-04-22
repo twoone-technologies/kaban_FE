@@ -1,6 +1,7 @@
 import Modal from '../../reusable/modal/Modal';
 import SignUp from './SignUp';
 import SignIn from './SignIn';
+import { useLocation } from 'react-router-dom';
 
 type Props = {
   isVisible: boolean;
@@ -9,21 +10,19 @@ type Props = {
   signUpUrl?: () => void;
 } & React.ComponentProps<'dialog'>;
 
-export function SignUpModal({ isVisible, signInUrl, closeModal }: Props) {
+export default function ModalRegister({
+  isVisible,
+  signUpUrl,
+  signInUrl,
+  closeModal,
+}: Props) {
+  const location = useLocation();
   return (
     <Modal isVisible={isVisible} closeModal={closeModal}>
-      <SignUp signInUrl={signInUrl} />
-    </Modal>
-  );
-}
-
-export function SignInModal({ isVisible, signUpUrl, closeModal }: Props) {
-  return (
-    <Modal isVisible={isVisible} closeModal={closeModal}>
-      <SignIn
-        signUpUrl={signUpUrl}
-        isLogged={() => ''}
-      />
+      {location.search.includes('sign_in') && (
+        <SignIn signUpUrl={signUpUrl} isLogged={() => ''} />
+      )}
+      {location.search.includes('sign_up') && <SignUp signInUrl={signInUrl} />}
     </Modal>
   );
 }
