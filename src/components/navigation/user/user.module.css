@@ -11,7 +11,7 @@
 }
 
 .agentInfo {
-  background-color:  unset;
+  background-color: unset;
 }
 
 .img {
@@ -54,24 +54,22 @@
 
 /* drop down */
 .drop_down {
-  background-color: var(--tertiary-color-1);
   z-index: 100;
-  box-shadow: 1px 1px 10px 1px var(--hover-color);
   padding: 1rem;
+  background-color: var(--tertiary-color-1);
+  box-shadow: 1px 1px 10px 1px var(--hover-color);
   transition: var(--animation-timing);
 }
 
 .close_link {
-  overflow: hidden;
+  /* overflow: hidden; */
   max-height: 0;
   opacity: 0;
   visibility: hidden;
 }
 
 .open_link {
-  /* margin-top: 1.3rem; */
   opacity: 1;
-  overflow: none;
   max-height: auto;
 }
 
@@ -137,7 +135,7 @@
     color: var(--primary-color);
     transition: var(--animation-timing);
   }
-  
+
   .exit_color {
     transition: var(--animation-timing);
   }
@@ -153,7 +151,7 @@
   }
 
   .drop_down {
-    background-color: var(--tertiary-color-1);
+    border: 1.2px solid var(--hover-color);
     box-shadow: none;
     margin-left: -0.1rem;
   }

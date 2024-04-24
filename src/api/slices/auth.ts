@@ -1,6 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
-
-import { RootState } from "../store"
+import { AppDispatch, RootState } from "../store"
 import { AuthState } from "~/utils/types/auth.types"
 
 const initialState: AuthState = {
@@ -28,3 +27,6 @@ const authSlice = createSlice({
 export const { setCredentials, clearCredentials } = authSlice.actions
 export default authSlice.reducer
 export const selectCurrentToken = (state: RootState) => state.auth.accessToken
+export function Logout(dispatch: AppDispatch) {
+    dispatch(clearCredentials())
+}

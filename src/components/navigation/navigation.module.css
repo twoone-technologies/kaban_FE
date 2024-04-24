@@ -100,7 +100,6 @@
 
 /* nav */
 .nav_content {
-  overflow: scroll;
   flex-direction: column;
   position: fixed;
   top: 0;
@@ -125,10 +124,6 @@
 }
 
 .loggedState {
-  width: 100%;
-}
-
-.toggleUser {
   width: 100%;
 }
 
@@ -196,10 +191,6 @@
 
   .reg li {
     width: unset;
-  }
-
-  .toggleUser {
-    width: 4rem;
   }
 
   .post_btn {

@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import {
   Link,
-  // useActionData,
   useLocation,
   useNavigate,
+  useNavigation,
   useSearchParams,
 } from 'react-router-dom';
 import { logoIcon } from '~/assets/icons';
 import Button from '~/components/reusable/Button';
 import styles from './navigation.module.css';
-import navbarData, { userData } from './navbarData';
+import navbarData from './navbarData';
 import Svg from '~/components/reusable/Svg';
 import NavItem from './navitem';
 import Container from '../reusable/Container';
@@ -18,37 +18,39 @@ import ModalRegister from './register/ModalRegister';
 import HamburgerMenu from './HamburgerMenu';
 import NavBoard from './dashboardNav';
 import UserItem from './user';
-// import Tooltip from '../reusable/Tooltip';
 import { useAppSelector } from '~/api/hooks';
-
-type UserData = {
-  fullName: string;
-  email: string;
-};
+import { selectCurrentToken } from '~/api/slices/auth';
 
 function Navigation() {
   const navigate = useNavigate();
+  const { state } = useNavigation();
   const [__, setSearchParams] = useSearchParams();
-  // const alert = useActionData() as unknown as boolean;
   const location = useLocation();
-  const authState = useAppSelector((state) => state.auth);
+  const isLoggedIn = useAppSelector((state) => selectCurrentToken(state));
   const [dropDown, setDropDown] = useState(-1);
   const [tooltip, setToolTip] = useState(false);
-  const [user, _] = useState<UserData | null>(null);
   const { navBar, goingUp, open, setOpen } = useInteractiveNav();
 
-  if (open === true) document.body.style.overflowY = 'hidden';
+  if (open === true || location.search.includes(`auth`))
+    document.body.style.overflowY = 'hidden';
   else document.body.style.overflowY = '';
 
   const onClickHandler = () => {
     setOpen(!open);
   };
 
-  const fName = user && user?.fullName?.split(' ')[0]?.split('')[0];
-  const lName = user && user?.fullName?.split(' ')[1]?.split('')[0];
-  const fullName = user && user?.fullName;
-  const email = user && user?.email;
-  console.log({ fName, lName, fullName, email, authState });
+  const handleSubmit = () => {
+    if (state === 'idle') {
+      const timeoutId = setTimeout(() => {
+        setSearchParams((prev) => {
+          const params = new URLSearchParams(prev);
+          params.delete('auth');
+          return params;
+        });
+      }, 1000);
+      return () => clearTimeout(timeoutId);
+    }
+  };
 
   const background =
     location.pathname === '/'
@@ -104,7 +106,7 @@ function Navigation() {
               />
             ))}
             <ul className={`flex gap ${styles.reg}`}>
-              {user !== null ? (
+              {isLoggedIn ? (
                 <li className={`flex gap align-y ${styles.loggedState}`}>
                   <Button
                     onClick={() => navigate('/dashboard/post')}
@@ -113,17 +115,11 @@ function Navigation() {
                     Post a property
                   </Button>
                   <UserItem
-                    className={styles.toggleUser}
-                    closeNav={setOpen}
-                    firstLetter={fName}
-                    lastLetter={lName}
                     drop={tooltip}
-                    email={email}
-                    subItems={userData}
+                    closeNav={setOpen}
+                    mouseEnter={() => setToolTip(true)}
+                    mouseLeave={() => setToolTip(false)}
                     handleClick={() => setToolTip(!tooltip)}
-                    mouseOver={() => setToolTip(!tooltip)}
-                    verified={true}
-                    agentName={fullName}
                   />
                 </li>
               ) : (
@@ -143,6 +139,7 @@ function Navigation() {
                 </Button>
               )}
               <ModalRegister
+                isLogged={handleSubmit}
                 closeModal={() =>
                   setSearchParams((prev) => {
                     const params = new URLSearchParams(prev);
@@ -166,13 +163,6 @@ function Navigation() {
                 }}
                 isVisible={location.search.includes(`auth`)}
               />
-              {/* <Tooltip
-                // popOver={true}
-                copy={true}
-                className={styles.tooltip}
-                text={'Welcome '}
-                // close={() => setToolTip(false)}
-              /> */}
             </ul>
           </ul>
         </Container>

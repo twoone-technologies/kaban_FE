@@ -55,6 +55,11 @@
   display: unset;
 }
 
+input[name='intent']:hover {
+  background-color: var(--primary-color);
+  cursor: pointer;
+}
+
 .input label {
   color: var(--tertiary-color-2);
   margin-bottom: 0.5rem;

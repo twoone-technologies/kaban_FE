@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 
 type Props = {
   isVisible: boolean;
+  isLogged: () => void;
   closeModal: () => void;
   signInUrl?: () => void;
   signUpUrl?: () => void;
@@ -12,6 +13,7 @@ type Props = {
 
 export default function ModalRegister({
   isVisible,
+  isLogged,
   signUpUrl,
   signInUrl,
   closeModal,
@@ -20,7 +22,7 @@ export default function ModalRegister({
   return (
     <Modal isVisible={isVisible} closeModal={closeModal}>
       {location.search.includes('sign_in') && (
-        <SignIn signUpUrl={signUpUrl} isLogged={() => ''} />
+        <SignIn signUpUrl={signUpUrl} isLogged={isLogged} />
       )}
       {location.search.includes('sign_up') && <SignUp signInUrl={signInUrl} />}
     </Modal>
