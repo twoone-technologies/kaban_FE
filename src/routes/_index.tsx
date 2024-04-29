@@ -1,4 +1,8 @@
-import { ActionFunctionArgs, Outlet, useLocation } from 'react-router-dom';
+import {
+  ActionFunctionArgs,
+  Outlet,
+  useLocation,
+} from 'react-router-dom';
 import { signin, signup } from '~/api/features/auth';
 import Sidebar from '~/components/dashboard/sidebar';
 import Footer from '~/components/footer/Footer';
@@ -10,10 +14,9 @@ export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
   console.log(...formData);
 
-  const alert: {success: boolean, error?: unknown} = {success: false}
   const intent = formData.get('intent');
   switch (intent) {
-    case 'Sign Up':
+    case 'signup':
       console.log('signup');
       // send data to BE
       try {
@@ -24,27 +27,23 @@ export async function action({ request }: ActionFunctionArgs) {
           phone_num: '123456799',
           role: 3,
         });
+        return { data: 'success' };
       } catch (error) {
-        return alert.error = error
-        // return error alert for toast notification
+        return { error: 'signup is unsuccessful' };
       }
-      break;
     case 'signin':
       try {
-          await signin({
+        await signin({
           email: formData.get('email') as string,
           password: formData.get('password') as string,
         });
-        return alert.success = true
+        return { data: 'success' };
       } catch (error) {
-        return alert.success = false, alert.error = error
+        return { error: 'signup is unsuccessful' };
       }
     default:
-      console.log('unknown');
-      break;
+      return 'unknown';
   }
-  console.log(alert);
-  return alert;
 }
 
 export default function Root() {

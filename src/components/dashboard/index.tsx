@@ -1,6 +1,8 @@
 import { ActionFunctionArgs } from "react-router-dom";
 import Insight from "./insight";
 import Overview from "./overview";
+import Edit from "./editprofile";
+import Post from "./postproperty";
 
 export async function action({ request }: ActionFunctionArgs) {
   // get form data
@@ -25,6 +27,8 @@ export default function Dashboard() {
     <>
       <Overview />
       <Insight />
+      <Post />
+      <Edit />
     </>
   )
 }

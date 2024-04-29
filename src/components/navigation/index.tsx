@@ -1,11 +1,5 @@
 import { useState } from 'react';
-import {
-  Link,
-  useLocation,
-  useNavigate,
-  useNavigation,
-  useSearchParams,
-} from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { logoIcon } from '~/assets/icons';
 import Button from '~/components/reusable/Button';
 import styles from './navigation.module.css';
@@ -20,11 +14,11 @@ import NavBoard from './dashboardNav';
 import UserItem from './user';
 import { useAppSelector } from '~/api/hooks';
 import { selectCurrentToken } from '~/api/slices/auth';
+import useAuthUtils from '~/utils/functions/useAuthUtils';
 
 function Navigation() {
   const navigate = useNavigate();
-  const { state } = useNavigation();
-  const [__, setSearchParams] = useSearchParams();
+  const { addAuthToUrl, removeAuthFromUrl, authState } = useAuthUtils();
   const location = useLocation();
   const isLoggedIn = useAppSelector((state) => selectCurrentToken(state));
   const [dropDown, setDropDown] = useState(-1);
@@ -37,19 +31,6 @@ function Navigation() {
 
   const onClickHandler = () => {
     setOpen(!open);
-  };
-
-  const handleSubmit = () => {
-    if (state === 'idle') {
-      const timeoutId = setTimeout(() => {
-        setSearchParams((prev) => {
-          const params = new URLSearchParams(prev);
-          params.delete('auth');
-          return params;
-        });
-      }, 1000);
-      return () => clearTimeout(timeoutId);
-    }
   };
 
   const background =
@@ -128,45 +109,28 @@ function Navigation() {
                   className={styles.reg_btn}
                   onClick={() => {
                     setOpen(false);
-                    setSearchParams((prev) => {
-                      const params = new URLSearchParams(prev);
-                      params.append('auth', 'sign_in');
-                      return params;
-                    });
+                    addAuthToUrl('sign_in');
                   }}
                 >
                   Register
                 </Button>
               )}
-              <ModalRegister
-                isLogged={handleSubmit}
-                closeModal={() =>
-                  setSearchParams((prev) => {
-                    const params = new URLSearchParams(prev);
-                    params.delete('auth');
-                    return params;
-                  })
-                }
-                signUpUrl={() => {
-                  setSearchParams((prev) => {
-                    const params = new URLSearchParams(prev);
-                    params.set('auth', 'sign_up');
-                    return params;
-                  });
-                }}
-                signInUrl={() => {
-                  setSearchParams((prev) => {
-                    const params = new URLSearchParams(prev);
-                    params.set('auth', 'sign_in');
-                    return params;
-                  });
-                }}
-                isVisible={location.search.includes(`auth`)}
-              />
             </ul>
           </ul>
         </Container>
       )}
+      <ModalRegister
+        closeModal={() => {
+          removeAuthFromUrl();
+        }}
+        signUpUrl={() => {
+          addAuthToUrl('sign_up');
+        }}
+        signInUrl={() => {
+          addAuthToUrl('sign_in');
+        }}
+        authState={authState}
+      />
     </>
   );
 }

@@ -3,11 +3,11 @@ import styles from './card.module.css';
 import Rating from '~/components/propertyItem/micellenous/Rating';
 
 type AgentProps = {
-  src?: string | undefined;
+  src?: string | undefined | null;
   firstLetter?: string | null;
   lastLetter?: string | null;
   identity: string | undefined | ReactNode;
-  star?: number;
+  star?: number | null;
   imgClass?: string;
   onClick?: React.ChangeEventHandler<HTMLDivElement> & React.MouseEventHandler<HTMLDivElement>
 } & React.ComponentProps<'div'>;
@@ -21,10 +21,11 @@ export default function CardAgentInfo({
   onClick,
   imgClass,
   className,
+  ...props
 }: AgentProps) {
   return (
     <div
-      onClick={onClick}
+      onClick={onClick} {...props}
       className={`cursor-pointer flex s-btw f-width align-y b-radius c-pad relative ${className} ${styles.agent}`}
     >
       <div className="flex align-y gap">

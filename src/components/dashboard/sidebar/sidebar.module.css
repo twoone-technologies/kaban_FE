@@ -72,13 +72,13 @@
   height: 3rem;
 }
 
-
 .dropdown {
   color: var(--accent-color-1);
   font-weight: 600;
   max-width: 15rem;
+  margin-left: 1rem;
   background-color: var(--tertiary-color-1);
-  bottom: 7rem;
+  bottom: 5rem;
   border: 1.5px solid var(--hover-color);
 }
 

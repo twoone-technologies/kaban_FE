@@ -123,7 +123,8 @@ input[name='intent']:hover {
   }
 
   .modalWrap::backdrop {
-    background-color: rgba(0, 0, 0, 0.50);
+    background-color: rgba(0, 0, 0, 0.712);
+    backdrop-filter: blur(5px);
   }
 
   .k_logo {

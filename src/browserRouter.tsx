@@ -22,66 +22,68 @@ import Agents from './routes/_realtors.agents';
 import Agencies from './routes/_realtors.agencies';
 import SearchResults, { action as results } from './routes/search_results';
 import PropertyItem from './components/propertyItem/PropertyItem';
-import CityName, {
-  action as cityResults,
-} from './routes/cities.$cityName';
+import CityName, { action as cityResults } from './routes/cities.$cityName';
 import Overview from './components/dashboard/overview';
-import Dashboard, { action as srchRes } from './components/dashboard';
 import Insight from './components/dashboard/insight';
 import Listings from './components/dashboard/mylisting';
 import Wallet from './components/dashboard/wallet';
 import Support from './components/dashboard/support';
 import Notification from './components/dashboard/notification';
 import Post, { action as postForm } from './components/dashboard/postproperty';
-import Edit, { action as editForm } from './components/dashboard/editprofile';
+import EditProfile, { action as editForm } from './components/dashboard/editprofile';
 import SupportCard from './components/dashboard/support/supportCard';
 import EditProperty, {
   action as editPropertyForm,
 } from './components/dashboard/editProperty';
+import RequireAuth from './utils/functions/RequireAuth';
+import Onboard from './utils/functions/Onboard';
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Root />} action={signResults}>
-      <Route index element={<LandingPage />} action={listingSearch} />
-      <Route
-        path="search_results"
-        element={<SearchResults />}
-        action={results}
-      />
-      <Route path="property-item/:id" element={<PropertyItem />} />
-      <Route path="blog" element={<Blog />} />
-      <Route path="commercial" element={<Commercial />} action={comResults} />
-      <Route path="industrial" element={<Industrial />} action={indResults} />
-      <Route path="residential" element={<Residential />} action={resResults} />
-      <Route path="agents" element={<Agents />} />
-      <Route path="agencies" element={<Agencies />} />
-      <Route path="about-us" element={<AboutUs />} />
-      <Route path="contact-us" element={<ContactUs />} />
-      <Route path="faqs" element={<FAQs />} />
-      <Route
-        path="cities/:cityName"
-        element={<CityName />}
-        action={cityResults}
-      />
-      <Route path="dashboard" element={<Dashboard />} action={srchRes} />
-      <Route path="dashboard/overview" element={<Overview />} />
-      <Route path="dashboard/insights" element={<Insight />} />
-      <Route path="dashboard/listings" element={<Listings />} />
-      <Route path="dashboard/wallet" element={<Wallet />} />
-      <Route path="dashboard/support" element={<Support />} />
-      <Route path="dashboard/support/:title" element={<SupportCard />} />
-      <Route path="dashboard/notification" element={<Notification />} />
-      <Route path="dashboard/post" element={<Post />} action={postForm} />
-      <Route
-        path="dashboard/property_edit/:id"
-        element={<EditProperty />}
-        action={editPropertyForm}
-      />
-      <Route
-        path="dashboard/profile_edit"
-        element={<Edit />}
-        action={editForm}
-      />
-    </Route>,
+    <Route element={<Onboard />}>
+      <Route path="/" element={<Root />} action={signResults}>
+        <Route index element={<LandingPage />} action={listingSearch} />
+        <Route
+          path="search_results"
+          element={<SearchResults />}
+          action={results}
+        />
+        <Route path="property-item/:id" element={<PropertyItem />} />
+        <Route path="blog" element={<Blog />} />
+        <Route path="commercial" element={<Commercial />} action={comResults} />
+        <Route path="industrial" element={<Industrial />} action={indResults} />
+        <Route path="residential" element={<Residential />} action={resResults} />
+        <Route path="agents" element={<Agents />} />
+        <Route path="agencies" element={<Agencies />} />
+        <Route path="about-us" element={<AboutUs />} />
+        <Route path="contact-us" element={<ContactUs />} />
+        <Route path="faqs" element={<FAQs />} />
+        <Route
+          path="cities/:cityName"
+          element={<CityName />}
+          action={cityResults}
+        />
+        <Route path='dashboard' element={<RequireAuth />}>
+          <Route index element={<Overview />} />
+          <Route path="insights" element={<Insight />} />
+          <Route path="listings" element={<Listings />} />
+          <Route path="wallet" element={<Wallet />} />
+          <Route path="support" element={<Support />} />
+          <Route path="support/:title" element={<SupportCard />} />
+          <Route path="notification" element={<Notification />} />
+          <Route path="post" element={<Post />} action={postForm} />
+          <Route
+            path="property_edit/:id"
+            element={<EditProperty />}
+            action={editPropertyForm}
+          />
+          <Route
+            path="profile_edit"
+            element={<EditProfile />}
+            action={editForm}
+          />
+        </Route>
+      </Route>
+    </Route>
   ),
 );

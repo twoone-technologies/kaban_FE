@@ -1,0 +1,25 @@
+export const APP_LINKS = {
+  HOME: '/',
+  SEARCH_RESULT: 'search_result',
+  COMMERCIAL: 'commercial',
+  INDUSTRIAL: 'industrial',
+  RESIDENTIAL: 'residential',
+  AGENTS: 'agents',
+  ABOUT_US: 'about-us',
+  CONTACT_US: 'contact-us',
+  FAQS: 'faqs',
+  CITIES: 'cities/:cityName',
+  AGENT: {
+    DASHBOARD: 'dashboard',
+    OVERVIEW: 'dashboard/overview',
+    INSIGHTS: 'dashboard/insights',
+    LISTINGS: 'dashboard/listings',
+    WALLET: 'dashboard/wallet',
+    SUPPORT: 'dashboard/support',
+    SUPPORT_CARD: 'dashboard/support/:title',
+    NOTIFICATION: 'dashboard/notification',
+    POST_LISTING: 'dashboard/post',
+    EDIT_LISTING: 'dashboard/property_edit/:id',
+    EDIT_PROFILE: 'dashboard/profile_edit',
+  }
+}

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import useResponsiveNav from '~/hooks/useResponsiveNav';
 import CardAgentInfo from '~/components/reusable/card/CardAgentInfo';
 import { useAppSelector } from '~/api/hooks';
-import { userData } from '../navbarData';
+import { getUserData } from '../navbarData';
 import { IkonIcon } from '~/assets/img';
 import Invite from '~/components/dashboard/invite';
 
@@ -26,6 +26,7 @@ const UserItem = ({
   closeNav,
 }: Props) => {
   const authState = useAppSelector((state) => state.auth);
+  const userData = getUserData(() => setInvite(true));
   const [hover, sethover] = useState(-1);
   const [invite, setInvite] = useState(false);
   const navStateHandler = useResponsiveNav({
@@ -107,7 +108,6 @@ const UserItem = ({
                 closeNav(false);
                 handleClick();
                 if (item.onClick) item.onClick();
-                if (item.link) setInvite(true);
               }}
               className={`flex pad b-radius ${styles.nav_item_link}`}
             >

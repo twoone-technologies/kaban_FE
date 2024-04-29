@@ -75,11 +75,11 @@ const navbarData = {
 }
 export default navbarData
 
-export const userData = [
+export const getUserData = (setInvite: () => void) => [
   {
     icon: dashboardIcon,
     name: 'Dashboard',
-    path: '/dashboard/overview',
+    path: '/dashboard',
   },
   {
     icon: supportIcon,
@@ -89,7 +89,7 @@ export const userData = [
   {
     icon: inviteIcon,
     name: 'Invite a realtor',
-    link: 'invite',
+    onClick: () => setInvite(),
   },
   {
     icon: sign_outIcon,

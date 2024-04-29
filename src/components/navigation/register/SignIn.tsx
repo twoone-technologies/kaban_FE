@@ -10,12 +10,10 @@ import FormControl from '~/components/reusable/FormControl';
 
 export default function SignIn({
   signUpUrl,
-  isLogged,
   className,
 }: {
   className?: string;
-  signUpUrl?: () => void;
-  isLogged: () => void;
+  signUpUrl: () => void;
 }) {
   const navigate = useNavigate();
   const { state } = useNavigation();
@@ -61,7 +59,6 @@ export default function SignIn({
           <ThreeDots />
         ) : (
           <input
-            onClick={isLogged}
             name="intent"
             value={'signin'}
             type="submit"

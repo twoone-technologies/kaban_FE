@@ -65,7 +65,7 @@ export default function SignUp({
         </div>
         <input
           name="intent"
-          value="Sign Up"
+          value="signup"
           type="submit"
           className={
             'flex bg-primary-1 b-radius bg-grey c-tertiary align-x c-pad'

@@ -13,7 +13,7 @@ import NotificationList from '~/components/dashboard/notification/alertComponent
 export default function NavBoard() {
   const location = useLocation();
   const route = location.pathname.split('/')[2];
-  const header = route.charAt(0).toUpperCase() + route.slice(1);
+  const header = route?.charAt(0).toUpperCase() + route?.slice(1) || 'Overview';
 
   const { open, goingUp, setOpen } = useInteractiveNav();
   if (open === true) document.body.style.overflowY = 'hidden';
