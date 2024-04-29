@@ -16,5 +16,5 @@ export default function useAuthUtils() {
       return params;
     })
   }
-  return { addAuthToUrl, removeAuthFromUrl, authState: searchParams.get('auth')}
+  return { addAuthToUrl, removeAuthFromUrl, authState: searchParams.get('auth') }
 }

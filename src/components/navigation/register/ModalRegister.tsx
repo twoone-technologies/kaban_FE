@@ -10,10 +10,7 @@ type Props = {
 } & React.ComponentProps<'dialog'>;
 
 export default function ModalRegister({
-  authState,
-  signUpUrl,
-  signInUrl,
-  closeModal,
+  authState, signUpUrl, signInUrl, closeModal
 }: Props) {
   return (
     <Modal isVisible={!!authState} closeModal={closeModal}>

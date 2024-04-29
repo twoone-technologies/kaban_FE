@@ -3,7 +3,10 @@ import {
   Outlet,
   useLocation,
 } from 'react-router-dom';
+
 import { signin, signup } from '~/api/features/auth';
+import { useAppSelector } from '~/api/hooks';
+import useAuthUtils from '~/utils/functions/useAuthUtils';
 import Sidebar from '~/components/dashboard/sidebar';
 import Footer from '~/components/footer/Footer';
 import Navigation from '~/components/navigation';
@@ -48,12 +51,20 @@ export async function action({ request }: ActionFunctionArgs) {
 
 export default function Root() {
   const location = useLocation();
+  const isDashboard = location.pathname.includes('dashboard');
+
+  // Remove auth query param if user is logged in.
+  const authState = useAppSelector((state) => state.auth);
+  const isLoggedIn = authState.accessToken ? true : false;
+  const { removeAuthFromUrl, authState: authSearchState } = useAuthUtils();
+  if (isLoggedIn && authSearchState) removeAuthFromUrl();
+
   return (
     <>
-      {location.pathname.includes('dashboard') && <Sidebar />}
+      {isDashboard && <Sidebar />}
       <Navigation />
       <Outlet />
-      {location.pathname.includes('dashboard') || <Footer />}
+      {isDashboard || <Footer />}
     </>
   );
 }

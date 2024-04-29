@@ -16,30 +16,27 @@ export default function Modal({ isVisible, closeModal, children }: ModalProps) {
   const isLoggedIn = useAppSelector((state) => selectCurrentToken(state));
 
   useEffect(() => {
+    function handleKeyDown(event: { key: string; preventDefault: () => void; }) {
+      if (isVisible && event.key === 'Escape') {
+        event.preventDefault(); // Prevent the default behavior of the escape key
+        // Optionally, you can add additional logic here before closing the modal
+        location.pathname.includes('dashboard') && !isLoggedIn ? null : modal?.current?.close();
+      }
+    }
     if (isVisible) {
       modal.current?.showModal();
-    }
-    if (isVisible) document.body.style.overflowY = 'hidden';
-    else document.body.style.overflowY = '';
-    
-      function handleKeyDown(event: { key: string; preventDefault: () => void; }) {
-        if (isVisible && event.key === 'Escape') {
-          event.preventDefault(); // Prevent the default behavior of the escape key
-          // Optionally, you can add additional logic here before closing the modal
-          location.pathname.includes('dashboard') && !isLoggedIn ? null : modal?.current?.close();
-        }
-      }
-  
+      // Disable window scroll
+      document.body.style.overflowY = 'hidden';
       // Add event listener when the modal is opened
-      if (isVisible) {
-        document.addEventListener('keydown', handleKeyDown);
-      }
-  
-      // Remove event listener when the modal is closed or unmounted
-      return () => {
-        document.removeEventListener('keydown', handleKeyDown);
-        modal?.current?.close();
-      };
+      document.addEventListener('keydown', handleKeyDown);
+    }
+    else {
+      modal.current?.close();
+    }
+    // Remove event listener when the modal is closed or unmounted
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
   }, [isVisible]);
 
   return (
@@ -48,14 +45,14 @@ export default function Modal({ isVisible, closeModal, children }: ModalProps) {
         {children}
         {location.pathname.includes('dashboard') && !isLoggedIn ? null :
           <Button
-          className={`f-width ${styles.btn}`}
-          onClick={() => {
-            closeModal && closeModal();
-            modal?.current?.close();
-          }}
-        >
-          <Svg href={closeIcon} />
-        </Button>}
+            className={`f-width ${styles.btn}`}
+            onClick={() => {
+              closeModal && closeModal();
+              modal?.current?.close();
+            }}
+          >
+            <Svg href={closeIcon} />
+          </Button>}
       </aside>
     </dialog>
   );
