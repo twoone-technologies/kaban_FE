@@ -55,6 +55,11 @@
   display: unset;
 }
 
+input[name='intent']:hover {
+  background-color: var(--primary-color);
+  cursor: pointer;
+}
+
 .input label {
   color: var(--tertiary-color-2);
   margin-bottom: 0.5rem;
@@ -118,7 +123,8 @@
   }
 
   .modalWrap::backdrop {
-    background-color: rgba(0, 0, 0, 0.50);
+    background-color: rgba(0, 0, 0, 0.712);
+    backdrop-filter: blur(5px);
   }
 
   .k_logo {

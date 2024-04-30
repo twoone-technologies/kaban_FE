@@ -5,65 +5,59 @@ import Svg from '~/components/reusable/Svg';
 import { Link } from 'react-router-dom';
 import useResponsiveNav from '~/hooks/useResponsiveNav';
 import CardAgentInfo from '~/components/reusable/card/CardAgentInfo';
+import { useAppSelector } from '~/api/hooks';
+import { getUserData } from '../navbarData';
+import { IkonIcon } from '~/assets/img';
+import Invite from '~/components/dashboard/invite';
 
 type Props = {
-  firstLetter: string | null;
-  lastLetter: string | null;
-  href?: string;
-  verified: boolean;
-  email: string | null;
-  agentName: string | null;
-  subItems?: {
-    icon: string;
-    name: string;
-    path: string;
-  }[];
   drop: boolean;
   closeNav: (arg: boolean) => void;
   handleClick: () => void;
-  mouseOver: () => void;
+  mouseEnter: () => void;
+  mouseLeave: () => void;
 } & React.ComponentProps<'li'>;
 
 const UserItem = ({
-  firstLetter,
-  lastLetter,
-  href,
-  email,
-  subItems,
-  verified,
-  className,
-  agentName,
   drop,
   handleClick,
-  mouseOver,
+  mouseEnter,
+  mouseLeave,
   closeNav,
 }: Props) => {
+  const authState = useAppSelector((state) => state.auth);
+  const userData = getUserData(() => setInvite(true));
   const [hover, sethover] = useState(-1);
+  const [invite, setInvite] = useState(false);
   const navStateHandler = useResponsiveNav({
     onClick: handleClick,
-    onMouseEnter: mouseOver,
-    onMouseLeave: mouseOver,
+    onMouseEnter: mouseEnter,
+    onMouseLeave: mouseLeave,
   });
 
   return (
     <ul
-      className={`flex gap ${className} ${styles.nav_item}`}
+      className={`flex gap w-full md:w-16 ${styles.nav_item}`}
       {...navStateHandler}
     >
       <li className={`flex align-x align-y ${styles.name_initials}`}>
-        <span className={styles.switch}>{firstLetter}</span>
-        <span className={styles.switch}>{lastLetter}</span>
+        <span className={styles.switch}>
+          {authState.fullName?.split(' ')[0]?.split('')[0]}
+        </span>
+        <span className={styles.switch}>
+          {authState.fullName?.split(' ')[1]?.split('')[0]}
+        </span>
         <CardAgentInfo
           className={styles.switch_mobile}
           imgClass={styles.img}
-          src={href}
-          firstLetter={firstLetter}
-          lastLetter={lastLetter}
+          src={IkonIcon}
+          firstLetter={authState.fullName?.split(' ')[0]?.split('')[0]}
+          lastLetter={authState.fullName?.split(' ')[1]?.split('')[0]}
           identity={
             <div className="flex f-column">
               <b className="flex align-y">
-                {agentName}
-                {verified ? (
+                {authState?.fullName}
+                {authState?.verified ? (
                   <Svg
                     href={verifyIcon}
                     height="1.8rem"
@@ -71,7 +65,7 @@ const UserItem = ({
                   />
                 ) : null}
               </b>
-              <span>{email}</span>
+              <span>{authState?.email}</span>
             </div>
           }
         />
@@ -81,17 +75,18 @@ const UserItem = ({
           className={`flex f-column b-radius ${styles.drop_down}
             ${drop ? styles.open_link : styles.close_link}`}
         >
+          <Invite isOpen={invite} exit={() => setInvite(false)} />
           <CardAgentInfo
             className={styles.agentInfo}
             imgClass={styles.img}
-            src={href}
-            firstLetter={firstLetter}
-            lastLetter={lastLetter}
+            src={authState.realtor_pic ? authState.realtor_pic : undefined}
+            firstLetter={authState.fullName?.split(' ')[0]?.split('')[0]}
+            lastLetter={authState.fullName?.split(' ')[1]?.split('')[0]}
             identity={
               <div className="flex f-column">
                 <b className="flex align-y">
-                  {agentName}
-                  {verified ? (
+                  {authState?.fullName}
+                  {authState?.verified ? (
                     <Svg
                       href={verifyIcon}
                       height="1.8rem"
@@ -99,34 +94,36 @@ const UserItem = ({
                     />
                   ) : null}
                 </b>
-                <span>{email}</span>
+                <span>{authState?.email}</span>
               </div>
             }
           />
-          {subItems?.map((item, id) => (
-            <li>
-              <Link
-                to={item.path}
-                key={id}
-                onMouseEnter={() => sethover(id)}
-                onMouseLeave={() => sethover(-1)}
-                onClick={() => closeNav(false)}
-                className={`flex pad b-radius ${styles.nav_item_link}`}
-              >
-                {hover === id && drop ? (
-                  <Svg
-                    href={`${item.icon}`}
-                    className={`${drop ? styles.blue : styles.ash}`}
-                  />
-                ) : (
-                  <Svg
-                    href={`${item.icon}`}
-                    className={`${drop ? styles.ash : styles.ash}`}
-                  />
-                )}
-                <span>{item.name}</span>
-              </Link>
-            </li>
+          {userData?.map((item, id) => (
+            <Link
+              to={item.path ?? '.'}
+              key={id}
+              onMouseEnter={() => sethover(id)}
+              onMouseLeave={() => sethover(-1)}
+              onClick={() => {
+                closeNav(false);
+                handleClick();
+                if (item.onClick) item.onClick();
+              }}
+              className={`flex pad b-radius ${styles.nav_item_link}`}
+            >
+              {hover === id && drop ? (
+                <Svg
+                  href={`${item.icon}`}
+                  className={`${drop ? styles.blue : styles.ash}`}
+                />
+              ) : (
+                <Svg
+                  href={`${item.icon}`}
+                  className={`${drop ? styles.ash : styles.ash}`}
+                />
+              )}
+              <span>{item.name}</span>
+            </Link>
           ))}
         </ul>
       </li>

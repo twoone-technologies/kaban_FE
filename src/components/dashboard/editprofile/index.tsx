@@ -90,7 +90,7 @@ export type EditProfileInputs = {
   deactivation_reason: string;
 };
 
-export default function Edit() {
+export default function EditProfile() {
   const { activeIndex, prevId, handleHeaderClick } = useTabulation(150);
   const [minDocx, setMinDocx] = useState(false);
 

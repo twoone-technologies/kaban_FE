@@ -1,24 +1,23 @@
-import { Form, useNavigate } from 'react-router-dom';
+import { Form, useNavigate, useNavigation } from 'react-router-dom';
 import styles from '~/components/reusable/modal/modal.module.css';
 import { googleSvgIcon, logoIcon } from '~/assets/icons';
 import Svg from '~/components/reusable/Svg';
 import Checkbox from '~/components/searchForm/checkbox/Checkbox';
 import LineText from './LineText';
 import { Link } from 'react-router-dom';
-import Button from '~/components/reusable/Button';
+import Button, { ThreeDots } from '~/components/reusable/Button';
 import FormControl from '~/components/reusable/FormControl';
 
 export default function SignIn({
   signUpUrl,
-  isLogged,
   className,
 }: {
   className?: string;
-  signUpUrl?: () => void;
-  isLogged: () => void;
+  signUpUrl: () => void;
 }) {
   const navigate = useNavigate();
-  // const [searchParams, setSearchParams] = useSearchParams();
+  const { state } = useNavigation();
+
   return (
     <div className={className}>
       <h2>Welcome</h2>
@@ -41,30 +40,33 @@ export default function SignIn({
         <FormControl
           as="input"
           required
+          type="password"
           title="password"
           name="password"
           labelText="Password"
-          type="password"
           placeholder="8+ characters"
         />
         <div className="flex s-btw">
           <div className="flex">
-            <Checkbox title="keepMeLoggedIn" name='keepMeLoggedIn' />
+            <Checkbox title="keepMeLoggedIn" name="keepMeLoggedIn" />
             <span>Keep me logged in</span>
           </div>
           <Link to={''} className="bg-primary">
             Forgot password?
           </Link>
         </div>
-        <input
-          onClick={() => isLogged()}
-          name="intent"
-          value={'signin'}
-          type="submit"
-          className={
-            'flex bg-primary-1 b-radius bg-grey c-tertiary align-x c-pad'
-          }
-        />
+        {state === 'submitting' ? (
+          <ThreeDots />
+        ) : (
+          <input
+            name="intent"
+            value={'signin'}
+            type="submit"
+            className={
+              'flex bg-primary-1 b-radius bg-grey c-tertiary align-x c-pad'
+            }
+          />
+        )}
         <LineText text="Or continue with" />
         <Button
           type="button"

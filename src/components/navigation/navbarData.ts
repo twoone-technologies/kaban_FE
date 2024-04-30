@@ -6,6 +6,8 @@ import { house_2Icon } from "~/assets/img";
 import { house_3Icon } from "~/assets/img";
 import { agentsIcon } from "~/assets/icons";
 import { agenciesIcon } from "~/assets/icons";
+import { store } from "~/api/store";
+import { Logout } from "~/api/slices/auth";
 
 const navbarData = {
   Property: {
@@ -73,26 +75,26 @@ const navbarData = {
 }
 export default navbarData
 
-export const userData = [
+export const getUserData = (setInvite: () => void) => [
   {
     icon: dashboardIcon,
-    name: 'Dashboad',
-    path: '',
+    name: 'Dashboard',
+    path: '/dashboard',
   },
   {
     icon: supportIcon,
     name: 'Support',
-    path: '',
+    path: '/dashboard/support',
   },
   {
     icon: inviteIcon,
     name: 'Invite a realtor',
-    path: '',
+    onClick: () => setInvite(),
   },
   {
     icon: sign_outIcon,
     name: 'Sign out',
-    path: '',
+    onClick: () => Logout(store.dispatch),
   },
 ]
 

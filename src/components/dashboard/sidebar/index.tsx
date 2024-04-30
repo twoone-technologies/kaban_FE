@@ -6,11 +6,14 @@ import { Link } from 'react-router-dom';
 import { sidebarArr } from './sidebar';
 import Button from '~/components/reusable/Button';
 import CardAgentInfo from '~/components/reusable/card/CardAgentInfo';
-import { IkonIcon } from '~/assets/img';
 import { ReactNode, useState } from 'react';
 import Invite from '../invite';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { profileIcon, sign_outIcon } from '~/assets/icons';
+import { useAppSelector } from '~/api/hooks';
+import { Logout } from '~/api/slices/auth';
+import { store } from '~/api/store';
+import useResponsiveNav from '~/hooks/useResponsiveNav';
 
 type Props = {
   className?: string;
@@ -33,7 +36,22 @@ export default function Sidebar({
   const route = location.pathname?.split('/')[2];
   const [invite, setInvite] = useState(false);
   const navigate = useNavigate();
+  const options = useResponsiveNav({
+    onMouseEnter: () => setDropDown(true),
+    onMouseLeave: () => setDropDown(false),
+    onClick: () => setDropDown(!dropDown),
+  });
   const [dropDown, setDropDown] = useState(false);
+  const auth = useAppSelector((state) => state.auth);
+  const Signout = () => {
+    navigate('/');
+    setOpen && setOpen(false);
+    setDropDown(false);
+    const timeoutId = setTimeout(() => {
+      Logout(store.dispatch);
+    }, 1000);
+    return () => clearTimeout(timeoutId);
+  };
 
   return (
     <Container
@@ -59,7 +77,11 @@ export default function Sidebar({
               <Link
                 onClick={onClick}
                 className={`flex gap-1 pad-1 f-width align-y ${styles.link}
-              ${link.link === route && styles.isActive}`}
+                ${
+                  (link.link === route && styles.isActive) ||
+                  (link.link === '.' && route === undefined && styles.isActive)
+                }
+                `}
                 to={`dashboard/${link.link}`}
               >
                 <Svg href={link.svg} />
@@ -86,25 +108,32 @@ export default function Sidebar({
           <Invite isOpen={invite} exit={() => setInvite(false)} />
         </div>
       </>
-      <div className='relative'>
+      <div className="relative">
         <CardAgentInfo
-          onClick={() => setDropDown(!dropDown)}
-          star={4}
-          src={IkonIcon}
+          {...options}
+          star={auth.rating}
+          src={auth.realtor_pic}
           imgClass={styles.img}
           className={`pad-1 ${agentClass} ${styles.cardAgentInfo}`}
           identity={
             <div>
               <div className="flex gap">
-                <h4>pkqmdkwemg</h4>
-                <Svg href={verifyIcon} height="1.4rem" className={styles.svg} />
+                <h4>{auth.fullName}</h4>
+                {auth.verified && (
+                  <Svg
+                    href={verifyIcon}
+                    height="1.4rem"
+                    className={styles.svg}
+                  />
+                )}
               </div>
-              <span>nksdnksjd@dd.com</span>
+              <span>{auth.email}</span>
             </div>
           }
         />
         {location.pathname.includes('/dashboard') && (
           <div
+            {...options}
             className={`b-radius w-full transition-all absolute 
           ${styles.dropdown} 
           ${dropDown === false ? styles.close : styles.open}`}
@@ -120,14 +149,7 @@ export default function Sidebar({
               <Svg href={profileIcon} />
               <span>Profile</span>
             </div>
-            <div
-              className="flex gap align-y p-4"
-              onClick={() => {
-                navigate('/');
-                setOpen && setOpen(false);
-                setDropDown(false);
-              }}
-            >
+            <div className="flex gap align-y p-4" onClick={Signout}>
               <Svg href={sign_outIcon} />
               <span>Sign Out</span>
             </div>

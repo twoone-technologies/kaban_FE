@@ -10,7 +10,7 @@ export const sidebarArr = [
   {
     svg: houseViewIcon,
     route: 'Overview',
-    link: 'overview',
+    link: '.',
   },
   {
     svg: insightsIcon,
