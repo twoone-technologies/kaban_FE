@@ -1,6 +1,7 @@
 import {
   ActionFunctionArgs,
   Outlet,
+  useActionData,
   useLocation,
 } from 'react-router-dom';
 
@@ -11,47 +12,51 @@ import Sidebar from '~/components/dashboard/sidebar';
 import Footer from '~/components/footer/Footer';
 import Navigation from '~/components/navigation';
 import '~/styles/main.css';
+import { useEffect } from 'react';
 
 export async function action({ request }: ActionFunctionArgs) {
   // get form data
   const formData = await request.formData();
-  console.log(...formData);
-
   const intent = formData.get('intent');
   switch (intent) {
     case 'signup':
-      console.log('signup');
-      // send data to BE
       try {
         await signup({
           email: formData.get('email') as string,
           full_name: formData.get('fullName') as string,
           password: formData.get('password') as string,
-          phone_num: '123456799',
-          role: 3,
-        });
-        return { data: 'success' };
+          role: 1,
+        }).unwrap();
+        return { data: 201 };
       } catch (error) {
+        console.log(error);
         return { error: 'signup is unsuccessful' };
       }
-    case 'signin':
+      case 'signin':
       try {
         await signin({
           email: formData.get('email') as string,
           password: formData.get('password') as string,
-        });
-        return { data: 'success' };
+        }).unwrap();
+        return { data: 200 };
       } catch (error) {
-        return { error: 'signup is unsuccessful' };
+        console.log(error);
+        return { error: 'signin is unsuccessful' };
       }
     default:
-      return 'unknown';
+      return { error: 'Unknown action' };
   }
 }
 
 export default function Root() {
   const location = useLocation();
   const isDashboard = location.pathname.includes('dashboard');
+
+  const { addAuthToUrl } = useAuthUtils();
+  const actionRes = useActionData() as Awaited<ReturnType<typeof action>>;
+  useEffect(() => {
+    if (actionRes?.data === 201) { addAuthToUrl('sign_in') }
+  }, [actionRes])
 
   // Remove auth query param if user is logged in.
   const authState = useAppSelector((state) => state.auth);

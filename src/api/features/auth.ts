@@ -11,7 +11,15 @@ export const authApi = api.injectEndpoints({
                 url: APIEndpoints.signup,
                 method: 'POST',
                 body: credentials
-            })
+            }),
+            async onQueryStarted(_, { dispatch, queryFulfilled }) {
+                try {
+                    const { data } = await queryFulfilled
+                    dispatch(setCredentials(data))
+                } catch (err) {
+                    console.log(err)
+                }
+            }
         }),
         signin: builder.mutation<SigninResponse, SigninDTO>({
             query: (credentials) => ({
