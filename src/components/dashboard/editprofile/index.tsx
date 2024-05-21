@@ -120,23 +120,21 @@ export default function EditProfile() {
         encType="application/form-data"
         className="flex flex-col gap-2"
       >
-        <ProfileHeader
-          id={activeIndex}
-          setValue={setValue}
-          register={register}
-        />
+        {activeIndex === 0 && (
+          <ProfileHeader setValue={setValue} register={register} />
+        )}
         {activeIndex === 0 && <Profile idx={activeIndex} register={register} />}
         {activeIndex === 1 && <SocialMedia register={register} />}
         {activeIndex === 2 && (
-          <Password errors={errors} idx={activeIndex} register={register} />
+          <Verification
+          setMinNum={setMinDocx}
+          setValue={setValue}
+          idx={activeIndex}
+          register={register}
+          />
         )}
         {activeIndex === 3 && (
-          <Verification
-            setMinNum={setMinDocx}
-            setValue={setValue}
-            idx={activeIndex}
-            register={register}
-          />
+          <Password errors={errors} idx={activeIndex} register={register} />
         )}
         {activeIndex === 4 && <Deactivation register={register} />}
         {activeIndex !== 4 && (

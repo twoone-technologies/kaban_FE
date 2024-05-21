@@ -36,6 +36,19 @@ export default function PropertyDescription({
     allPropertyType[propertyCategory[0].value],
   );
 
+  const handleTypes = (category: string) => {
+    const categoryKeys = Object.keys(allPropertyType);
+    const similarCategoryKey = categoryKeys.find(
+      (key) =>
+        key.toLocaleLowerCase() ===
+        category.toLocaleLowerCase(),
+    );
+    if (similarCategoryKey) {
+      const types = allPropertyType[similarCategoryKey];
+      setTypeOptions(types);
+    }
+  }
+
   useEffect(() => {
     const categoryKeys = Object.keys(allPropertyType);
     const similarCategoryKey = categoryKeys.find(
@@ -44,8 +57,8 @@ export default function PropertyDescription({
         listing?.property_category.toLocaleLowerCase(),
     );
     if (similarCategoryKey) {
-      const cities = allPropertyType[similarCategoryKey];
-      setTypeOptions(cities);
+      const types = allPropertyType[similarCategoryKey];
+      setTypeOptions(types);
     }
     typeOptions[0] === 'Land' ? setDetails(true) : setDetails(false);
   }, [listing?.property_category]);
@@ -104,6 +117,7 @@ export default function PropertyDescription({
             listing &&
               setListing &&
               setListing({ ...listing, property_category: e.target.value });
+            handleTypes(e.target.value);
           }}
         >
           <OptGroup header="propertyCategory" subItems={propertyCategory} />

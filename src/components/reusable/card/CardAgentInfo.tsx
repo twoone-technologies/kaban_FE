@@ -34,8 +34,8 @@ export default function CardAgentInfo({
             <img src={src} className={styles.agent_img} alt={'img'} />
           ) : (
             <div className={`flex align-x align-y ${styles.name_initials}`}>
-              <span>{firstLetter}</span>
-              <span>{lastLetter}</span>
+              <span className='text-base'>{firstLetter}</span>
+              <span className='text-base'>{lastLetter}</span>
             </div>
           )}
         </div>

@@ -3,6 +3,7 @@ import SignUp from './SignUp';
 import SignIn from './SignIn';
 
 type Props = {
+  error?: string;
   authState: string | null;
   closeModal: () => void;
   signInUrl: () => void;
@@ -10,14 +11,14 @@ type Props = {
 } & React.ComponentProps<'dialog'>;
 
 export default function ModalRegister({
-  authState, signUpUrl, signInUrl, closeModal
+  authState, signUpUrl, signInUrl, closeModal, error
 }: Props) {
   return (
     <Modal isVisible={!!authState} closeModal={closeModal}>
       {authState === 'sign_in' ? (
-        <SignIn signUpUrl={signUpUrl} />
+        <SignIn error={error} signUpUrl={signUpUrl} />
       ) : (
-        <SignUp signInUrl={signInUrl} />
+        <SignUp error={error} signInUrl={signInUrl} />
       )}
     </Modal>
   );

@@ -70,11 +70,12 @@ export default function ListingForm({
 
   const {
     register,
-    setValue,
+    setValue,    
     formState: { errors, isValid },
   } = useForm<Inputs>({
     mode: 'all',
   });
+  console.log(isValid, minNum);
 
   return (
     <Wrapper element="section" className={styles.wrapper}>

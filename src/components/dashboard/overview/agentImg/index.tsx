@@ -1,22 +1,30 @@
-import styles from './agentImg.module.css'
-import { editIcon } from '~/assets/icons';
-import ikon from '~/assets/img/Ikon.png';
+import styles from './agentImg.module.css';
+import { editIcon, logoIcon } from '~/assets/icons';
 import Rating from '~/components/propertyItem/micellenous/Rating';
 import Svg from '~/components/reusable/Svg';
 import { Link } from 'react-router-dom';
+import { useAppSelector } from '~/api/hooks';
 
 export default function AgentImg() {
+  const userInfo = useAppSelector((state) => state.auth);
   return (
     <div
       className={`flex f-column align-y pad-2 gap box_shadow ${styles.agentCard}`}
     >
-      <div className={styles.imgWrap}>
-        <img className={styles.img} src={ikon} alt="hh" />
-      </div>
-      <h4>Precious Ekong</h4>
-      <span>email@email.com</span>
-      <Rating num={4} />
-      <Link to={'/dashboard/profile_edit'} className="flex gap b-radius text-white bg-primary-1 align-x c-pad f-width">
+        {userInfo.realtor_pic ? (
+          <div className={styles.imgWrap}>
+            <img className={styles.img} src={userInfo.realtor_pic} alt="hh" />
+          </div>
+        ) : (
+          <Svg className='text-blue-500' href={logoIcon} width='7rem' height='3rem' />
+        )}
+      <h4>{userInfo.fullName}</h4>
+      <span>{userInfo.email}</span>
+      {userInfo.rating && <Rating num={userInfo.rating} />}
+      <Link
+        to={'/dashboard/profile_edit'}
+        className="flex gap b-radius text-white bg-primary-1 align-x c-pad f-width"
+      >
         <Svg href={editIcon} />
         Edit Profile
       </Link>

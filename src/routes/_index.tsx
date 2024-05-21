@@ -19,7 +19,7 @@ export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
   const intent = formData.get('intent');
   switch (intent) {
-    case 'signup':
+    case 'sign up':
       try {
         await signup({
           email: formData.get('email') as string,
@@ -32,7 +32,7 @@ export async function action({ request }: ActionFunctionArgs) {
         console.log(error);
         return { error: 'signup is unsuccessful' };
       }
-      case 'signin':
+    case 'sign in':
       try {
         await signin({
           email: formData.get('email') as string,
@@ -54,9 +54,12 @@ export default function Root() {
 
   const { addAuthToUrl } = useAuthUtils();
   const actionRes = useActionData() as Awaited<ReturnType<typeof action>>;
+
   useEffect(() => {
-    if (actionRes?.data === 201) { addAuthToUrl('sign_in') }
-  }, [actionRes])
+    if (actionRes?.data === 201) {
+      addAuthToUrl('sign_in');
+    }
+  }, [actionRes]);
 
   // Remove auth query param if user is logged in.
   const authState = useAppSelector((state) => state.auth);
@@ -67,7 +70,7 @@ export default function Root() {
   return (
     <>
       {isDashboard && <Sidebar />}
-      <Navigation />
+      <Navigation res={actionRes} />
       <Outlet />
       {isDashboard || <Footer />}
     </>

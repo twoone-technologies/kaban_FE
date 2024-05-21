@@ -1,24 +1,30 @@
 import styles from '../edit.module.css';
 import CardAgentInfo from '~/components/reusable/card/CardAgentInfo';
-import Button from '~/components/reusable/Button';
 import InputWrap from '../../reusables/InputWrap';
 import useImageUpload from '~/hooks/useFileUpload';
 import { UseFormRegister, UseFormSetValue } from 'react-hook-form';
 import { EditProfileInputs } from '..';
+import { useAppSelector } from '~/api/hooks';
 
 type ProfileHeaderProps = {
-  id: number;
   register: UseFormRegister<EditProfileInputs>;
   setValue: UseFormSetValue<EditProfileInputs>;
 };
 
 export default function ProfileHeader({
-  id,
   register,
   setValue,
 }: ProfileHeaderProps) {
   const { coverImage, setCoverImage, handleCoverImg } = useImageUpload();
   setValue('agent_image', JSON.stringify(coverImage));
+  const authState = useAppSelector((state) => state.auth);
+
+  const handleRemove = (e: React.MouseEvent<HTMLLabelElement, MouseEvent>) => {
+    if (coverImage.length > 0) {
+      e.preventDefault();
+      setCoverImage([])
+    }
+  };
 
   return (
     <InputWrap
@@ -28,24 +34,23 @@ export default function ProfileHeader({
         className={styles.cardAgentInfo}
         src={coverImage[0]?.url}
         star={3}
+        firstLetter={authState.fullName?.split(' ')[0]?.split('')[0]}
+        lastLetter={authState.fullName?.split(' ')[1]?.split('')[0]}
         identity={
           <div>
-            <h3 className="text-xl">Victor Pop</h3>
-            <span>pop@gmail.com</span>
+            <h3 className="text-xl">{authState.fullName}</h3>
+            <span>{authState.email}</span>
           </div>
         }
       />
-      {id === 0 && <div className={`relative flex align-y gap ${id !== 0 ? 'hidden' : ''}`}>
-        <label htmlFor="agentImg" className={`b-radius ${styles.btn}`}>
-          Upload picture
-        </label>
-        <Button
-          type="button"
-          onClick={() => setCoverImage([])}
-          className={styles.btn}
+      <div className={`relative flex align-y gap `}>
+        <label
+          htmlFor="agentImg"
+          onClick={handleRemove}
+          className={`b-radius ${styles.btn}`}
         >
-          Remove
-        </Button>
+          {coverImage.length === 0 ? 'Select Picture' : 'Remove Picture'}
+        </label>
         <input
           hidden
           id="agentImg"
@@ -60,7 +65,7 @@ export default function ProfileHeader({
           hidden
           name="agent_name"
         />
-      </div>}
+      </div>
     </InputWrap>
   );
 }

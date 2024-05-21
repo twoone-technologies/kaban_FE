@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useActionData, useLocation, useNavigate } from 'react-router-dom';
 import { logoIcon } from '~/assets/icons';
 import Button from '~/components/reusable/Button';
 import styles from './navigation.module.css';
@@ -16,7 +16,9 @@ import { useAppSelector } from '~/api/hooks';
 import { selectCurrentToken } from '~/api/slices/auth';
 import useAuthUtils from '~/utils/functions/useAuthUtils';
 
-function Navigation() {
+type ErrorResProps = { data: number; error?: undefined; } | { error: string; data?: undefined; }
+
+function Navigation({res}: {res: ErrorResProps}) {
   const navigate = useNavigate();
   const { addAuthToUrl, removeAuthFromUrl, authState } = useAuthUtils();
   const location = useLocation();
@@ -24,7 +26,7 @@ function Navigation() {
   const [dropDown, setDropDown] = useState(-1);
   const [tooltip, setToolTip] = useState(false);
   const { navBar, goingUp, open, setOpen } = useInteractiveNav();
-
+console.log(res);
   if (open === true || location.search.includes(`auth`))
     document.body.style.overflowY = 'hidden';
   else document.body.style.overflowY = '';
@@ -120,6 +122,7 @@ function Navigation() {
         </Container>
       )}
       <ModalRegister
+        error={res?.error}
         closeModal={() => {
           removeAuthFromUrl();
         }}

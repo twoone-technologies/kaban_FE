@@ -39,8 +39,6 @@ export const authApi = api.injectEndpoints({
     }),
 })
 
-export const {} = authApi
-
 export const signup = (payload: SignupDTO) => store.dispatch(
     authApi.endpoints.signup.initiate(payload)
 )

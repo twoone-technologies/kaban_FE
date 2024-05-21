@@ -50,10 +50,10 @@ export default function ContinueOrCancel({
       <Button
         type="button"
         disabled={!valid}
-        className={`c-pad w-full max-w-40 
-        ${activeIndex === 2 ? 'hidden' : ''}
-        ${validState}`}
-        onClick={next}
+        className={`c-pad w-full max-w-40 ${
+          activeIndex === 2 ? 'hidden' : ''
+        } ${validState}`}
+        onClick={() => (activeIndex === 1 ? minImg === true && next() : next())}
       >
         Next
       </Button>

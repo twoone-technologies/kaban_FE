@@ -8,11 +8,11 @@ export const profileHeaders = [
     value: 1,
   },
   {
-    type: "Password",
+    type: "Verification",
     value: 2,
   },
   {
-    type: "Verification",
+    type: "Password",
     value: 3,
   },
   {

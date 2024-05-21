@@ -50,7 +50,7 @@ const UserItem = ({
         <CardAgentInfo
           className={styles.switch_mobile}
           imgClass={styles.img}
-          src={IkonIcon}
+          src={authState?.realtor_pic}
           firstLetter={authState.fullName?.split(' ')[0]?.split('')[0]}
           lastLetter={authState.fullName?.split(' ')[1]?.split('')[0]}
           identity={
