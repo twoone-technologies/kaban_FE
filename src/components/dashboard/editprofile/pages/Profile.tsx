@@ -1,6 +1,5 @@
 import FormControl from '~/components/reusable/FormControl';
 import InputWrap from '../../reusables/InputWrap';
-import useStateCities from '~/hooks/useStateCities';
 import { statesInNigeria } from '~/components/reusable/listingForm/pages/miscellenous/mapProps';
 import OptGroup from '~/components/herosection/Optgroup';
 import { UseFormRegister } from 'react-hook-form';
@@ -14,7 +13,6 @@ type ProfileProps = {
 };
 
 export default function Profile({ idx, register }: ProfileProps) {
-  // const { allCities, cityOptions, handleCityChange } = useStateCities();
   const [company, setCompany] = useState(true);
   const [contact, setContact] = useState(true);
   const [whatsappNum, setWhatsappNum] = useState('');

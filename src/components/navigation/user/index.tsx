@@ -7,7 +7,6 @@ import useResponsiveNav from '~/hooks/useResponsiveNav';
 import CardAgentInfo from '~/components/reusable/card/CardAgentInfo';
 import { useAppSelector } from '~/api/hooks';
 import { getUserData } from '../navbarData';
-import { IkonIcon } from '~/assets/img';
 import Invite from '~/components/dashboard/invite';
 
 type Props = {
