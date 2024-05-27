@@ -9,7 +9,16 @@ export default function SocialMedia({
 }: {
   register: UseFormRegister<EditProfileInputs>;
 }) {
-  const [socialLinks, setSocialLinks] = useState({})
+  const [socialLinks, setSocialLinks] = useState({});
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setSocialLinks((prevLinks) => ({
+      ...prevLinks,
+      [name]: value,
+    }));
+  };
+
   return (
     <InputWrap>
       <h3>Social Media</h3>
@@ -17,52 +26,64 @@ export default function SocialMedia({
         <FormControl
           as="input"
           type="text"
+          name="facebook"
           register={register}
+          registerOptions={{ onChange: handleInputChange }}
           labelText="Facebook"
           placeholder="your facebook link"
-          onChange={(e) => setSocialLinks({ ...socialLinks, 'facebook': e.target.value })}
         />
         <FormControl
           as="input"
           type="text"
+          name="twitter"
           register={register}
-          labelText="X"
+          registerOptions={{ onChange: handleInputChange }}
+          labelText="Twitter"
           placeholder="your X link"
-          onChange={(e) => setSocialLinks({ ...socialLinks, 'x': e.target.value })}
         />
         <FormControl
           as="input"
           type="text"
+          name="linkedin"
           register={register}
+          registerOptions={{ onChange: handleInputChange }}
           labelText="LinkedIn"
           placeholder="your linkedin link"
-          onChange={(e) => setSocialLinks({ ...socialLinks, 'linkedin': e.target.value })}
         />
         <FormControl
           as="input"
           type="text"
+          name="instagram"
           register={register}
+          registerOptions={{ onChange: handleInputChange }}
           labelText="Instagram"
           placeholder="your instagram link"
-          onChange={(e) => setSocialLinks({ ...socialLinks, 'instagram': e.target.value })}
         />
         <FormControl
           as="input"
           type="text"
+          name="youtube"
           register={register}
+          registerOptions={{ onChange: handleInputChange }}
           labelText="Youtube"
           placeholder="your youtube link"
-          onChange={(e) => setSocialLinks({ ...socialLinks, 'youtube': e.target.value })}
         />
         <FormControl
           as="input"
           type="text"
+          name="tiktok"
           register={register}
+          registerOptions={{ onChange: handleInputChange }}
           labelText="TikTok"
           placeholder="your TikTok link"
-          onChange={(e) => setSocialLinks({ ...socialLinks, 'tiktok': e.target.value })}
         />
-        <input type="text" hidden name='socials' value={JSON.stringify(socialLinks)} />
+        <input
+          type="text"
+          hidden
+          readOnly
+          name="socials"
+          value={socialLinks && JSON.stringify(socialLinks)}
+        />
       </fieldset>
     </InputWrap>
   );

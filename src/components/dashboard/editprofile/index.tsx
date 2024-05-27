@@ -56,6 +56,12 @@ export async function action({ request }: ActionFunctionArgs) {
   formData.delete('realtors_certificates');
   formData.delete('govt_issued_id');
   formData.delete('agent_image');
+  formData.delete('linkedin');
+  formData.delete('twitter');
+  formData.delete('tiktok');
+  formData.delete('youtube');
+  formData.delete('instagram');
+  formData.delete('facebook');
 
   const finalFormData = [...formData.entries(), ...newArray];
   // Push finalFormData to backend
@@ -127,10 +133,10 @@ export default function EditProfile() {
         {activeIndex === 1 && <SocialMedia register={register} />}
         {activeIndex === 2 && (
           <Verification
-          setMinNum={setMinDocx}
-          setValue={setValue}
-          idx={activeIndex}
-          register={register}
+            setMinNum={setMinDocx}
+            setValue={setValue}
+            idx={activeIndex}
+            register={register}
           />
         )}
         {activeIndex === 3 && (

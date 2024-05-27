@@ -75,7 +75,6 @@ export default function ListingForm({
   } = useForm<Inputs>({
     mode: 'all',
   });
-  console.log(isValid, minNum);
 
   return (
     <Wrapper element="section" className={styles.wrapper}>
