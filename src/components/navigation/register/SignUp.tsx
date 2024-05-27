@@ -11,13 +11,16 @@ import FormControl from '~/components/reusable/FormControl';
 export default function SignUp({
   signInUrl,
   className,
+  error,
 }: {
   signInUrl?: () => void;
   className?: string;
+  error?: string;
 }) {
   return (
     <div className={className}>
       <h2>Get Started</h2>
+      <span className='text-red-500'>{error}</span>
       <Svg
         href={logoIcon}
         width="100px"
@@ -65,7 +68,7 @@ export default function SignUp({
         </div>
         <input
           name="intent"
-          value="signup"
+          value="sign up"
           type="submit"
           className={
             'flex bg-primary-1 b-radius bg-grey c-tertiary align-x c-pad'

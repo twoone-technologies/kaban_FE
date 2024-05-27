@@ -7,7 +7,6 @@ import useResponsiveNav from '~/hooks/useResponsiveNav';
 import CardAgentInfo from '~/components/reusable/card/CardAgentInfo';
 import { useAppSelector } from '~/api/hooks';
 import { getUserData } from '../navbarData';
-import { IkonIcon } from '~/assets/img';
 import Invite from '~/components/dashboard/invite';
 
 type Props = {
@@ -50,7 +49,7 @@ const UserItem = ({
         <CardAgentInfo
           className={styles.switch_mobile}
           imgClass={styles.img}
-          src={IkonIcon}
+          src={authState?.realtor_pic}
           firstLetter={authState.fullName?.split(' ')[0]?.split('')[0]}
           lastLetter={authState.fullName?.split(' ')[1]?.split('')[0]}
           identity={

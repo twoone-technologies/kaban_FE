@@ -70,7 +70,7 @@ export default function ListingForm({
 
   const {
     register,
-    setValue,
+    setValue,    
     formState: { errors, isValid },
   } = useForm<Inputs>({
     mode: 'all',
