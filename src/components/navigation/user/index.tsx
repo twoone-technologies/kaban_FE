@@ -49,14 +49,14 @@ const UserItem = ({
         <CardAgentInfo
           className={styles.switch_mobile}
           imgClass={styles.img}
-          src={authState?.realtor_pic}
+          src={authState.realtor?.realtor_pic}
           firstLetter={authState.fullName?.split(' ')[0]?.split('')[0]}
           lastLetter={authState.fullName?.split(' ')[1]?.split('')[0]}
           identity={
             <div className="flex f-column">
               <b className="flex align-y">
                 {authState?.fullName}
-                {authState?.verified ? (
+                {authState.realtor?.verified ? (
                   <Svg
                     href={verifyIcon}
                     height="1.8rem"
@@ -78,14 +78,14 @@ const UserItem = ({
           <CardAgentInfo
             className={styles.agentInfo}
             imgClass={styles.img}
-            src={authState.realtor_pic ? authState.realtor_pic : undefined}
+            src={authState.realtor?.realtor_pic}
             firstLetter={authState.fullName?.split(' ')[0]?.split('')[0]}
             lastLetter={authState.fullName?.split(' ')[1]?.split('')[0]}
             identity={
               <div className="flex f-column">
                 <b className="flex align-y">
                   {authState?.fullName}
-                  {authState?.verified ? (
+                  {authState.realtor?.verified ? (
                     <Svg
                       href={verifyIcon}
                       height="1.8rem"
