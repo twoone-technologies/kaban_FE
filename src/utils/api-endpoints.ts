@@ -9,4 +9,8 @@ export default class APIEndpoints {
     static get refresh() {
         return '/auth/refresh'
     }
+    // editRealtor
+    static editRealtor(id: string) {
+        return `realtors/:${id}`
+    }
 }

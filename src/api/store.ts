@@ -6,6 +6,7 @@ import Cookies from 'cookies-js'
 
 import { api } from './features/api'
 import authReducer from './slices/auth'
+import realtorReducer from './slices/realtor'
 import { setupListeners } from '@reduxjs/toolkit/query'
 
 const persistConfig = {
@@ -17,6 +18,7 @@ export const store = configureStore({
     reducer: combineReducers({
         [api.reducerPath]: api.reducer,
         auth: persistReducer(persistConfig, authReducer),
+        realtor: realtorReducer
     }),
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware),
     devTools: true

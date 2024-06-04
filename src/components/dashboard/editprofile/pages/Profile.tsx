@@ -6,6 +6,7 @@ import { UseFormRegister } from 'react-hook-form';
 import { EditProfileInputs } from '..';
 import Checkbox from '~/components/searchForm/checkbox/Checkbox';
 import { useState } from 'react';
+import { useAppSelector } from '~/api/hooks';
 
 type ProfileProps = {
   idx: number;
@@ -16,14 +17,18 @@ export default function Profile({ idx, register }: ProfileProps) {
   const [company, setCompany] = useState(true);
   const [contact, setContact] = useState(true);
   const [whatsappNum, setWhatsappNum] = useState('');
+  const realtorDetails = useAppSelector((state) => state.auth);
+  // console.log(realtorDetails.);
 
   return (
     <fieldset className={`flex-col gap-8`}>
       <InputWrap className="flex gap-1 flex-col mb-7">
         <h3>Profile</h3>
         <FormControl
+          readOnly
           as="input"
           type="text"
+          value={realtorDetails.fullName}
           name="full_name"
           register={register}
           labelText="Full Name"
@@ -34,6 +39,7 @@ export default function Profile({ idx, register }: ProfileProps) {
           type="email"
           name="email"
           readOnly
+          value={realtorDetails.email}
           register={register}
           labelText="Email Address"
           placeholder="your email address"
@@ -41,6 +47,7 @@ export default function Profile({ idx, register }: ProfileProps) {
         <FormControl
           as="textarea"
           name="bio"
+          // value={realtorDetails.realtor.bio}
           register={register}
           labelText="Bio"
           placeholder="Tell us about yourself"
@@ -57,7 +64,13 @@ export default function Profile({ idx, register }: ProfileProps) {
             register={register}
             labelText="Company Name"
             placeholder="your company"
-            icon={<Checkbox title1={'FreeLance Agent'} onChange={() => setCompany(prev => !prev)} checked={company} />}
+            icon={
+              <Checkbox
+                title1={'FreeLance Agent'}
+                onChange={() => setCompany((prev) => !prev)}
+                checked={company}
+              />
+            }
           />
           <FormControl
             as="select"
@@ -86,7 +99,7 @@ export default function Profile({ idx, register }: ProfileProps) {
             labelText="Mobile"
             required={idx === 0}
             placeholder="your mobile number"
-            />
+          />
           <FormControl
             as="input"
             type="tel"
@@ -96,7 +109,13 @@ export default function Profile({ idx, register }: ProfileProps) {
             labelText="Whatsapp"
             required={idx === 0}
             placeholder="your Whatsapp number"
-            icon={<Checkbox title1={'Same as Mobile'} onChange={() => setContact(prev => !prev)} checked={contact} />}
+            icon={
+              <Checkbox
+                title1={'Same as Mobile'}
+                onChange={() => setContact((prev) => !prev)}
+                checked={contact}
+              />
+            }
           />
         </fieldset>
       </InputWrap>
