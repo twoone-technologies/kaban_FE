@@ -16,7 +16,7 @@ export default function ProfileHeader({
   setValue,
 }: ProfileHeaderProps) {
   const { coverImage, setCoverImage, handleCoverImg } = useImageUpload();
-  setValue('agent_image', JSON.stringify(coverImage));
+  setValue('realtor_pic', JSON.stringify(coverImage));
   const authState = useAppSelector((state) => state.auth);
 
   const handleRemove = (e: React.MouseEvent<HTMLLabelElement, MouseEvent>) => {
@@ -61,7 +61,7 @@ export default function ProfileHeader({
         <input
           type="text"
           required
-          {...register('agent_image')}
+          {...register('realtor_pic')}
           hidden
           name="agent_name"
         />

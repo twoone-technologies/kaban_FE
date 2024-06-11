@@ -22,7 +22,6 @@ export default function Verification({
   register,
   setMinNum,
   setValue,
-  realtor
 }: VerificationProps) {
   const {
     handleImage,
