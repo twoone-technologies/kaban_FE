@@ -11,16 +11,16 @@ export default function AgentImg() {
     <div
       className={`flex f-column align-y pad-2 gap box_shadow ${styles.agentCard}`}
     >
-        {userInfo.realtor_pic ? (
+        {userInfo.realtor?.realtor_pic ? (
           <div className={styles.imgWrap}>
-            <img className={styles.img} src={userInfo.realtor_pic} alt="hh" />
+            <img className={styles.img} src={userInfo.realtor?.realtor_pic} alt="hh" />
           </div>
         ) : (
           <Svg className='text-blue-500' href={logoIcon} width='7rem' height='3rem' />
         )}
       <h4>{userInfo.fullName}</h4>
       <span>{userInfo.email}</span>
-      {userInfo.rating && <Rating num={userInfo.rating} />}
+      {userInfo.realtor?.rating && <Rating num={userInfo.realtor?.rating} />}
       <Link
         to={'/dashboard/profile_edit'}
         className="flex gap b-radius text-white bg-primary-1 align-x c-pad f-width"

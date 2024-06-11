@@ -111,15 +111,15 @@ export default function Sidebar({
       <div className="relative">
         <CardAgentInfo
           {...options}
-          star={auth.rating}
-          src={auth.realtor_pic}
+          star={auth.realtor?.rating}
+          src={auth.realtor?.realtor_pic}
           imgClass={styles.img}
           className={`pad-1 ${agentClass} ${styles.cardAgentInfo}`}
           identity={
             <div>
               <div className="flex gap">
                 <h4>{auth.fullName}</h4>
-                {auth.verified && (
+                {auth.realtor?.verified && (
                   <Svg
                     href={verifyIcon}
                     height="1.4rem"

@@ -1,14 +1,13 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import { AppDispatch, RootState } from "../store"
 import { AuthState } from "~/utils/types/auth.types"
+import { Realtor } from "~/utils/types/realtor.types"
 
 const initialState: AuthState = {
     accessToken: null,
     email: "",
     fullName: "",
-    rating: null,
-    realtor_pic: null,
-    verified: null
+    realtor: {} as Realtor,
 }
 const authSlice = createSlice({
     name: 'auth',
