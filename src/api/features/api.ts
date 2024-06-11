@@ -36,8 +36,6 @@ const baseQueryWithReauth: BaseQueryFn = async (args, api, extraOptions) => {
 
 export const api = createApi({
     baseQuery: baseQueryWithReauth,
-    tagTypes: ['Listings'],
+    tagTypes: ['Listings', 'Realtor'],
     endpoints: () => ({})
 })
-
-// export const { } = api

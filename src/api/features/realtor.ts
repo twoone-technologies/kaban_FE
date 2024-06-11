@@ -1,29 +1,27 @@
 import { api } from "./api"
 import APIEndpoints from "~/utils/api-endpoints"
 import { store } from "../store"
-import { UpdateRealtorDTO, UpdateRealtorResponse } from "~/utils/types/auth.types"
-import { updateCredentials } from "../slices/realtor"
+import { Realtor } from "~/utils/types/realtor.types"
 
-export const authApi = api.injectEndpoints({
-    endpoints: builder => ({
-        editRealtor: builder.mutation<UpdateRealtorDTO, UpdateRealtorResponse>({
-            query: (credentials) => ({
-                url: APIEndpoints.editRealtor,
-                method: 'PUT',
-                body: credentials
-            }),
-            async onQueryStarted(_, { dispatch, queryFulfilled }) {
-                try {
-                    const { data } = await queryFulfilled
-                    dispatch(updateCredentials(data))
-                } catch (err) {
-                    console.log(err)
-                }
-            }
-        }),
+export const realtorApi = api.injectEndpoints({
+  endpoints: builder => ({
+    getRealtor: builder.query<Realtor, string>({
+      query: (id) => APIEndpoints.realtor(id),
+      providesTags: (result) => result ? [{ type: 'Realtor', id: result.id }] : [],
     }),
+    editRealtor: builder.mutation<Realtor, { id: string, credentials: FormData }>({
+      query: ({ id, credentials }) => ({
+        url: APIEndpoints.realtor(id),
+        method: 'PUT',
+        body: credentials
+      }),
+      invalidatesTags: ['Realtor'],
+    }),
+  }),
 })
 
-export const editRealtor = (payload: UpdateRealtorDTO) => store.dispatch(
-    authApi.endpoints.editRealtor.initiate(payload)
+export const editRealtor = (payload: FormData, id: string) => store.dispatch(
+  realtorApi.endpoints.editRealtor.initiate({ id, credentials: payload })
 )
+
+export const { useGetRealtorQuery } = realtorApi

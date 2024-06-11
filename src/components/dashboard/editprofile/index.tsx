@@ -13,81 +13,42 @@ import ProfileHeader from './pages/ProfileHeader';
 import UpdateOrDeactivateBtn from './miscellenous/UpdateOrDeactivateBtn';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+import { useAppSelector } from '~/api/hooks';
+import { editRealtor, useGetRealtorQuery } from '~/api/features/realtor';
+import { prepareRealtorDto } from './pages/prepareDto';
 
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
-  const govt_issued_id = formData.getAll('govt_issued_id');
-  const agent_image = formData.getAll('agent_image');
-  const realtors_certificates = formData.getAll('realtors_certificates');
-  const newArray: [string, File][] = [];
-
-  if (
-    agent_image &&
-    agent_image.length > 0 &&
-    typeof agent_image[0] === 'string' &&
-    agent_image[0].trim() !== ''
-  ) {
-    const agent_Image = JSON.parse(agent_image[0]) as File[];
-    const agentImgFile = new File([agent_Image[0]], agent_Image[0].name, {
-      type: agent_Image[0].type,
-    });
-    newArray.push(['agent_Image', agentImgFile]);
+  console.log(...prepareRealtorDto(formData));
+  const user = formData.get('user_id')?.toString();
+  // handle no user id,
+  if (!user) {
+    return { error: 'user id is required' };
   }
-
-  if (govt_issued_id !== undefined || null) {
-    govt_issued_id.forEach((file) => {
-      const fileObject = JSON.parse(file as string) as File[];
-      fileObject.forEach((item) => {
-        const newFile = new File([item], item.name, { type: item.type });
-        newArray.push(['govt_issued_id', newFile]);
-      });
-    });
-  }
-
-  if (realtors_certificates) {
-    realtors_certificates.forEach((file) => {
-      const fileObject = JSON.parse(file as string) as File[];
-      fileObject.forEach((item) => {
-        const newFile = new File([item], item.name, { type: item.type });
-        newArray.push(['realtors_certificates', newFile]);
-      });
-    });
-  }
-  formData.delete('realtors_certificates');
-  formData.delete('govt_issued_id');
-  formData.delete('agent_image');
-  formData.delete('linkedin');
-  formData.delete('twitter');
-  formData.delete('tiktok');
-  formData.delete('youtube');
-  formData.delete('instagram');
-  formData.delete('facebook');
-
-  const finalFormData = [...formData.entries(), ...newArray];
   // Push finalFormData to backend
-  console.log(...finalFormData);
+  try {
+    await editRealtor(prepareRealtorDto(formData), user).unwrap();
+  } catch (error) {
+    console.log(error);
+    return { error: 'signup is unsuccessful' };
+  }
+
+  // console.log(...finalFormData);
   // Return error object if validation fails
   return 'success';
 }
 
 export type EditProfileInputs = {
-  agent_image: string;
-  full_name: string;
-  realtor_service: string;
-  service_area: string;
   bio: string;
+  company: string;
+  mobile_number: string;
+  office_address: string;
+  realtor_pic: string;
+  service_area: string;
   email: string;
   office_state: string;
   office_city: string;
-  office_address: string;
-  mobile_number: string;
   whatsapp_number: string;
-  facebook: string;
-  x: string;
-  linkedin: string;
-  instagram: string;
-  youtube: string;
-  tiktok: string;
   current_password: string;
   new_password: string;
   confirm_password: string;
@@ -99,6 +60,11 @@ export type EditProfileInputs = {
 export default function EditProfile() {
   const { activeIndex, prevId, handleHeaderClick } = useTabulation(150);
   const [minDocx, setMinDocx] = useState(false);
+  const { realtor } = useAppSelector((state) => state.auth);
+  const { data, isLoading, isFetching, isError } = useGetRealtorQuery(
+    realtor.id || '',
+  );
+  console.log(data, isLoading, isFetching, isError);
 
   const underlineStyle = {
     transform: `translateX(${prevId}px)`,
@@ -111,6 +77,8 @@ export default function EditProfile() {
   } = useForm<EditProfileInputs>({
     mode: 'all',
   });
+
+  console.log(isValid);
 
   return (
     <Wrapper element="section" className={styles.wrapper}>
@@ -126,13 +94,17 @@ export default function EditProfile() {
         encType="application/form-data"
         className="flex flex-col gap-2"
       >
+        <input name="user_id" type="hidden" value={realtor.id} />
         {activeIndex === 0 && (
           <ProfileHeader setValue={setValue} register={register} />
         )}
-        {activeIndex === 0 && <Profile idx={activeIndex} register={register} />}
-        {activeIndex === 1 && <SocialMedia register={register} />}
+        {activeIndex === 0 && !isLoading && (
+          <Profile realtor={data} idx={activeIndex} register={register} />
+        )}
+        {activeIndex === 1 && <SocialMedia />}
         {activeIndex === 2 && (
           <Verification
+            realtor={data}
             setMinNum={setMinDocx}
             setValue={setValue}
             idx={activeIndex}

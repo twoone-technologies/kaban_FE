@@ -7,18 +7,21 @@ import { EditProfileInputs } from '..';
 import Checkbox from '~/components/searchForm/checkbox/Checkbox';
 import { useState } from 'react';
 import { useAppSelector } from '~/api/hooks';
+import { Realtor } from '~/utils/types/realtor.types';
+import { useGetRealtorQuery } from '~/api/features/realtor';
 
 type ProfileProps = {
   idx: number;
+  realtor: Realtor | undefined;
   register: UseFormRegister<EditProfileInputs>;
 };
 
-export default function Profile({ idx, register }: ProfileProps) {
-  const [company, setCompany] = useState(true);
+export default function Profile({ idx, register, realtor }: ProfileProps) {
+  const [companyStat, setCompanyStat] = useState(true);
   const [contact, setContact] = useState(true);
-  const [whatsappNum, setWhatsappNum] = useState('');
-  const realtorDetails = useAppSelector((state) => state.auth);
-  // console.log(realtorDetails.);
+  const [_, setWhatsappNum] = useState(realtor?.whatsapp_number);
+  const realtorInfo = useAppSelector((state) => state.auth);
+  const { currentData } = useGetRealtorQuery(realtorInfo.realtor.id);
 
   return (
     <fieldset className={`flex-col gap-8`}>
@@ -28,7 +31,7 @@ export default function Profile({ idx, register }: ProfileProps) {
           readOnly
           as="input"
           type="text"
-          value={realtorDetails.fullName}
+          value={currentData?.user.full_name}
           name="full_name"
           register={register}
           labelText="Full Name"
@@ -39,7 +42,7 @@ export default function Profile({ idx, register }: ProfileProps) {
           type="email"
           name="email"
           readOnly
-          value={realtorDetails.email}
+          value={currentData?.user.email}
           register={register}
           labelText="Email Address"
           placeholder="your email address"
@@ -47,7 +50,7 @@ export default function Profile({ idx, register }: ProfileProps) {
         <FormControl
           as="textarea"
           name="bio"
-          // value={realtorDetails.realtor.bio}
+          defaultValue={currentData?.bio}
           register={register}
           labelText="Bio"
           placeholder="Tell us about yourself"
@@ -60,21 +63,25 @@ export default function Profile({ idx, register }: ProfileProps) {
             as="input"
             type="text"
             name="company"
-            value={company ? 'Freelance Agent' : undefined}
+            readOnly={!companyStat}
+            defaultValue={currentData?.company}
             register={register}
             labelText="Company Name"
             placeholder="your company"
             icon={
               <Checkbox
                 title1={'FreeLance Agent'}
-                onChange={() => setCompany((prev) => !prev)}
-                checked={company}
+                onChange={() => {
+                  if (companyStat) setCompanyStat((prev) => !prev);
+                }}
+                checked={!companyStat}
               />
             }
           />
           <FormControl
             as="select"
             name="service_area"
+            defaultValue={currentData?.service_area}
             register={register}
             required={idx === 0}
             labelText="Service Area"
@@ -83,7 +90,8 @@ export default function Profile({ idx, register }: ProfileProps) {
           </FormControl>
           <FormControl
             as="input"
-            name="Office Address"
+            name="office_address"
+            defaultValue={currentData?.office_address}
             register={register}
             labelText="Office Address"
             placeholder="your office address"
@@ -93,6 +101,7 @@ export default function Profile({ idx, register }: ProfileProps) {
             type="tel"
             name="mobile_number"
             register={register}
+            defaultValue={currentData?.mobile_number}
             registerOptions={{
               onChange: (e) => setWhatsappNum(e.target.value),
             }}
@@ -103,7 +112,11 @@ export default function Profile({ idx, register }: ProfileProps) {
           <FormControl
             as="input"
             type="tel"
-            value={contact ? whatsappNum : undefined}
+            defaultValue={
+              contact
+                ? currentData?.whatsapp_number
+                : currentData?.mobile_number
+            }
             name="whatsapp_number"
             register={register}
             labelText="Whatsapp"
@@ -113,7 +126,7 @@ export default function Profile({ idx, register }: ProfileProps) {
               <Checkbox
                 title1={'Same as Mobile'}
                 onChange={() => setContact((prev) => !prev)}
-                checked={contact}
+                checked={!contact}
               />
             }
           />
