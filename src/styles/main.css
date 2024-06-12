@@ -263,6 +263,11 @@ input:hover + svg {
   margin-bottom: 1rem;
 }
 
+.loadingState {
+  margin-top: 40dvh;
+  transition: all 300ms ease;
+}
+
 @media screen and (width < 768px) {
   .carousel-btn-grp {
     flex-direction: row;
@@ -298,6 +303,11 @@ input:hover + svg {
     max-width: 1700px;
     padding-block: 2rem;
     margin-inline: auto;
+  }
+
+  .loadingState > span {
+    width: 0.8rem;
+    height: 0.8rem;
   }
 
   svg:hover {

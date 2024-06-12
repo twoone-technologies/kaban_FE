@@ -16,6 +16,7 @@ import { useState } from 'react';
 import { useAppSelector } from '~/api/hooks';
 import { editRealtor, useGetRealtorQuery } from '~/api/features/realtor';
 import { prepareRealtorDto } from './pages/prepareDto';
+import { ThreeDots } from '~/components/reusable/Button';
 
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
@@ -61,10 +62,10 @@ export default function EditProfile() {
   const { activeIndex, prevId, handleHeaderClick } = useTabulation(150);
   const [minDocx, setMinDocx] = useState(false);
   const { realtor } = useAppSelector((state) => state.auth);
-  const { data, isLoading, isFetching, isError } = useGetRealtorQuery(
+  const { data, isLoading, isSuccess } = useGetRealtorQuery(
     realtor.id || '',
   );
-  console.log(data, isLoading, isFetching, isError);
+  console.log(data, isLoading, isSuccess);
 
   const underlineStyle = {
     transform: `translateX(${prevId}px)`,
@@ -78,8 +79,6 @@ export default function EditProfile() {
     mode: 'all',
   });
 
-  console.log(isValid);
-
   return (
     <Wrapper element="section" className={styles.wrapper}>
       <Tabulation
@@ -89,6 +88,7 @@ export default function EditProfile() {
         style={underlineStyle}
         headerSwitch={handleHeaderClick}
       />
+      {!isSuccess ? <ThreeDots className='loadingState' /> : 
       <Form
         method="post"
         encType="application/form-data"
@@ -96,8 +96,8 @@ export default function EditProfile() {
       >
         <input name="user_id" type="hidden" value={realtor.id} />
         {activeIndex === 0 && (
-          <ProfileHeader setValue={setValue} register={register} />
-        )}
+          <ProfileHeader setValue={setValue} />
+          )}
         {activeIndex === 0 && !isLoading && (
           <Profile realtor={data} idx={activeIndex} register={register} />
         )}
@@ -122,7 +122,7 @@ export default function EditProfile() {
             idx={activeIndex}
           />
         )}
-      </Form>
+      </Form>}
     </Wrapper>
   );
 }

@@ -8,6 +8,7 @@ import CardAgentInfo from '~/components/reusable/card/CardAgentInfo';
 import { useAppSelector } from '~/api/hooks';
 import { getUserData } from '../navbarData';
 import Invite from '~/components/dashboard/invite';
+import { useGetRealtorQuery } from '~/api/features/realtor';
 
 type Props = {
   drop: boolean;
@@ -33,6 +34,7 @@ const UserItem = ({
     onMouseEnter: mouseEnter,
     onMouseLeave: mouseLeave,
   });
+  const {data} = useGetRealtorQuery(authState.realtor.id || '');
 
   return (
     <ul
@@ -48,8 +50,7 @@ const UserItem = ({
         </span>
         <CardAgentInfo
           className={styles.switch_mobile}
-          imgClass={styles.img}
-          src={authState.realtor?.realtor_pic}
+          src={data?.realtor_pic}
           firstLetter={authState.fullName?.split(' ')[0]?.split('')[0]}
           lastLetter={authState.fullName?.split(' ')[1]?.split('')[0]}
           identity={
@@ -78,7 +79,7 @@ const UserItem = ({
           <CardAgentInfo
             className={styles.agentInfo}
             imgClass={styles.img}
-            src={authState.realtor?.realtor_pic}
+            src={data?.realtor_pic}
             firstLetter={authState.fullName?.split(' ')[0]?.split('')[0]}
             lastLetter={authState.fullName?.split(' ')[1]?.split('')[0]}
             identity={

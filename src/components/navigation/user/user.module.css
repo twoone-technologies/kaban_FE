@@ -14,10 +14,6 @@
   background-color: unset;
 }
 
-.img {
-  margin-right: 1rem;
-}
-
 /* hover state */
 .nav_item_link:hover {
   background-color: var(--hover-color);
