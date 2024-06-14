@@ -34,10 +34,10 @@ export const showerIcon = `${shower}#img`;
 import toilet from "./Toilet.svg";
 export const toiletIcon = `${toilet}#img`;
 
-import square from "./square.svg"; 
+import square from "./square.svg";
 export const squareIcon = `${square}#img`;
 
-import car from "./Car.svg"; 
+import car from "./Car.svg";
 export const carIcon = `${car}#img`;
 
 import arrowRight from "./arrow-right.svg";
@@ -202,3 +202,12 @@ export const profileIcon = `${profile}#img`;
 
 import fileUpload from "./fileUpload.svg";
 export const fileUploadIcon = `${fileUpload}#img`;
+
+import message from "./message-icon.svg";
+export const messageIcon = `${message}#img`;
+
+import phone2 from "./phone-icon.svg";
+export const phoneIcon2 = `${phone2}#img`;
+
+import whatsapp2 from "./whatsapp-icon.svg";
+export const whatsappIcon2 = `${whatsapp2}#img`;
