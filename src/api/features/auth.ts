@@ -1,12 +1,12 @@
 import { api } from "./api"
 import APIEndpoints from "~/utils/api-endpoints"
 import { store } from "../store"
-import { SigninDTO, SigninResponse, SignupDTO, SignupResponse } from "~/utils/types/auth.types"
+import { AuthState, SigninDTO, SignupDTO } from "~/utils/types/auth.types"
 import { setCredentials } from "../slices/auth"
 
 export const authApi = api.injectEndpoints({
     endpoints: builder => ({
-        signup: builder.mutation<SignupResponse, SignupDTO>({
+        signup: builder.mutation<AuthState, SignupDTO>({
             query: (credentials) => ({
                 url: APIEndpoints.signup,
                 method: 'POST',
@@ -21,7 +21,7 @@ export const authApi = api.injectEndpoints({
                 }
             }
         }),
-        signin: builder.mutation<SigninResponse, SigninDTO>({
+        signin: builder.mutation<AuthState, SigninDTO>({
             query: (credentials) => ({
                 url: APIEndpoints.signin,
                 method: 'POST',
