@@ -6,10 +6,13 @@ import OptGroup from "~/components/herosection/Optgroup";
 import Button from "~/components/reusable/Button";
 import FormControl from "~/components/reusable/FormControl";
 import Svg from "~/components/reusable/Svg";
+import Pagination from "../reusable/Pagination";
 
 export default function AgentsComp() {
   const cities = ["Uyo", "Asaba", "Port Harcourt"];
   const categories = ["Residential", "Industrial", "Commercial"];
+  const query = new URLSearchParams(location.search);
+  const currentPage = Number(query.get("page"));
   return (
     <section className="mt-20">
       <div className="mb-14">
@@ -64,6 +67,12 @@ export default function AgentsComp() {
           />
         </div>
       </div>
+      <Pagination
+        totalPages={5}
+        currentPage={currentPage}
+        nextPageLink={`?page=${currentPage + 1}`}
+        prevPageLink={`?page=${currentPage - 1}`}
+      />
     </section>
   );
 }
