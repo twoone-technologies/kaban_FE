@@ -1,4 +1,3 @@
-import React from "react";
 import { searchIcon } from "~/assets/icons";
 import { agentImg } from "~/assets/img";
 import AgentDetailsCard from "~/components/agents/AgentDetailsCard";
