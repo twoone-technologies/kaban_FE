@@ -20,7 +20,7 @@ type AgentDetailsProps = {
 export default function AgentDetailsCard({ agentImg, agentName, position, officeAddress, phoneNumber, serviceAreas, profileLink, messageLink, phoneNumberLink, whatsappLink }: AgentDetailsProps) {
   return (
     <div className="w-full flex justify-center items-center">
-      <div className='bg-white w-full lg:max-w-[80%] flex flex-col md:flex-row justify-between gap-6 px-4 md:px-6 py-6 border border-[#EAEBF0] rounded-2xl'>
+      <div className='bg-white w-full lg:max-w-[80%] flex flex-col md:flex-row justify-between gap-6 px-4 md:px-6 py-6 border border-[#EAEBF0] md:rounded-2xl'>
         <div className="min-w-[250px] w-full md:w-[250px] h-[250px] md:h-[250px] min-h-full bg-no-repeat bg-center bg-cover" style={{ backgroundImage: `url(${agentImg})` }}>
         </div>
         <div className='w-full'>

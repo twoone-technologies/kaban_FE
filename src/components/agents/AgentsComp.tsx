@@ -15,7 +15,7 @@ export default function AgentsComp() {
   return (
     <section className="mt-20">
       <div className="mb-14">
-        <div className="bg-white border-b border-[#EAECF0] px-4 md:px-16 mb-16 py-6">
+        <div className="bg-white border-b border-[#EAECF0] px-4 md:px-8 lg:px-12 xl:px-16 mb-16 py-6">
           <p className="text-2xl font-semibold mb-6">Find Agent</p>
           <div className="flex flex-col md:flex-row !gap-6">
             <FormControl

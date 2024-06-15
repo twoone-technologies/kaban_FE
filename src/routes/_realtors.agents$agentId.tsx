@@ -1,7 +1,7 @@
-import AgentsComp from "~/components/agents/AgentsComp";
+import AgentProfileComp from "~/components/agents/AgentProfile";
 
 export default function AgentProfile() {
-  return (
-    <div>Agent with their ID</div>
-  )
+    return (
+        <AgentProfileComp />
+    )
 }
