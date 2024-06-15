@@ -72,7 +72,7 @@ export default function AgentProfileComp() {
                 </div>
             </div>
             <div className='px-4 md:px-8 lg:px-12 xl:px-16 mb-16'>
-                <div>
+                <div className='px-4 md:px-8'>
                     <ul className='flex justify-between md:justify-start gap-8 text-xl md:text-2xl font-semibold border-b border-gray-200 transition-all'>
                         <li className={`py-2 px-2 md:px-4 text-subtleGray ${activeTab === "listings" && ('!text-black border-b-[5px] border-primaryColor')}`}>
                             <Link to={`?tab=listings`}>Listings {'(25)'}</Link>

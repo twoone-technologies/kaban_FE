@@ -3,6 +3,7 @@ import Button from "../reusable/Button";
 import { IkonIcon } from "~/assets/img";
 import { AiTwotoneDislike, AiTwotoneLike } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import ReviewForm from "./ReviewForm";
 
 export default function AgentReviews() {
     return (
@@ -58,6 +59,7 @@ export default function AgentReviews() {
                 </div>
             </div>
             <Link to={`?tab=reviews&page_load=2`} className="text-xl text-primaryColor underline font-semibold">See more Review</Link>
+            <ReviewForm />
         </div>
     )
 }
