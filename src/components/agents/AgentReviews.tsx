@@ -1,5 +1,4 @@
 import { FaRegStar, FaStar } from "react-icons/fa6";
-import Button from "../reusable/Button";
 import { IkonIcon } from "~/assets/img";
 import { AiTwotoneDislike, AiTwotoneLike } from "react-icons/ai";
 import { Link } from "react-router-dom";
@@ -10,7 +9,7 @@ export default function AgentReviews() {
         <div className="flex flex-col gap-8 py-8">
             <div className="flex justify-between items-center">
                 <p className="text-primaryColor text-xl underline">{"5"} reviews</p>
-                <Button className="py-3 px-6">Leave a review</Button>
+                <Link to={'#review-form?tab=reviews'} className="bg-primaryColor rounded-[5px] text-white py-3 px-6">Leave a review</Link>
             </div>
             <div className="flex flex-col pb-8 !gap-4 border-b border-gray-300">
                 <div className="flex items-center !gap-2">

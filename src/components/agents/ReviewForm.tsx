@@ -25,17 +25,19 @@ const ReviewForm: React.FC = () => {
         }
     };
     return (
-        <form
+        <form id="#review-form"
             onSubmit={handleSubmit(onSubmit)}
             className="md:bg-white w-full flex flex-col items-center gap-6 md:px-6 py-6 mt-8 md:border border-[#EAEBF0] md:rounded-2xl"
         >
             <p className="text-xl md:text-2xl text-black font-semibold">
                 Leave a review for this agent
             </p>
-            <StarRating setRating={setRating} rating={rating} />
-            {isRatingError && rating < 1 && (
-                <p className="text-sm text-red-700">Please select a rating</p>
-            )}
+            <div>
+                <StarRating setRating={setRating} rating={rating} />
+                {isRatingError && rating < 1 && (
+                    <p className="text-sm text-red-700 text-center !mt-2">Please select a rating</p>
+                )}
+            </div>
             <div className="flex flex-col !gap-2 w-full">
                 <label htmlFor="email" className="text-xl text-black font-medium">
                     Email address

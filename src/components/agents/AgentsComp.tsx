@@ -6,12 +6,13 @@ import Button from "~/components/reusable/Button";
 import FormControl from "~/components/reusable/FormControl";
 import Svg from "~/components/reusable/Svg";
 import Pagination from "../reusable/Pagination";
+import { useSearchParams } from "react-router-dom";
 
 export default function AgentsComp() {
   const cities = ["Uyo", "Asaba", "Port Harcourt"];
   const categories = ["Residential", "Industrial", "Commercial"];
-  const query = new URLSearchParams(location.search);
-  const currentPage = Number(query.get("page"));
+  const [query, setSearchParams] = useSearchParams()
+  const currentPage = Number(query.get("page") || 1);
   return (
     <section className="mt-20">
       <div className="mb-14">
@@ -69,8 +70,12 @@ export default function AgentsComp() {
       <Pagination
         totalPages={5}
         currentPage={currentPage}
-        nextPageLink={`?page=${currentPage + 1}`}
-        prevPageLink={`?page=${currentPage - 1}`}
+        setPage={(page) => {
+          setSearchParams(prev => {
+            prev.set("page", page.toString())
+            return prev
+          })
+        }}
       />
     </section>
   );
