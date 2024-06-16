@@ -1,9 +1,7 @@
 import { ChangeEventHandler } from 'react';
-import { UseFormRegister } from 'react-hook-form';
 import { fileUploadIcon } from '~/assets/icons';
 import styles from '~/components/dashboard/editprofile/miscellenous/pages.module.css';
 import Svg from '~/components/reusable/Svg';
-import { EditProfileInputs } from '..';
 
 type Props = {
   inputId: string;
@@ -11,7 +9,6 @@ type Props = {
   header: string;
   dragging: boolean;
   uploadInfo: string;
-  register: UseFormRegister<EditProfileInputs>;
   onChange: ChangeEventHandler<HTMLInputElement>;
 };
 
@@ -20,7 +17,6 @@ export default function UploadWrapper({
   inputId,
   header,
   dragging,
-  register,
   uploadInfo,
   onChange,
 }: Props) {
@@ -44,18 +40,12 @@ export default function UploadWrapper({
           )}
           <input
             hidden
-            multiple
-            id={inputId}
-            onChange={onChange}
-            accept=".jpg, .jpeg, .png, application/pdf"
             type="file"
-          />
-          <input
-            type="text"
-            required={idx === 3}
-            hidden
-            {...register(inputId as keyof EditProfileInputs)}
+            id={inputId}
             name={inputId}
+            onChange={onChange}
+            required={idx === 3}
+            accept=".jpg, .jpeg, .png"
           />
         </div>
         <span>PNG, JPG (max. 1440x900px)</span>

@@ -9,9 +9,10 @@ import { selectCurrentToken } from '~/api/slices/auth';
 type ModalProps = {
   isVisible: boolean;
   closeModal?: () => void;
+  className?: string;
 } & React.ComponentProps<'dialog'>;
 
-export default function Modal({ isVisible, closeModal, children }: ModalProps) {
+export default function Modal({ isVisible, closeModal, children, className }: ModalProps) {
   const modal = useRef<HTMLDialogElement>(null);
   const isLoggedIn = useAppSelector((state) => selectCurrentToken(state));
 
@@ -40,11 +41,12 @@ export default function Modal({ isVisible, closeModal, children }: ModalProps) {
   }, [isVisible]);
 
   return (
-    <dialog className={`b-radius ${styles.modalWrap}`} onClose={closeModal} ref={modal}>
+    <dialog className={`b-radius ${styles.modalWrap} ${className}`} onClose={closeModal} ref={modal}>
       <aside className={styles.modal}>
         {children}
         {location.pathname.includes('dashboard') && !isLoggedIn ? null :
           <Button
+            type='button'
             className={`f-width ${styles.btn}`}
             onClick={() => {
               closeModal && closeModal();

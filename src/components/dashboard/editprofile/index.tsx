@@ -65,20 +65,19 @@ export default function EditProfile() {
   const { data, isLoading, isSuccess } = useGetRealtorQuery(
     realtor.id || '',
   );
-  console.log(data, isLoading, isSuccess);
-
+  
   const underlineStyle = {
     transform: `translateX(${prevId}px)`,
-  };
+    };
 
   const {
     register,
-    setValue,
     formState: { errors, isValid },
   } = useForm<EditProfileInputs>({
     mode: 'all',
-  });
-
+    });
+    
+    console.log(minDocx, isValid);
   return (
     <Wrapper element="section" className={styles.wrapper}>
       <Tabulation
@@ -95,9 +94,7 @@ export default function EditProfile() {
         className="flex flex-col gap-2"
       >
         <input name="user_id" type="hidden" value={realtor.id} />
-        {activeIndex === 0 && (
-          <ProfileHeader setValue={setValue} />
-          )}
+        {activeIndex === 0 && <ProfileHeader />}
         {activeIndex === 0 && !isLoading && (
           <Profile realtor={data} idx={activeIndex} register={register} />
         )}
@@ -106,9 +103,7 @@ export default function EditProfile() {
           <Verification
             realtor={data}
             setMinNum={setMinDocx}
-            setValue={setValue}
             idx={activeIndex}
-            register={register}
           />
         )}
         {activeIndex === 3 && (
