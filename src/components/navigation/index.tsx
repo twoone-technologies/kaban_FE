@@ -16,9 +16,11 @@ import { useAppSelector } from '~/api/hooks';
 import { selectCurrentToken } from '~/api/slices/auth';
 import useAuthUtils from '~/utils/functions/useAuthUtils';
 
-type ErrorResProps = { data: number; error?: undefined; } | { error: string; data?: undefined; }
+type ErrorResProps =
+  | { data: number; error?: undefined }
+  | { error: string; data?: undefined };
 
-function Navigation({res}: {res: ErrorResProps}) {
+function Navigation({ res }: { res: ErrorResProps }) {
   const navigate = useNavigate();
   const { addAuthToUrl, removeAuthFromUrl, authState } = useAuthUtils();
   const location = useLocation();
@@ -26,7 +28,7 @@ function Navigation({res}: {res: ErrorResProps}) {
   const [dropDown, setDropDown] = useState(-1);
   const [tooltip, setToolTip] = useState(false);
   const { navBar, goingUp, open, setOpen } = useInteractiveNav();
-console.log(res);
+
   if (open === true || location.search.includes(`auth`))
     document.body.style.overflowY = 'hidden';
   else document.body.style.overflowY = '';

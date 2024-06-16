@@ -3,15 +3,19 @@ import styles from './agent.module.css';
 import ListingData from '../../reusables/ListingData';
 import { Link } from 'react-router-dom';
 import Svg from '~/components/reusable/Svg';
+import { useAppSelector } from '~/api/hooks';
+import { useGetRealtorQuery } from '~/api/features/realtor';
 
 export default function AgentStat() {
+  const authState = useAppSelector((state) => state.auth);
+  const { data } = useGetRealtorQuery(authState.realtor.id || '');
   return (
     <div
       className={`flex f-column f-width gap b-radius ${styles.accountDetails}`}
     >
       <div className={`pad-15`}>
         <div className={`flex s-btw ${styles.header}`}>
-          <h3>Welcome, FISHER</h3>
+          <h3>Welcome, <b>{data?.user.full_name}</b></h3>
           <div className={`flex gap-15`}>
             <span>Balance(KBT)</span>
             <div className={`flex gap`}>
