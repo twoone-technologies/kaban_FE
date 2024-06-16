@@ -7,12 +7,14 @@ import useFileUpload, { ImageFile } from '~/hooks/useFileUpload';
 import { UseFormRegister, UseFormSetValue } from 'react-hook-form';
 import { EditProfileInputs } from '..';
 import Carousel from '~/components/reusable/listingForm/pages/media/Carousel';
+import { Realtor } from '~/utils/types/realtor.types';
 
 type VerificationProps = {
   idx: number;
-  setMinNum: React.Dispatch<React.SetStateAction<boolean>>;
+  realtor: Realtor | undefined;
   register: UseFormRegister<EditProfileInputs>;
   setValue: UseFormSetValue<EditProfileInputs>;
+  setMinNum: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export default function Verification({
@@ -39,7 +41,7 @@ export default function Verification({
       ? setMinNum(true)
       : setMinNum(false);
   }, [certificates, images, setMinNum]);
-  
+
   return (
     <div className={`flex gap-1 flex-col`}>
       <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
@@ -66,11 +68,11 @@ export default function Verification({
         <h3>Upload Verification Documents</h3>
         <div className={`grid grid-cols-1 md:grid-cols-2 gap-1 flex-col`}>
           <UploadWrapper
-            register={register}
             idx={idx}
+            register={register}
+            dragging={isDragging}
             inputId="govt_issued_id"
             header={'Govt. Issued ID'}
-            dragging={isDragging}
             uploadInfo={
               'CAC Document, National ID Card, Voter’s Card, Driver’s License, NIN Slip.'
             }

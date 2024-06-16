@@ -2,29 +2,32 @@ import styles from '../edit.module.css';
 import CardAgentInfo from '~/components/reusable/card/CardAgentInfo';
 import InputWrap from '../../reusables/InputWrap';
 import useImageUpload from '~/hooks/useFileUpload';
-import { UseFormRegister, UseFormSetValue } from 'react-hook-form';
+import { UseFormSetValue } from 'react-hook-form';
 import { EditProfileInputs } from '..';
 import { useAppSelector } from '~/api/hooks';
+import { useGetRealtorQuery } from '~/api/features/realtor';
 
 type ProfileHeaderProps = {
-  register: UseFormRegister<EditProfileInputs>;
+  // register: UseFormRegister<EditProfileInputs>;
   setValue: UseFormSetValue<EditProfileInputs>;
 };
 
 export default function ProfileHeader({
-  register,
+  // register,
   setValue,
 }: ProfileHeaderProps) {
   const { coverImage, setCoverImage, handleCoverImg } = useImageUpload();
-  setValue('agent_image', JSON.stringify(coverImage));
+  setValue('realtor_pic', JSON.stringify(coverImage));
   const authState = useAppSelector((state) => state.auth);
+  const { data } = useGetRealtorQuery(authState.realtor.id || '');
 
   const handleRemove = (e: React.MouseEvent<HTMLLabelElement, MouseEvent>) => {
     if (coverImage.length > 0) {
       e.preventDefault();
       setCoverImage([])
     }
-  };
+    };
+  console.log(coverImage);
 
   return (
     <InputWrap
@@ -32,8 +35,8 @@ export default function ProfileHeader({
     >
       <CardAgentInfo
         className={styles.cardAgentInfo}
-        src={coverImage[0]?.url}
-        star={3}
+        src={coverImage[0]?.url || data?.realtor_pic}
+        star={data?.rating}
         firstLetter={authState.fullName?.split(' ')[0]?.split('')[0]}
         lastLetter={authState.fullName?.split(' ')[1]?.split('')[0]}
         identity={
@@ -56,14 +59,8 @@ export default function ProfileHeader({
           id="agentImg"
           accept=".jpg, .jpeg, .png"
           type="file"
+          name='realtor_pic'
           onChange={handleCoverImg}
-        />
-        <input
-          type="text"
-          required
-          {...register('agent_image')}
-          hidden
-          name="agent_name"
         />
       </div>
     </InputWrap>

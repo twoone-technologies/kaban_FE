@@ -19,6 +19,11 @@ div[title='features'] {
   color: var(--star-color);
 }
 
+.size {
+  width: 19px;
+  height: 19px;
+}
+
 .rated:hover {
   color: var(--star-color);
 }

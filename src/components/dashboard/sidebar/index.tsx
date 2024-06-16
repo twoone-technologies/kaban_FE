@@ -14,6 +14,7 @@ import { useAppSelector } from '~/api/hooks';
 import { Logout } from '~/api/slices/auth';
 import { store } from '~/api/store';
 import useResponsiveNav from '~/hooks/useResponsiveNav';
+import { useGetRealtorQuery } from '~/api/features/realtor';
 
 type Props = {
   className?: string;
@@ -52,6 +53,7 @@ export default function Sidebar({
     }, 1000);
     return () => clearTimeout(timeoutId);
   };
+  const { data } = useGetRealtorQuery(auth.realtor.id || '');
 
   return (
     <Container
@@ -111,15 +113,14 @@ export default function Sidebar({
       <div className="relative">
         <CardAgentInfo
           {...options}
-          star={auth.realtor?.rating}
-          src={auth.realtor?.realtor_pic}
-          imgClass={styles.img}
+          star={data?.rating}
+          src={data?.realtor_pic}
           className={`pad-1 ${agentClass} ${styles.cardAgentInfo}`}
           identity={
             <div>
               <div className="flex gap">
-                <h4>{auth.fullName}</h4>
-                {auth.realtor?.verified && (
+                <h4>{data?.user.full_name}</h4>
+                {data?.verified && (
                   <Svg
                     href={verifyIcon}
                     height="1.4rem"
@@ -127,7 +128,7 @@ export default function Sidebar({
                   />
                 )}
               </div>
-              <span>{auth.email}</span>
+              <span>{data?.user.email}</span>
             </div>
           }
         />
