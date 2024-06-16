@@ -29,6 +29,7 @@ import EditProfile, { action as editForm } from './components/dashboard/editprof
 import SupportCard from './components/dashboard/support/supportCard';
 import EditProperty, { action as editPropertyForm } from './components/dashboard/editProperty';
 import RequireAuth from './utils/functions/RequireAuth';
+import AgentProfile from './routes/_realtors.agents$agentId';
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -42,6 +43,7 @@ export const router = createBrowserRouter(
       <Route path="industrial" element={<Industrial />} action={indResults} />
       <Route path="residential" element={<Residential />} action={resResults} />
       <Route path="agents" element={<Agents />} />
+      <Route path="agents/:agentId" element={<AgentProfile />} />
       <Route path="agencies" element={<Agencies />} />
       <Route path="about-us" element={<AboutUs />} />
       <Route path="contact-us" element={<ContactUs />} />

@@ -46,5 +46,7 @@ export const uyoImg = uyo;
 import support from "./support.png";
 export const supportImg = support;
 
+import agent from "./agent-img.png";
+export const agentImg = agent;
 import halfStar from "./halfstar.png";
 export const halfStarIcon = `${halfStar}#img`;
