@@ -33,5 +33,5 @@
 }
 
 .unset {
-  max-width: 80dvw;
+  max-width: max-content;
 }

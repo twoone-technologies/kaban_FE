@@ -20,6 +20,8 @@ export default function Verification({
 }: VerificationProps) {
   const {
     coverImage,
+    setCertificate,
+    setCoverImage,
     isDragging,
     certificate,
     handleCoverImg,
@@ -36,12 +38,16 @@ export default function Verification({
       : setMinNum(false);
   }, [certificate, coverImage, setMinNum]);
   const authState = useAppSelector((state) => state.auth);
-  const { data } = useGetRealtorQuery(authState.realtor.id || '');
+  const { data, isSuccess } = useGetRealtorQuery(authState.realtor.id || '');
 
   const handleFiles = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
     const inputElement = e.target as HTMLInputElement;
     const file = inputElement.id;
     setPreview({ type: file, modalState: true });
+    if (isSuccess) {
+      setCoverImage([]);
+      setCertificate([]);
+    }
   };
 
   console.log(coverImage, certificate);
@@ -53,18 +59,18 @@ export default function Verification({
         data?.kyc.government_id ||
         data?.kyc.realtor_certification) && (
         <InputWrap>
-          <h3>Docs</h3>
+          <h3>Uploaded Documents</h3>
           <ul className='list-disc pl-4'>
             <li
               onClick={handleFiles}
-              id={data?.kyc.government_id}
+              id={coverImage[0]?.name || data?.kyc.government_id}
               className="cursor-pointer text-base"
             >
               {coverImage[0]?.name || 'Government Id'}
             </li>
             <li
               onClick={handleFiles}
-              id={data?.kyc.realtor_certification}
+              id={certificate[0]?.name || data?.kyc.realtor_certification}
               className="cursor-pointer text-base"
             >
               {certificate[0]?.name || 'Realtor Certification'}
