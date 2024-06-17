@@ -115,11 +115,13 @@ export default function Sidebar({
           {...options}
           star={data?.rating}
           src={data?.realtor_pic}
+          firstLetter={auth.fullName?.split(' ')[0]?.split('')[0]}
+          lastLetter={auth.fullName?.split(' ')[1]?.split('')[0]}
           className={`pad-1 ${agentClass} ${styles.cardAgentInfo}`}
           identity={
             <div>
               <div className="flex gap">
-                <h4>{data?.user.full_name}</h4>
+                <h4>{auth.fullName}</h4>
                 {data?.verified && (
                   <Svg
                     href={verifyIcon}
@@ -128,7 +130,7 @@ export default function Sidebar({
                   />
                 )}
               </div>
-              <span>{data?.user.email}</span>
+              <span>{auth.email}</span>
             </div>
           }
         />

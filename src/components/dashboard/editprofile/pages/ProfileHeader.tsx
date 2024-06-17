@@ -2,32 +2,20 @@ import styles from '../edit.module.css';
 import CardAgentInfo from '~/components/reusable/card/CardAgentInfo';
 import InputWrap from '../../reusables/InputWrap';
 import useImageUpload from '~/hooks/useFileUpload';
-import { UseFormSetValue } from 'react-hook-form';
-import { EditProfileInputs } from '..';
 import { useAppSelector } from '~/api/hooks';
 import { useGetRealtorQuery } from '~/api/features/realtor';
 
-type ProfileHeaderProps = {
-  // register: UseFormRegister<EditProfileInputs>;
-  setValue: UseFormSetValue<EditProfileInputs>;
-};
-
-export default function ProfileHeader({
-  // register,
-  setValue,
-}: ProfileHeaderProps) {
+export default function ProfileHeader() {
   const { coverImage, setCoverImage, handleCoverImg } = useImageUpload();
-  setValue('realtor_pic', JSON.stringify(coverImage));
   const authState = useAppSelector((state) => state.auth);
   const { data } = useGetRealtorQuery(authState.realtor.id || '');
 
   const handleRemove = (e: React.MouseEvent<HTMLLabelElement, MouseEvent>) => {
     if (coverImage.length > 0) {
       e.preventDefault();
-      setCoverImage([])
+      setCoverImage([]);
     }
-    };
-  console.log(coverImage);
+  };
 
   return (
     <InputWrap
@@ -59,7 +47,7 @@ export default function ProfileHeader({
           id="agentImg"
           accept=".jpg, .jpeg, .png"
           type="file"
-          name='realtor_pic'
+          name="realtor_pic"
           onChange={handleCoverImg}
         />
       </div>

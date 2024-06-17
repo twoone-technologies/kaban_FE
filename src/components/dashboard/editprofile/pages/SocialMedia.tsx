@@ -6,7 +6,7 @@ export default function SocialMedia() {
   const [socialLinks, setSocialLinks] = useState({});
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+    const { value, name } = e.target;
     setSocialLinks((prevLinks) => ({
       ...prevLinks,
       [name]: value,
@@ -20,6 +20,7 @@ export default function SocialMedia() {
         <FormControl
           as="input"
           type="text"
+          name='facebook'
           onChange={handleInputChange}
           labelText="Facebook"
           placeholder="your facebook link"
@@ -27,6 +28,7 @@ export default function SocialMedia() {
         <FormControl
           as="input"
           type="text"
+          name='twitter'
           onChange={handleInputChange}
           labelText="Twitter"
           placeholder="your X link"
@@ -34,6 +36,7 @@ export default function SocialMedia() {
         <FormControl
           as="input"
           type="text"
+          name='linkedin'
           onChange={handleInputChange}
           labelText="LinkedIn"
           placeholder="your linkedin link"
@@ -41,6 +44,7 @@ export default function SocialMedia() {
         <FormControl
           as="input"
           type="text"
+          name="Instagram"
           onChange={handleInputChange}
           labelText="Instagram"
           placeholder="your instagram link"
@@ -48,6 +52,7 @@ export default function SocialMedia() {
         <FormControl
           as="input"
           type="text"
+          name='youtube'
           onChange={handleInputChange}
           labelText="Youtube"
           placeholder="your youtube link"
@@ -55,6 +60,7 @@ export default function SocialMedia() {
         <FormControl
           as="input"
           type="text"
+          name='tiktok'
           onChange={handleInputChange}
           labelText="TikTok"
           placeholder="your TikTok link"

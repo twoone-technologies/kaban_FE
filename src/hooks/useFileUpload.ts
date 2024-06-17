@@ -13,32 +13,16 @@ export type ImageFile = {
 
 export default function useFileUpload() {
   const [coverImage, setCoverImage] = useState<ImageFile[]>([]);
-  const [certificates, setCertificates] = useState<ImageFile[]>([]);
+  const [certificate, setCertificate] = useState<ImageFile[]>([]);
   const [images, setImages] = useState<ImageFile[]>([]);
   const [isDragging, setIsDragging] = useState(false);
 
   const handleImage = (e: ChangeEvent<HTMLInputElement>, imgArr: ImageFile[], setImgArr: React.Dispatch<React.SetStateAction<ImageFile[]>>) => {
     const files: FileList | null = e.target.files;
-    console.log(files);
     if (!files || files.length === 0) return;
     for (let i = 0; i < files.length; i++) {
       const file: ImageFile = files[i];
       if (file.type.split('/')[0] === 'image' && !imgArr.some((e) => e.name === file.name)) {
-        setImgArr((prev) => [
-          ...prev,
-          {
-            id: i,
-            name: file.name,
-            url: URL.createObjectURL(file as unknown as Blob),
-            size: file.size,
-            type: file.type,
-            lastModified: file.lastModified,
-            lastModifiedDate: file.lastModifiedDate,
-            webkitRelativePath: file.webkitRelativePath,
-          },
-        ]);
-      }
-      if (file.type === 'application/pdf' && !imgArr.some((e) => e.name === file.name)) {
         setImgArr((prev) => [
           ...prev,
           {
@@ -61,6 +45,21 @@ export default function useFileUpload() {
     if (!files || files.length === 0) return;
     const file: ImageFile = files[0];
     setCoverImage([{
+      name: file.name,
+      url: URL.createObjectURL(file as unknown as Blob),
+      size: file.size,
+      type: file.type,
+      lastModified: file.lastModified,
+      lastModifiedDate: file.lastModifiedDate,
+      webkitRelativePath: file.webkitRelativePath,
+    }]);
+  };
+
+  const handleDocuments = (e: ChangeEvent<HTMLInputElement>) => {
+    const files: FileList | null = e.target.files;
+    if (!files || files.length === 0) return;
+    const file: ImageFile = files[0];
+    setCertificate([{
       name: file.name,
       url: URL.createObjectURL(file as unknown as Blob),
       size: file.size,
@@ -113,22 +112,8 @@ export default function useFileUpload() {
           },
         ]);
       }
-      if (files[i].type === 'application/pdf' && !imgArr.some((e) => e.name === files[i].name)) {
-        setImgArr((prev) => [
-          ...prev,
-          {
-            id: i,
-            name: files[i].name,
-            url: URL.createObjectURL(files[i] as unknown as Blob),
-            size: files[i].size,
-            type: files[i].type,
-            lastModified: files[i].lastModified,
-            webkitRelativePath: files[i].webkitRelativePath,
-          },
-        ]);
-      }
     }
   }
 
-  return { coverImage, images, certificates, setImages, setCoverImage, setCertificates, isDragging, handleImage, handleCoverImg, deleteImage, onDragOver, onDragLeave, onDrop }
+  return { coverImage, images, certificate, handleDocuments, setImages, setCoverImage, setCertificate, isDragging, handleImage, handleCoverImg, deleteImage, onDragOver, onDragLeave, onDrop }
 }

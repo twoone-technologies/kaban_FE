@@ -5,21 +5,24 @@ type Props = { idx: number; isValid: boolean; minNum: boolean };
 
 export default function UpdateOrDeactivateBtn({ idx, isValid, minNum }: Props) {
   const validState =
-    isValid && idx !== 3
+    isValid && idx !== 2
       ? isValid
-        ? ''
+        ? 'good'
         : `cursor-not-allowed ${styles.disabled}`
       : isValid && minNum
-      ? ''
+      ? 'badd'
       : `cursor-not-allowed ${styles.disabled}`;
-
   return (
     <div
       className={`flex w-full mb-8 s-btw gap-2 flex-col-reverse sm:flex-row ${styles.btnGrp}`}
     >
       <Button
         type="submit"
-        disabled={idx !== 3 && idx !== 4 ? !isValid : isValid === true && minNum === false}
+        disabled={
+          idx !== 2 && idx !== 4
+            ? !isValid
+            : isValid === true && minNum === false
+        }
         className={`c-pad w-full max-w-40 ${validState}`}
       >
         {idx === 4 ? 'Deactivate account' : 'Update Profile'}

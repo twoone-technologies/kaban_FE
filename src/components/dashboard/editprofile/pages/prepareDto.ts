@@ -30,14 +30,14 @@ export function prepareRealtorDto(formData: FormData) {
   if (formData.has('realtor_pic')) {
     dto.append('realtor_pic', formData.get('realtor_pic') as Blob);
   }
-  if (formData.has('realtors_certificates')) {
+  if (formData.has('realtor_certification')) {
     dto.append(
-      'realtors_certificates',
-      formData.get('realtors_certificates') as Blob,
+      'realtor_certification',
+      formData.get('realtor_certification') as Blob,
     );
   }
-  if (formData.has('govt_issued_id')) {
-    dto.append('govt_issued_id', formData.get('govt_issued_id') as Blob);
+  if (formData.has('government_id')) {
+    dto.append('government_id', formData.get('government_id') as Blob);
   }
   return dto;
 }

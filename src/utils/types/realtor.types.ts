@@ -6,7 +6,10 @@ export type Realtor = {
     company: string,
     createdAt: string,
     id: string,
-    kyc: Record<string, string>,
+    kyc: {
+        government_id: string,
+        realtor_certification: string,
+    },
     mobile_number: string,
     office_address: string,
     position: string,
