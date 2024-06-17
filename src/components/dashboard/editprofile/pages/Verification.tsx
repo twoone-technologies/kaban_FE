@@ -14,10 +14,7 @@ type VerificationProps = {
   setMinNum: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export default function Verification({
-  idx,
-  setMinNum,
-}: VerificationProps) {
+export default function Verification({ idx, setMinNum }: VerificationProps) {
   const {
     coverImage,
     setCertificate,
@@ -43,7 +40,12 @@ export default function Verification({
   const handleFiles = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
     const inputElement = e.target as HTMLInputElement;
     const file = inputElement.id;
-    setPreview({ type: file, modalState: true });
+    if (file.includes('pdf')) {
+      setPreview({ type: file, modalState: false });
+    } else {
+      e.preventDefault();
+      setPreview({ type: file, modalState: true });
+    }
     if (isSuccess) {
       setCoverImage([]);
       setCertificate([]);
@@ -51,6 +53,13 @@ export default function Verification({
   };
 
   console.log(coverImage, certificate);
+
+  const governmentLinkState = data?.kyc.government_id.includes('pdf')
+    ? data?.kyc.government_id
+    : '';
+  const realtorLinkState = data?.kyc.realtor_certification.includes('pdf')
+    ? data?.kyc.realtor_certification
+    : '';
 
   return (
     <div className={`flex gap-1 flex-col`}>
@@ -60,20 +69,32 @@ export default function Verification({
         data?.kyc.realtor_certification) && (
         <InputWrap>
           <h3>Uploaded Documents</h3>
-          <ul className='list-disc pl-4'>
-            <li
-              onClick={handleFiles}
-              id={coverImage[0]?.name || data?.kyc.government_id}
-              className="cursor-pointer text-base"
-            >
-              {coverImage[0]?.name || 'Government Id'}
+          <ul className="list-disc pl-4">
+            <li>
+              <a
+                onClick={handleFiles}
+                target={(coverImage[0]?.name || data?.kyc.government_id)?.includes('pdf')? '' : '_blank'}
+                id={coverImage[0]?.name || data?.kyc.government_id}
+                href={governmentLinkState}
+              >
+                {coverImage[0]?.name || 'Government Id'}
+              </a>
             </li>
-            <li
-              onClick={handleFiles}
-              id={certificate[0]?.name || data?.kyc.realtor_certification}
-              className="cursor-pointer text-base"
-            >
-              {certificate[0]?.name || 'Realtor Certification'}
+            <li>
+              <a
+                onClick={handleFiles}
+                target={
+                  (coverImage[0]?.name || data?.kyc.government_id)?.includes(
+                    'pdf',
+                  )
+                    ? ''
+                    : '_blank'
+                }
+                id={certificate[0]?.name || data?.kyc.realtor_certification}
+                href={realtorLinkState}
+              >
+                {certificate[0]?.name || 'Realtor Certification'}
+              </a>
             </li>
           </ul>
         </InputWrap>
