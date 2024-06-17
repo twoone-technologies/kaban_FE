@@ -25,7 +25,7 @@ const ReviewForm: React.FC = () => {
         }
     };
     return (
-        <form id="#review-form"
+        <form id="review-form"
             onSubmit={handleSubmit(onSubmit)}
             className="md:bg-white w-full flex flex-col items-center gap-6 md:px-6 py-6 mt-8 md:border border-[#EAEBF0] md:rounded-2xl"
         >

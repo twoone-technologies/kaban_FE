@@ -73,7 +73,7 @@ ul {
 
 /* svg component */
 svg {
-  fill: currentColor;
+  fill: none;
 }
 
 svg:active {
