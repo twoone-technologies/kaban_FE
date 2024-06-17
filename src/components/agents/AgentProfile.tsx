@@ -2,20 +2,13 @@ import AgentDetailsCard from './AgentDetailsCard'
 import { agentImg } from '~/assets/img'
 import { BsTwitterX, BsWhatsapp } from 'react-icons/bs'
 import { FaFacebookF, FaInstagram } from 'react-icons/fa6'
-import { Link, useLocation } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import AgentReviews from './AgentReviews'
+import Listings from './Listings'
 
 export default function AgentProfileComp() {
-    const location = useLocation();
-    const query = new URLSearchParams(location.search);
-    const initialTab = query.get("tab") || "listings";
-    const [activeTab, setActiveTab] = useState(initialTab);
-
-    useEffect(() => {
-        const query = new URLSearchParams(location.search);
-        setActiveTab(query.get("tab") || "listings");
-    }, [location.search]);
+    const [query] = useSearchParams();
+    const activeTab = query.get("tab") || "listings";
 
     return (
         <section className="mt-20 md:mx-4">
@@ -52,16 +45,16 @@ export default function AgentProfileComp() {
                     </p>
                     <div className='flex !gap-3'>
                         <div className='size-8 flex items-center justify-center border border-[#437EF7] rounded-full'>
-                            <BsWhatsapp color='#437EF7' />
+                            <BsWhatsapp color='#437EF7' style={{ fill: "currentColor" }} />
                         </div>
                         <div className='size-8 flex items-center justify-center border border-[#437EF7] rounded-full'>
-                            <BsTwitterX color='#437EF7' />
+                            <BsTwitterX color='#437EF7' fill='currentColor' style={{ fill: "currentColor" }} />
                         </div>
                         <div className='size-8 flex items-center justify-center border border-[#437EF7] rounded-full'>
-                            <FaFacebookF color='#437EF7' />
+                            <FaFacebookF color='#437EF7' style={{ fill: "currentColor" }} />
                         </div>
                         <div className='size-8 flex items-center justify-center border border-[#437EF7] rounded-full'>
-                            <FaInstagram color='#437EF7' />
+                            <FaInstagram color='#437EF7' style={{ fill: "currentColor" }} />
                         </div>
                     </div>
                 </div>
@@ -72,7 +65,7 @@ export default function AgentProfileComp() {
                 </div>
             </div>
             <div className='px-4 md:px-8 lg:px-12 xl:px-16 mb-16'>
-                <div className='px-4 md:px-8'>
+                <div>
                     <ul className='flex justify-between md:justify-start gap-8 text-xl md:text-2xl font-semibold border-b border-gray-200 transition-all'>
                         <li className={`py-2 px-2 md:px-4 text-subtleGray ${activeTab === "listings" && ('!text-black border-b-[5px] border-primaryColor')}`}>
                             <Link to={`?tab=listings`}>Listings {'(25)'}</Link>
@@ -82,7 +75,7 @@ export default function AgentProfileComp() {
                         </li>
                     </ul>
                 </div>
-                {activeTab === "listings" ? (<p>Listings</p>) : (<AgentReviews />)}
+                {activeTab === "listings" ? (<Listings />) : (<AgentReviews />)}
             </div>
         </section>
     )
