@@ -32,6 +32,13 @@
   color: rgb(185, 11, 11);
 }
 
-.unset {
-  max-width: max-content;
+@media screen and (width > 800px){
+  .unset {
+    max-width: 80dvw;
+    width: max-content;
+  }
+  
+  .unset img {
+    max-height: 75dvh;
+  }
 }
