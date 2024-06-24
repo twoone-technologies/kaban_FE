@@ -9,7 +9,8 @@ type AgentProps = {
   identity: string | undefined | ReactNode;
   star?: number | null;
   imgClass?: string;
-  onClick?: React.ChangeEventHandler<HTMLDivElement> & React.MouseEventHandler<HTMLDivElement>
+  onClick?: React.ChangeEventHandler<HTMLDivElement> &
+    React.MouseEventHandler<HTMLDivElement>;
 } & React.ComponentProps<'div'>;
 
 export default function CardAgentInfo({
@@ -25,24 +26,23 @@ export default function CardAgentInfo({
 }: AgentProps) {
   return (
     <div
-      onClick={onClick} {...props}
-      className={`cursor-pointer flex s-btw f-width align-y b-radius c-pad relative ${className} ${styles.agent}`}
+      onClick={onClick}
+      {...props}
+      className={`cursor-pointer flex gap f-width align-y b-radius c-pad relative ${className} ${styles.agent}`}
     >
-      <div className="flex align-y gap">
-        <div className={`${imgClass} ${styles.agent_img_wrap}`}>
-          {src ? (
-            <img src={src} className={styles.agent_img} alt={'img'} />
-          ) : (
-            <div className={`flex align-x align-y ${styles.name_initials}`}>
-              <span className='text-base'>{firstLetter}</span>
-              <span className='text-base'>{lastLetter}</span>
-            </div>
-          )}
-        </div>
-        <div className="flex f-column gap">
-          <div className="flex align-y gap">{identity}</div>
-          {star ? <Rating num={star} /> : null}
-        </div>
+      <div className={`${imgClass} ${styles.agent_img_wrap}`}>
+        {src ? (
+          <img src={src} className={styles.agent_img} alt={'img'} />
+        ) : (
+          <div className={`flex align-x align-y ${styles.name_initials}`}>
+            <span className="text-base">{firstLetter}</span>
+            <span className="text-base">{lastLetter}</span>
+          </div>
+        )}
+      </div>
+      <div className="flex f-column gap">
+        {identity}
+        {star ? <Rating num={star} /> : null}
       </div>
     </div>
   );

@@ -1,8 +1,9 @@
 import FormControl from '~/components/reusable/FormControl';
 import InputWrap from '../../reusables/InputWrap';
 import { useState } from 'react';
+import { Realtor } from '~/utils/types/realtor.types';
 
-export default function SocialMedia() {
+export default function SocialMedia({ data }: { data: Realtor }) {
   const [socialLinks, setSocialLinks] = useState({});
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,25 +21,28 @@ export default function SocialMedia() {
         <FormControl
           as="input"
           type="text"
-          name='facebook'
+          name="facebook"
           onChange={handleInputChange}
-          labelText="Facebook"
+          labelText="Facebook link"
+          defaultValue={data.socials.facebook}
           placeholder="your facebook link"
         />
         <FormControl
           as="input"
           type="text"
-          name='twitter'
+          name="twitter"
           onChange={handleInputChange}
-          labelText="Twitter"
+          labelText="Twitter link"
+          defaultValue={data.socials.twitter}
           placeholder="your X link"
         />
         <FormControl
           as="input"
           type="text"
-          name='linkedin'
+          name="linkedin"
           onChange={handleInputChange}
-          labelText="LinkedIn"
+          labelText="LinkedIn link"
+          defaultValue={data.socials.linkedin}
           placeholder="your linkedin link"
         />
         <FormControl
@@ -46,23 +50,26 @@ export default function SocialMedia() {
           type="text"
           name="Instagram"
           onChange={handleInputChange}
-          labelText="Instagram"
+          labelText="Instagram link"
+          defaultValue={data.socials.instagram}
           placeholder="your instagram link"
         />
         <FormControl
           as="input"
           type="text"
-          name='youtube'
+          name="youtube"
           onChange={handleInputChange}
-          labelText="Youtube"
+          labelText="Youtube link"
+          defaultValue={data.socials.youtube}
           placeholder="your youtube link"
         />
         <FormControl
           as="input"
           type="text"
-          name='tiktok'
+          name="tiktok"
           onChange={handleInputChange}
-          labelText="TikTok"
+          labelText="TikTok link"
+          defaultValue={data.socials.tiktok}
           placeholder="your TikTok link"
         />
         <input

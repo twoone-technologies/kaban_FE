@@ -52,8 +52,6 @@ export default function Verification({ idx, setMinNum }: VerificationProps) {
     }
   };
 
-  console.log(coverImage, certificate);
-
   const governmentLinkState = data?.kyc.government_id.includes('pdf')
     ? data?.kyc.government_id
     : '';

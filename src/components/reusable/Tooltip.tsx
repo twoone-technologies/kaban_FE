@@ -1,18 +1,19 @@
 import styles from './utils.module.css';
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 type TooltipProps = {
   copy?: boolean;
   popOver?: boolean;
   className?: string;
-  text: string | ReactNode;
-};
+  text?: string | ReactNode;
+} & React.ComponentProps<'h3'>;
 
 export default function Tooltip({
   copy,
   text,
   popOver,
   className,
+  children
 }: TooltipProps) {
   return (
     <h3
@@ -21,7 +22,7 @@ export default function Tooltip({
       }
       ${copy === true ? styles.active : styles.slide}`}
     >
-      {text}
+      {text} {children}
     </h3>
   );
 }

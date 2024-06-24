@@ -119,7 +119,7 @@ export default function Sidebar({
           lastLetter={auth.fullName?.split(' ')[1]?.split('')[0]}
           className={`pad-1 ${agentClass} ${styles.cardAgentInfo}`}
           identity={
-            <div>
+            <>
               <div className="flex gap">
                 <h4>{auth.fullName}</h4>
                 {data?.verified && (
@@ -130,8 +130,8 @@ export default function Sidebar({
                   />
                 )}
               </div>
-              <span>{auth.email}</span>
-            </div>
+              <span className='text-xs'>{auth.email}</span>
+            </>
           }
         />
         {location.pathname.includes('/dashboard') && (

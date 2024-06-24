@@ -14,7 +14,14 @@ export type Realtor = {
     office_address: string,
     position: string,
     service_area: string,
-    socials: Record<string, string>,
+    socials: {
+        facebook: string,
+        instagram: string,
+        linkedin: string,
+        twitter: string,
+        youtube: string,
+        tiktok: string,
+    } | Record<string, string>,
     specialty: string,
     updatedAt: string,
     user: {
