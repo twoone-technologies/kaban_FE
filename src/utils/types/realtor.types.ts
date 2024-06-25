@@ -1,7 +1,7 @@
 export type Realtor = {
     rating: number,
     realtor_pic: string | null,
-    verified: boolean,
+    verification_status: keyof typeof verificationStatus,
     bio: string,
     company: string,
     createdAt: string,
@@ -9,7 +9,7 @@ export type Realtor = {
     kyc: {
         government_id: string,
         realtor_certification: string,
-    },
+    } | null,
     mobile_number: string,
     office_address: string,
     position: string,
@@ -30,7 +30,14 @@ export type Realtor = {
         id: string,
         role: string,
         _id: string,
-    }
+    },
     whatsapp_number: string,
     _id: string,
+}
+
+
+export const verificationStatus = {
+    0: 'not verified',
+    1: 'pending',
+    2: 'verified',
 }
