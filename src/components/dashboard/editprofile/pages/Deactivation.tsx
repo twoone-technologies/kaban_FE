@@ -22,6 +22,7 @@ export default function Deactivation({ register }: DeactivationProps) {
     <div className="flex flex-col gap-2 items-end">
       <InputWrap className="w-full">
         <h3>Reason</h3>
+        <input type="hidden" name="intent" value="deactivate_account" />
         <Checkbox
           register={register}
           registerOptions={{

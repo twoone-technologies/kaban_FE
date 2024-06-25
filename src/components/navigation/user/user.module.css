@@ -100,7 +100,7 @@
   }
 
   .agentInfo {
-    display: block;
+    display: flex;
   }
 
   .switch {

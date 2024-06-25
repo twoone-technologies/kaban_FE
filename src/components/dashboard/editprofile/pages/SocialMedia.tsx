@@ -16,7 +16,6 @@ export default function SocialMedia() {
   };
   const authState = useAppSelector((state) => state.auth);
   const { data } = useGetRealtorQuery(authState.realtor.id || '');
-  console.log(data);
 
   return (
     <InputWrap>

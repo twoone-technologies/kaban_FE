@@ -21,7 +21,7 @@ export type Realtor = {
         twitter: string,
         youtube: string,
         tiktok: string,
-    } | null,
+    } | Record<string, string>,
     specialty: string,
     updatedAt: string,
     user: {

@@ -51,9 +51,8 @@ export default function Verification({ idx, setMinNum }: VerificationProps) {
       setCertificate([]);
     }
   };
-  console.log(coverImage, certificate);
 
-  const governmentLinkState = data?.kyc?.government_id?.includes('pdf')
+  const governmentLinkState = data?.kyc?.government_id.includes('pdf')
     ? data?.kyc?.government_id
     : '';
   const realtorLinkState = data?.kyc?.realtor_certification?.includes('pdf')

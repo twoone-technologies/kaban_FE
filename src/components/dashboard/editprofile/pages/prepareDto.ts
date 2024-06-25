@@ -1,5 +1,6 @@
 export function prepareRealtorDto(formData: FormData) {
   const dto = new FormData();
+
   if (formData.has('bio')) {
     dto.append('bio', formData.get('bio')?.toString() as string);
   }
@@ -40,4 +41,11 @@ export function prepareRealtorDto(formData: FormData) {
     dto.append('government_id', formData.get('government_id') as Blob);
   }
   return dto;
+}
+
+export function preparePasswordDto(formData: FormData) {
+  return {
+    current_password: formData.get('current_password') as string,
+    new_password: formData.get('new_password') as string,
+  };
 }

@@ -28,10 +28,10 @@ export default function ProfileHeader() {
         firstLetter={authState.fullName?.split(' ')[0]?.split('')[0]}
         lastLetter={authState.fullName?.split(' ')[1]?.split('')[0]}
         identity={
-          <div>
+          <>
             <h3 className="text-xl">{authState.fullName}</h3>
             <span>{authState.email}</span>
-          </div>
+          </>
         }
       />
       <div className={`relative flex align-y gap `}>

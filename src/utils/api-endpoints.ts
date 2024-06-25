@@ -13,4 +13,8 @@ export default class APIEndpoints {
     static realtor(id: string) {
         return `realtors/${id}`
     }
+    // updatePassword
+    static updatePassword(id: string) {
+        return `users/${id}/change-password`
+    }
 }
