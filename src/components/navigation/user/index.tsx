@@ -57,7 +57,7 @@ const UserItem = ({
             <div className="flex f-column">
               <b className="flex align-y">
                 {authState?.fullName}
-                {authState.realtor?.verified ? (
+                {authState.realtor?.verification_status ? (
                   <Svg
                     href={verifyIcon}
                     height="1.8rem"
@@ -86,7 +86,7 @@ const UserItem = ({
               <div className="flex f-column">
                 <b className="flex align-y">
                   {authState?.fullName}
-                  {authState.realtor?.verified ? (
+                  {authState.realtor?.verification_status ? (
                     <Svg
                       href={verifyIcon}
                       height="1.8rem"

@@ -122,7 +122,7 @@ export default function Sidebar({
             <div>
               <div className="flex gap">
                 <h4>{auth.fullName}</h4>
-                {data?.verified && (
+                {data?.verification_status && (
                   <Svg
                     href={verifyIcon}
                     height="1.4rem"
