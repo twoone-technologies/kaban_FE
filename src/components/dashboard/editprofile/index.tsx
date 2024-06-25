@@ -119,7 +119,7 @@ export default function EditProfile() {
           {activeIndex === 0 && !isLoading && (
             <Profile realtor={data} idx={activeIndex} register={register} />
           )}
-          {activeIndex === 1 && <SocialMedia data={data} />}
+          {activeIndex === 1 && <SocialMedia />}
           {activeIndex === 2 && (
             <Verification
               realtor={data}
