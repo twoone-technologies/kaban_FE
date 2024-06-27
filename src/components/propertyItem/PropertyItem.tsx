@@ -6,7 +6,7 @@ import styles from './propertyItem.module.css';
 import Modal from '../reusable/modal/Modal';
 import ReportForm from './itemInfo/ReportForm';
 import VideoMap from './itemInfo/VideoMap';
-import { HouseCard } from '../reusable/card/Card';
+import { Listing } from '~/utils/types/listing.types';
 import Toolkit from './tools/Toolkits';
 import Text from './micellenous/Text';
 import GalleryAndHeader from './micellenous/GalleryAndHeader';
@@ -15,16 +15,16 @@ import DescriptionAndFeatures from './micellenous/DescriptionAndFeatures';
 import AgentDetails from './micellenous/AgentDetails';
 import SimilarItems from './micellenous/SimilarItems';
 import Tooltip from '../reusable/Tooltip';
+import useRouting from '~/hooks/useRouting';
 
 export default function PropertyItem() {
+  useRouting()
   const [show, setShow] = useState(false);
   const [copy, setCopy] = useState(false);
   const { id } = useParams<{ id: string }>();
-
-  const listing = dummyObj.find((item) => parseInt(item.id) === Number(id));
-  const listingItem = listing as unknown as HouseCard;
-  const listingArray = dummyObj as unknown as HouseCard[];
-
+  const listing = dummyObj.find((item) => item.id === id);
+  const listingItem = listing as unknown as Listing;
+  const listingArray = dummyObj as unknown as Listing[];
   const filterObj = () => {
     const similarItems = listingArray.filter(
       (card) => listingItem?.property_type === card.property_type,

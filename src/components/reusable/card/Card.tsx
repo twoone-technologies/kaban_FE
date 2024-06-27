@@ -7,65 +7,7 @@ import CardIcons from './CardIcons';
 import CardHeaderInfo from './CardHeaderInfo';
 import CardAddress from './CardAddress';
 import CardImg from './CardImg';
-
-export type GoodStat = 'sale' | 'rent' | 'featured';
-export type EnlistStat = 'pending' |'published' |  'draft';
-export type ErrorStat =  'expired' | 'disapproved';
-
-export type HouseCard = {
-  [x: string]: unknown;
-  checked: boolean;
-  find?(arg0: (item: { realtor: { agentName: string } }) => void): unknown;
-  location: {
-    type: string;
-    coordinates: [number, number] | number[];
-  };
-  _id: string;
-  realtor: {
-    agentImg: string;
-    agentName: string;
-    whatsAppLink: string;
-    email: string;
-    contact: string;
-    location: string;
-    rating: number;
-    verified: boolean;
-  };
-  title: string;
-  property_category: string;
-  property_type: string;
-  description: string;
-  status: GoodStat | EnlistStat | ErrorStat;
-  featured: boolean;
-  price: {
-    amount: number;
-    per: string;
-  };
-  address: string;
-  city: string;
-  images: {
-    url: string;
-    cover: boolean;
-    _id: string;
-    id: string;
-  }[];
-  details: {
-    bedroom: number;
-    bathroom: number;
-    land_area: number;
-    area_suffix: string;
-    parking_space: number;
-    features: {
-      title: string;
-      checked: boolean;
-    }[];
-  };
-  videoLink: string;
-  street_view: boolean;
-  report: string[];
-  createdAt: string;
-  id: string;
-};
+import { Listing } from '~/utils/types/listing.types';
 
 export default function Card({
   card,
@@ -74,7 +16,7 @@ export default function Card({
   orientation = 'portrait',
   statProps
 }: {
-  card: HouseCard;
+  card: Listing;
   className?: string;
   orientation?: string;
   mapState?: boolean;
@@ -115,7 +57,7 @@ export default function Card({
       >
         <CardImg
           enter={hover}
-          src={card.images.find((img) => img.cover)?.url}
+          src={card.cover_image}
           title={card.title}
           date={card.createdAt}
           imgNo={card.images.length}
@@ -128,8 +70,8 @@ export default function Card({
             className={statusOrder}
             type={card.property_type}
             num={card.price.amount}
-            featured={card.featured}
             stat={card.status}
+            featured={card.featured}
           />
           <div className={`flex f-column s-btw ${styles.iconWrap}`}>
             <CardAddress
@@ -166,8 +108,8 @@ export default function Card({
           statProps
         ) : (
           <CardAgentInfo
-            src={card.realtor.agentImg}
-            identity={card.realtor.agentName}
+            src={card.realtor.realtor_pic}
+            identity={card.realtor.user.full_name}
           />
         )}
       </div>

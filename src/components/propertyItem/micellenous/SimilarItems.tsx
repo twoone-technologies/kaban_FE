@@ -1,8 +1,9 @@
-import Card, { HouseCard } from '~/components/reusable/card/Card';
+import { Listing } from '~/utils/types/listing.types';
 import styles from './micellenous.module.css';
 import { Link } from 'react-router-dom';
+import Card from '~/components/reusable/card/Card';
 
-export default function SimilarItems({ similar }: { similar: HouseCard[] }) {
+export default function SimilarItems({ similar }: { similar: Listing[] }) {
   return (
     <div className={styles.similarItemsWrap}>
     <div className={`flex s-btw ${styles.similarItemsHeader}`}>

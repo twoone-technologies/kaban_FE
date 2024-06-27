@@ -4,15 +4,22 @@ import Image from './Image';
 import { arrowIcon, cameraIcon, heartIcon } from '~/assets/icons';
 import Button from '~/components/reusable/Button';
 import Svg from '~/components/reusable/Svg';
-import { HouseCard } from '~/components/reusable/card/Card';
+import { Listing } from '~/utils/types/listing.types';
 import { dateHandler } from '~/components/reusable/FunctionUtils';
 
-export default function Gallery({item}:{item:  HouseCard}) {
+export default function Gallery({item}:{item: Listing}) {
   const [touchPosition, setTouchPosition] = useState<number | null>(null);
   const [activeIndex, setActiveIndex] = useState<number>(0);
-  const length = item.images.length;
   const imgRef = useRef<HTMLUListElement | null>(null);
-
+  const gallery = (arr: Listing) => {
+    let imgArr: string[] = []
+    if (arr.images && arr.cover_image) {
+      imgArr = [...arr.images, arr.cover_image];
+    }
+    return imgArr
+  }
+  
+  const length = gallery(item).length;
   const nextSlide = () => {
     scrollToIndex(activeIndex);
     setActiveIndex(activeIndex === length - 1 ? 0 : activeIndex + 1);
@@ -62,11 +69,11 @@ export default function Gallery({item}:{item:  HouseCard}) {
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
       >
-        {item.images.map((img, id) => (
+        {gallery(item).map((img, id) => (
           <Image
-            key={img.id}
+            key={id}
             currentIndex={activeIndex}
-            src={img.url}
+            src={img}
             num={id}
           />
         ))}
@@ -93,22 +100,22 @@ export default function Gallery({item}:{item:  HouseCard}) {
         <div className={`flex stack gap c-pad b-radius align-y ${styles.img_no}`}>
           <Svg href={cameraIcon} />
           <span>
-            {activeIndex + 1}/{item.images.length}
+            {activeIndex + 1}/{gallery(item).length}
           </span>
         </div>
         <div className={`flex stack s-btw f-width c_pad ${styles.dateLikes}`}>
           <span className={`c-pad b-radius ${styles.date}`}>
-            {dateHandler(item.createdAt)}
+            {dateHandler(item?.createdAt)}
           </span>
           <Svg href={heartIcon} />
         </div>
       </ul>
       <ul ref={imgRef} className={`gap ${styles.carousel_wrap2}`}>
-        {item.images.map((img, id) => (
+        {gallery(item).map((img, id) => (
           <Image
             currentIndex={activeIndex}
-            key={img.id}
-            src={img.url}
+            key={id}
+            src={img}
             num={id}
             onClick={() => setActiveIndex(id)}
           />

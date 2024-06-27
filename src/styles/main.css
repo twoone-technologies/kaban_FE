@@ -54,6 +54,11 @@ h2 {
   font-weight: 700;
 }
 
+h3, h4, h5, h5 {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
 p,
 span {
   font-size: clamp(0.7rem, 1vw, 1rem);

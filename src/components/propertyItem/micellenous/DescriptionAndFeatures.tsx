@@ -1,12 +1,12 @@
-import { HouseCard } from '~/components/reusable/card/Card';
+import { Listing } from '~/utils/types/listing.types';
 import styles from './micellenous.module.css';
 import ItemInfo from '../itemInfo/ItemInfo';
 import Checkbox from '~/components/searchForm/checkbox/Checkbox';
 
-export default function DescriptionAndFeatures({ item }: { item: HouseCard }) {
+export default function DescriptionAndFeatures({ item }: { item: Listing }) {
   return (
     <div
-      className={`grid box-shadow b-radius f-width ${styles.border}`}
+      className={`grid gap box-shadow b-radius f-width ${styles.border}`}
     >
       <ItemInfo
         className={`bg-tertiary ${styles.description}`}
@@ -20,9 +20,9 @@ export default function DescriptionAndFeatures({ item }: { item: HouseCard }) {
           <div className={`grid f-width ${styles.checkboxGroup}`}>
             {item?.details.features.map((box) => (
               <Checkbox
-                key={box.title}
-                title1={box.title}
-                checked={box.checked}
+                key={box}
+                title1={box}
+                checked={!!box}
                 readOnly
               />
             ))}
