@@ -29,9 +29,6 @@ function Navigation({ res }: { res: ErrorResProps }) {
   const [tooltip, setToolTip] = useState(false);
   const { navBar, goingUp, open, setOpen } = useInteractiveNav();
 
-  if (open === true) document.body.style.overflow = 'hidden';
-  else document.body.style.overflow = '';
-
   const onClickHandler = () => {
     setOpen(!open);
   };

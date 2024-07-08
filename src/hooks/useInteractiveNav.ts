@@ -7,6 +7,12 @@ export default function useInteractiveNav() {
   const [scroll, setScroll] = useState(0);
 
   useEffect(() => {
+    if (open === true) {
+      document.body.style.overflow = 'hidden';
+      setGoingUp(false)
+    }
+    else document.body.style.overflow = '';
+
     const debounce = <F extends (...args: any[]) => void>(func: F, delay: number) => {
       let timeoutId: NodeJS.Timeout;
       return function (this: ThisParameterType<F>, ...args: Parameters<F>) {
@@ -39,7 +45,7 @@ export default function useInteractiveNav() {
     return () => {
       window.removeEventListener("scroll", navStatus);
     };
-  }, [goingUp, scroll]);
+  }, [goingUp, open, scroll]);
 
   return { navBar, goingUp, scroll, open, setOpen };
 }
