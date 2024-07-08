@@ -29,8 +29,7 @@ function Navigation({ res }: { res: ErrorResProps }) {
   const [tooltip, setToolTip] = useState(false);
   const { navBar, goingUp, open, setOpen } = useInteractiveNav();
 
-  if (open === true || location.search.includes(`auth`))
-    document.body.style.overflowY = 'hidden';
+  if (open) document.body.style.overflowY = 'hidden';
   else document.body.style.overflowY = '';
 
   const onClickHandler = () => {
