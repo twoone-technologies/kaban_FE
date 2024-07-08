@@ -10,14 +10,14 @@ import {
   areaSuffix,
   figures,
 } from '~/components/reusable/listingForm/pages/miscellenous/mapProps';
-import { HouseCard } from '~/components/reusable/card/Card';
+import { Listing } from '~/utils/types/listing.types';
 
 type DetailsProps = {
   land?: boolean;
   error: InputErrors;
   register: Register;
-  listing?: HouseCard;
-  setListing?: React.Dispatch<React.SetStateAction<HouseCard>>;
+  listing?: Listing;
+  setListing?: React.Dispatch<React.SetStateAction<Listing>>;
 };
 
 export default function Details({
@@ -117,7 +117,7 @@ export default function Details({
               ...listing,
               details: {
                 ...listing.details,
-                land_area: parseInt(e.target.value),
+                land_area: e.target.value,
               },
             })
           }

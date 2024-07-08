@@ -2,8 +2,9 @@ import styles from './tabulation.module.css';
 
 type Props = {
   idx: number;
+  headerWidth: number;
+  activeTab: number;
   className?: string;
-  style: React.CSSProperties;
   headerArr: { value: number; type: string }[];
   headerSwitch?: (
     value: number,
@@ -11,10 +12,22 @@ type Props = {
   ) => void;
 };
 
+// this component is used to display the tabulation of any listitem
+// it takes in the following props:
+// idx: number - the index of the current active tab (zero-based)
+// headerWidth: number - the width of each tab
+// activeTab: number - the index of the current active tab (zero-based)
+// className: string - the class name of the tabulation
+// headerArr: { value: number; type: string }[] - the list of tabulation items
+// headerSwitch: (value: number, headerArr: { value: number; type: string }[]) => void - the function to switch between tabs
+// when this component is called its called with the use tabulation hook
+// a width variable is passed depending on the general acceptable with of all headers.
+
 export default function Tabulation({
   headerArr,
   idx,
-  style,
+  activeTab,
+  headerWidth,
   className,
   headerSwitch,
 }: Props) {
@@ -23,15 +36,16 @@ export default function Tabulation({
       {headerArr.map((header) => (
         <li
           key={header.value}
-          onClick={() => headerSwitch && headerSwitch(header.value, headerArr)}
           className={`flex align-x ${styles.header} 
-          ${header.value === idx ? styles.active : ''}
           ${
-            location.pathname === '/dashboard/profile_edit' &&
-            header.type === 'Deactivate Account'
-              ? `text-red-700`
+            header.value === idx
+              ? header.value === 4 && header.type === 'Deactivate Account'
+                ? styles.deactivate
+                : styles.isActive
               : ''
           }`}
+          style={{ minWidth: headerWidth }}
+          onClick={() => headerSwitch && headerSwitch(header.value, headerArr)}
         >
           {header.type}
         </li>
@@ -44,7 +58,10 @@ export default function Tabulation({
             ? 'bg-red-700'
             : 'bg-primary-1'
         }`}
-        style={style}
+        style={{
+          transform: `translateX(${activeTab}px)`,
+          width: headerWidth,
+        }}
       />
     </ul>
   );

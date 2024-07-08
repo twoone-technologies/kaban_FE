@@ -157,7 +157,7 @@ div[title='features'] {
 }
 
 
-@media screen and (width >= 1064px) {
+@media screen and (width >= 1024px) {
   .checkboxGroup {
     grid-template-columns: repeat(4, 1fr);
   }

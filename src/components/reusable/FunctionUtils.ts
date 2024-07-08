@@ -1,4 +1,4 @@
-import { HouseCard } from "./card/Card";
+import { Listing } from "~/utils/types/listing.types";
 
 export const dateHandler = (dateStr: string | undefined, pathname?: string | undefined) => {
   if (dateStr === undefined) return null;
@@ -36,7 +36,7 @@ export const dateHandler = (dateStr: string | undefined, pathname?: string | und
   } else {
     // Get the user's timezone dynamically
     const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    
+
     // Return the full date for dates beyond 1 week in the user's timezone
     const options: Intl.DateTimeFormatOptions = {
       year: 'numeric',
@@ -50,12 +50,12 @@ export const dateHandler = (dateStr: string | undefined, pathname?: string | und
 
 
 
-export const getTotal = (items: HouseCard[], agentName: string) => {
+export const getTotal = (items: Listing[], agentName: string) => {
   let totalCount = 0;
-  
+
   if (items === undefined) return null
-  items.find((item: { realtor: { agentName: string } }) => {
-    item.realtor.agentName === agentName ? totalCount++ : null
+  items.find((item: { realtor: { user: { full_name: string } } }) => {
+    item.realtor.user.full_name === agentName ? totalCount++ : null
   })
 
   return totalCount;

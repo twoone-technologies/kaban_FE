@@ -52,7 +52,7 @@ export default function Media({
   }, [coverImage, images, setMinNum]);
 
   return (
-    <div className={`flex flex-col gap-2 ${className}`}>
+    <div className={className}>
       <InputWrap>
         <div className="flex s-btw">
           <h3>Media</h3>

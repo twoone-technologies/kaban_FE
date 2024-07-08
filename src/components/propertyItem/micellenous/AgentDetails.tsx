@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { HouseCard } from '~/components/reusable/card/Card';
+import { Listing } from '~/utils/types/listing.types';
 import styles from './micellenous.module.css';
 import ItemInfo from '../itemInfo/ItemInfo';
 import CardAgentInfo from '~/components/reusable/card/CardAgentInfo';
@@ -16,19 +16,23 @@ import {
 } from '~/assets/icons';
 import CardIcons from '~/components/reusable/card/CardIcons';
 import { dateHandler, getTotal } from '~/components/reusable/FunctionUtils';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import AgentContact from './AgentContact';
+import { realtorsObj } from '~/components/reusable/realtorsObj';
+import { Realtor } from '~/utils/types/realtor.types';
 
 type AgentProps = {
-  item: HouseCard;
-  object: HouseCard[];
+  item: Listing;
+  object: Listing[];
 };
 
-export default function AgentDetails({ item, object }: AgentProps) {
+export default function AgentDetails({ object, item }: AgentProps) {
   const [contact, setContact] = useState<'whatsapp' | 'email' | ''>('');
   const handleContact = (contact: 'whatsapp' | 'email') => {
     setContact(contact);
   };
+  const { id } = useParams<{ id: string }>();
+  const realtor = realtorsObj.find((realtor) => realtor.id === id)  as unknown as Realtor
 
   return (
     <ItemInfo
@@ -39,23 +43,23 @@ export default function AgentDetails({ item, object }: AgentProps) {
           <CardAgentInfo
             className={styles.agentInfo}
             imgClass={styles.img}
-            src={item?.realtor.agentImg}
+            src={realtor?.realtor_pic}
             identity={
-              <>
-                <b>{item?.realtor.agentName}</b>
-                {item?.realtor.verified ? (
+              <div className='flex'>
+                <b>{realtor?.user.full_name}</b>
+                {realtor?.verification_status ? (
                   <Svg href={verifyIcon} className={styles.svg} />
                 ) : null}
-              </>
+              </div>
             }
-            star={item?.realtor.rating}
+            star={realtor?.rating}
           />
           <div className={`flex f-column ${styles.agentIcon}`}>
             <CardIcons
               title="land area"
               className={styles.agentIcons}
               icon={locationIcon}
-              value={item?.realtor.location}
+              value={realtor?.office_address}
             />
             <CardIcons
               title="land area"
@@ -63,7 +67,7 @@ export default function AgentDetails({ item, object }: AgentProps) {
               icon={buildingsIcon}
               value={
                 <span>
-                  {getTotal(object, item?.realtor.agentName)} listed properties
+                  {realtor && getTotal(object, realtor.user.full_name)} listed properties
                   on Kaban
                 </span>
               }
@@ -75,26 +79,25 @@ export default function AgentDetails({ item, object }: AgentProps) {
               value={<span>Registered {dateHandler(item?.createdAt)}</span>}
             />
             <CardIcons
-              title="land area"
+              title="contact"
               className={styles.agentIcons}
               icon={phoneIcon}
-              value={item?.realtor.contact}
+              value={realtor?.mobile_number}
             />
           </div>
           <div className={`flex align-y gap-1`}>
             <Link
               onClick={() => handleContact('email')}
-              to={`mailto:${item.realtor.email}`}
+              to={`mailto:${realtor?.user.email}`}
               className={`flex gap f-width align-y align-x pad-block-0 b-radius ${styles.btn}
               ${contact === 'email' && styles.active_btn}`}
             >
               <Svg href={mailIcon} width="1rem" height="1.5rem" />
               Email
             </Link>
-            <AgentContact item={item} />
-            <Link
+            <AgentContact item={realtor} />
+            <Link to={'#'} 
               onClick={() => handleContact('whatsapp')}
-              to={item.realtor.whatsAppLink} target='_blank'
               className={`flex gap f-width align-y align-x pad-block-0 b-radius ${styles.btn}
               ${contact === 'whatsapp'&& styles.active_btn}`}
             >

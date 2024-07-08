@@ -1,7 +1,7 @@
 import { ActionFunctionArgs } from 'react-router-dom';
 import { dummyObj } from '~/components/reusable/dummyObj';
-import { HouseCard } from '~/components/reusable/card/Card';
 import ListingForm from '~/components/reusable/listingForm';
+import { Listing } from '~/utils/types/listing.types';
 
 export type ErrorObj = {
   [fieldName: string]: string[];
@@ -54,6 +54,6 @@ export async function action({ request }: ActionFunctionArgs) {
 }
 
 export default function EditProperty() {
-  const listingItem = dummyObj as unknown as HouseCard[];
+  const listingItem = dummyObj as unknown as Listing[];
   return (<ListingForm listingArray={listingItem} />);
 }

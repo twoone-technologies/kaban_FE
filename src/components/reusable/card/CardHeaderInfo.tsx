@@ -1,13 +1,12 @@
 import Label from './Label';
 import styles from './card.module.css';
-import { GoodStat, EnlistStat, ErrorStat } from './Card';
 
 type Props = {
   type: string;
   num: number;
-  featured: boolean;
   className: string;
-  stat: GoodStat | EnlistStat | ErrorStat;
+  stat: string;
+  featured: boolean
 };
 
 const setNums = (num: number) => {
@@ -15,7 +14,7 @@ const setNums = (num: number) => {
   return num.toLocaleString();
 };
 
-export default function CardHeaderInfo({ type, num, featured, stat, className }: Props) {
+export default function CardHeaderInfo({ type, num, stat, className, featured }: Props) {
   return (
     <div className={`flex space-between ${styles.header}`}>
       <div className="flex flex-col align-x">

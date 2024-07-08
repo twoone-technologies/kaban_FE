@@ -5,6 +5,13 @@ type PostRoute = {
   value: number;
 };
 
+// this hook is used with the Tabulation Component
+// the pace is the width of each header
+// it returns the activeIndex, prevId, setActiveIndex, handleHeaderClick, next, prev
+// prevId is used to determine the position of the header and passed to the active tab variable of the tabulation component
+// activeIndex is passed to the idx variable of the tabulation component.
+// handleHeaderClick function is used to switch between tabs
+
 export default function useTabulation(pace = 104) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [prevId, setPrevId] = useState(0);
@@ -32,6 +39,7 @@ export default function useTabulation(pace = 104) {
       });
     }
     setActiveIndex(id);
+    // if ()
   }
 
   const next = () => {

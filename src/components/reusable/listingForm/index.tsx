@@ -5,14 +5,13 @@ import { Form } from 'react-router-dom';
 import Basic from '~/components/reusable/listingForm/pages/basic';
 import Media from '~/components/reusable/listingForm/pages/media';
 import ListingLocation from '~/components/reusable/listingForm/pages/location';
-import styles from '~/components/reusable/listingForm/index.module.css';
 import { headers } from '~/components/reusable/listingForm/pages/miscellenous/mapProps';
 import useTabulation from '~/hooks/useTabulation';
 import Tabulation from '~/components/reusable/tabulation/Tabulation';
 import { useForm } from 'react-hook-form';
 import ContinueOrCancel from './pages/miscellenous/ContinueOrCancel';
 import Tooltip from '~/components/reusable/Tooltip';
-import { HouseCard } from '~/components/reusable/card/Card';
+import { Listing } from '~/utils/types/listing.types';
 
 export type ErrorObj = {
   [fieldName: string]: string[];
@@ -40,21 +39,18 @@ export type Inputs = {
 export default function ListingForm({
   listingArray,
 }: {
-  listingArray?: HouseCard[];
+  listingArray?: Listing[];
 }) {
   const navigate = useNavigate();
   const { id } = useParams();
+  const tabWidth = 104;
   const [minNum, setMinNum] = useState(false);
   const [success, setSuccess] = useState(false);
-  const { activeIndex, prevId, next, prev } = useTabulation();
+  const { activeIndex, prevId, next, prev } = useTabulation(tabWidth);
   const property = listingArray?.find((item) => item.id === id);
-  const listingItem = property as HouseCard;
-  const [listing, setListing] = useState<HouseCard>(listingItem);
-
-  const underlineStyle = {
-    transform: `translateX(${prevId}px)`,
-  };
-
+  const listingItem = property as Listing;
+  const [listing, setListing] = useState<Listing>(listingItem);
+console.log(listing);
   useEffect(() => {
     let hideTimeout: NodeJS.Timeout;
     if (success) {
@@ -77,10 +73,11 @@ export default function ListingForm({
   });
 
   return (
-    <Wrapper element="section" className={styles.wrapper}>
+    <Wrapper element="section">
       <Tabulation
         idx={activeIndex}
-        style={underlineStyle}
+        activeTab={prevId}
+        headerWidth={tabWidth}
         headerArr={headers}
       />
       <Form
@@ -94,7 +91,7 @@ export default function ListingForm({
           error={errors}
           register={register}
           activeIndex={activeIndex}
-          className={activeIndex === 0 ? 'visible' : styles.hidden}
+          className={activeIndex === 0 ? 'flex flex-col' : 'hidden'}
         />
         <Media
           setValue={setValue}
@@ -102,14 +99,14 @@ export default function ListingForm({
           register={register}
           setMinNum={setMinNum}
           activeIndex={activeIndex}
-          className={activeIndex === 1 ? 'visible' : styles.hidden}
+          className={activeIndex === 1 ? 'flex flex-col gap-2' : 'hidden'}
         />
         <ListingLocation
           error={errors}
           setValue={setValue}
           activeIndex={activeIndex}
           register={activeIndex === 2 ? register : undefined}
-          className={activeIndex === 2 ? 'visible' : styles.hidden}
+          className={activeIndex === 2 ? 'flex flex-col gap-6' : 'hidden'}
         />
         <ContinueOrCancel
           prev={prev}

@@ -7,18 +7,18 @@ import Button from '~/components/reusable/Button';
 import Svg from '~/components/reusable/Svg';
 import { listingOptions } from '~/components/searchForm/status';
 import ListingItem from './ListingItem';
-import { HouseCard } from '~/components/reusable/card/Card';
 import { dummyObj } from '~/components/reusable/dummyObj';
 import PromptPage from './PromptPage';
 import useRouting from '~/hooks/useRouting';
 import FormControl from '~/components/reusable/FormControl';
 import OptGroup from '~/components/herosection/Optgroup';
 import useSortSwitch from '~/hooks/useSortSwitch';
+import { Listing } from '~/utils/types/listing.types';
 
 export default function Listings() {
   useRouting();
   const [active, setActive] = useState<'all' | 'rent' | 'sale'>('all');
-  const listingArray = dummyObj as unknown as HouseCard[];
+  const listingArray = dummyObj as unknown as Listing[];
   const { sortArr, handleSort } = useSortSwitch(listingArray);
 
   return (
@@ -76,7 +76,7 @@ export default function Listings() {
               For Sale(13)
             </span>
           </div>
-          <ListingItem listArr={sortArr as HouseCard[]} />
+          <ListingItem listArr={sortArr as Listing[]} />
         </div>
       ) : (
         <PromptPage />

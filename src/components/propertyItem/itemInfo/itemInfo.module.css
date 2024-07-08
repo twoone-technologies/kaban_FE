@@ -7,6 +7,10 @@
   border: 1px solid var(--hover-color);
 }
 
+.item_info {
+  border: 1px solid var(--hover-color);
+}
+
 .item_header {
   gap: 2rem;
   padding: 1rem;

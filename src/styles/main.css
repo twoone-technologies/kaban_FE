@@ -17,7 +17,7 @@
   --tertiary-color-3: #fafafa; /* background color */
   --tertiary-color-4: #41ae48; /* featured and savebtn color */
   --tertiary-color-5: #e8effd; /* dashboard overlay color */
-  --font-size-1: clamp(0.7rem, 1vw, 1rem);
+  --font-size-1: clamp(0.6rem, 1vw, 1rem);
 }
 
 * {
@@ -44,7 +44,7 @@ a {
 }
 
 h1 {
-  font-size: clamp(0.8rem, 5vw, 2.6rem);
+  font-size: clamp(1.3rem, 4vw, 2.4rem);
   margin-block: 0.5rem;
 }
 
@@ -52,6 +52,11 @@ h2 {
   font-size: clamp(0.8rem, 5vw, 1.5rem);
   color: var(--primary-color);
   font-weight: 700;
+}
+
+h3, h4, h5, h5 {
+  font-weight: 500;
+  text-transform: capitalize;
 }
 
 p,
@@ -241,6 +246,7 @@ svg:active {
 
 .containerClass {
   --gutter: 5%;
+  transition: height 300ms ease-in-out;
   width: calc(100% - 1 * var(--gutter));
   margin-inline: auto;
 }

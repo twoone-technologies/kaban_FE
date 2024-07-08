@@ -6,10 +6,11 @@ import { SwiperSlide } from 'swiper/react';
 import Container from '../reusable/Container';
 import { dummyObj } from '../reusable/dummyObj';
 import CarouselWrap from '../reusable/CarouselWrap';
-import Card, { HouseCard } from '../reusable/card/Card';
+import Card from '../reusable/card/Card';
+import { Listing } from '~/utils/types/listing.types';
 
 export default function FeaturedList() {
-  const arr = dummyObj as unknown as HouseCard[];
+  const arr = dummyObj as unknown as Listing[];
   return (
     <Container element="div" className='container-pad'>
       <div className="text-align header">

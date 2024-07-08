@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import styles from './itemInfo.module.css';
-import { HouseCard } from '~/components/reusable/card/Card';
+import { Listing } from '~/utils/types/listing.types';
 import MapLoader from '~/components/map/MapLoader';
 
 export default function VideoMap({
   item,
   properties,
 }: {
-  item: HouseCard;
-  properties: HouseCard[];
+  item: Listing;
+  properties: Listing[];
 }) {
   const [isVisible, setIsVisible] = useState<'video' | 'map'>('video');
 
@@ -17,9 +17,11 @@ export default function VideoMap({
   };
 
   const vidStr = (str: string) => {
-    const videoId = str.split('/').pop();
-    const videoLink = `https://www.youtube.com/embed/${videoId}`;
-    return videoLink;
+    if (str) {
+      const videoId = str.split('/').pop();
+      const videoLink = `https://www.youtube.com/embed/${videoId}`;
+      return videoLink;
+    }
   };
   return (
     <div
@@ -44,14 +46,14 @@ export default function VideoMap({
           <iframe
             width="100%"
             height="315"
-            src={vidStr(item.videoLink)}
+            src={vidStr(item?.videoLink)}
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
-          ></iframe>
+          />
         ) : (
           <div className={styles.map_wrap}>
-            <MapLoader object={properties} idx={item.id} />
+            <MapLoader object={properties} idx={item?.id} />
           </div>
         )}
       </div>
