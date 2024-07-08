@@ -3,15 +3,15 @@ import Details from '~/components/reusable/listingForm/pages/basic/Details';
 import SalesRentPrice from '~/components/reusable/listingForm/pages/basic/SalesRentPrice';
 import PropertyDescription from '~/components/reusable/listingForm/pages/basic/PropertyDescription';
 import { InputErrors, Register } from '~/components/reusable/FormControl';
-import { HouseCard } from '~/components/reusable/card/Card';
+import { Listing } from '~/utils/types/listing.types';
 
 type BasicProps = {
   error: InputErrors;
   className: string;
   activeIndex: number;
   register: Register;
-  listing?: HouseCard;
-  setListing: React.Dispatch<React.SetStateAction<HouseCard>>;
+  listing?: Listing;
+  setListing: React.Dispatch<React.SetStateAction<Listing>>;
 };
 
 export default function Basic({
@@ -25,7 +25,7 @@ export default function Basic({
   const [details, setDetails] = useState(false);
   return (
     <fieldset
-      className={`flex f-column transition ease-in-out gap-2 ${className}`}
+      className={`transition ease-in-out gap-2 ${className}`}
     >
       <PropertyDescription
         id={activeIndex}

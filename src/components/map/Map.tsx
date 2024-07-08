@@ -2,8 +2,8 @@ import React, { useCallback } from 'react';
 import { GoogleMap, Marker } from '@react-google-maps/api';
 import styles from './map.module.css';
 import { mapPinIcon } from '~/assets/icons';
-import { HouseCard } from '../reusable/card/Card';
 import useGoogleApi from '~/hooks/useGoogleApi';
+import { Listing } from '~/utils/types/listing.types';
 
 type MapProps = {
   location?: {
@@ -14,7 +14,7 @@ type MapProps = {
   onMapClick?: (e: google.maps.MapMouseEvent) => void;
   markerPosition?: { lat: number; lng: number };
   idx?: string;
-  object?: HouseCard[];
+  object?: Listing[];
   active?: number;
   zoomLevel?: number;
 } & React.ComponentProps<'div'>;
@@ -35,7 +35,7 @@ export default function Map({
 
       if (window.location.pathname === `/property-item/${idx}`) {
         const listing = object?.find(
-          (item: HouseCard) => parseInt(item.id) === Number(idx),
+          (item: Listing) => parseInt(item.id) === Number(idx),
         );
 
         if (listing?.location.coordinates) {
@@ -75,7 +75,7 @@ export default function Map({
           map.setZoom(15)
         }
       } else {
-        object?.map((markerData: HouseCard) => {
+        object?.map((markerData: Listing) => {
           const marker = new window.google.maps.Marker({
             position: {
               lat: markerData.location.coordinates[0],
@@ -117,7 +117,7 @@ export default function Map({
           let sumLat = 0;
           let sumLng = 0;
 
-          object?.forEach((markerData: HouseCard) => {
+          object?.forEach((markerData: Listing) => {
             sumLat += markerData.location.coordinates[0];
             sumLng += markerData.location.coordinates[1];
           });

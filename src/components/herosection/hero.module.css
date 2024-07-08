@@ -1,23 +1,32 @@
 .hero {
   background-image: url("/src/assets/img/Frame.svg");
-  height: 100dvh;
+  height: 100vh;
   background-position: center;
   justify-content: center;
   align-items: center;
   padding: 1rem;
+  padding-top: 5rem;
   color: var(--tertiary-color-1);
 }
 
 .hero h1 {
   font-weight: 700;
+  line-height: 1.7rem;
+}
+
+.hero p {
+  font-size: clamp(0.5rem, 4vw, 1.2rem);
+  font-weight: 400;
 }
 
 .form {
   margin: 1rem;
+  position: relative;
   padding: 1rem;
   display: grid;
   grid-gap: 1rem;
-  color: var(--tertiary-color-2);
+  font-size: var(--font-size-1);
+  color: var(--tertiary-color);
   background-color: var(--tertiary-color-1);
 }
 
@@ -56,6 +65,10 @@
 
 .sale {
   transform: translate(6.5rem);
+}
+
+.locationSvg {
+  color: var(--accent-color);
 }
 
 .form > div {
@@ -121,11 +134,7 @@ optgroup[label] {
   padding: 0.7rem 0.5rem;
 }
 
-@media screen and (600px <= width <= 1024px) {
-  .hero p {
-    font-size: 2vw;
-  }
-  
+@media screen and (600px <= width <= 1024px) {  
   .form {
     padding: 2rem;
     grid-template-columns: repeat(2, 1fr);
@@ -141,10 +150,6 @@ optgroup[label] {
 }
 
 @media screen and (360px <= width <= 500px) {
-  .hero h1 {
-    font-size: 1.8rem;
-  }
-
   .hero span {
     display: block;
     text-align: center;
@@ -152,10 +157,6 @@ optgroup[label] {
 }
 
 @media screen and (width <= 360px) {
-  .hero h1 {
-    font-size: 1.6rem;
-  }
-  
   .hero span {
     display: block;
     text-align: center;

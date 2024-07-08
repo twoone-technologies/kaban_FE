@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Transaction } from "~/components/dashboard/wallet";
-import { HouseCard } from "~/components/reusable/card/Card";
+import { Listing } from "~/utils/types/listing.types";
 
-type ObjectTypes = HouseCard[] | Transaction[];
+type ObjectTypes = Listing[] | Transaction[];
 
 export default function useSortSwitch(object: ObjectTypes) {
   const [sortArr, setSortArr] = useState<ObjectTypes>([]);
@@ -13,7 +13,7 @@ export default function useSortSwitch(object: ObjectTypes) {
     }
   }, [object]);
 
-  const isHouseCardArray = (arr: ObjectTypes): arr is HouseCard[] => {
+  const isHouseCardArray = (arr: ObjectTypes): arr is Listing[] => {
     return Array.isArray(arr) && arr.length > 0 && 'price' in arr[0];
   };
 

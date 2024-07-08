@@ -6,13 +6,13 @@ import FormControl, {
 } from '~/components/reusable/FormControl';
 import styles from '~/components/reusable/listingForm/pages/miscellenous/listingForm.module.css';
 import { suffix } from '~/components/reusable/listingForm/pages/miscellenous/mapProps';
-import { HouseCard } from '~/components/reusable/card/Card';
+import { Listing } from '~/utils/types/listing.types';
 
 type SalesRentPriceProps = {
   error: InputErrors;
   register: Register;
-  listing?: HouseCard;
-  setListing?: React.Dispatch<React.SetStateAction<HouseCard>>;
+  listing?: Listing;
+  setListing?: React.Dispatch<React.SetStateAction<Listing>>;
 };
 
 export default function SalesRentPrice({

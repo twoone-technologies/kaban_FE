@@ -1,10 +1,11 @@
 import { useSearchParams } from "react-router-dom";
 import PaginationComp from "../reusable/Pagination";
-import Card, { HouseCard } from "../reusable/card/Card";
+import Card from "../reusable/card/Card";
 import { dummyObj } from "../reusable/dummyObj";
+import { Listing } from "~/utils/types/listing.types";
 
 export default function Listings() {
-  const listingArray = dummyObj as unknown as HouseCard[];
+  const listingArray = dummyObj as unknown as Listing[];
   const [query, setSearchParams] = useSearchParams()
   const currentPage = Number(query.get("page") || 1);
   return (
@@ -13,7 +14,7 @@ export default function Listings() {
         {listingArray.map((item) => {
           return (
             <>
-              <Card card={item as HouseCard} />
+              <Card card={item as Listing} />
             </>
           )
         })}

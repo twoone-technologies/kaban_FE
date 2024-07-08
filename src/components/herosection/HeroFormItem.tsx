@@ -17,7 +17,7 @@ export default function HeroFormItem() {
         title={'location'}
         placeholder="location"
         className={styles.location}
-        icon={<Svg className={'absolute top-4 right-4'} href={searchIcon} />}
+        icon={<Svg className={`absolute top-3 right-4 ${styles.locationSvg}`} height='1.2rem' href={searchIcon} />}
       />
       <FormControl as="select" name={'propertyType'} title={'propertyType'}>
         {Object.entries(property_type).map(([key, val], id) => (

@@ -12,14 +12,14 @@ import {
   propertyType,
 } from '~/components/reusable/listingForm/pages/miscellenous/mapProps';
 import { StateCitiesMap } from '~/hooks/useStateCities';
-import { GoodStat, HouseCard } from '~/components/reusable/card/Card';
+import { Listing } from '~/utils/types/listing.types';
 
 type PropertyProps = {
   id: number;
   error: InputErrors;
   register: Register;
-  listing?: HouseCard;
-  setListing?: React.Dispatch<React.SetStateAction<HouseCard>>;
+  listing?: Listing;
+  setListing?: React.Dispatch<React.SetStateAction<Listing>>;
   setDetails: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
@@ -97,7 +97,7 @@ export default function PropertyDescription({
           onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
             listing &&
             setListing &&
-            setListing({ ...listing, status: e.target.value as GoodStat })
+            setListing({ ...listing, status: e.target.value as "sale" | "rent"})
           }
         >
           <OptGroup header="status" subItems={statusArr} />

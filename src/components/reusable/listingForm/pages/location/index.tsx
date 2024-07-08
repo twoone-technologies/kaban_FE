@@ -48,7 +48,7 @@ export default function ListingLocation({
   return (
     <fieldset
       onClick={() => clearSuggestions()}
-      className={`flex flex-col gap-6 ${className}`}
+      className={className}
     >
       <Location
         idx={activeIndex}

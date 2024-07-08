@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import Container from '~/components/reusable/Container';
 import { Link } from 'react-router-dom';
-import Card, { HouseCard } from '~/components/reusable/card/Card';
+import Card from '~/components/reusable/card/Card';
 import SearchForm from '~/components/searchForm/SearchForm';
 import styles from '~/components/reusable/resultsContainer/results.module.css';
 import MapLoader from '~/components/map/MapLoader';
 import MobileMapControl from './MobileMapControl';
 import SwitchGroup from './SwitchGroup';
 import useSortSwitch from '~/hooks/useSortSwitch';
+import { Listing } from '~/utils/types/listing.types';
 
 type ResultsProps = {
   city: string;
@@ -15,7 +16,7 @@ type ResultsProps = {
   defaultCity?: string;
   propertyCategory?: string;
   onSubmit?: () => void;
-  object: HouseCard[];
+  object: Listing[];
 };
 
 export default function ResultsWrap({
@@ -109,7 +110,7 @@ export default function ResultsWrap({
         <div className={`${styles.listings_wrap} ${listingsPage} ${order}`}>
           {sortArr.map(item => 'location' in item &&
             <Card
-              card={item as HouseCard}
+              card={item as Listing}
               key={item.id}
               mapState={map}
               orientation={position}

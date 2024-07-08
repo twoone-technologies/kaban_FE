@@ -1,14 +1,15 @@
 import styles from './listings.module.css';
-import Card, { HouseCard } from '~/components/reusable/card/Card';
+import Card from '~/components/reusable/card/Card';
 import { editIcon, publishIcon, refreshIcon, trashIcon } from '~/assets/icons';
 import Svg from '~/components/reusable/Svg';
 import { Link } from 'react-router-dom';
+import { Listing } from '~/utils/types/listing.types';
 
 type Props = {
   submited?: string;
   expiring?: string;
   expired?: string;
-  listArr: HouseCard[];
+  listArr: Listing[];
 };
 
 export default function ListingItem({
@@ -32,21 +33,21 @@ export default function ListingItem({
             className={styles.card}
             statProps={
               <div className={`flex s-btw ${styles.btmDetails}`}>
-                {item.status === 'draft' || <span>submited:{submited}</span>}
-                {item.status === 'published' && (
+                {item.draft === 'draft' || <span>submited:{submited}</span>}
+                {item.published === 'published' && (
                   <span>expiring:{expiring}</span>
                 )}
-                {item.status === 'expired' && <span>expired:{expired}</span>}
+                {item.expired === 'expired' && <span>expired:{expired}</span>}
                 <div
                   className={`flex gap-1 ${
-                    item.status === 'draft' ? styles.iconGrp : null
+                    item.draft === 'draft' ? styles.iconGrp : null
                   }`}
                 >
                   <Svg href={trashIcon} />
-                  {!item.featured && item.status === 'published' && (
+                  {!item.featured && item.published === 'published' && (
                     <Svg href={publishIcon} />
                   )}
-                  {item.status === 'expired' && <Svg href={refreshIcon} />}
+                  {item.expired === 'expired' && <Svg href={refreshIcon} />}
                   <Link to={`/dashboard/property_edit/${item.id}`}>
                     <Svg href={editIcon} />
                   </Link>

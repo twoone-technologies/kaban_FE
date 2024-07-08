@@ -1,5 +1,4 @@
 import { Wrapper } from '~/components/reusable/Container';
-import styles from './edit.module.css';
 import useTabulation from '~/hooks/useTabulation';
 import { profileHeaders } from './edit';
 import Tabulation from '~/components/reusable/tabulation/Tabulation';
@@ -69,7 +68,8 @@ export type EditProfileInputs = {
 };
 
 export default function EditProfile() {
-  const { activeIndex, prevId, handleHeaderClick } = useTabulation(150);
+  const itemWidth = 150
+  const { activeIndex, prevId, handleHeaderClick } = useTabulation(itemWidth);
   const [minDocx, setMinDocx] = useState(false);
   const { realtor } = useAppSelector((state) => state.auth);
   const { data, isLoading, isSuccess } = useGetRealtorQuery(realtor.id || '');
@@ -85,10 +85,6 @@ export default function EditProfile() {
     return () => clearTimeout(timeoutId);
   }, [state]);
 
-  const underlineStyle = {
-    transform: `translateX(${prevId}px)`,
-  };
-
   const {
     register,
     formState: { errors, isValid },
@@ -97,12 +93,12 @@ export default function EditProfile() {
   });
 
   return (
-    <Wrapper element="section" className={styles.wrapper}>
+    <Wrapper element="section">
       <Tabulation
-        className={styles.tabulation}
-        headerArr={profileHeaders}
         idx={activeIndex}
-        style={underlineStyle}
+        activeTab={prevId}
+        headerWidth={itemWidth}
+        headerArr={profileHeaders}
         headerSwitch={handleHeaderClick}
       />
       {!isSuccess ? (

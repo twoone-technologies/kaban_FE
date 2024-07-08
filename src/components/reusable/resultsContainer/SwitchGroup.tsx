@@ -7,15 +7,15 @@ import {
 } from '~/assets/icons';
 import { sortOptions } from '~/components/searchForm/status';
 import Svg from '../Svg';
-import { HouseCard } from '../card/Card';
 import FormControl from '../FormControl';
 import OptGroup from '~/components/herosection/Optgroup';
+import { Listing } from '~/utils/types/listing.types';
 
 type Props = {
   mapState: boolean;
   onClick: () => void;
   onChange: (e: { target: { value: string } }) => void;
-  listingObject: HouseCard[];
+  listingObject: Listing[];
   stackOrder: 'listings' | 'map';
   orientation: 'portrait' | 'landscape';
   setOrientation: (orientation: 'portrait' | 'landscape') => void;
