@@ -155,12 +155,6 @@
   transition: all 0.4s ease-in-out;
 }
 
-@media screen and (width <= 768px){
-  .nav {
-    /* height: 100vh; */
-  }
-}
-
 @media screen and (width >= 768px) {
   .nav {
     padding: 0 4rem;

@@ -4,6 +4,7 @@ import { editIcon, publishIcon, refreshIcon, trashIcon } from '~/assets/icons';
 import Svg from '~/components/reusable/Svg';
 import { Link } from 'react-router-dom';
 import { Listing } from '~/utils/types/listing.types';
+import { dateHandler } from '~/components/reusable/FunctionUtils';
 
 type Props = {
   submited?: string;
@@ -13,9 +14,6 @@ type Props = {
 };
 
 export default function ListingItem({
-  submited,
-  expiring,
-  expired,
   listArr,
 }: Props) {
   return (
@@ -27,34 +25,27 @@ export default function ListingItem({
           className={`pad flex ${styles.listItemGrp}
             ${location.hash.substring(1) === item.id ? styles.activeItem : ''}`}
         >
-          <Card
-            card={item}
-            orientation="landscape"
-            className={styles.card}
-            statProps={
-              <div className={`flex s-btw ${styles.btmDetails}`}>
-                {item.draft === 'draft' || <span>submited:{submited}</span>}
-                {item.published === 'published' && (
-                  <span>expiring:{expiring}</span>
+          <Card card={item} orientation="landscape" className={styles.card}>
+            <div className={`flex s-btw ${styles.btmDetails}`}>
+              <div className="flex gap-1">
+                {item.draft || <span>submited: {dateHandler(item.createdAt)}</span>}
+                {item.published_status === 'published' && (
+                  <span>expiring: {item.expiresAt}</span>
                 )}
-                {item.expired === 'expired' && <span>expired:{expired}</span>}
-                <div
-                  className={`flex gap-1 ${
-                    item.draft === 'draft' ? styles.iconGrp : null
-                  }`}
-                >
-                  <Svg href={trashIcon} />
-                  {!item.featured && item.published === 'published' && (
-                    <Svg href={publishIcon} />
-                  )}
-                  {item.expired === 'expired' && <Svg href={refreshIcon} />}
-                  <Link to={`/dashboard/property_edit/${item.id}`}>
-                    <Svg href={editIcon} />
-                  </Link>
-                </div>
+                {item.expiresAt && <span>expired:{item.expiresAt}</span>}
               </div>
-            }
-          />
+              <div className={`flex gap-1 ${item.draft ? styles.iconGrp : null}`}>
+                <Svg href={trashIcon} />
+                {!item.featured && item.published === 'published' && (
+                  <Svg href={publishIcon} />
+                )}
+                {Number(item.expiresAt) <= Date.now() && <Svg href={refreshIcon} />}
+                <Link to={`/dashboard/property_edit/${item.id}`}>
+                  <Svg href={editIcon} />
+                </Link>
+              </div>
+            </div>
+          </Card>
         </div>
       ))}
     </>

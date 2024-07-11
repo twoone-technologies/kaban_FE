@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { ReactNode, useState } from 'react';
+import { useState } from 'react';
 import { bedIcon, showerIcon, carIcon } from '~/assets/icons';
 import styles from './card.module.css';
 import CardAgentInfo from './CardAgentInfo';
@@ -9,19 +9,20 @@ import CardAddress from './CardAddress';
 import CardImg from './CardImg';
 import { Listing } from '~/utils/types/listing.types';
 
+type CardProps = {
+  card: Listing;
+  className?: string;
+  orientation?: string;
+  mapState?: boolean;
+} & React.ComponentProps<'div'>;
+
 export default function Card({
   card,
   className,
   mapState = false,
   orientation = 'portrait',
-  statProps
-}: {
-  card: Listing;
-  className?: string;
-  orientation?: string;
-  mapState?: boolean;
-  statProps?: ReactNode;
-}) {
+  ...props
+}: CardProps) {
   const navigate = useNavigate();
   const [hover, setHover] = useState(false);
   const onHoverHandler = () => setHover(!hover);
@@ -67,7 +68,9 @@ export default function Card({
       <div className={`flex f-column c_pad s-btw ${styles.below}`}>
         <div>
           <CardHeaderInfo
-            className={statusOrder}
+            expired={card?.expiresAt}
+            draft={card?.draft}
+            published={card?.published_status}
             type={card.property_type}
             num={card.price.amount}
             stat={card.status}
@@ -78,7 +81,6 @@ export default function Card({
               title={card.title}
               address={card.address}
               onClick={() => {
-                console.log('goat');
                 location.pathname.includes('dashboard') &&
                   navigate(`/property-item/${card.id}`);
               }}
@@ -105,7 +107,7 @@ export default function Card({
           </div>
         </div>
         {location.pathname.includes('dashboard') ? (
-          statProps
+          props.children
         ) : (
           <CardAgentInfo
             src={card.realtor.realtor_pic}

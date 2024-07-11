@@ -27,6 +27,7 @@ export const dummyObj = [
     property_type: "shops",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "sale",
+    published_status: 'published',
     featured: true,
     price: {
       amount: 3000000,
@@ -78,6 +79,7 @@ export const dummyObj = [
     property_type: "shops",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "sale",
+    published_status: 'published',
     featured: true,
     price: {
       amount: 3000000,
@@ -129,7 +131,9 @@ export const dummyObj = [
     property_type: "apartment",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
-    featured: true, price: {
+    published_status: 'published',
+    featured: true, 
+    price: {
       amount: 1000000,
       per: 'annum'
     },
@@ -181,7 +185,9 @@ export const dummyObj = [
     property_type: "shops",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
-    featured: true, price: {
+    published_status: 'published',
+    featured: true, 
+    price: {
       amount: 340000,
       per: 'annum'
     },
@@ -230,6 +236,7 @@ export const dummyObj = [
     property_type: "Self-Contain",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
+    published_status: 'published',
     featured: true,
     price: {
       amount: 260000,
@@ -279,6 +286,7 @@ export const dummyObj = [
     property_type: "Apartment",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "draft",
+    published_status: 'pending',
     price: {
       amount: 260000,
       per: 'annum'
@@ -331,6 +339,7 @@ export const dummyObj = [
     property_type: "Apartment",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
+    published_status: 'pending',
     price: {
       amount: 150000,
       per: 'annum'
@@ -358,6 +367,7 @@ export const dummyObj = [
     videoLink: 'https://youtu.be/Rgt-uRFUV7Q?si=8JA8V1ReznRO9G8x',
     street_view: false,
     report: [],
+    expiredAt: "2024-05-17T18:57:48.921Z",
     createdAt: "2023-08-17T18:57:48.921Z",
     id: "613a3c7c6f6b3e001f0d2f80"
   },
@@ -383,6 +393,7 @@ export const dummyObj = [
     property_type: "Apartment",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
+    published_status: 'pending',
     price: {
       amount: 280000,
       per: 'annum'
@@ -435,6 +446,7 @@ export const dummyObj = [
     property_type: "Apartment",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
+    published_status: 'pending',
     price: {
       amount: 150000,
       per: 'annum'
@@ -488,6 +500,7 @@ export const dummyObj = [
     property_type: "Apartment",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "sale",
+    published_status: 'pending',
     price: {
       amount: 280000,
       per: 'annum'
@@ -540,6 +553,7 @@ export const dummyObj = [
     property_type: "Apartment",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "sale",
+    published_status: 'pending',
     price: {
       amount: 150000,
       per: 'annum'

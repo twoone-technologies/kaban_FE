@@ -68,20 +68,21 @@
 }
 
 .status_grp {
-  font-size: clamp(3px, 4vw, 0.5rem);
-  font-weight: 700;
+  font-size: clamp(3px, 4vw, 0.7rem);
+  direction: rtl;
 }
 
 .sale,
 .pending {
-  font-size: 10px;
+  direction: ltr;
   color: var(--pending-col);
+  direction: ltr;
   background-color: var(--bg-p-col);
   text-transform: capitalize;
 }
 
 .featured {
-  font-size: 10px;
+  direction: ltr;
   background-color: var(--bg-f-col-4);
   color: var(--featured-col);
   text-transform: capitalize;
@@ -89,6 +90,7 @@
 
 .rent,
 .published {
+  direction: ltr;
   background-color: var(--bg-col-1);
   color: var(--stat-col-1);
   text-transform: capitalize;
@@ -97,6 +99,7 @@
 .draft,
 .expired,
 .disapproved {
+  direction: ltr;
   background-color: var(--bg-r-col);
   color: var(--red-col);
   text-transform: capitalize;

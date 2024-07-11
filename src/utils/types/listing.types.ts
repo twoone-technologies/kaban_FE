@@ -45,10 +45,7 @@ export type Listing = {
   createdAt: string;
   cover_image: string;
   expiresAt: string;
-  pending?: string;
-  published?: string;
-  draft?: string;
-  expired?: string;
-  disapproved?: string;
+  published_status?: 'published' | 'pending' | 'disapproved';
+  draft?: boolean;
   id: string;
 };
