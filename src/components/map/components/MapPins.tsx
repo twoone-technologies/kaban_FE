@@ -100,8 +100,8 @@ export const MapPins = (props: { pois: Listing[] | Listing, markedPin?: google.m
 
   // listingPage coordinates
   const position = {
-    lat: (props.pois as Listing).location.coordinates[0],
-    lng: (props.pois as Listing).location.coordinates[1],
+    lat: (props.pois as Listing)?.location?.coordinates[0],
+    lng: (props.pois as Listing)?.location?.coordinates[1],
   };
 
   return (
@@ -113,8 +113,8 @@ export const MapPins = (props: { pois: Listing[] | Listing, markedPin?: google.m
             clickable
             onClick={(e) => handleClick(e, poi)}
             position={{
-              lat: poi.location.coordinates[0],
-              lng: poi.location.coordinates[1],
+              lat: poi.location?.coordinates[0],
+              lng: poi.location?.coordinates[1],
             }}
             ref={(marker) =>
               setMarkerRef(marker as unknown as GoogleMarker, poi._id)
