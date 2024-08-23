@@ -6,27 +6,32 @@ import { alarmIcon, closeIcon } from '~/assets/icons';
 import useResponsiveNav from '~/hooks/useResponsiveNav';
 import { Dispatch, SetStateAction, useState } from 'react';
 import usePlacesAutocomplete from 'use-places-autocomplete';
-import FormControl, { InputErrors, Register } from '../FormControl';
+import FormControl, { Register } from '../FormControl';
 import styles from '~/components/reusable/listingForm/pages/miscellenous/listingForm.module.css';
+import { Listing } from '~/utils/types/listing.types';
 
 type GoogleAddressProps = {
   idx?: number;
   city: string;
   state: string;
-  title: string;
-  register?: Register;
-  error?: InputErrors;
+  name: string;
   className?: string;
+  listing?: Listing
+  error?: string;
+  register?: Register;
   setMarker: Dispatch<SetStateAction<{ lat: number; lng: number } | null>>;
-};
+  } & React.HTMLProps<HTMLInputElement>;
 
 export default function Address({
   idx,
   city,
   state,
-  title,
+  name,
+  listing,
   className,
+  error,
   setMarker,
+  register,
 }: GoogleAddressProps) {
   const {
     value,
@@ -36,13 +41,14 @@ export default function Address({
     suggestions: { status, data },
   } = usePlacesAutocomplete({
     initOnMount: false,
+    debounce: 300
   });
 
   const { isLoaded } = useGoogleApi({
     onLoad: () => init(),
   });
 
-  const [streetAddress, setStreetAddress] = useState('');
+  const [streetAddress, setStreetAddress] = useState(listing?.address || '');
   const [close, setClose] = useState(false);
   const [hover, setHover] = useState(false);
   const svgEvents = useResponsiveNav({
@@ -50,43 +56,43 @@ export default function Address({
     onMouseEnter: () => setHover(true),
     onMouseLeave: () => setHover(false),
   });
+  
   const handleAddress = (e: React.ChangeEvent<HTMLInputElement>) => {
-    streetAddress === '' && 'This field is required';
-    if (title === 'address') {
-      setStreetAddress(e.target.value);
-      setClose(false);
+    setStreetAddress(e.target.value);
+    setClose(false);
+    if (name === 'address') {
       setValue(`${streetAddress}, ${city}, ${state}`);
     } else {
-      setClose(false);
-      setStreetAddress(e.target.value);
       setValue(`${streetAddress}, ${city}`);
     }
   };
-  // console.log(streetAddress);
+
   return (
     <div className={`relative ${className}`}>
       <FormControl
         as="input"
         type="text"
+        name={name}
+        error={error}
+        labelText={name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()}
+        placeholder={name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()}
         required={idx === 2}
         className={styles.input}
         value={streetAddress?.split(',').slice(0, 2)}
-        error={streetAddress === '' ? 'This field is required' : ''}
         containerClass={`gap-0 f-column ${styles.inputWrap}`}
-        name={title === 'address' ? 'address' : 'landmark'}
         onChange={handleAddress}
-        placeholder={
-          title === 'address' ? 'Enter Address' : 'Nearest major road/Landmark'
-        }
-        labelText={title === 'address' ? 'Address' : 'Landmark'}
+        register={register}
+        registerOptions={{
+          onChange: handleAddress
+        }}
       />
-      {title === 'address' && (
+      {name === 'address' && (
         <div>
           <Svg
             {...svgEvents}
             href={alarmIcon}
             className={`left-16 ${styles.alarmSvg}
-            ${streetAddress !== '' ? styles.see : styles.hide}
+            ${value ? styles.see : styles.hide}
             ${close === true ? styles.hide : styles.see}`}
           />
           <Tooltip
@@ -103,7 +109,7 @@ export default function Address({
       )}
       <Svg
         href={closeIcon}
-        className={`right-5 ${styles.svg}
+        className={`right-4 absolute top-9
         ${streetAddress !== '' ? styles.see : styles.hide}
         ${close === true ? styles.hide : styles.see}`}
         onClick={() => {
@@ -123,7 +129,7 @@ export default function Address({
           clearOptions={clearSuggestions}
         />
       ) : (
-        ''
+        null
       )}
     </div>
   );

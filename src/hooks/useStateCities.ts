@@ -24,5 +24,5 @@ export default function useStateCities() {
     }
   };
 
-  return { allCities, cityOptions, handleCityChange}
+  return { allCities, cityOptions, setCityOptions, handleCityChange}
 }

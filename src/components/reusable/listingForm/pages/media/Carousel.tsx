@@ -9,9 +9,11 @@ import CarouselWrap from '~/components/reusable/CarouselWrap';
 import styles from '~/components/reusable/listingForm/pages/miscellenous/listingForm.module.css';
 import { ImageFile } from '~/hooks/useFileUpload';
 import React from 'react';
+import { Listing } from '~/utils/types/listing.types';
 
 type Props = {
   imageArr: ImageFile[];
+  listing?: Listing;
   coverImage?: ImageFile[];
   setCoverImg?: React.Dispatch<React.SetStateAction<ImageFile[]>>;
   setListingImg: React.Dispatch<React.SetStateAction<ImageFile[]>>;
@@ -26,19 +28,20 @@ export default function Carousel({
   setListingImg,
   setCoverImg,
   imageArr,
+  listing,
   coverImage,
   deleteImage,
   setActiveImg,
 }: Props) {
   return (
     <div>
-      {coverImage || imageArr.length > 0 ? (
+      {coverImage || imageArr.length > 0 || listing ? (
         <CarouselWrap setActiveImg={setActiveImg}>
-          {coverImage && coverImage[0]?.url ? (
+          {(coverImage && coverImage[0]?.url) || listing?.cover_image ? (
             <SwiperSlide className="relative">
               <img
-                src={coverImage[0].url}
-                alt={coverImage[0].name}
+                src={(coverImage && coverImage[0]?.url) || listing?.cover_image}
+                alt={(coverImage && coverImage[0]?.name) || listing?.cover_image}
                 className={`b-radius ${styles.img}`}
               />
               <div className={`absolute bottom-2 flex s-btw w-full`}>
@@ -55,6 +58,28 @@ export default function Carousel({
               </div>
             </SwiperSlide>
           ) : undefined}
+          {listing && listing.images.map((image, id) => (
+            <SwiperSlide className="carousel_item" key={id}>
+              <div className={styles.imgWrap}>
+                <img
+                  src={image}
+                  alt={image}
+                  className={`b-radius ${styles.img}`}
+                />                
+                <div className="flex absolute align-y w-full px-4 bottom-3 s-btw">
+                  <span
+                    className="cursor pointer flex align-x align-y"
+                    onClick={() => {
+                      setListingImg && deleteImage(setListingImg, id);
+                    }}
+                  >
+                    {' '}
+                    &times;
+                  </span>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
           {imageArr.map((image, id) => (
             <SwiperSlide className="carousel_item" key={id}>
               <div className={styles.imgWrap}>
@@ -85,7 +110,7 @@ export default function Carousel({
                 </div>
               </div>
             </SwiperSlide>
-          ))}          
+          ))}         
         </CarouselWrap>
       ) : (
         ''

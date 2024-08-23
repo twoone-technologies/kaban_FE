@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import OptGroup from '~/components/herosection/Optgroup';
 import FormControl, {
   InputErrors,
@@ -6,13 +6,15 @@ import FormControl, {
 } from '~/components/reusable/FormControl';
 import useStateCities from '~/hooks/useStateCities';
 import InputWrap from '~/components/dashboard/reusables/InputWrap';
-import Address from '~/components/reusable/placesAutocomplete/Address';
+import ListingAddress  from '~/components/reusable/placesAutocomplete/Address';
 import styles from '~/components/reusable/listingForm/pages/miscellenous/listingForm.module.css';
 import { statesInNigeria } from '~/components/reusable/listingForm/pages/miscellenous/mapProps';
+import { Listing } from '~/utils/types/listing.types';
 
 type Props = {
   city: string;
   idx: number;
+  listing: Listing;
   state: string;
   svg: ReactNode;
   error: InputErrors;
@@ -31,11 +33,30 @@ export default function HoodAddress({
   error,
   register,
   state,
+  listing,
   setCity,
   setState,
   setMarker,
 }: Props) {
-  const { allCities, cityOptions, handleCityChange } = useStateCities();
+  const { allCities, cityOptions, setCityOptions, handleCityChange } = useStateCities();
+  const [defCity, setDefCity] = useState<string | undefined>(listing?.city);
+
+  useEffect(() => {
+    const defaultCity = allCities[capitalizeWord(listing?.state)]
+    if (defaultCity) {
+      setCityOptions(defaultCity);
+      setState(capitalizeWord(listing?.state));
+      setCity(capitalizeWord(listing?.city));
+      setDefCity(capitalizeWord(listing?.city));
+    }
+  }, []);
+
+  const capitalizeWord = (string?: string) => {
+    return string ? string
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(' '): ''
+  };
 
   return (
     <InputWrap>
@@ -44,6 +65,7 @@ export default function HoodAddress({
         <FormControl
           as="select"
           name="state"
+          defaultValue={capitalizeWord(listing?.state)}
           containerClass={`gap-0 f-column ${styles.inputWrap}`}
           className={styles.input}
           labelText="State"
@@ -56,27 +78,31 @@ export default function HoodAddress({
           <OptGroup subItems={statesInNigeria} header={'States'} />
         </FormControl>
         <FormControl
-          icon={svg}
           as="select"
           name="city"
+          value={defCity}
+          icon={svg}
           labelText="City"
           className={styles.input}
           containerClass={`gap-0 f-column ${styles.inputWrap}`}
           onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
             setCity(e.target.value);
+            setDefCity(e.target.value);
           }}
         >
           <OptGroup subItems={cityOptions} header={'Cities'} />
         </FormControl>
-        <Address
+        <ListingAddress
           idx={idx}
-          error={error}
+          name={"address"}
+          required={idx === 2}
+          listing={listing}
+          error={error.address?.message}
           register={register}
           className={styles.address}
           setMarker={setMarker}
           city={city}
           state={state}
-          title="address"
         />
       </div>
     </InputWrap>

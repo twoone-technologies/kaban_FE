@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import Card from '~/components/reusable/card/Card';
 import SearchForm from '~/components/searchForm/SearchForm';
 import styles from '~/components/reusable/resultsContainer/results.module.css';
-import MapLoader from '~/components/map/MapLoader';
 import MobileMapControl from './MobileMapControl';
 import SwitchGroup from './SwitchGroup';
 import useSortSwitch from '~/hooks/useSortSwitch';
 import { Listing } from '~/utils/types/listing.types';
+import MapComponent from '~/components/map/MapComponent';
 
 type ResultsProps = {
   city: string;
@@ -33,8 +33,6 @@ export default function ResultsWrap({
   );
   const [stack, setStack] = useState<'listings' | 'map'>('listings');
   const [map, setMap] = useState(false);
-  const [selectItem, setSelectItem] = useState(0);
-
   const { sortArr, handleSort } = useSortSwitch(object);
 
   const toggleMap = () => {
@@ -63,7 +61,7 @@ export default function ResultsWrap({
     >
       <div className={`${styles.map_section} ${renderMap} ${mapPage}`}>
         <div className={styles.mapWrap}>
-          <MapLoader object={object} onClick={setSelectItem} />
+          <MapComponent markerArr={object}  />
         </div>
       </div>
       <MobileMapControl stackOrder={stack} setStackOrder={setStack} />
@@ -114,9 +112,6 @@ export default function ResultsWrap({
               key={item.id}
               mapState={map}
               orientation={position}
-              className={selectItem === parseInt(item.id)
-                ? styles.activeElement : undefined
-              }
             />
           )}
         </div>

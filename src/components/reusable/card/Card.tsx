@@ -29,8 +29,6 @@ export default function Card({
   const borders = orientation === 'portrait' ? styles.border_r : '';
   const cardState =
     orientation === 'landscape' && mapState === false ? styles.portrait : '';
-  const statusOrder =
-    orientation === 'landscape' && mapState === false ? 'flex-col' : '';
   const cardimgState =
     orientation === 'landscape' && mapState === false
       ? styles.landscape_2
@@ -56,35 +54,13 @@ export default function Card({
             : cardimgState && styles.maxWidth
         }`}
       >
-        <CardImg
-          enter={hover}
-          src={card.cover_image}
-          title={card.title}
-          date={card.createdAt}
-          imgNo={card.images.length}
-        />
+      <CardImg enter={hover} cardProps={card} />
       </div>
-
       <div className={`flex f-column c_pad s-btw ${styles.below}`}>
         <div>
-          <CardHeaderInfo
-            expired={card?.expiresAt}
-            draft={card?.draft}
-            published={card?.published_status}
-            type={card.property_type}
-            num={card.price.amount}
-            stat={card.status}
-            featured={card.featured}
-          />
+          <CardHeaderInfo cardHeader={card} />
           <div className={`flex f-column s-btw ${styles.iconWrap}`}>
-            <CardAddress
-              title={card.title}
-              address={card.address}
-              onClick={() => {
-                location.pathname.includes('dashboard') &&
-                  navigate(`/property-item/${card.id}`);
-              }}
-            />
+            <CardAddress addressProps={card} />
             {location.pathname.includes('dashboard') ? null : (
               <div className={`flex f-width ${styles.icons}`}>
                 <CardIcons

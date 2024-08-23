@@ -10,10 +10,12 @@ import Carousel from '~/components/reusable/listingForm/pages/media/Carousel';
 import UploadImages from '~/components/reusable/listingForm/pages/media/UploadImages';
 import styles from '~/components/reusable/listingForm/pages/miscellenous/listingForm.module.css';
 import useImageUpload from '~/hooks/useFileUpload';
+import { Listing } from '~/utils/types/listing.types';
 
 type MediaProps = {
   className: string;
   register: Register;
+  listing: Listing;
   error: InputErrors;
   activeIndex: number;
   setValue: UseFormSetValue<Inputs>;
@@ -24,6 +26,7 @@ export default function Media({
   className,
   register,
   error,
+  listing,
   setValue,
   setMinNum,
   activeIndex,
@@ -46,19 +49,21 @@ export default function Media({
   const [activeImg, setActiveImg] = useState<number>(1);
 
   useEffect(() => {
-    images.length > 5 && coverImage.length > 0
+    images.length + listing?.images.length > 5 && (coverImage.length > 0 || listing?.cover_image)
       ? setMinNum(true)
       : setMinNum(false);
-  }, [coverImage, images, setMinNum]);
+  }, [coverImage, images, listing?.cover_image, listing?.images.length, setMinNum]);
 
   return (
     <div className={className}>
       <InputWrap>
         <div className="flex s-btw">
           <h3>Media</h3>
-          <span>{`${activeImg + 1} / ${images.length + 1}`}</span>
+          <span>{`${activeImg + 1} / ${images.length + listing?.images.length}`}</span>
         </div>
+        {images.length + listing?.images.length <= 5 && <span className='text-red-500'>Please upload at least 6 images</span>}
         <Carousel
+          listing={listing}
           imageArr={images}
           coverImage={coverImage}
           setCoverImg={setCoverImage}
@@ -86,6 +91,7 @@ export default function Media({
           register={register}
           labelText="Video URL"
           className={styles.input}
+          defaultValue={listing?.videoLink}
           registerOptions={{
             pattern: {
               value:

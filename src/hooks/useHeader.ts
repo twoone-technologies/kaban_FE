@@ -31,7 +31,7 @@ export default function useHeader() {
         window.history.pushState({ path: new_url }, '', new_url)
         }
       }
-    else if (location.pathname !== '/cities/:cityName' && location.href.includes('?')) {console.log('piggy');
+    else if (location.pathname !== '/cities/:cityName' && location.href.includes('?')) {
       const keyValuePairs: string[] = location.href.split('?')[1].split('&');
       const resultArray: QueryObject[] = [];
       

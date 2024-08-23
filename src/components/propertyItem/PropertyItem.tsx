@@ -52,7 +52,7 @@ export default function PropertyItem() {
           <GalleryAndHeader item={listingItem} />
           <PropertyDetails item={listingItem} />
           <DescriptionAndFeatures item={listingItem} />
-          <VideoMap item={listingItem} properties={listingArray} />
+          <VideoMap item={listingItem} />
         </div>
         <div className={`flex f-column gap ${styles.item_details}`}>
           <AgentDetails item={listingItem} object={listingArray} />

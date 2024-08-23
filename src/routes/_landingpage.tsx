@@ -14,8 +14,8 @@ export async function action({ request }: ActionFunctionArgs) {
       return prev;
     }, [] as string[])
     .join('&');
-  console.log(formData);
-  console.log(searchStr);
+  // console.log(formData);
+  // console.log(searchStr);
   // const property_type = payload.propertyType;
   // const bedrooms = payload.bedrooms;
   // const price_Range = payload.priceRange;
@@ -29,7 +29,6 @@ export async function action({ request }: ActionFunctionArgs) {
   // redirect to result page with the data
 
   if (location.pathname !== '/search_results') {
-    console.log(location);
     return redirect(`/search_results?${searchStr}`);
   }
   return redirect(`/search_results?${searchStr}`);

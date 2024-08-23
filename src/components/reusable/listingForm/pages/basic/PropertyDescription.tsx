@@ -19,7 +19,6 @@ type PropertyProps = {
   error: InputErrors;
   register: Register;
   listing?: Listing;
-  setListing?: React.Dispatch<React.SetStateAction<Listing>>;
   setDetails: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
@@ -28,7 +27,6 @@ export default function PropertyDescription({
   error,
   register,
   listing,
-  setListing,
   setDetails,
 }: PropertyProps) {
   const allPropertyType: StateCitiesMap = { ...propertyType };
@@ -47,6 +45,7 @@ export default function PropertyDescription({
       const types = allPropertyType[similarCategoryKey];
       setTypeOptions(types);
     }
+    category !== 'Commercial' ? setDetails(true) : setDetails(false);
   }
 
   useEffect(() => {
@@ -75,15 +74,11 @@ export default function PropertyDescription({
         register={register}
         className={styles.input}
         placeholder="Write a title"
-        value={listing?.title}
+        defaultValue={listing?.title}
         error={error.title && error.title.message}
         containerClass={`gap-0 f-column ${styles.inputWrap}`}
         registerOptions={{
           maxLength: { value: 25, message: 'Title is too long' },
-          onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-            listing &&
-            setListing &&
-            setListing({ ...listing, title: e.target.value }),
         }}
       />
       <fieldset className={`flex gap ${styles.statType}`}>
@@ -93,12 +88,7 @@ export default function PropertyDescription({
           labelText="Status"
           className={styles.input}
           containerClass={`gap-0 f-column ${styles.inputWrap}`}
-          value={listing?.status}
-          onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-            listing &&
-            setListing &&
-            setListing({ ...listing, status: e.target.value as "sale" | "rent"})
-          }
+          defaultValue={listing?.status}
         >
           <OptGroup header="status" subItems={statusArr} />
         </FormControl>
@@ -107,16 +97,13 @@ export default function PropertyDescription({
           name="category"
           labelText="Category"
           className={styles.input}
-          value={
+          defaultValue={
             listing &&
             listing?.property_category.charAt(0).toUpperCase() +
               listing?.property_category.slice(1)
           }
           containerClass={`gap-0 f-column ${styles.inputWrap}`}
           onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-            listing &&
-              setListing &&
-              setListing({ ...listing, property_category: e.target.value });
             handleTypes(e.target.value);
           }}
         >
@@ -127,16 +114,13 @@ export default function PropertyDescription({
           name="type"
           labelText="Type"
           className={styles.input}
-          value={
+          defaultValue={
             listing &&
             listing?.property_type.charAt(0).toUpperCase() +
               listing?.property_type.slice(1)
           }
           containerClass={`gap-0 f-column ${styles.inputWrap}`}
           onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-            listing &&
-              setListing &&
-              setListing({ ...listing, property_type: e.target.value });
             e.target.value !== 'Land' ? setDetails(true) : setDetails(false);
           }}
         >
@@ -148,14 +132,10 @@ export default function PropertyDescription({
         as="textarea"
         name="description"
         register={register}
-        value={listing?.description}
+        defaultValue={listing?.description}
         labelText="Description"
         registerOptions={{
           maxLength: { value: 200, message: 'Description is too long' },
-          onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) =>
-            listing &&
-            setListing &&
-            setListing({ ...listing, description: e.target.value }),
         }}
         placeholder="Brief description of the property"
         containerClass={`gap-0 f-column ${styles.inputWrap}`}

@@ -38,19 +38,8 @@ export default function Details({
               name="bedroom"
               labelText="Bedroom"
               className={styles.input}
-              value={listing?.details.bedroom}
+              defaultValue={listing?.details.bedroom}
               containerClass={`gap-0 f-column ${styles.inputWrap}`}
-              onChange={(e) =>
-                listing &&
-                setListing &&
-                setListing({
-                  ...listing,
-                  details: {
-                    ...listing.details,
-                    bedroom: parseInt(e.target.value),
-                  },
-                })
-              }
             >
               <OptGroup header="number of rooms" subItems={figures} />
             </FormControl>
@@ -60,18 +49,7 @@ export default function Details({
               labelText="bathroom"
               className={styles.input}
               containerClass={`gap-0 f-column ${styles.inputWrap}`}
-              value={listing?.details.bathroom}
-              onChange={(e) =>
-                listing &&
-                setListing &&
-                setListing({
-                  ...listing,
-                  details: {
-                    ...listing.details,
-                    bathroom: parseInt(e.target.value),
-                  },
-                })
-              }
+              defaultValue={listing?.details.bathroom}
             >
               <OptGroup header="no of toilet" subItems={figures} />
             </FormControl>
@@ -81,18 +59,7 @@ export default function Details({
               labelText="Parking Lot"
               className={styles.input}
               containerClass={`gap-0 f-column ${styles.inputWrap}`}
-              value={listing?.details.parking_space}
-              onChange={(e) =>
-                listing &&
-                setListing &&
-                setListing({
-                  ...listing,
-                  details: {
-                    ...listing.details,
-                    parking_space: parseInt(e.target.value),
-                  },
-                })
-              }
+              defaultValue={listing?.details.parking_space}
             >
               <OptGroup header="parking bays no" subItems={figures} />
             </FormControl>
@@ -109,18 +76,7 @@ export default function Details({
           className={styles.input}
           error={error.areaSize && error.areaSize.message}
           containerClass={`gap-0 f-column ${styles.inputWrap} ${styles.areaSize}`}
-          value={listing?.details.land_area}
-          onChange={(e) =>
-            listing &&
-            setListing &&
-            setListing({
-              ...listing,
-              details: {
-                ...listing.details,
-                land_area: e.target.value,
-              },
-            })
-          }
+          defaultValue={listing?.details.land_area.split('/')[0]}
         />
         <FormControl
           as="select"
@@ -129,15 +85,7 @@ export default function Details({
           className={styles.input}
           containerClass={`gap-0 f-column ${styles.inputWrap}
           ${land ? styles.areaSuffix : undefined} `}
-          value={listing?.details.area_suffix}
-          onChange={(e) =>
-            listing &&
-            setListing &&
-            setListing({
-              ...listing,
-              details: { ...listing.details, area_suffix: e.target.value },
-            })
-          }
+          defaultValue={listing?.details.area_suffix}
         >
           <OptGroup header="Area Suffix" subItems={areaSuffix} />
         </FormControl>

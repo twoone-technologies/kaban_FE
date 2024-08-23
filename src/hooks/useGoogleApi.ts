@@ -6,7 +6,7 @@ interface UseGoogleApiOptions {
 }
 
 const API_KEY = import.meta.env.VITE_API_KEY || '';
-const libraries: Libraries = ["places"];
+const libraries: Libraries = ["places", 'marker', 'maps'];
 
 export default function useGoogleApi({ onLoad }: UseGoogleApiOptions) {
   const { isLoaded, loadError } = useLoadScript({

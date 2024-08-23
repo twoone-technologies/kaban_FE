@@ -5,11 +5,11 @@ import { FieldValues, Path, RegisterOptions } from 'react-hook-form';
 
 type Props = {
   title1?: string | ReactNode;
-} & React.ComponentProps<'input'> &
+} &
 {
   register?: Register;
   registerOptions?: RegisterOptions<FieldValues, Path<FieldValues>>;
-};
+} & React.ComponentProps<'input'>
 
 export default function Checkbox({
   title1 = '',

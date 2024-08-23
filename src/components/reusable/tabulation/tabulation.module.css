@@ -31,7 +31,6 @@
 .header {
   font-size: clamp(11px, 1.5vw, 14px);
   color: var(--accent-color);
-  cursor: pointer;
   transition: all 0.3s;
   font-weight: bold;
 }
