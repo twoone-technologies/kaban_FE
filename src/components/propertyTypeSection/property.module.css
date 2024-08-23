@@ -70,7 +70,11 @@
   }
 }
 
-@media screen and (width <= 769px) {
+@media screen and (width <= 768px) {
+  .grid_container {
+    display: grid;
+    gap: 1.5rem;
+  }
   .property_card {
     border-radius: 12px;
     height: 260px;

@@ -116,7 +116,7 @@
   
   .close_link {
     overflow: hidden;
-    max-width: 0;
+    visibility: hidden;
     max-height: 0;
     opacity: 0;
   }

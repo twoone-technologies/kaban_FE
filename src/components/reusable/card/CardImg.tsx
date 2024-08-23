@@ -2,16 +2,14 @@ import { cameraIcon, heartIcon } from '~/assets/icons';
 import styles from './card.module.css';
 import { dateHandler } from '../FunctionUtils';
 import Svg from '../Svg';
+import { Listing } from '~/utils/types/listing.types';
 
 type Props = {
   enter: boolean;
-  src?: string;
-  title: string;
-  date: string;
-  imgNo: number;
+  cardProps: Listing;
 };
 
-export default function CardImg({ enter, src, title, date, imgNo }: Props) {
+export default function CardImg({ cardProps, enter }: Props) {
   return (
     <>
       <div
@@ -19,21 +17,21 @@ export default function CardImg({ enter, src, title, date, imgNo }: Props) {
         ${enter ? styles.nil : ''}`}
       ></div>
       <img
-        alt={title}
-        src={src}
+        alt={cardProps.title}
+        src={cardProps?.cover_image}
         className={`${styles.img} ${enter ? styles.scale : ''}`}
       />
       {location.pathname.includes('dashboard') ? null : (
         <div className={`flex s-btw f-width`}>
           <small className={`b-radius stack c-pad ${styles.date}`}>
-            {dateHandler(date)}
+            {dateHandler(cardProps.createdAt)}
           </small>
           <Svg className={`stack`} href={heartIcon} />
         </div>
       )}
       <div className="flex stack align-y">
         <Svg href={cameraIcon} />
-        <span>{imgNo}</span>
+        <span>{cardProps.images.length}</span>
       </div>
     </>
   );

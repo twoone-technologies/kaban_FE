@@ -11,9 +11,11 @@
     "start": "npx http-server ./dist"
   },
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.16.8",
     "@googlemaps/markerclusterer": "^2.5.0",
     "@react-google-maps/api": "^2.19.2",
     "@reduxjs/toolkit": "^2.2.1",
+    "@vis.gl/react-google-maps": "^1.1.0",
     "apexcharts": "^3.48.0",
     "axios": "^1.4.0",
     "cookies-js": "^1.2.3",

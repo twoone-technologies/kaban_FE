@@ -25,15 +25,17 @@ export const dummyObj = [
     title: "Shopping stalls",
     property_category: "commercial",
     property_type: "shops",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora",
     status: "sale",
+    published_status: 'published',
     featured: true,
     price: {
       amount: 3000000,
       per: 'annum'
     },
-    address: "2 Ekamba Nsukkara, Uyo",
+    address: "2 Ekamba Nsukkara,",
     city: "uyo",
+    state: "akwa ibom",
     cover_image: background,
     images: [background, background1, background2, background3, background4],
     details: {
@@ -54,6 +56,7 @@ export const dummyObj = [
     street_view: false,
     report: [],
     createdAt: "2023-08-17T18:57:48.921Z",
+    expiresAt: "2024-05-17T18:57:48.921Z",
     id: "613a3c7c6f6b3e001f0d2f7a"
   },
 
@@ -76,15 +79,17 @@ export const dummyObj = [
     title: "Loft shops",
     property_category: "commercial",
     property_type: "shops",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem temporaas?4",
     status: "sale",
+    published_status: 'published',
     featured: true,
     price: {
       amount: 3000000,
       per: 'annum'
     },
     address: "Nwaniba Road, Uyo. Akwa Ibom State",
-    city: "uyo",
+    city: "eket",
+    state: "akwa ibom",
     cover_image: background,
     images: [background, background1, background2, background3, background4],
     details: {
@@ -105,6 +110,7 @@ export const dummyObj = [
     street_view: false,
     report: [],
     createdAt: "2023-08-17T18:57:48.921Z",
+    expiresAt: "2024-07-17T18:57:48.921Z",
     id: "613a3c7c6f6b3e001f0d2f7b"
   },
 
@@ -127,14 +133,18 @@ export const dummyObj = [
     title: "Spacious apartment",
     property_category: "residential",
     property_type: "apartment",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autearum voluptas?4",
     status: "rent",
-    featured: true, price: {
+    draft: false,
+    published_status: 'published',
+    featured: true, 
+    price: {
       amount: 1000000,
       per: 'annum'
     },
     address: "34 Nwaniba Road, Uyo. Akwa Ibom State",
-    city: "uyo",
+    city: "ikot ekpene",
+    state: "akwa ibom",
     cover_image: background,
     images: [background, background1, background2, background3, background4],
     details: {
@@ -157,7 +167,8 @@ export const dummyObj = [
     street_view: false,
     report: [],
     createdAt: "2023-08-17T18:57:48.921Z",
-    id: "3"
+    expiresAt: "2024-09-17T18:57:48.921Z",
+    id: "613a3c7c6f6b3e001f0d2f7c"
   },
 
   {
@@ -181,12 +192,15 @@ export const dummyObj = [
     property_type: "shops",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
-    featured: true, price: {
+    published_status: 'disapproved',
+    featured: true, 
+    price: {
       amount: 340000,
       per: 'annum'
     },
     address: "21 Aka Road, Uyo. Akwa Ibom State",
     city: "uyo",
+    state: "akwa ibom",
     cover_image: background,
     images: [background, background1, background2, background3, background4],
     details: {
@@ -206,6 +220,7 @@ export const dummyObj = [
     street_view: false,
     report: [],
     createdAt: "2023-08-17T18:57:48.921Z",
+    expiresAt: "2024-08-17T18:57:48.921Z",
     id: "613a3c7c6f6b3e001f0d2f7d"
   },
 
@@ -230,13 +245,15 @@ export const dummyObj = [
     property_type: "Self-Contain",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
+    published_status: 'published',
     featured: true,
     price: {
       amount: 260000,
       per: 'annum'
     },
-    address: "21 Aka Road, Uyo. Akwa Ibom State",
+    address: "21 eleme Road",
     city: "port harcourt",
+    state: "rivers",
     cover_image: background,
     images: [background, background1, background2, background3, background4],
     details: {
@@ -255,6 +272,7 @@ export const dummyObj = [
     street_view: false,
     report: [],
     createdAt: "2023-08-17T18:57:48.921Z",
+    expiresAt: "2024-09-17T18:57:48.921Z",
     id: "613a3c7c6f6b3e001f0d2f7e"
   },
 
@@ -278,13 +296,16 @@ export const dummyObj = [
     property_category: "residential",
     property_type: "Apartment",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
-    status: "draft",
+    status: "sale",
+    draft: true,
+    published_status: 'pending',
     price: {
       amount: 260000,
       per: 'annum'
     },
-    address: "55 Aka Road, Uyo. Akwa Ibom State",
+    address: "55 Aka Road",
     city: "port harcourt",
+    state: "rivers",
     cover_image: background,
     images: [background, background1, background2, background3, background4],
     details: {
@@ -331,12 +352,14 @@ export const dummyObj = [
     property_type: "Apartment",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
+    published_status: 'pending',
     price: {
       amount: 150000,
       per: 'annum'
     },
-    address: "16 Aka Road, Uyo. Akwa Ibom State",
+    address: "16 Aka Road,",
     city: "port harcourt",
+    state: "rivers",
     cover_image: background,
     images: [background, background1, background2, background3, background4],
     details: {
@@ -358,6 +381,7 @@ export const dummyObj = [
     videoLink: 'https://youtu.be/Rgt-uRFUV7Q?si=8JA8V1ReznRO9G8x',
     street_view: false,
     report: [],
+    expiresAt: "2024-05-17T18:57:48.921Z",
     createdAt: "2023-08-17T18:57:48.921Z",
     id: "613a3c7c6f6b3e001f0d2f80"
   },
@@ -383,12 +407,14 @@ export const dummyObj = [
     property_type: "Apartment",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
+    published_status: 'pending',
     price: {
       amount: 280000,
       per: 'annum'
     },
     address: "55 Aka Road, Uyo. Akwa Ibom State",
     city: "port harcourt",
+    state: "rivers",
     cover_image: background,
     images: [background, background1, background2, background3, background4],
     details: {
@@ -435,12 +461,14 @@ export const dummyObj = [
     property_type: "Apartment",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "rent",
+    published_status: 'pending',
     price: {
       amount: 150000,
       per: 'annum'
     },
-    address: "16 Aka Road, Uyo. Akwa Ibom State",
+    address: "16 Aka Road",
     city: "asaba",
+    state: "delta",
     cover_image: background,
     images: [background, background1, background2, background3, background4],
     details: {
@@ -474,26 +502,28 @@ export const dummyObj = [
         5.019558917735403, 7.969788481025434
       ]
     },
-    _id: "613a3c7c6f6b3e001f0d2f7c",
+    _id: "613a3c7c6f6b3e001f0d2f7g",
     realtor: {
       realtor_pic: pic,
       user: {
         full_name: 'David Johnson',
-        id: "613a3c7c6f6b3e001f0d2f7c"
+        id: "613a3c7c6f6b3e001f0d2f7g"
       },
-      id: "613a3c7c6f6b3e001f0d2f7c",
+      id: "613a3c7c6f6b3e001f0d2f7g",
     },
     title: "Modern Fittings",
     property_category: "residential",
     property_type: "Apartment",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "sale",
+    published_status: 'pending',
     price: {
       amount: 280000,
       per: 'annum'
     },
-    address: "11 Aka Road, Uyo. Akwa Ibom State",
+    address: "11 Aka Road",
     city: "asaba",
+    state: "delta",
     cover_image: background,
     images: [background, background1, background2, background3, background4],
     details: {
@@ -516,7 +546,7 @@ export const dummyObj = [
     street_view: false,
     report: [],
     createdAt: "2023-10-17T18:57:48.921Z",
-    id: "613a3c7c6f6b3e001f0d2f7c"
+    id: "613a3c7c6f6b3e001f0d2f7g"
   },
 
   {
@@ -526,12 +556,12 @@ export const dummyObj = [
         5.018107797286042, 7.9662632537373765
       ]
     },
-    _id: "11",
+    _id: "8",
     realtor: {
       realtor_pic: pic,
       user: {
         full_name: 'Atake',
-        id: "1"
+        id: "8"
       },
       id: '8'
     },
@@ -540,12 +570,14 @@ export const dummyObj = [
     property_type: "Apartment",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta vero ab quibusdam optio asperiores autem tempora accusamus pariatur veritatis iste dolorem mollitia maiores praesentium libero, est nobis harum voluptas?4",
     status: "sale",
+    published_status: 'pending',
     price: {
       amount: 150000,
       per: 'annum'
     },
-    address: "16 Aka Road, Uyo. Akwa Ibom State",
+    address: "16 Aka Road",
     city: "asaba",
+    state: "delta",
     cover_image: background,
     images: [background, background1, background2, background3, background4],
     details: {
@@ -564,11 +596,12 @@ export const dummyObj = [
         'Security',
       ]
     },
+    draft: true,
     videoLink: 'https://youtu.be/Rgt-uRFUV7Q?si=8JA8V1ReznRO9G8x',
     street_view: false,
     report: [],
     createdAt: "2023-08-17T18:57:48.921Z",
-    id: "11"
+    id: "8"
   },
 
   {
@@ -578,12 +611,12 @@ export const dummyObj = [
         5.041905085661808, 7.959094638216312
       ]
     },
-    _id: "12",
+    _id: "9",
     realtor: {
       realtor_pic: pic,
       user: {
         full_name: 'Atake',
-        id: "1"
+        id: "9"
       },
       id: "9",
     },
@@ -598,6 +631,7 @@ export const dummyObj = [
     },
     address: "51 Aka Road, Uyo. Akwa Ibom State",
     city: "uyo",
+    state: "akwa ibom",
     cover_image: background,
     images: [background, background1, background2, background3, background4],
     details: {
@@ -620,7 +654,7 @@ export const dummyObj = [
     street_view: false,
     report: [],
     createdAt: "2023-02-10T18:57:48.921Z",
-    id: "12"
+    id: "9"
   },
 
   {
@@ -630,14 +664,14 @@ export const dummyObj = [
         5.017214030258889, 7.91761086192234
       ]
     },
-    _id: "13",
+    _id: "10",
     realtor: {
       realtor_pic: pic,
       user: {
         full_name: 'Atake',
-        id: "1"
+        id: "10"
       },
-      id: "9",
+      id: "10",
     },
     title: "Simple Extension",
     property_category: "residential",
@@ -650,6 +684,7 @@ export const dummyObj = [
     },
     address: "16 Aka Road, Uyo. Akwa Ibom State",
     city: "uyo",
+    state: "akwa ibom",
     cover_image: background,
     images: [background, background1, background2, background3, background4],
     details: {
@@ -668,11 +703,13 @@ export const dummyObj = [
         'Security',
       ]
     },
+    draft: true,
+    published_status: 'published',
     videoLink: 'https://youtu.be/Rgt-uRFUV7Q?si=8JA8V1ReznRO9G8x',
     street_view: false,
     report: [],
     createdAt: "2023-08-17T18:57:48.921Z",
-    id: "13"
+    id: "10"
   },
 
   {
@@ -682,14 +719,14 @@ export const dummyObj = [
         5.047919724652166, 7.966614711743988
       ]
     },
-    _id: "14",
+    _id: "11",
     realtor: {
       realtor_pic: pic,
       user: {
         full_name: 'Atake',
-        id: "1"
+        id: "11"
       },
-      id: "9",
+      id: "11",
     },
     title: "Sweetness",
     property_category: "residential",
@@ -702,6 +739,7 @@ export const dummyObj = [
     },
     address: "40 Aka Road, Uyo. Akwa Ibom State",
     city: "uyo",
+    state: "akwa ibom",
     cover_image: background,
     images: [background, background1, background2, background3, background4],
     details: {
@@ -722,8 +760,9 @@ export const dummyObj = [
     },
     videoLink: 'https://youtu.be/Rgt-uRFUV7Q?si=8JA8V1ReznRO9G8x',
     street_view: false,
+    published_status: 'disapproved',
     report: [],
     createdAt: "2023-09-27T18:57:48.921Z",
-    id: "14"
+    id: "11"
   }
 ]

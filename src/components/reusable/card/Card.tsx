@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { ReactNode, useState } from 'react';
+import { useState } from 'react';
 import { bedIcon, showerIcon, carIcon } from '~/assets/icons';
 import styles from './card.module.css';
 import CardAgentInfo from './CardAgentInfo';
@@ -9,27 +9,26 @@ import CardAddress from './CardAddress';
 import CardImg from './CardImg';
 import { Listing } from '~/utils/types/listing.types';
 
+type CardProps = {
+  card: Listing;
+  className?: string;
+  orientation?: string;
+  mapState?: boolean;
+} & React.ComponentProps<'div'>;
+
 export default function Card({
   card,
   className,
   mapState = false,
   orientation = 'portrait',
-  statProps
-}: {
-  card: Listing;
-  className?: string;
-  orientation?: string;
-  mapState?: boolean;
-  statProps?: ReactNode;
-}) {
+  ...props
+}: CardProps) {
   const navigate = useNavigate();
   const [hover, setHover] = useState(false);
   const onHoverHandler = () => setHover(!hover);
   const borders = orientation === 'portrait' ? styles.border_r : '';
   const cardState =
     orientation === 'landscape' && mapState === false ? styles.portrait : '';
-  const statusOrder =
-    orientation === 'landscape' && mapState === false ? 'flex-col' : '';
   const cardimgState =
     orientation === 'landscape' && mapState === false
       ? styles.landscape_2
@@ -55,34 +54,13 @@ export default function Card({
             : cardimgState && styles.maxWidth
         }`}
       >
-        <CardImg
-          enter={hover}
-          src={card.cover_image}
-          title={card.title}
-          date={card.createdAt}
-          imgNo={card.images.length}
-        />
+      <CardImg enter={hover} cardProps={card} />
       </div>
-
       <div className={`flex f-column c_pad s-btw ${styles.below}`}>
         <div>
-          <CardHeaderInfo
-            className={statusOrder}
-            type={card.property_type}
-            num={card.price.amount}
-            stat={card.status}
-            featured={card.featured}
-          />
+          <CardHeaderInfo cardHeader={card} />
           <div className={`flex f-column s-btw ${styles.iconWrap}`}>
-            <CardAddress
-              title={card.title}
-              address={card.address}
-              onClick={() => {
-                console.log('goat');
-                location.pathname.includes('dashboard') &&
-                  navigate(`/property-item/${card.id}`);
-              }}
-            />
+            <CardAddress addressProps={card} />
             {location.pathname.includes('dashboard') ? null : (
               <div className={`flex f-width ${styles.icons}`}>
                 <CardIcons
@@ -105,7 +83,7 @@ export default function Card({
           </div>
         </div>
         {location.pathname.includes('dashboard') ? (
-          statProps
+          props.children
         ) : (
           <CardAgentInfo
             src={card.realtor.realtor_pic}

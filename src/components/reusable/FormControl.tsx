@@ -18,7 +18,7 @@ type TextAreaProps = React.ComponentPropsWithoutRef<'textarea'>;
 export type Register = UseFormRegister<FieldValues>;
 export type InputErrors = FieldErrors<Inputs>;
 
-type ControlProps = (
+export type ControlProps = (
   | ({ as: 'input' } & InputProps)
   | ({ as: 'select' } & SelectProps)
   | ({ as: 'textarea' } & TextAreaProps)

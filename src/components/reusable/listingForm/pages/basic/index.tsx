@@ -32,14 +32,12 @@ export default function Basic({
         register={register}
         error={error}
         listing={listing}
-        setListing={setListing}
         setDetails={setDetails}
       />
       <SalesRentPrice
         error={error}
         listing={listing}
         register={register}
-        setListing={setListing}
       />
       <Details
         register={register}

@@ -1,16 +1,20 @@
-import { arrowIcon } from '~/assets/icons';
+import { arrowIcon, logoIcon } from '~/assets/icons';
 import Svg from '~/components/reusable/Svg';
 import { SetStateAction, useState } from 'react';
-import MapLoader from '~/components/map/MapLoader';
 import OptGroup from '~/components/herosection/Optgroup';
 import FormControl, {
   InputErrors,
   Register,
 } from '~/components/reusable/FormControl';
-import Address from '~/components/reusable/placesAutocomplete/Address';
+import Landmark from '~/components/reusable/placesAutocomplete/Address';
 import styles from '~/components/reusable/listingForm/pages/miscellenous/listingForm.module.css';
 import InputWrap from '~/components/dashboard/reusables/InputWrap';
 import { mapOptions } from '~/components/reusable/listingForm/pages/miscellenous//mapProps';
+import { Listing } from '~/utils/types/listing.types';
+import MapComponent from '~/components/map/MapComponent';
+import { MapMouseEvent } from '@vis.gl/react-google-maps';
+import useGoogleApi from '~/hooks/useGoogleApi';
+import { ThreeDots } from '~/components/reusable/Button';
 
 type Props = {
   idx: number;
@@ -18,10 +22,12 @@ type Props = {
   state: string;
   register?: Register;
   error: InputErrors;
-  mapCenter: { lat: number; lng: number };
+  listing: Listing;
   marker: google.maps.LatLngLiteral | null;
-  handleMapClick: (e: google.maps.MapMouseEvent) => void;
+  mapCenter: google.maps.LatLngLiteral | null;
+  handleMapClick: ((event: MapMouseEvent) => void) | undefined;
   setMarker: React.Dispatch<SetStateAction<google.maps.LatLngLiteral | null>>;
+  setMapCenter: React.Dispatch<SetStateAction<google.maps.LatLngLiteral | null>>;
 };
 
 export default function MapAddress({
@@ -29,8 +35,11 @@ export default function MapAddress({
   state,
   error,
   marker,
-  mapCenter,
+  listing,
   setMarker,
+  register,
+  mapCenter,
+  setMapCenter,
   handleMapClick,
 }: Props) {
   const [pin, setPin] = useState(false);
@@ -38,16 +47,29 @@ export default function MapAddress({
     string === 'select pin manually' ? setPin(true) : setPin(false);
   };
 
+  // useEffect(() => {return},[marker])
+
+  const { isLoaded } = useGoogleApi({})
   return (
     <InputWrap>
       <h3>Map</h3>
       <div className={`gap-x-0.5 ${styles.mapData}`}>
         <div className={styles.mapWrap}>
-          <MapLoader
-            center={mapCenter}
-            markerPosition={marker}
-            onMapClick={pin === true ? handleMapClick : undefined}
+          {isLoaded ? (
+            <MapComponent
+              setMapCenter={setMapCenter}
+              mapCenter={mapCenter}
+              markerArr={listing}
+              markedPin={marker}
+              onClick={pin ? handleMapClick : undefined}
           />
+          ) : (
+            <div className='flex flex-col h-full align-y align-x'>
+              <Svg width='9rem' className='text-blue-700' height='3rem' href={logoIcon} />
+              <ThreeDots />
+            </div>
+          )
+        }
         </div>
         <div className="flex gap flex-col justify-between">
           <FormControl
@@ -66,11 +88,14 @@ export default function MapAddress({
             <OptGroup header="map options" subItems={mapOptions} />
           </FormControl>
           {pin && (
-            <Address
-              setMarker={setMarker}
+            <Landmark
+              required
               city={city}
               state={state}
-              title="landmark"
+              name="landmark"
+              register={register}
+              setMarker={setMarker}
+              error={error.landmark?.message}
             />
           )}
           <FormControl
@@ -81,7 +106,8 @@ export default function MapAddress({
             labelText="Longitude"
             placeholder="Longitude"
             error={error?.longitude && error.longitude.message}
-            defaultValue={marker?.lng}
+            readOnly
+            value={marker?.lng || ''}
             type="number"
           />
           <FormControl
@@ -93,7 +119,8 @@ export default function MapAddress({
             placeholder="Latitude"
             error={error.latitude && error.latitude.message}
             type="number"
-            defaultValue={marker?.lat}
+            readOnly
+            value={marker?.lat || ''}
           />
         </div>
       </div>

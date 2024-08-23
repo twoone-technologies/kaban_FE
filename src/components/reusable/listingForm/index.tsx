@@ -34,6 +34,7 @@ export type Inputs = {
   address: string;
   latitude: string;
   longitude: string;
+  landmark: string;
 };
 
 export default function ListingForm({
@@ -46,11 +47,11 @@ export default function ListingForm({
   const tabWidth = 104;
   const [minNum, setMinNum] = useState(false);
   const [success, setSuccess] = useState(false);
-  const { activeIndex, prevId, next, prev } = useTabulation(tabWidth);
+  const { activeIndex, handleHeaderClick, prevId, next, prev } = useTabulation(tabWidth);
   const property = listingArray?.find((item) => item.id === id);
   const listingItem = property as Listing;
   const [listing, setListing] = useState<Listing>(listingItem);
-console.log(listing);
+
   useEffect(() => {
     let hideTimeout: NodeJS.Timeout;
     if (success) {
@@ -79,6 +80,8 @@ console.log(listing);
         activeTab={prevId}
         headerWidth={tabWidth}
         headerArr={headers}
+        isValid={activeIndex === 1 ? minNum : isValid}
+        headerSwitch={handleHeaderClick}
       />
       <Form
         method="post"
@@ -94,6 +97,7 @@ console.log(listing);
           className={activeIndex === 0 ? 'flex flex-col' : 'hidden'}
         />
         <Media
+          listing={listing}
           setValue={setValue}
           error={errors}
           register={register}
@@ -102,6 +106,7 @@ console.log(listing);
           className={activeIndex === 1 ? 'flex flex-col gap-2' : 'hidden'}
         />
         <ListingLocation
+          listing={listing}
           error={errors}
           setValue={setValue}
           activeIndex={activeIndex}

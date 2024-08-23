@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { arrowIcon } from '~/assets/icons';
 import Svg from '~/components/reusable/Svg';
 import usePlacesAutocomplete from 'use-places-autocomplete';
@@ -10,9 +10,12 @@ import styles from '~/components/reusable/listingForm/pages/miscellenous/listing
 import { InputErrors, Register } from '~/components/reusable/FormControl';
 import { Inputs } from '../..';
 import { UseFormSetValue } from 'react-hook-form';
+import { Listing } from '~/utils/types/listing.types';
+import { MapMouseEvent} from '@vis.gl/react-google-maps';
 
 type LocationProps = {
   className: string;
+  listing: Listing;
   error: InputErrors;
   register?: Register;
   setValue: UseFormSetValue<Inputs>;
@@ -21,6 +24,7 @@ type LocationProps = {
 
 export default function ListingLocation({
   register,
+  listing,
   error,
   setValue,
   className,
@@ -29,17 +33,29 @@ export default function ListingLocation({
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const { clearSuggestions } = usePlacesAutocomplete();
-  const [mapCenter, setMapCenter] = useState({ lat: 10.0, lng: 8.0 });
-  const [marker, setMarker] = useState<google.maps.LatLngLiteral | null>(null);
 
-  const handleMapClick = (e: google.maps.MapMouseEvent) => {
-    if (!e.latLng) return;
-    const obj: google.maps.LatLngLiteral = {
-      lat: e.latLng.lat(),
-      lng: e.latLng.lng(),
-    };
-    setMarker(obj);
-    setMapCenter({ lat: obj.lat, lng: obj.lng });
+  const [axis, setAxis] = useState<google.maps.LatLngLiteral | null>({
+    lat: 10,
+    lng: 8,
+  });
+  const [marker, setMarker] = useState<google.maps.LatLngLiteral | null>({
+    lat: listing?.location.coordinates[0],
+    lng: listing?.location.coordinates[1],
+  });
+
+  useEffect(() => {
+    if (listing) {
+      setAxis({
+        lat: listing?.location.coordinates[0],
+        lng: listing?.location.coordinates[1]
+      })
+    }
+    if (marker?.lat !== undefined) setAxis(marker);
+  },[listing, marker])
+  
+  const handleMapClick = (e: MapMouseEvent) => {
+    if (!e.detail.latLng) return;
+    setMarker(e.detail.latLng);
   };
   setValue('latitude', String(marker?.lat));
   setValue('longitude', String(marker?.lng));
@@ -53,6 +69,7 @@ export default function ListingLocation({
       <Location
         idx={activeIndex}
         svg={svg}
+        listing={listing}
         city={city}
         state={state}
         error={error}
@@ -63,13 +80,15 @@ export default function ListingLocation({
       />
       <MapAddress
         city={city}
+        listing={listing}
         error={error}
         state={state}
         marker={marker}
         idx={activeIndex}
         register={register}
-        mapCenter={mapCenter}
+        mapCenter={axis}
         setMarker={setMarker}
+        setMapCenter={setAxis}
         handleMapClick={handleMapClick}
       />
       <InputWrap>
@@ -78,6 +97,7 @@ export default function ListingLocation({
           <Checkbox
             name="consent"
             required={activeIndex === 2}
+            defaultChecked
             register={register}
           />
           <span>

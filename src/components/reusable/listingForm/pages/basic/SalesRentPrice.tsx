@@ -12,14 +12,12 @@ type SalesRentPriceProps = {
   error: InputErrors;
   register: Register;
   listing?: Listing;
-  setListing?: React.Dispatch<React.SetStateAction<Listing>>;
 };
 
 export default function SalesRentPrice({
   error,
   register,
   listing,
-  setListing,
 }: SalesRentPriceProps) {
   return (
     <InputWrap className={styles.salesRent}>
@@ -30,35 +28,19 @@ export default function SalesRentPrice({
         register={register}
         name="salesRentPrice"
         className={styles.input}
-        value={listing?.price.amount}
+        defaultValue={listing?.price.amount}
         placeholder="your price here"
         labelText={'Sales / Rent Price (₦)'}
         containerClass={`gap-0 f-column ${styles.inputWrap}`}
         error={error.salesRentPrice && error.salesRentPrice.message}
-        onChange={(e) =>
-          listing &&
-          setListing &&
-          setListing({
-            ...listing,
-            price: { ...listing.price, amount: parseInt(e.target.value) },
-          })
-        }
       />
       <FormControl
         as="select"
         name="priceSuffix"
         className={styles.input}
-        value={listing?.price.per}
+        defaultValue={listing?.price.per}
         labelText="Price Suffix (/)"
         containerClass={`gap-0 f-column ${styles.inputWrap}`}
-        onChange={(e) =>
-          listing &&
-          setListing &&
-          setListing({
-            ...listing,
-            price: { ...listing.price, per: e.target.value },
-          })
-        }
       >
         <OptGroup header="suffix" subItems={suffix} />
       </FormControl>

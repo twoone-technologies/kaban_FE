@@ -20,6 +20,28 @@
   z-index: 100;
 }
 
+/* mw */
+.new_map {
+  height: 100%;
+}
+
+.infoWindow {
+  /* display: flex; */
+  border: 1px solid;
+}
+
+.infoWindow button {
+  background-color: aqua;
+}
+
+.custom_pin {
+  background-image: url('~/assets/icons/mapIcon.svg');
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
 @media screen and (width >= 768px) {
   .map {
     border-radius: 8px;

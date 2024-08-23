@@ -17,8 +17,8 @@ export default function PlacesAutocomplete({
   setSelected,
   setInputAddress,
   setValues,
-  clearOptions,
   closeX,
+  clearOptions,
   inputValue,
   currStat,
   dataArr,
@@ -35,8 +35,8 @@ export default function PlacesAutocomplete({
   const handleClick = (e: React.MouseEvent<HTMLLIElement>) => {
     const target = e.target as HTMLLIElement;
     const description = target.innerText;
-    handleSelect(description);
     setInputAddress(description);
+    handleSelect(description);
   };
 
   return (

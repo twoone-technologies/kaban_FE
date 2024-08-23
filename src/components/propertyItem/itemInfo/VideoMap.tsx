@@ -1,14 +1,12 @@
 import { useState } from 'react';
 import styles from './itemInfo.module.css';
 import { Listing } from '~/utils/types/listing.types';
-import MapLoader from '~/components/map/MapLoader';
+import MapComponent from '~/components/map/MapComponent';
 
 export default function VideoMap({
   item,
-  properties,
 }: {
   item: Listing;
-  properties: Listing[];
 }) {
   const [isVisible, setIsVisible] = useState<'video' | 'map'>('video');
 
@@ -23,6 +21,7 @@ export default function VideoMap({
       return videoLink;
     }
   };
+
   return (
     <div
       className={`flex gap f-column bg-tertiary box-shadow b-radius border ${styles.item_info}`}
@@ -53,7 +52,7 @@ export default function VideoMap({
           />
         ) : (
           <div className={styles.map_wrap}>
-            <MapLoader object={properties} idx={item?.id} />
+            <MapComponent markerArr={item} />
           </div>
         )}
       </div>

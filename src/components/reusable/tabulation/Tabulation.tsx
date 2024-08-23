@@ -5,6 +5,7 @@ type Props = {
   headerWidth: number;
   activeTab: number;
   className?: string;
+  isValid?: boolean;
   headerArr: { value: number; type: string }[];
   headerSwitch?: (
     value: number,
@@ -26,6 +27,7 @@ type Props = {
 export default function Tabulation({
   headerArr,
   idx,
+  isValid,
   activeTab,
   headerWidth,
   className,
@@ -36,7 +38,8 @@ export default function Tabulation({
       {headerArr.map((header) => (
         <li
           key={header.value}
-          className={`flex align-x ${styles.header} 
+          className={`flex align-x ${styles.header}
+          ${isValid === undefined || isValid === true ? 'cursor-pointer' : 'cursor-not-allowed'}
           ${
             header.value === idx
               ? header.value === 4 && header.type === 'Deactivate Account'
@@ -45,7 +48,11 @@ export default function Tabulation({
               : ''
           }`}
           style={{ minWidth: headerWidth }}
-          onClick={() => headerSwitch && headerSwitch(header.value, headerArr)}
+          onClick={() => {
+            if (isValid === undefined || isValid === true) {
+              headerSwitch && headerSwitch(header.value, headerArr);
+            }
+          }}
         >
           {header.type}
         </li>
