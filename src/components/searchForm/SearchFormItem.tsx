@@ -24,7 +24,7 @@ export default function SearchFormItem({
   };
 
   const radStat = isDisabled ? styles.enable : styles.disable;
-  const isActive = formStyle === false ? styles.close_form : styles.open_form;
+  const isActive = formStyle === false ? styles.close_grid  : styles.open_form;
 
   return (
     <div className={`${styles.form_content} ${isActive}`}>

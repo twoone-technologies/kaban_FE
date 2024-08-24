@@ -11,7 +11,7 @@ import Svg from '../reusable/Svg';
 export default function SearchForm({
   className,
   onSubmit,
-  defaultCity
+  defaultCity,
 }: {
   className: string;
   defaultCity?: string;
@@ -23,7 +23,7 @@ export default function SearchForm({
   const handleOtherItems = () => setOtherItems(!otherItems);
   const handleStyle = () => setFormStyle(!formStyle);
 
-  // const storeSearch = () => {}
+  // const storeSearch = ()  transition-all=> {}
 
   const extras = otherItems ? styles.plus : styles.minus;
   const isActive = formStyle === false ? styles.close_form : styles.open_form;
@@ -34,38 +34,42 @@ export default function SearchForm({
       method="post"
       onSubmit={onSubmit}
       className={`b-radius f-width flex f-column
-      ${styles.form} ${formActive} ${className}`}
+      ${styles.form} ${className}`}
     >
       <FormControl
         readOnly
         as={'input'}
         type={'text'}
-        containerClass='cursor-pointer'
+        containerClass="cursor-pointer"
         title={'Advanced search'}
-        name='advanced_search'
-        placeholder='Advanced search'
+        name="advanced_search"
+        placeholder="Advanced search"
         onClick={() => handleStyle()}
-        icon={<Svg className='absolute top-4 right-4 rotate-90' href={arrowIcon} />}
+        icon={
+          <Svg className="absolute top-4 right-4 rotate-90" href={arrowIcon} />
+        }
       />
-      <SearchFormItem defaultCity={defaultCity} formStyle={formStyle} />
-      <div className={`flex align-y gap ${isActive}`}>
+      <div className={`flex gap flex-col ${styles.gridwrap} ${isActive}`}>
+        <SearchFormItem defaultCity={defaultCity} formStyle={formStyle} />
+        <div className={`flex align-y gap`}>
+          <Button
+            type="button"
+            onClick={handleOtherItems}
+            className={`flex align-y ${styles.more_btn}`}
+          >
+            +
+          </Button>
+          <span>other features</span>
+        </div>
+        <CheckboxGroup className={`f-height ${styles.gridwrap} ${isActive} ${extras}`} />
         <Button
-          type="button"
-          onClick={handleOtherItems}
-          className={`flex align-y ${styles.more_btn}`}
+          type="submit"
+          className={`${styles.btn} f-width`}
+          onClick={() => handleStyle()}
         >
-          +
+          Search
         </Button>
-        <span>other features</span>
       </div>
-      <CheckboxGroup className={`f-height ${isActive} ${extras}`} />
-      <Button
-        type="submit"
-        className={`${styles.btn} ${isActive} f-width`}
-        onClick={() => handleStyle()}
-      >
-        Search
-      </Button>
     </Form>
   );
 }

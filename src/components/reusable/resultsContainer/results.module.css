@@ -29,7 +29,7 @@
 .listings_wrap {
   margin-top: 1rem;
   display: grid;
-  grid-gap: 2rem;
+  grid-gap: 1rem;
 }
 
 @media screen and (width < 768px) {
@@ -137,7 +137,7 @@
   }
 
   .map_section {
-    width: 65%;
+    width: 40%;
   }
 
   .mapWrap {
@@ -147,7 +147,7 @@
   }
 
   .results {
-    width: 45%;
+    width: 60%;
   }
 
   .results_full {
@@ -190,7 +190,7 @@
 
 @media screen and (width >= 1150px) {
   .grid_style {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .grid_style_2 {

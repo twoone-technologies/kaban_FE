@@ -16,10 +16,7 @@ export default function CardHeaderInfo({
   const locate = useLocation();
   return (
     <div className={`flex space-between gap ${styles.header}`}>
-      <div className="flex flex-col align-x">
-        <p>{cardHeader.property_type}</p>
-        <h3>₦{setNums(cardHeader.price.amount)}</h3>
-      </div>
+      <h3 className='font-bold'>₦{setNums(cardHeader.price.amount)}</h3>
       <div className={`grid gap-05 grid-cols-2 font-bold ${styles.status_grp}`}>
         {labelDisplay(cardHeader, locate.pathname).map((label, index) =>
           typeof label.type === 'boolean' ? (

@@ -155,7 +155,10 @@
 }
 
 .agent {
-  background-color: var(--hover-color);
+  border-top: 3px solid var(--tertiary-color-3);
+  background-color: var(--tertiary-color-3);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 .name_initials {

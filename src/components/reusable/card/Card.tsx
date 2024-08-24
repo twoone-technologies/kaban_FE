@@ -54,10 +54,11 @@ export default function Card({
             : cardimgState && styles.maxWidth
         }`}
       >
-      <CardImg enter={hover} cardProps={card} />
+        <CardImg enter={hover} cardProps={card} />
       </div>
-      <div className={`flex f-column c_pad s-btw ${styles.below}`}>
-        <div>
+      <div className={`flex f-column s-btw ${styles.below}`}>
+        <div className='p-3'>
+          <p className='font-bold'>{card.property_type}</p>
           <CardHeaderInfo cardHeader={card} />
           <div className={`flex f-column s-btw ${styles.iconWrap}`}>
             <CardAddress addressProps={card} />
