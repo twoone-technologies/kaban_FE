@@ -2,13 +2,12 @@
   position: relative;
   padding-top: 5rem;
   display: flex;
-  gap: 1rem;
   margin-bottom: 5rem;
 }
 
 /* desktop */
 .map_section {
-  transition: width 300ms ease-in-out;
+  transition: all 0.5s ease-in-out;
   position: relative;
 }
 
@@ -27,25 +26,23 @@
 }
 
 .listings_wrap {
+  transition: all 0.5s ease-in-out;
   margin-top: 1rem;
+  position: relative;
   display: grid;
-  grid-gap: 2rem;
+  grid-gap: 1rem;
 }
 
 @media screen and (width < 768px) {
-  .search_container {
-    flex-direction: column-reverse;
-  }
-
-  .c_reset {
-    width: 100%;
-    position: absolute;
+  .resultsWrap {
+    flex-direction: row-reverse;
   }
 
   .map_section {
-    width: 100%;
+    width: 100vw;
     height: 70dvh;
     position: fixed;
+    right: 0;
     bottom: 0;
   }
 
@@ -54,14 +51,15 @@
     bottom: 0;
   }
 
-  .resMap {
-    padding: 5%;
-    background-color: white;
-    position: absolute;
+  .resMapInfo {
+    padding: 3%;
+    background-color: var(--tertiary-color-1);
+    position: fixed;
     top: 0;
+    left: 0;
     min-height: 30dvh;
+    width: 100%;
     padding-top: 5rem;
-    z-index: 3;
   }
 
   .results {
@@ -90,8 +88,19 @@
     justify-content: center;
   }
 
-  .stack {
-    display: none;
+  /* stack arrangement for map & listings */
+  .listingStack {
+    position: relative;
+  }
+
+  .hideStack1 {
+    top: 10.6rem;
+    transform: translateX(-150%);
+  }
+
+  .hideStack2 {
+    position: fixed;
+    transform: translateX(150%);
   }
 
   .isActive {
@@ -103,7 +112,7 @@
     color: var(--primary-color);
   }
 
-  .nil {
+  .mapSwitch {
     display: none;
   }
 
@@ -115,29 +124,21 @@
   }
 }
 
-@media screen and (width < 768px) and (height > 800px) {
-  .map_section {
-    height: 76dvh;
-  }
-
-  .resMap {
-    min-height: 24dvh;
-  }
-}
-
 @media screen and (width >= 768px) {
   .pad_right {
     width: 100%;
+    gap: 1rem;
     padding-inline-end: 4rem;
   }
 
   .pad_inLine {
     width: 100%;
+    gap: 0;
     padding-inline: 4rem;
   }
 
   .map_section {
-    width: 65%;
+    width: 40%;
   }
 
   .mapWrap {
@@ -147,7 +148,7 @@
   }
 
   .results {
-    width: 45%;
+    width: 60%;
   }
 
   .results_full {
@@ -190,7 +191,7 @@
 
 @media screen and (width >= 1150px) {
   .grid_style {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .grid_style_2 {

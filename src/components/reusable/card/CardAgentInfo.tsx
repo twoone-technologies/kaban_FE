@@ -28,7 +28,7 @@ export default function CardAgentInfo({
     <div
       onClick={onClick}
       {...props}
-      className={`cursor-pointer flex gap f-width align-y b-radius c-pad relative ${className} ${styles.agent}`}
+      className={`cursor-pointer flex gap f-width align-y px-3 py-3 relative ${className} ${styles.agent}`}
     >
       <div className={`${imgClass} ${styles.agent_img_wrap}`}>
         {src ? (

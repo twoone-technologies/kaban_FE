@@ -18,7 +18,7 @@ export default function LatestAdditions() {
         <p>Experience the newest and most recent listings first hand by taking a captivating <br /> tour of our latest additions as they are being published live by realtors.</p>
       </div>
       <CarouselWrap>
-        {arr.map(item => (
+        {arr.slice(0, 10).map(item => (
           <SwiperSlide className="carousel_item" key={item.id}>
             <Card card={item} />
           </SwiperSlide>

@@ -1,9 +1,8 @@
 .form {
   gap: 1rem;
-  padding-inline: 1rem;
   margin-bottom: 1rem;
   color: var(--tertiary-color-2);
-  background-color: var(--tertiary-color-1);
+  max-height: 100%;
 }
 
 .form_content {
@@ -49,6 +48,7 @@
 }
 
 select, input, textarea {
+  height: auto;
   color: var(--accent-color);
   padding: 0.7rem 0.5rem;
 }
@@ -161,10 +161,14 @@ input[type=range] {
   max-height: 2.5rem;
 }
 
+.gridwrap {
+  transition: all 0.4s ease-in-out;
+}
+
 .close_form {
   overflow: hidden;
-  visibility: hidden;
   max-height: 0;
+  visibility: hidden;
   opacity: 0;
 }
 

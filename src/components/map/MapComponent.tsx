@@ -21,6 +21,7 @@ type MapComponentProps = {
   setMapCenter?: React.Dispatch<
     SetStateAction<google.maps.LatLngLiteral | null>
   >;
+  handleStack?: (stack: 'listings' | 'map') => void;
 };
 
 export default function MapComponent({
@@ -29,6 +30,7 @@ export default function MapComponent({
   className,
   markerArr,
   mapCenter,
+  handleStack,
   setMapCenter,
 }: MapComponentProps) {
   const API_KEY = import.meta.env.VITE_API_KEY || '';
@@ -78,7 +80,7 @@ export default function MapComponent({
           center={mapCenter}
           defaultCenter={mapCentralAxis()}
         >
-          {markerArr && <MapPins pois={markerArr} markedPin={markedPin} />}
+          {markerArr && <MapPins pois={markerArr} handleStack={handleStack} markedPin={markedPin} />}
           {location.pathname === '/dashboard/post' && markedPin && (
             <AdvancedMarker
               clickable

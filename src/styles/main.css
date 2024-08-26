@@ -8,13 +8,13 @@
   --dashboard-col: #437ef7;
   --primary-color: #437ef7; /* headlines & active states */
   --secondary-color: #141414; /* card text-color */
-  --accent-color: #96999b; /* accent color */
+  --accent-color: #5F6D7E; /* accent color */
   --accent-color-1: #5f6d7e;
   --hover-color: #eaebf0;
   --star-color: #f9b900;
   --tertiary-color-1: #ffffff; /* text color (footer) */
   --tertiary-color-2: #3a424b; /* subtle text color */
-  --tertiary-color-3: #fafafa; /* background color */
+  --tertiary-color-3: #FAFBFC; /* background color */
   --tertiary-color-4: #41ae48; /* featured and savebtn color */
   --tertiary-color-5: #e8effd; /* dashboard overlay color */
   --font-size-1: clamp(0.8rem, 1vw, 1rem);

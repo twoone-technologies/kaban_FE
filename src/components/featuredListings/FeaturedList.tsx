@@ -21,7 +21,7 @@ export default function FeaturedList() {
         </p>
       </div>
       <CarouselWrap>
-        {arr.map((item) => (
+        {arr.slice(0, 10).map((item) => (
           <SwiperSlide className="carousel_item" key={item.id}>
             <Card card={item} />
           </SwiperSlide>

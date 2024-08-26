@@ -11,7 +11,7 @@ export default function CardAddress({
   const navigate = useNavigate();
   return (
     <>
-      <span className="c-grey cursor-pointer" 
+      <span className="cursor-pointer" 
         onClick={() => {
           location.pathname.includes('dashboard') &&
             navigate(`/property-item/${addressProps.id}`)

@@ -9,7 +9,13 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import { Listing } from '~/utils/types/listing.types';
 import { MarkerClusterer } from '@googlemaps/markerclusterer';
 
-export const MapPins = (props: { pois: Listing[] | Listing, markedPin?: google.maps.LatLngLiteral | null }) => {
+type MapPinsProps = {
+  pois: Listing[] | Listing;
+  markedPin?: google.maps.LatLngLiteral | null;
+  handleStack?: (stack: 'listings' | 'map') => void;
+};
+
+export const MapPins = (props: MapPinsProps) => {
   const map = useMap();
   const [markers, setMarkers] = useState<{ [key: string]: GoogleMarker }>({});
   const [selectedPoi, setSelectedPoi] = useState<Listing | null>(null);
@@ -94,8 +100,9 @@ export const MapPins = (props: { pois: Listing[] | Listing, markedPin?: google.m
       if (!ev.latLng) return;
       map.panTo(ev.latLng);
       setSelectedPoi(dom);
+      props.handleStack && props.handleStack('listings');
     },
-    [map],
+    [map, props],
   );
 
   // listingPage coordinates
