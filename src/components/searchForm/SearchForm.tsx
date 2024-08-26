@@ -27,7 +27,6 @@ export default function SearchForm({
 
   const extras = otherItems ? styles.plus : styles.minus;
   const isActive = formStyle === false ? styles.close_form : styles.open_form;
-  const formActive = formStyle === false ? styles.closeForm : styles.open_form;
 
   return (
     <Form

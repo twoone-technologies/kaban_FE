@@ -65,7 +65,7 @@ export default function SwitchGroup({
             />
           </div>
         </div>
-        <div title="toggle Map" className={styles.nil}>
+        <div title="toggle Map" className={styles.mapSwitch}>
           <Svg
             href={mapIcon}
             className={!mapState ? 'bg-primary' : ''}
