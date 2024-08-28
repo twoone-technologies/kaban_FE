@@ -37,7 +37,7 @@ export default function SwitchGroup({
   const listingsPage = stackOrder === 'listings' ? '' : styles.stackOrder;
 
   return (
-    <div className="flex s-btw align-y">
+    <div className="flex my-2 s-btw align-y">
       <span className={styles.size}>{listingObject.length} results found</span>
       <div className={`flex align-y ${listingsPage}`}>
         <Svg href={sortIcon} width="50px" height="20px" />
@@ -49,7 +49,7 @@ export default function SwitchGroup({
         >
           <OptGroup header={'Sort'} subItems={sortOptions} />
         </FormControl>
-        <div className={`gap c-pad flex ${styles.nil}`}>
+        <div className={`gap c-pad flex ${styles.cardAlignTools}`}>
           <div title="landscape">
             <Svg
               href={vertIcon}

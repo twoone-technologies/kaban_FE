@@ -25,6 +25,12 @@
   font-size: clamp(0.5rem, 5vw, 0.8rem);
 }
 
+.sort {
+  border: none;
+  width: 8.5rem;
+  background-color: var(--tertiary-color-3);
+}
+
 .listings_wrap {
   transition: all 0.5s ease-in-out;
   margin-top: 1rem;
@@ -112,15 +118,13 @@
     color: var(--primary-color);
   }
 
-  .mapSwitch {
+  .mapSwitch,
+  .cardAlignTools {
     display: none;
   }
 
   .sort {
-    width: 8rem;
-    border: none;
     font-size: smaller;
-    padding-inline: 2px;
   }
 }
 
@@ -185,7 +189,7 @@
   }
 
   .sort {
-    min-width: 9rem;
+    /* min-width: 3rem; */
   }
 }
 

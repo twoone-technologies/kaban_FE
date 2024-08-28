@@ -9,6 +9,7 @@
 
 .item_info {
   border: 1px solid var(--hover-color);
+  /* margin-inline: 1rem; */
 }
 
 .item_header {
@@ -58,6 +59,10 @@
 @media screen and (width < 768px) {
   .header h5 {
     margin-top: 20rem;
+  }
+
+  .item_info {
+    margin-inline: 1rem;
   }
 }
 

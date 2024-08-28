@@ -38,6 +38,14 @@
   flex-direction: column;
 }
 
+@media screen and (width < 768px) {
+  .wrapper {
+    width: 100%;
+    /* border: 1px solid; */
+    /* margin-block: 1.5rem; */
+  }
+}
+
 @media screen and (width >= 768px) {
   .wrapper {
     margin-block: 1.5rem;

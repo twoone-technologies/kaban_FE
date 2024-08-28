@@ -15,7 +15,7 @@ export default function ItemInfo({h1, h2, visit, children, className}: Props) {
         ${h1 === 'Disclaimer' || h1 === 'Kaban Safety Tips' ?
         styles.b_btm1 : styles.b_btm}`}>
         <h4 className='font-bold f-width'>{h1}</h4>
-        <h4>{h2}</h4>
+        <span>{h2}</span>
       </div>
       <div className={`flex s-btw ${styles.item_contents}
         ${visit ? styles.b_btm : ''}`}>

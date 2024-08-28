@@ -92,4 +92,36 @@ export const otherFeatures = [
     title: 'Security',
     checked: false,
   },
+  {
+    title: 'Furnished',
+    checked: false,
+  },
+  {
+    title: 'Elevator',
+    checked: false,
+  },
+  {
+    title: '24-hrs Electricity',
+    checked: false,
+  },
+  {
+    title: 'Pre-paid Meter',
+    checked: false,
+  },
+  {
+    title: 'Installed Wardrobe',
+    checked: false,
+  },
+  {
+    title: 'Laundry Room',
+    checked: false,
+  },
+  {
+    title: 'Walk-in Closet',
+    checked: false,
+  },
+  {
+    title: 'Family Room',
+    checked: false,
+  },
 ];

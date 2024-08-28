@@ -186,7 +186,7 @@ input[type=range] {
 
 .plus {
   opacity: 1;
-  max-height: 10rem;
+  max-height: 20rem;
 }
 
 /* formcontrol class */
