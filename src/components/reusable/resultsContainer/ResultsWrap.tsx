@@ -108,7 +108,7 @@ export default function ResultsWrap({
         />
         <SearchForm
           defaultCity={defaultCity}
-          className={styles.f}
+          className={`${stack === 'map' ? styles.searchForm : ''}`}
           onSubmit={onSubmit}
         />
         </div>
