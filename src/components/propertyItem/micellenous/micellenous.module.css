@@ -120,6 +120,14 @@ div[title='features'] {
   background-color: var(--tertiary-color-1);
 }
 
+@media screen and (width < 768px) {
+  .header,
+  .title_price,
+  .similarItemsWrap {
+    padding-inline: 1rem;
+  }
+}
+
 @media screen and (width >= 768px) {
   .header h5 {
     margin-top: unset;

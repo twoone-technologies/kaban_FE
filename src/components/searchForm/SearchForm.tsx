@@ -58,7 +58,7 @@ export default function SearchForm({
           >
             +
           </Button>
-          <span>other features</span>
+          <h3>other features</h3>
         </div>
         <CheckboxGroup className={`f-height ${styles.gridwrap} ${isActive} ${extras}`} />
         <Button

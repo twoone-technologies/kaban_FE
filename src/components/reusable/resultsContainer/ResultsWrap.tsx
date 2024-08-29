@@ -97,11 +97,6 @@ export default function ResultsWrap({
           )}{' '}
           Listings {propertyCategory && city && `in ${city}`}
         </h3>
-        <SearchForm
-          defaultCity={defaultCity}
-          className={styles.f}
-          onSubmit={onSubmit}
-        />
         <SwitchGroup
           onChange={(e) => handleSort(e.target.value)}
           mapState={map}
@@ -110,6 +105,11 @@ export default function ResultsWrap({
           stackOrder={stack}
           orientation={position}
           setOrientation={setPosition}
+        />
+        <SearchForm
+          defaultCity={defaultCity}
+          className={`${stack === 'map' ? styles.searchForm : ''}`}
+          onSubmit={onSubmit}
         />
         </div>
         <div className={`${styles.listings_wrap} ${listingsPage} ${order}`}>

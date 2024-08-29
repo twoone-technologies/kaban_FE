@@ -1,5 +1,5 @@
 /* carousel images */
-.carousel_wrap {
+/* .carousel_wrap {
   position: absolute;
   left: 0;
   width: 100%;
@@ -8,7 +8,7 @@
 .carousel_wrap2 {
   display: none;
   overflow-x: scroll;
-}
+} */
 
 .carousel_wrap2::-webkit-scrollbar {
   display: none;
@@ -17,12 +17,12 @@
 .btn_grp {
   padding: 0.4rem 2.5rem;
   position: absolute;
-  bottom: 7rem;
+  bottom: 17%;
   height: 4.3rem;
 }
 
 .carousel_img {
-  height: 250px;
+  height: 100%;
 }
 
 .bg {
@@ -49,7 +49,7 @@
 }
 
 .carousel_img2 {
-  height: 150px;
+  height: 60px;
   width: 230px;
 }
 
@@ -106,6 +106,22 @@
   background-color: rgba(0, 0, 0, 0.30);
 }
 
+@media screen and (width < 768px) {
+  .carousel_wrap {
+    position: absolute;
+    width: 100%;
+  }
+
+  .carousel_wrap2 {
+    display: none;
+    overflow-x: scroll;
+  }
+
+  .carousel_img {
+    max-height: 250px;
+  }
+}
+
 @media screen and (width >= 768px) {
   .carousel_wrap {
     position: relative;
@@ -118,6 +134,6 @@
 
 @media screen and (width >= 1024px) {
   .carousel_img {
-    height: 400px;
+    max-height: 350px;
   }
 }
