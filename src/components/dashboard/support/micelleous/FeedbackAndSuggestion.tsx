@@ -8,6 +8,7 @@ import Checkbox from '~/components/searchForm/checkbox/Checkbox';
 
 export default function FeedbackAndSuggestion() {
   const [isVisible, setIsVisible] = useState(false);
+  // console.log(isVisible);
   return (
     <div>
       <div className="gap my-8 f-column sm:flex-row flex s-btw w-full">

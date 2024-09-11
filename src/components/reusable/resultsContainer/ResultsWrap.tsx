@@ -47,16 +47,9 @@ export default function ResultsWrap({
 
   const listingsPage = stack === 'listings' ? styles.listingStack : styles.hideStack1;
   const mapPage = stack === 'map' ? '' : styles.hideStack2;
-  const renderMap = map ? styles.off : '';
-  const adjustList = map ? styles.results_full : '';
-  const resultOnly =
-    position === 'portrait' && map === true
-      ? styles.grid_style_2
-      : map
-      ? styles.grid_style_3
-      : styles.grid_style_4;
+  const renderMap = !map ? styles.on : styles.off;
   const order =
-    position === 'portrait' && map === false ? styles.grid_style : resultOnly;
+    position === 'portrait' ? styles.portrait : styles.landscape;
 
   return (
     <Container
@@ -66,12 +59,12 @@ export default function ResultsWrap({
     >
       <div className={`${styles.map_section} ${renderMap} ${mapPage}`}>
         <div className={styles.mapWrap}>
-          <MapComponent handleStack={setStack} markerArr={object}  />
+          <MapComponent handleStack={setStack} markerArr={object} />
         </div>
       </div>
       <MobileMapControl stackOrder={stack} setStackOrder={setStack} />
       <div
-        className={`${styles.results} ${adjustList}
+        className={`${styles.results} 
         `}
       >
         <div className={`${stack === 'map' && styles.resMapInfo}`}>

@@ -106,6 +106,7 @@
 }
 
 .below {
+  min-width: 19rem;
   background-color: var(--tertiary-color-1);
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
@@ -197,10 +198,9 @@
   }
 }
 
-@media screen and (768px < width < 1000px) {
+@media screen and (768px < width < 900px) {
   .portrait {
     flex-direction: column;
-    height: 25.5rem;
   }
 
   .landscape_2 {
@@ -209,9 +209,9 @@
   }
 }
 
-@media screen and (width >= 1000px ) {
+@media screen and (width >= 900px ) {
   .maxWidth {
-    max-width: 23rem;
+    max-width: 19rem;
     border-bottom-left-radius: 8px;
   }
 
@@ -220,13 +220,6 @@
   }
 
   .landscape_2 {
-    border-bottom-left-radius: 8px;
-  }
-}
-
-@media screen and (width >= 1200px ) {
-  .maxWidth {
-    max-width: 28rem;
     border-bottom-left-radius: 8px;
   }
 }

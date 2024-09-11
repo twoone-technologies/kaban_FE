@@ -17,7 +17,7 @@ export default function ListingItem({
   listArr,
 }: Props) {
   return (
-    <>
+    <div className='gap-1 flex flex-col'>
       {listArr.map((item) => {
         const isExpired = new Date(item.expiresAt) < new Date();
 
@@ -25,15 +25,15 @@ export default function ListingItem({
           <div
             key={item.id}
             id={`card-${item.id}`}
-            className={`pad flex ${styles.listItemGrp}
+            className={`flex ${styles.listItemGrp}
               ${location.hash.substring(1) === item.id ? styles.activeItem : ''}`}
           >
             <Card card={item} orientation="landscape" className={styles.card}>
-              <div className={`flex s-btw ${styles.btmDetails}`}>
-                <div className="flex gap-1">
-                  {!item.draft && <span>submitted: {dateHandler(item.createdAt)}</span>}
+              <div className={`flex px-3 pb-3 s-btw ${styles.btmDetails}`}>
+                <div className="flex gap flex-row flex-wrap">
+                  {!item.draft && <span>submitted: {dateHandler(item.createdAt)},</span>}
                   {item.published_status === 'published' && !isExpired && (
-                    <span>expiring: {dateHandler(item.expiresAt)}</span>
+                    <span>expiring: {dateHandler(item.expiresAt)},</span>
                   )}
                   {isExpired && <span>expired: {dateHandler(item.expiresAt)}</span>}
                 </div>
@@ -52,6 +52,6 @@ export default function ListingItem({
           </div>
         );
       })}
-    </>
+    </div>
   );
 }

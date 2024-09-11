@@ -10,6 +10,7 @@ import {
 import { arrowIcon } from '~/assets/icons';
 import Svg from './Svg';
 import { Inputs } from './listingForm';
+import React from 'react';
 
 type FormControlElement = 'input' | 'select' | 'textarea';
 type InputProps = React.ComponentPropsWithoutRef<'input'>;
@@ -27,7 +28,7 @@ export type ControlProps = (
   inputStyle?: boolean;
   onContainerFocus?: React.FocusEventHandler<HTMLDivElement>;
   containerClass?: string;
-  labelText?: string;
+  labelText?: string | React.ReactNode;
   radius?: string;
   error?: string;
   register?: Register;

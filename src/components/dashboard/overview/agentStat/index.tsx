@@ -16,14 +16,11 @@ export default function AgentStat() {
       <div className={`pad-15`}>
         <div className={`flex s-btw ${styles.header}`}>
           <h3>Welcome, <b>{data?.user.full_name}</b></h3>
-          <div className={`flex gap-15`}>
-            <span>Balance(KBT)</span>
+          <div className={`flex gap-1 justify-center`}>
+            <span className='text-gray-500 text-sm font-bold'>Balance(KBT)</span>
             <div className={`flex gap`}>
-              <Svg href={kbtIcon} />
-              <div className={`flex f-column ${styles.currency}`}>
-                <small>100.00</small>
-                <small>≈ ₦1000</small>
-              </div>
+              <Svg href={kbtIcon} className='relative bottom-1' />
+              <small>100.00</small>
             </div>
           </div>
         </div>
