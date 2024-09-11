@@ -7,6 +7,8 @@ import { sortToken, transactionArr } from './tokenHistory';
 import useSortSwitch from '~/hooks/useSortSwitch';
 import OptGroup from '~/components/herosection/Optgroup';
 import FormControl from '~/components/reusable/FormControl';
+import Modal from '~/components/reusable/modal/Modal';
+import { useState } from 'react';
 
 export type Transaction = {
   id: string;
@@ -18,12 +20,45 @@ export type Transaction = {
 
 export default function Wallet() {
   const { sortArr, handleSort } = useSortSwitch(transactionArr);
+  const [showModal, setShowModal] = useState(false);
+  console.log(showModal);
   return (
     <Wrapper element="section">
-      <div className={`b-radius flex f-column pad gap-0 ${styles.tokenBalance}`}>
+      <div
+        className={`b-radius flex f-column pad gap-0 ${styles.tokenBalance}`}
+      >
         <span>Available Balance</span>
-        <h3>50<span>kbt</span></h3>
-        <Button className="c-pad">Buy Kaban Token</Button>
+        <h3>
+          50<span>kbt</span>
+        </h3>
+        <Button onClick={() => setShowModal(true)} className="c-pad">
+          Buy Kaban Token
+        </Button>
+        <Modal isVisible={showModal} closeModal={() => setShowModal(false)}>
+          <div className="f-column w-max mb-0.5 text-left">
+            <h3 className='mb-1 text-2xl font-bold'>Buy Token</h3>
+            <p className='text-gray-400'>Available Balance</p>
+            <h3 className='font-bold text-sm'>50<span> KBT</span></h3>
+          </div>
+          <hr className='mb-5' />
+          <div className="flex flex-col gap">
+            <FormControl
+              as="input"
+              labelText={<b>Enter ammount to be received (KBT)</b>}
+              containerClass={styles.select}
+              placeholder="Min: 100"
+              className={styles.inputSelect}
+            />
+            <FormControl
+              as="input"
+              labelText={<b>Ammount</b>}
+              containerClass={styles.input}
+              className={styles.inputSelect}
+              placeholder="Enter Amount"
+            />
+            <Button className="py-3 mt-1 w-full">Buy Token</Button>
+          </div>
+        </Modal>
       </div>
       <div className={`f-width b-radius ${styles.table_wrap}`}>
         <div className="pad flex align-y s-btw">
@@ -55,13 +90,16 @@ export default function Wallet() {
             </tr>
           </thead>
           <tbody className="">
-            {sortArr.map((item) => 'action' in item && 
-              <tr key={item.id} className="">
-                <td>{(item as Transaction).title}</td>
-                <td>{(item as Transaction).action}</td>
-                <td>{(item as Transaction).tokenQuantity}</td>
-                <td>{(item as Transaction).date}</td>
-              </tr>
+            {sortArr.map(
+              (item) =>
+                'action' in item && (
+                  <tr key={item.id} className="">
+                    <td>{(item as Transaction).title}</td>
+                    <td>{(item as Transaction).action}</td>
+                    <td>{(item as Transaction).tokenQuantity}</td>
+                    <td>{(item as Transaction).date}</td>
+                  </tr>
+                ),
             )}
           </tbody>
         </table>

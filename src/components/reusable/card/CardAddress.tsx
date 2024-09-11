@@ -17,7 +17,9 @@ export default function CardAddress({
             navigate(`/property-item/${addressProps.id}`)
         }}
       >
+        <span className={location.pathname.includes('dashboard') ? 'text-blue-400 text-lg font-bold': ''}>
         {addressProps.title}
+        </span>
       </span>
       <div className="flex align-y c-grey">
         <Svg

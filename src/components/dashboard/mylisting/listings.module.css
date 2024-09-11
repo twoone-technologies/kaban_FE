@@ -27,6 +27,7 @@
 
 .sortWrap {
   background-color: var(--tertiary-color-5);
+  border-radius: 4px;
 }
 
 .sortWrap span {
@@ -44,8 +45,6 @@
 }
 
 .listingsWrap {
-  background-color: var(--tertiary-color-1);
-  border: 1.4px solid var(--hover-color);
   margin-top: 1rem;
 }
 
@@ -64,6 +63,12 @@
 .card {
   width: 100%;
   box-shadow: none;
+}
+
+div[id="above"].minHeight {
+  border: 2px solid;
+  min-height: unset;
+  min-width: unset;
 }
 
 .btmDetails {

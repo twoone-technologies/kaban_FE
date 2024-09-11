@@ -56,7 +56,7 @@ export default function Listings() {
       </div>
       {sortArr.length !== 0 ? (
         <div className={`b-radius ${styles.listingsWrap}`}>
-          <div className={`flex gap-1 c-pad justify-end ${styles.sortWrap}`}>
+          <div className={`flex gap-1 c-pad justify-end mb-1 ${styles.sortWrap}`}>
             <span
               className={`cursor-pointer ${active === 'all' ? styles.active : ''}`}
               onClick={() => setActive('all')}

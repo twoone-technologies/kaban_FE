@@ -47,6 +47,7 @@ export default function Card({
       className={`b-radius box_shadow ${styles.card} ${borders} ${className} ${cardState}`}
     >
       <div
+        id='above'
         className={`flex f-column s-btw ${styles.above} 
         ${
           orientation === 'portrait'
@@ -56,8 +57,8 @@ export default function Card({
       >
         <CardImg enter={hover} cardProps={card} />
       </div>
-      <div className={`flex f-column s-btw ${styles.below}`}>
-        <div className='p-3'>
+      <div className={`flex f-column justify-between ${styles.below}`}>
+        <div className='px-3 pt-3'>
           <p className='font-bold'>{card.property_type}</p>
           <CardHeaderInfo cardHeader={card} />
           <div className={`flex f-column s-btw ${styles.iconWrap}`}>
