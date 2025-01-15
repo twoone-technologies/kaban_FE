@@ -1,7 +1,7 @@
 import Button from '~/components/reusable/Button';
 import styles from './hero.module.css';
 import { Form } from 'react-router-dom';
-import HeroFormItem from '~/components/herosection/HeroFormItem';
+import HeroFormItem from '~/components/heroSection/HeroFormItem';
 import Tabulation from '../reusable/tabulation/Tabulation';
 import useTabulation from '~/hooks/useTabulation';
 

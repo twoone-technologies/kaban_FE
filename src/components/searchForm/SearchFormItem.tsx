@@ -1,6 +1,6 @@
 import { SetStateAction, useState } from 'react';
 import { searchIcon } from '~/assets/icons';
-import { property_type, roomAndPrice } from '~/components/herosection/formData';
+import { property_type, roomAndPrice } from '~/components/heroSection/formData';
 import { statusArr } from './status';
 import styles from './searchForm.module.css';
 import FormControl from '../reusable/FormControl';
@@ -24,7 +24,7 @@ export default function SearchFormItem({
   };
 
   const radStat = isDisabled ? styles.enable : styles.disable;
-  const isActive = formStyle === false ? styles.close_grid  : styles.open_form;
+  const isActive = formStyle === false ? styles.close_grid : styles.open_form;
 
   return (
     <div className={`${styles.form_content} ${isActive}`}>
@@ -51,7 +51,7 @@ export default function SearchFormItem({
         type={'search'}
         title={'location'}
         name={'location'}
-        placeholder="location"
+        placeholder="Location"
         defaultValue={defaultCity}
         containerClass={styles.location}
         icon={<Svg className="absolute top-4 right-4" href={searchIcon} />}
@@ -66,8 +66,8 @@ export default function SearchFormItem({
       </FormControl>
       {Object.entries(roomAndPrice).map(([key, val], id) => (
         <div key={id} className={styles.priceOpt}>
-          <FormControl name={key} as="select" className={styles.h_input}>
-            <OptGroup className={styles.optgroup} title={key} subItems={val} />
+          <FormControl as="select" name={key} className={styles.h_input}>
+            <OptGroup header={val.header} subItems={val.subItems} />
           </FormControl>
         </div>
       ))}

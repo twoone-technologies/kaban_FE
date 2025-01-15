@@ -48,18 +48,17 @@ export default function Card({
     >
       <div
         id='above'
-        className={`flex f-column s-btw ${styles.above} 
-        ${
-          orientation === 'portrait'
+        className={`flex f-column s-btw ${styles.above}
+        ${orientation === 'portrait'
             ? styles.border_r
             : cardimgState && styles.maxWidth
-        }`}
+          }`}
       >
         <CardImg enter={hover} cardProps={card} />
       </div>
       <div className={`flex f-column justify-between ${styles.below}`}>
         <div className='px-3 pt-3'>
-          <p className='font-bold'>{card.property_type}</p>
+          <p>{card.property_type.charAt(0).toUpperCase() + card.property_type.slice(1)}</p>
           <CardHeaderInfo cardHeader={card} />
           <div className={`flex f-column s-btw ${styles.iconWrap}`}>
             <CardAddress addressProps={card} />

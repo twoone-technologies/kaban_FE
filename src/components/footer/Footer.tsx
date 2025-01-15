@@ -15,9 +15,7 @@ function Footer() {
                         <Link to="/">
                             <Svg className={styles.footer_logo} href={logoIcon} />
                         </Link>
-                        <p className={styles.footer_link}>To our esteem users who seek to rent or invest in the real estate,
-                            Kaban is here to help you ease the stress of finding a property that
-                            meets your satisfaction by bringing the best deals available to your screen.
+                        <p className={styles.footer_link}>As we strive to make real estate accessible and stress-free, Kaban welcomes our valued customers seeking rental or investment opportunities.
                         </p>
 
                     </div>

@@ -320,9 +320,9 @@ input:hover + svg {
     height: 0.8rem;
   }
 
-  svg:hover {
+  /* svg:hover {
     transform: scale(1.1);
-  }
+  } */
 }
 
 @media screen and (width > 800px) {

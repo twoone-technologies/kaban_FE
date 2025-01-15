@@ -1,11 +1,15 @@
 import { searchIcon } from '~/assets/icons';
 import styles from './hero.module.css';
-import { property_type, roomAndPrice } from './formData';
+import { property_type, roomAndPrice } from '~/components/heroSection/formData';
 import FormControl from '../reusable/FormControl';
 import Svg from '../reusable/Svg';
 import OptGroup from './Optgroup';
 
 export default function HeroFormItem() {
+  const bedroom = Object.entries(roomAndPrice).map((item) => {
+    return item
+  })
+  console.log("bedroom:", bedroom)
   return (
     <>
       <FormControl
@@ -15,7 +19,7 @@ export default function HeroFormItem() {
         type={'search'}
         maxLength={30}
         title={'location'}
-        placeholder="location"
+        placeholder="Location"
         className={styles.location}
         icon={<Svg className={`absolute top-3 right-4 ${styles.locationSvg}`} height='1.2rem' href={searchIcon} />}
       />
@@ -27,7 +31,7 @@ export default function HeroFormItem() {
       {Object.entries(roomAndPrice).map(([key, val], id) => (
         <div key={id} className={styles.priceOpt}>
           <FormControl as="select" name={key} className={styles.h_input}>
-            <OptGroup className={styles.optgroup} title={key} subItems={val} />
+            <OptGroup header={val.header} subItems={val.subItems} />
           </FormControl>
         </div>
       ))}

@@ -112,7 +112,7 @@ function Navigation({ res }: { res: ErrorResProps }) {
                     addAuthToUrl('sign_in');
                   }}
                 >
-                  Register
+                  Sign In
                 </Button>
               )}
             </ul>
