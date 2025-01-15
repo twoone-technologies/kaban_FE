@@ -1,30 +1,27 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { persistStore, persistReducer } from 'redux-persist'
-// @ts-ignore
-import { CookieStorage } from 'redux-persist-cookie-storage'
-import Cookies from 'cookies-js'
-
-import { api } from './features/api'
-import authReducer from './slices/auth'
-import { setupListeners } from '@reduxjs/toolkit/query'
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { persistStore, persistReducer } from "redux-persist";
+import storageSession from "redux-persist/lib/storage/session";
+import { api } from "./features/api";
+import authReducer from "./slices/auth";
+import { setupListeners } from "@reduxjs/toolkit/query";
 
 const persistConfig = {
-    key: "kaban__session",
-    storage: new CookieStorage(Cookies)
-}
+  key: "kaban__session",
+  storage: storageSession,
+};
 
 export const store = configureStore({
-    reducer: combineReducers({
-        [api.reducerPath]: api.reducer,
-        auth: persistReducer(persistConfig, authReducer),
-    }),
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware),
-    devTools: true
-})
-setupListeners(store.dispatch)
+  reducer: combineReducers({
+    [api.reducerPath]: api.reducer,
+    auth: persistReducer(persistConfig, authReducer),
+  }),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(api.middleware),
+  devTools: true,
+});
 
-export const persistor = persistStore(store)
+setupListeners(store.dispatch);
+export const persistor = persistStore(store);
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
