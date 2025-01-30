@@ -1,12 +1,13 @@
 import { searchIcon } from "~/assets/icons";
 import { agentImg } from "~/assets/img";
 import AgentDetailsCard from "~/components/agents/AgentDetailsCard";
-import OptGroup from "~/components/herosection/Optgroup";
 import Button from "~/components/reusable/Button";
 import FormControl from "~/components/reusable/FormControl";
 import Svg from "~/components/reusable/Svg";
 import Pagination from "../reusable/Pagination";
 import { useSearchParams } from "react-router-dom";
+import OptGroup from '~/components/heroSection/Optgroup';
+
 
 export default function AgentsComp() {
   const cities = ["Uyo", "Asaba", "Port Harcourt"];

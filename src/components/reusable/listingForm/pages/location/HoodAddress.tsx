@@ -1,5 +1,6 @@
 import { ReactNode, useEffect, useState } from 'react';
-import OptGroup from '~/components/herosection/Optgroup';
+import OptGroup from '~/components/heroSection/Optgroup';
+
 import FormControl, {
   InputErrors,
   Register,

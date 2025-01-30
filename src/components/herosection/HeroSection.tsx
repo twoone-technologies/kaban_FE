@@ -1,6 +1,5 @@
-import HeroForm from "./HeroForm";
 import styles from "./hero.module.css";
-
+import HeroForm from "~/components/heroSection/HeroForm";
 export default function HeroSection() {
   return (
     <section className={`flex f-column ${styles.hero}`}>

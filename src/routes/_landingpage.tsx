@@ -3,7 +3,7 @@ import ExploreCitiesSection from '~/components/exploreCitiesSection/ExploreCitie
 import LatestAdditions from '~/components/latestAddidtions/LatestAdditions';
 import PropertyTypeSection from '~/components/propertyTypeSection/PropertyTypeSection';
 import { ActionFunctionArgs, redirect } from 'react-router-dom';
-import HeroSection from '~/components/herosection/HeroSection';
+import HeroSection from '~/components/heroSection/HeroSection';
 
 export async function action({ request }: ActionFunctionArgs) {
   // get form data

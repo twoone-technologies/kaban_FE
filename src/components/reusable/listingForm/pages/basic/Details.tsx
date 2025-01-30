@@ -1,4 +1,3 @@
-import OptGroup from '~/components/herosection/Optgroup';
 import CheckboxGroup from '~/components/searchForm/CheckboxGroup';
 import InputWrap from '~/components/dashboard/reusables/InputWrap';
 import FormControl, {
@@ -11,6 +10,8 @@ import {
   figures,
 } from '~/components/reusable/listingForm/pages/miscellenous/mapProps';
 import { Listing } from '~/utils/types/listing.types';
+import OptGroup from '~/components/heroSection/Optgroup';
+
 
 type DetailsProps = {
   land?: boolean;

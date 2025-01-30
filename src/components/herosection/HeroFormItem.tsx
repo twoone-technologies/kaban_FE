@@ -3,7 +3,8 @@ import styles from './hero.module.css';
 import { property_type, roomAndPrice } from '~/components/heroSection/formData';
 import FormControl from '../reusable/FormControl';
 import Svg from '../reusable/Svg';
-import OptGroup from './Optgroup';
+import OptGroup from '~/components/heroSection/Optgroup';
+
 
 export default function HeroFormItem() {
   const bedroom = Object.entries(roomAndPrice).map((item) => {

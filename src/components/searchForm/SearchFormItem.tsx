@@ -6,7 +6,7 @@ import styles from './searchForm.module.css';
 import FormControl from '../reusable/FormControl';
 import Checkbox from './checkbox/Checkbox';
 import Svg from '../reusable/Svg';
-import OptGroup from '../herosection/Optgroup';
+import OptGroup from '~/components/heroSection/Optgroup';
 
 export default function SearchFormItem({
   formStyle,
