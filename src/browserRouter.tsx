@@ -4,7 +4,8 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-import LandingPage, { action as listingSearch } from './routes/_landingpage';
+import LandingPage from './routes/_landingpage';
+import { action as listingSearch } from './routes/landingPageAction';
 import Root, { action as signResults } from './routes/_index';
 import Blog from './routes/blog';
 import Commercial, { action as comResults } from './routes/_property.commercial';
