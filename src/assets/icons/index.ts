@@ -145,6 +145,9 @@ export const phoneIcon = `${phone}#img`;
 import star from "./star.svg";
 export const starIcon = `${star}#img`;
 
+import halfStar from "./halfStar.svg";
+export const halfStarIcon = `${halfStar}#img`;
+
 import verify from "./verify.svg";
 export const verifyIcon = `${verify}#img`;
 
