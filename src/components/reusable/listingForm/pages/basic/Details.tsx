@@ -10,7 +10,7 @@ import {
   figures,
 } from '~/components/reusable/listingForm/pages/miscellenous/mapProps';
 import { Listing } from '~/utils/types/listing.types';
-import OptGroup from '~/components/heroSection/Optgroup';
+import OptGroup from '~/components/herosection/Optgroup';
 
 
 type DetailsProps = {

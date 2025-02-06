@@ -11,7 +11,7 @@ import { dummyObj } from '~/components/reusable/dummyObj';
 import PromptPage from './PromptPage';
 import useRouting from '~/hooks/useRouting';
 import FormControl from '~/components/reusable/FormControl';
-import OptGroup from '~/components/heroSection/Optgroup';
+import OptGroup from '~/components/herosection/Optgroup';
 
 import useSortSwitch from '~/hooks/useSortSwitch';
 import { Listing } from '~/utils/types/listing.types';

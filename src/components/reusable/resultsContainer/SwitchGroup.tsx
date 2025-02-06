@@ -8,7 +8,7 @@ import {
 import { sortOptions } from '~/components/searchForm/status';
 import Svg from '../Svg';
 import FormControl from '../FormControl';
-import OptGroup from '~/components/heroSection/Optgroup';
+import OptGroup from '~/components/herosection/Optgroup';
 
 import { Listing } from '~/utils/types/listing.types';
 

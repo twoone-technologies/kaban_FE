@@ -1,4 +1,4 @@
-import OptGroup from '~/components/heroSection/Optgroup';
+import OptGroup from '~/components/herosection/Optgroup';
 
 import InputWrap from '~/components/dashboard/reusables/InputWrap';
 import FormControl, {

@@ -1,16 +1,12 @@
 import { searchIcon } from '~/assets/icons';
 import styles from './hero.module.css';
-import { property_type, roomAndPrice } from '~/components/heroSection/formData';
+import { property_type, roomAndPrice } from '~/components/herosection/formData';
 import FormControl from '../reusable/FormControl';
 import Svg from '../reusable/Svg';
-import OptGroup from '~/components/heroSection/Optgroup';
+import OptGroup from '~/components/herosection/Optgroup';
 
 
-export default function HeroFormItem() {
-  const bedroom = Object.entries(roomAndPrice).map((item) => {
-    return item
-  })
-  console.log("bedroom:", bedroom)
+export default function HeroSearchForm() {
   return (
     <>
       <FormControl

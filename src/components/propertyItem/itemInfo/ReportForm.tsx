@@ -3,7 +3,7 @@ import styles from '~/components/reusable/modal/modal.module.css';
 import { reasonArr } from '../reason';
 import Button from '../../reusable/Button';
 import FormControl from '~/components/reusable/FormControl';
-import OptGroup from '~/components/heroSection/Optgroup';
+import OptGroup from '~/components/herosection/Optgroup';
 
 
 export default function ReportForm() {

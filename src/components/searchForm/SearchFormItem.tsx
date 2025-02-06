@@ -1,12 +1,12 @@
 import { SetStateAction, useState } from 'react';
 import { searchIcon } from '~/assets/icons';
-import { property_type, roomAndPrice } from '~/components/heroSection/formData';
+import { property_type, roomAndPrice } from '~/components/herosection/formData';
 import { statusArr } from './status';
 import styles from './searchForm.module.css';
 import FormControl from '../reusable/FormControl';
 import Checkbox from './checkbox/Checkbox';
 import Svg from '../reusable/Svg';
-import OptGroup from '~/components/heroSection/Optgroup';
+import OptGroup from '~/components/herosection/Optgroup';
 
 export default function SearchFormItem({
   formStyle,

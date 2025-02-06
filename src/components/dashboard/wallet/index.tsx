@@ -5,7 +5,7 @@ import Svg from '~/components/reusable/Svg';
 import { arrowLeftIcon, arrowRightIcon, sortIcon } from '~/assets/icons';
 import { sortToken, transactionArr } from './tokenHistory';
 import useSortSwitch from '~/hooks/useSortSwitch';
-import OptGroup from '~/components/heroSection/Optgroup';
+import OptGroup from '~/components/herosection/Optgroup';
 
 import FormControl from '~/components/reusable/FormControl';
 import Modal from '~/components/reusable/modal/Modal';

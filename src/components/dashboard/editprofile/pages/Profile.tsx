@@ -1,7 +1,7 @@
 import FormControl from '~/components/reusable/FormControl';
 import InputWrap from '../../reusables/InputWrap';
 import { statesInNigeria } from '~/components/reusable/listingForm/pages/miscellenous/mapProps';
-import OptGroup from '~/components/heroSection/Optgroup';
+import OptGroup from '~/components/herosection/Optgroup';
 
 import { UseFormRegister } from 'react-hook-form';
 import { EditProfileInputs } from '..';

@@ -6,7 +6,7 @@ import FormControl from "~/components/reusable/FormControl";
 import Svg from "~/components/reusable/Svg";
 import Pagination from "../reusable/Pagination";
 import { useSearchParams } from "react-router-dom";
-import OptGroup from '~/components/heroSection/Optgroup';
+import OptGroup from '~/components/herosection/Optgroup';
 
 
 export default function AgentsComp() {
