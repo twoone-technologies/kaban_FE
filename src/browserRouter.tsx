@@ -31,6 +31,7 @@ import SupportCard from './components/dashboard/support/supportCard';
 import EditProperty, { action as editPropertyForm } from './components/dashboard/editProperty';
 import RequireAuth from './utils/functions/RequireAuth';
 import AgentProfile from './routes/_realtors.agents$agentId';
+import BlogPage from './components/blog/BlogPage';
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -50,6 +51,7 @@ export const router = createBrowserRouter(
       <Route path="contact-us" element={<ContactUs />} />
       <Route path="faqs" element={<FAQs />} />
       <Route path="cities/:cityName" element={<CityName />} action={cityResults} />
+      <Route path="blog/:id" element={<BlogPage />} />
 
       {/* Realtor Routes (Aunthenticated) */}
       <Route element={<RequireAuth />}>

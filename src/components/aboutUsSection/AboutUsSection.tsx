@@ -15,12 +15,12 @@ export default function AboutUsSection() {
   }, [aboutUsImg])
   return (
     <Container element="div">
-      <section className={`f-column align-center mt-4 gap-1 ${styles.about_section}`}>
+      <section className={`f-column align-center mt-4 gap-1 pb-14 ${styles.about_section}`}>
         <div className={styles.title_container}>
           <h1 className='center-text padd-inline-1 fw-400'>Every Property Tells a Unique Story.</h1>
           <p className='center-text pad-inline-1'>We are committed to streamlining your property search, offering a diverse range of property options, and ensuring a stress-free experience to enhance your satisfaction.</p>
         </div>
-        <div className={`${styles.flex} align-center mt-4`}>
+        <div className={`${styles.flex} align-center mt-5`}>
           <div ref={visionImgBgRef} className={styles.img_container}>
           </div>
           <div className={`f-column align-center gap-05 ${styles.content_container}`}>
@@ -29,7 +29,7 @@ export default function AboutUsSection() {
           </div>
         </div>
 
-        <div className={`flex align-center mt-4 ${styles.flex} ${styles.reverse_column}`}>
+        <div className={`flex align-center mt-5 ${styles.flex} ${styles.reverse_column}`}>
           <div className={`f-column align-center gap-05 ${styles.content_container}`}>
             <h3>Our Mission</h3>
             <p className='pad-inline-1 fw-400'>To streamline the process of discovering, acquiring, and marketing real estate properties, ensuring a hassle-free journey towards your real estate goals.</p>
@@ -38,10 +38,10 @@ export default function AboutUsSection() {
           </div>
         </div>
 
-        <div className={`f-column align-center mt-4 ${styles.value_container}`}>
-          <div className={`f-column align-center ${styles.value_content}`}>
+        <div className={`f-column align-center mt-5 mb-10 ${styles.value_container}`}>
+          <div className={`f-column align-center mb-14 ${styles.value_content}`}>
             <h3 className='center-text'>Our Values</h3>
-            <p className='center-text mb-4 pad-inline-1 fw-400'>At our core, we hold three values dear: User-Centricity, Innovation, and Transparency. These values are not just words; they are the compass that directs our actions and decisions. They define how we collaborate, engage with our community, and set our aspiration</p>
+            <p className='center-text mb-5 pad-inline-1 fw-400'>At our core, we hold three values dear: User-Centricity, Innovation, and Transparency. These values are not just words; they are the compass that directs our actions and decisions. They define how we collaborate, engage with our community, and set our aspiration</p>
           </div>
           <div className={`flex gap-3 ${styles.sub_div}`}>
             <div className="f-column align-center gap-1">
@@ -61,7 +61,10 @@ export default function AboutUsSection() {
             </div>
           </div>
         </div>
-        <Headline />
+        <div className={`mt-2 ${styles.blog_container}`}>
+          <h3 className='center-text'>Headlines from our blog</h3>
+          <Headline />
+        </div>
       </section>
     </Container>
   )

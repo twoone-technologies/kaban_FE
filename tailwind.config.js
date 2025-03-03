@@ -4,11 +4,22 @@ export default {
   theme: {
     extend: {
       colors: {
-        primaryColor: "#437EF7",
         black: "#272D37",
         subtleGray: "#5F6D7E",
+        dashboardCol: "#437ef7",
+        primaryColor: "#437ef7",
+        secondaryColor: "#141414",
+        accentColor: "#5F6D7E",
+        accentColor1: "#5f6d7e",
+        hoverColor: "#eaebf0",
+        starColor: "#f9b900",
+        tertiaryColor1: "#ffffff",
+        tertiaryColor2: "#3a424b",
+        tertiaryColor3: "#FAFBFC",
+        tertiaryColor4: "#41ae48",
+        tertiaryColor5: "#e8effd",
       },
     },
   },
   plugins: [],
-};
+}
