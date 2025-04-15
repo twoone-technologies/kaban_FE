@@ -41,7 +41,7 @@ export default function Toolkit({onClick, onCopy}: ToolkitProps) {
   };
 
   return (
-    <div className={`flex s-btw f-width ${styles.tools}
+    <div className={`flex s-btw w-full ${styles.tools}
     ${goingUp ? styles.navstate : styles.translateY}
     ${scroll < 4 ? styles.translate0 : ''}
     `}>

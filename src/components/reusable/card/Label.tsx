@@ -20,7 +20,7 @@ export default function Label({ type }: { type: string }) {
   return (
     <div className={`b-radius flex align-y c-pad gap-05 ${styles[type]}`}>
       <Svg width='7' height='7' href={dotIcon} className={styles.label_svg} />
-      <span>{label()}</span>
+      <span className='text-[12px]'>{label()}</span>
     </div>
   );
 }

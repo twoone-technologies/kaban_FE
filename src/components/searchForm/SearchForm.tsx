@@ -42,7 +42,7 @@ export default function SearchForm({
         containerClass="cursor-pointer"
         title={'Advanced search'}
         name="advanced_search"
-        placeholder="Advanced search"
+        placeholder="Advanced Search"
         onClick={() => handleStyle()}
         icon={
           <Svg className="absolute top-4 right-4 rotate-90" href={arrowIcon} />

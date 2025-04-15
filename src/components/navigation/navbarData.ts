@@ -5,7 +5,7 @@ import { house_1Icon } from "~/assets/img";
 import { house_2Icon } from "~/assets/img";
 import { house_3Icon } from "~/assets/img";
 import { agentsIcon } from "~/assets/icons";
-import { agenciesIcon } from "~/assets/icons";
+// import { agenciesIcon } from "~/assets/icons";
 import { store } from "~/api/store";
 import { Logout } from "~/api/slices/auth";
 
@@ -39,11 +39,11 @@ const navbarData = {
         name: 'Agents',
         path: 'agents',
       },
-      {
-        icon: agenciesIcon,
-        name: 'Agencies',
-        path: 'agencies',
-      },
+      // {
+      //   icon: agenciesIcon,
+      //   name: 'Agencies',
+      //   path: 'agencies',
+      // },
     ]
   },
 

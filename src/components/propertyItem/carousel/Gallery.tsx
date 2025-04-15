@@ -81,7 +81,7 @@ export default function Gallery({item}:{item: Listing}) {
           <Button
             type="button"
             onClick={prevSlide}
-            className={`flex align-y stack ${styles.carousel_btn} ${
+            className={`flex align-y stack  ${styles.carousel_btn} ${
               activeIndex === 0 ? styles.disable : styles.enable
             }`}
           >

@@ -17,7 +17,7 @@
   --tertiary-color-3: #FAFBFC; /* background color */
   --tertiary-color-4: #41ae48; /* featured and savebtn color */
   --tertiary-color-5: #e8effd; /* dashboard overlay color */
-  --font-size-1: clamp(0.8rem, 1vw, 1rem);
+  --font-size-1: clamp(12px, 1vw, 1rem);
 }
 
 * {
@@ -74,10 +74,6 @@ span {
 
 ul {
   list-style-type: none;
-}
-
-.blog:hover {
-  color: var(--primary-color);
 }
 
 /* svg component */

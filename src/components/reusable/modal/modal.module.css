@@ -141,10 +141,6 @@ input[name='intent']:hover {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .termsPolicy {
-    font-size: 9px;
-  }
-
   .btn {
     top: 1.5rem;
     right: 1.5rem;

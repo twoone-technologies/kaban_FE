@@ -1,6 +1,6 @@
 import AgentDetailsCard from './AgentDetailsCard'
 import { agentImg } from '~/assets/img'
-import { BsTwitterX, BsWhatsapp } from 'react-icons/bs'
+import { BsLinkedin, BsTwitterX, BsWhatsapp } from 'react-icons/bs'
 import { FaFacebookF, FaInstagram } from 'react-icons/fa6'
 import { Link, useSearchParams } from 'react-router-dom'
 import AgentReviews from './AgentReviews'
@@ -45,7 +45,7 @@ export default function AgentProfileComp() {
                     </p>
                     <div className='flex !gap-3'>
                         <div className='size-8 flex items-center justify-center border border-[#437EF7] rounded-full'>
-                            <BsWhatsapp color='#437EF7' style={{ fill: "currentColor" }} />
+                            <BsLinkedin color='#437EF7' style={{ fill: "currentColor" }} />
                         </div>
                         <div className='size-8 flex items-center justify-center border border-[#437EF7] rounded-full'>
                             <BsTwitterX color='#437EF7' fill='currentColor' style={{ fill: "currentColor" }} />

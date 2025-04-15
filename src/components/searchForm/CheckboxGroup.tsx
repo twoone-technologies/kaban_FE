@@ -28,10 +28,22 @@ export default function CheckboxGroup({
     }
   }, [listing]);
 
-  const handleCheckAll = () =>
-    setFeatures((prev) =>
-      prev.map((item) => ({ ...item, checked: !item.checked })),
-    );
+  const handleCheckAll = () => {
+    const allChecked = features.every((item) => item.checked);
+    setFeatures((prev) => prev.map((item) => ({ ...item, checked: !allChecked })));
+  
+    if (listing && setListing) {
+      setListing((prev) => ({
+        ...prev,
+        details: {
+          ...prev.details,
+          features: allChecked ? [] : features.map((item) => item.title),
+        },
+      }));
+    }
+  };
+ 
+  
 
   const handleChecked = ( e: React.ChangeEvent<HTMLInputElement>, ) => {
     // when a box is checked, push the string to the array else remove it

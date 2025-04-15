@@ -27,7 +27,7 @@ export default function SignUp({
         height="40px"
         className={styles.k_logo}
       />
-      <LineText className={styles.getStarted} text="sign up as a realtor" />
+      <LineText className={styles.getStarted} text="Sign Up as a Realtor" />
       <Form method="post" className={`flex f-column gap ${styles.form}`}>
         <FormControl
           as="input"
@@ -35,7 +35,7 @@ export default function SignUp({
           name="fullName"
           labelText="Full Name"
           type="text"
-          placeholder="fullname"
+          placeholder="John Smith"
         />
         <FormControl
           as="input"
@@ -55,7 +55,7 @@ export default function SignUp({
         />
         <div className="flex">
           <Checkbox name="termsPolicy" title="termsPolicy" />
-          <span className={styles.termsPolicy}>
+          <span>
             By creating an account you agree to Kaban{' '}
             <Link className="bg-primary" to={''}>
               Terms of use
@@ -68,7 +68,7 @@ export default function SignUp({
         </div>
         <input
           name="intent"
-          value="sign up"
+          value="Sign Up"
           type="submit"
           className={
             'flex bg-primary-1 b-radius bg-grey c-tertiary align-x c-pad'
@@ -80,7 +80,7 @@ export default function SignUp({
           className={`flex gap align-x align-y c-pad ${styles.google_btn}`}
         >
           <Svg height={'1.3rem'} href={googleSvgIcon} />
-          Sign up with Google
+          Google
         </Button>
         <p>
           Already a Realtor?{' '}

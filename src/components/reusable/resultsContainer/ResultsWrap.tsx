@@ -70,11 +70,11 @@ export default function ResultsWrap({
         <div className={`${stack === 'map' && styles.resMapInfo}`}>
         {(propertyCategory || city || status) && (
           <>
-            <Link to={'/'} className="bg-primary">
+            <Link to={'/'} className={`bg-primary ${styles.homeLink}`}>
               Home
             </Link>
             {status && (
-              <span>
+              <span className={styles.homeLink}>
                 {' '}
                 {'>'} For {status}
               </span>

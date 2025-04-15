@@ -23,6 +23,14 @@
   font-size: clamp(3px, 4vw, 0.8rem);
 }
 
+.blog {
+  font-size: clamp(3px, 4vw, 0.8rem);
+}
+
+.blog:hover {
+  color: var(--primary-color);
+}
+
 .nav_btm {
   border-bottom: 1px solid var(--hover-color);
 }

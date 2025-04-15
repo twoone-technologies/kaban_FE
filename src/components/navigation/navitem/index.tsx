@@ -29,7 +29,7 @@ const NavItem = ({ title, href, subItems, navState, drop, handleClick, mouseOver
   });
 
   return (
-    href ? <Link className={`flex f-column blog ${navState ? styles.txt_color_2 : styles.txt_color} ${styles.nav_item}`} to={href}>{title}</Link>
+    href ? <Link className={`flex f-column ${styles.blog} ${navState ? styles.txt_color_2 : styles.txt_color} ${styles.nav_item}`} to={href}>{title}</Link>
     : <li className={`flex f-column ${styles.nav_item}`} {...navStateHandler}>
         <div className={`flex ${styles.nav_item_ul}`}>
           <span

@@ -9,7 +9,6 @@ import { sortOptions } from '~/components/searchForm/status';
 import Svg from '../Svg';
 import FormControl from '../FormControl';
 import OptGroup from '~/components/herosection/Optgroup';
-
 import { Listing } from '~/utils/types/listing.types';
 
 type Props = {
@@ -39,7 +38,7 @@ export default function SwitchGroup({
 
   return (
     <div className="flex my-2 s-btw align-y">
-      <span className={styles.size}>{listingObject.length} results found</span>
+      <span className={'text-sm'}>{listingObject.length} Results Found</span>
       <div className={`flex align-y ${listingsPage}`}>
         <Svg href={sortIcon} width="50px" height="20px" />
         <FormControl

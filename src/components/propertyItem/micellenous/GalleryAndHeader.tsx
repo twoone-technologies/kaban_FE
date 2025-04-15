@@ -18,13 +18,13 @@ export default function GalleryAndHeader({item}: {item: Listing}) {
       </div>
       <div className={`flex gap s-btw ${styles.title_price}`}>
         <div className={`flex gap f-column`}>
-          <h3>{item?.title}</h3>
+          <h3 className='text-xl font-bold'>{item?.title}</h3>
           <small className='flex align-y gap-05'>
             <Svg height="1.33rem" href={locationIcon} />
             {item?.address}
           </small>
         </div>
-        <h3>₦{item?.price.amount.toLocaleString()}/annum</h3>
+        <h3 className='text-xl font-bold'>₦{item?.price.amount.toLocaleString()}/annum</h3>
       </div>
     </>
   );

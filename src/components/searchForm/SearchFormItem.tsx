@@ -73,16 +73,16 @@ export default function SearchFormItem({
       ))}
       <FormControl
         as="input"
-        title={'Min.price'}
+        title={'Min Price'}
         name={'min.price'}
-        placeholder={'Min.price'}
+        placeholder={'Min Price'}
         type={'number'}
       />
       <FormControl
         as="input"
-        title={'Max.price'}
+        title={'Max Price'}
         name={'max.price'}
-        placeholder={'Max.price'}
+        placeholder={'Max price'}
         type={'number'}
       />
     </div>

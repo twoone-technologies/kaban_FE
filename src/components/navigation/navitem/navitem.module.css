@@ -2,6 +2,7 @@
   border-top: 1px solid var(--hover-color);
   padding: 1rem;
   cursor: pointer;
+  font-size: var(--font-size-1);
 }
 
 .nav_item_ul {
@@ -67,6 +68,11 @@
   opacity: 1;
   overflow: none;
   max-height: 9.52rem;
+}
+
+.blog:hover {    
+  color: var(--primary-color);
+  font-size: var(--font-size-1);
 }
 
 @media screen and (width >= 768px) {

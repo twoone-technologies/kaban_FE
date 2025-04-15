@@ -176,7 +176,7 @@ input[type=range] {
 
 .open_form {
   opacity: 1;
-  max-height: 40rem;
+  max-height: 50rem;
 }
 
 .minus {

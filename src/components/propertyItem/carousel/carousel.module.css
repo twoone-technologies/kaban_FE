@@ -112,6 +112,11 @@
     width: 100%;
   }
 
+  .carousel_btn {
+    height: 33px;
+    width: 33px;
+  }
+
   .carousel_wrap2 {
     display: none;
     overflow-x: scroll;

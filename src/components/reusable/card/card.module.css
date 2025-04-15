@@ -68,7 +68,7 @@
 }
 
 .status_grp {
-  font-size: clamp(3px, 4vw, 0.7rem);
+  font-size: clamp(3px, 4vw, 9px);
   direction: rtl;
 }
 
@@ -113,12 +113,6 @@
   gap: 0.4rem;
   width: 100%;
   height: inherit;
-}
-
-.header p {
-  font-size: clamp(12px, 4vw, 0.8rem);
-  font-weight: 500;
-  margin-bottom: 0.2rem;
 }
 
 .header h3 {

@@ -55,7 +55,7 @@ export default function SignIn({
             <span>Keep me logged in</span>
           </div>
           <Link to={''} className="bg-primary">
-            Forgot password?
+            Forgot Password?
           </Link>
         </div>
         {state === 'submitting' ? (
@@ -63,7 +63,7 @@ export default function SignIn({
         ) : (
           <input
             name="intent"
-            value={'sign in'}
+            value={'Sign In'}
             type="submit"
             className={
               'flex bg-primary-1 b-radius bg-grey c-tertiary align-x c-pad'
@@ -77,7 +77,7 @@ export default function SignIn({
           className={`flex gap align-x align-y c-pad ${styles.google_btn}`}
         >
           <Svg height={'1.3rem'} href={googleSvgIcon} />
-          Sign In with Google
+          Google
         </Button>
         <p>
           Not yet registered?{' '}

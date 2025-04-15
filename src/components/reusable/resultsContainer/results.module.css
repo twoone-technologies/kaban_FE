@@ -22,8 +22,9 @@
   text-transform: capitalize;
 }
 
-.size {
-  font-size: clamp(0.5rem, 5vw, 0.8rem);
+.size,
+.homeLink {
+  font-size: var(--font-size-1);
 }
 
 .sort {

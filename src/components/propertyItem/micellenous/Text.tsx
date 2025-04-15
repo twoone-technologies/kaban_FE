@@ -1,14 +1,14 @@
 import styles from './micellenous.module.css';
 import ItemInfo from '../itemInfo/ItemInfo';
 
-export default function Text() {
+export default function Text({className}:{className?: string}) {
   return (
-    <div>
+    <div className={className}>
       <ItemInfo
         className={styles.safety_tips}
         h1={'Kaban Safety Tips'}
         children={
-          <div className="flex f-column gap">
+          <div className="flex f-column text-justify gap">
             <p>
               1. Do not make any upfront payment, such as inspection fees,
               before physically seeing the property or meeting the agent you
@@ -42,7 +42,7 @@ export default function Text() {
         h1={'Disclaimer'}
         className={styles.disclaimer}
         children={
-          <span>
+          <span className='text-justify'>
             Please be aware that Kaban.ng is a property advertising platform and
             is not involved in the actual sale of listed properties. We do not
             provide warranties or guarantee the accuracy of property

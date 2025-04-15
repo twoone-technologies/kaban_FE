@@ -51,12 +51,13 @@ export default function PropertyItem() {
         <div className={`f-width flex f-column gap ${styles.item_details}`}>
           <GalleryAndHeader item={listingItem} />
           <PropertyDetails item={listingItem} />
+          <Text className='md:hidden block' />
           <DescriptionAndFeatures item={listingItem} />
           <VideoMap item={listingItem} />
         </div>
         <div className={`flex f-column gap ${styles.item_details}`}>
           <AgentDetails item={listingItem} object={listingArray} />
-          <Text />
+          <Text className='hidden md:block'/>
           <Ads adContent={<h1 className={styles.content}></h1>} />
         </div>
       </div>

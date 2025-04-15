@@ -8,11 +8,11 @@ export default function Blog() {
         <Container element="section" className="flex items-center flex-col">
             <BlogHeader />
             <BlogSorter />
+           <div className="w-full mt-4 flex justify-center flex-col px-7">
             {[...Array(5)].map((_, i) => (
-                <div className="blogWrap mt-4 flex">
-                    <Headline id={i} key={i}/>
-                </div>
+                 <Headline id={i} key={i}/>
             ))}
+           </div>
         </Container>
     )
 }
