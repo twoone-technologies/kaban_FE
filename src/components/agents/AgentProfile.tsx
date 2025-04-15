@@ -1,6 +1,6 @@
 import AgentDetailsCard from './AgentDetailsCard'
 import { agentImg } from '~/assets/img'
-import { BsLinkedin, BsTwitterX, BsWhatsapp } from 'react-icons/bs'
+import { BsLinkedin, BsTwitterX } from 'react-icons/bs'
 import { FaFacebookF, FaInstagram } from 'react-icons/fa6'
 import { Link, useSearchParams } from 'react-router-dom'
 import AgentReviews from './AgentReviews'
