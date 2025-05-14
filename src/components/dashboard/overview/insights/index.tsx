@@ -13,18 +13,21 @@ export default function Insights() {
       children={
         <div className={`flex f-width ${styles.insightsDataWrap}`}>
           <ListingData
+            header
             className={styles.insights}
             href={eyeIcon}
             data={'3'}
             title={'Total views'}
           />
           <ListingData
+            header
             className={styles.insights}
             href={phoneIcon}
             data={'3'}
             title={'Phone Clicks'}
           />
           <ListingData
+            header
             className={styles.insights}
             href={whatsappIcon}
             data={'3'}
@@ -34,7 +37,7 @@ export default function Insights() {
       }
       visit={
         <div className="flex pad-1 s-btw">
-          <h5>Performance</h5>
+          <h5 className='text-accentColor font-bold'>Performance</h5>
           <Link className="flex bg-primary gap" to={'/dashboard/insights'}>
             View insights <Svg href={exLinkIcon} />
           </Link>

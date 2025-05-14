@@ -8,7 +8,7 @@ export default function Notification() {
   const {stat, msgArr, mailArr, unread, handleMsg, handleMarkAll} = useNotifySwitch(msg)
 
   return (
-    <Wrapper element="section" className={`flex f-column ${styles.notification}`}>
+    <Wrapper element="section" className={`flex f-column border-3px ${styles.notification}`}>
       <NotificationList
         markAll={handleMarkAll}
         allMsg={mailArr.length}

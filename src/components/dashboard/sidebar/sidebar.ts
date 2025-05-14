@@ -24,8 +24,8 @@ export const sidebarArr = [
   },
   {
     svg: walletIcon,
-    route: 'Wallet',
-    link: 'wallet',
+    route: 'Token',
+    link: 'token',
   },
   {
     svg: supportIcon,

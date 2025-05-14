@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Form } from 'react-router-dom';
 import { searchIcon, sortIcon } from '~/assets/icons';
 import { Wrapper } from '~/components/reusable/Container';
@@ -19,8 +19,12 @@ import { Listing } from '~/utils/types/listing.types';
 export default function Listings() {
   useRouting();
   const [active, setActive] = useState<'all' | 'rent' | 'sale'>('all');
-  const listingArray = dummyObj as unknown as Listing[];
-  const { sortArr, handleSort } = useSortSwitch(listingArray);
+  const listingArr = dummyObj as unknown as Listing[];
+  const { sortArr, handleSort } = useSortSwitch(listingArr);
+
+  useEffect(() => {
+
+  },[sortArr]);
 
   return (
     <Wrapper element="section">

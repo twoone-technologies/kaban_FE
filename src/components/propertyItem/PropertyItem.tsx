@@ -22,8 +22,8 @@ export default function PropertyItem() {
   const [show, setShow] = useState(false);
   const [copy, setCopy] = useState(false);
   const { id } = useParams<{ id: string }>();
-  const listing = dummyObj.find((item) => item.id === id);
-  const listingItem = listing as unknown as Listing;
+  const listinIlistingItemg = dummyObj.find((item) => item.id === id);
+  const listingItem = listinIlistingItemg as unknown as Listing;
   const listingArray = dummyObj as unknown as Listing[];
   const filterObj = () => {
     const similarItems = listingArray.filter(
@@ -62,7 +62,7 @@ export default function PropertyItem() {
         </div>
       </div>
       <Tooltip copy={copy} text={'Link copied to clipboard '} />
-      <SimilarItems similar={filterObj()} />
+      <SimilarItems listing={listingItem} similar={filterObj()} />
       <Ads adContent={<h1 className={styles.content}></h1>} />
     </Container>
   );

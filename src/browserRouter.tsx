@@ -22,7 +22,7 @@ import CityName, { action as cityResults } from './routes/cities.$cityName';
 import Overview from './components/dashboard/overview';
 import Insight from './components/dashboard/insight';
 import Listings from './components/dashboard/mylisting';
-import Wallet from './components/dashboard/wallet';
+import Token from './components/dashboard/token';
 import Support from './components/dashboard/support';
 import Notification from './components/dashboard/notification';
 import Post, { action as postForm } from './components/dashboard/postproperty';
@@ -32,6 +32,7 @@ import EditProperty, { action as editPropertyForm } from './components/dashboard
 import RequireAuth from './utils/functions/RequireAuth';
 import AgentProfile from './routes/_realtors.agents$agentId';
 import BlogPage from './components/blog/BlogPage';
+import { OtherItemsPage } from './components/propertyItem/micellenous/OtherItemsPage';
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -52,6 +53,8 @@ export const router = createBrowserRouter(
       <Route path="faqs" element={<FAQs />} />
       <Route path="cities/:cityName" element={<CityName />} action={cityResults} />
       <Route path="blog/:id" element={<BlogPage />} />
+      <Route path="similar-items/:type" element={<OtherItemsPage />} />
+      <Route path="agent-istings/:id" element={<OtherItemsPage />} />
 
       {/* Realtor Routes (Aunthenticated) */}
       <Route element={<RequireAuth />}>
@@ -59,7 +62,7 @@ export const router = createBrowserRouter(
           <Route index element={<Overview />} />
           <Route path="insights" element={<Insight />} />
           <Route path="listings" element={<Listings />} />
-          <Route path="wallet" element={<Wallet />} />
+          <Route path="token" element={<Token />} />
           <Route path="support" element={<Support />} />
           <Route path="support/:title" element={<SupportCard />} />
           <Route path="notification" element={<Notification />} />

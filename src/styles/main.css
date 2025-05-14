@@ -17,6 +17,7 @@
   --tertiary-color-3: #FAFBFC; /* background color */
   --tertiary-color-4: #41ae48; /* featured and savebtn color */
   --tertiary-color-5: #e8effd; /* dashboard overlay color */
+  --tertiary-color-6: #2D8A3933; /* dashboard overlay color */
   --font-size-1: clamp(12px, 1vw, 1rem);
 }
 

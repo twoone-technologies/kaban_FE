@@ -80,7 +80,7 @@ export default function ListingForm({
         activeTab={prevId}
         headerWidth={tabWidth}
         headerArr={headers}
-        isValid={activeIndex === 1 ? minNum : isValid}
+        // isValid={activeIndex === 1 ? minNum : isValid}
         headerSwitch={handleHeaderClick}
       />
       <Form
@@ -118,13 +118,9 @@ export default function ListingForm({
           next={next}
           minImg={minNum}
           valid={isValid}
+          success={success}
           setSuccess={setSuccess}
           activeIndex={activeIndex}
-        />
-        <Tooltip
-          popOver={true}
-          text={'Listing created successfully'}
-          copy={success}
         />
       </Form>
     </Wrapper>

@@ -72,7 +72,7 @@ export default function Sidebar({
         {koinNode}
         <ul className="flex f-column">
           <li className={`flex pad-1 f-width align-y`}>
-            <h3>Main</h3>
+            <h3>Menu</h3>
           </li>
           {sidebarArr.map((link) => (
             <li key={link.svg}>
@@ -105,7 +105,7 @@ export default function Sidebar({
             className="flex gap align-x align-y"
           >
             <Svg href={inviteIcon} />
-            invite a realtor
+            Invite a realtor
           </Button>
           <Invite isOpen={invite} exit={() => setInvite(false)} />
         </div>

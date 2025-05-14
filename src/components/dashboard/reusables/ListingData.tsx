@@ -6,11 +6,13 @@ export default function ListingData({
   data,
   href,
   title,
+  header,
   className
 }: {
   data?: string;
   title: string;
   href?: string;
+  header?: boolean;
   className?: string;
 }) {
   return (
@@ -26,8 +28,9 @@ export default function ListingData({
           </div>
         ))}
       <div>
-        <h4 className={styles.num}>{data}</h4>
-        <span className={styles.title}>{title}</span>
+        {header ? <h4 className={`font-bold ${styles.num}`}>{data}</h4>:
+        <h4 className={`font-bold`}>{data}</h4>}
+        <span className={`font-bold text-accentColor ${styles.title}`}>{title}</span>
       </div>
     </div>
   );

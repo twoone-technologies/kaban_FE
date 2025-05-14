@@ -19,26 +19,26 @@ export default function Invite({
         </span>
 
         <div className={`flex pad-block-0 pad-inline-1 s-btw b-radius ${styles.referal}`}>
-          <span>referal link</span>
+          <span>Referal link</span>
           <span>copy</span>
         </div>
 
         <div className={`b-radius ${styles.invite_grp}`}>
           <div className="flex pad-block-0 pad-inline-1 s-btw">
             <span>3 invites</span>
-            <span>Get rewarded 5kbt</span>
+            <span>Get rewarded 20kbt</span>
           </div>
           <div className="flex pad-block-0 pad-inline-1 s-btw">
             <span>5 invites</span>
-            <span>Get rewarded 10kbt</span>
+            <span>Get rewarded 40kbt</span>
           </div>
           <div className="flex pad-block-0 pad-inline-1 s-btw">
             <span>10 invites</span>
-            <span>Get rewarded 15kbt</span>
+            <span>Get rewarded 90kbt</span>
           </div>
           <div className="flex pad-block-0 pad-inline-1 s-btw">
             <span>20 invites</span>
-            <span>Get rewarded 40kbt</span>
+            <span>Get rewarded 200kbt</span>
           </div>
         </div>
       </div>

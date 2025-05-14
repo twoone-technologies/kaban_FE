@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { ChartType } from '../../insight';
 import Chart from 'react-apexcharts';
 
-export default function Wallet() {
+export default function Token() {
   const [donutChart, _] = useState<ChartType>({
     series: [34, 55],
     options: {
@@ -32,7 +32,7 @@ export default function Wallet() {
       legend: {
         width: 150,
         position: 'bottom',
-        show: true,
+        show: false,
         horizontalAlign: 'left',
         customLegendItems: ['Views', 'Enquiry'],
         formatter: function (seriesName, opts) {
@@ -51,7 +51,7 @@ export default function Wallet() {
 
   return (
     <ItemInfo
-      h1={'Your Wallet'}
+      h1={'Your Token'}
       className={`box_shadow ${styles.wallet}`}
       children={
         <div className={`flex f-width f-column align-y ${styles.walletWrap}`}>
@@ -69,8 +69,8 @@ export default function Wallet() {
               />
             </div>
             <div className={styles.kbtTotal}>
-              <span>Total</span>
-              <p>KBT 0</p>
+              <span className='text-accentColor'>Total</span>
+              <p className='font-bold'>KBT 0</p>
             </div>
           </div>
         </div>
@@ -79,7 +79,7 @@ export default function Wallet() {
         <div className="flex pad-1 s-btw">
           <h5>Total Balances</h5>
           <Link className="flex bg-primary gap" to={'/dashboard/wallet'}>
-            Open <Svg href={exLinkIcon} />
+            View Token <Svg href={exLinkIcon} />
           </Link>
         </div>
       }

@@ -7,7 +7,7 @@ import Svg from '~/components/reusable/Svg'
 export default function Blog() {
   return (
     <ItemInfo
-          h1={'Realtors Blog'}
+          h1={'Resources'}
           className={`box_shadow f-width ${styles.wallet}`}
           children={
             <div className="flex f-width f-column gap-1">
@@ -65,7 +65,7 @@ export default function Blog() {
             <div className="flex pad-1 s-btw">
               <b></b>
               <Link className="flex bg-primary gap" to={'/dashboard/support/Resources'}>
-                See all blogs <Svg href={exLinkIcon} />
+                See all Resources <Svg href={exLinkIcon} />
               </Link>
             </div>
           }

@@ -49,7 +49,7 @@ export default function Media({
   const [activeImg, setActiveImg] = useState<number>(1);
 
   useEffect(() => {
-    images.length + listing?.images.length > 5 && (coverImage.length > 0 || listing?.cover_image)
+    images.length >= 4 || listing?.images.length >= 4 && (coverImage.length > 0 || listing?.cover_image)
       ? setMinNum(true)
       : setMinNum(false);
   }, [coverImage, images, listing?.cover_image, listing?.images.length, setMinNum]);
@@ -58,10 +58,11 @@ export default function Media({
     <div className={className}>
       <InputWrap>
         <div className="flex s-btw">
-          <h3>Media</h3>
-          <span>{`${activeImg + 1} / ${images.length + listing?.images.length}`}</span>
+          <h3>Images</h3>
+          {listing?.images.length > 0 || images.length > 0 ? <span>{`${activeImg + 1} / ${listing?.images.length +1 || images.length}`}</span> : ''}
         </div>
-        {images.length + listing?.images.length <= 5 && <span className='text-red-500'>Please upload at least 6 images</span>}
+        <h4>Upload Images</h4>
+        {images.length <= 4 || listing?.images.length <= 4 && <span className='text-red-500'>Please upload at least 6 images</span>}
         <Carousel
           listing={listing}
           imageArr={images}

@@ -1,4 +1,4 @@
-import { buildingsIcon, exLinkIcon, kbtIcon } from '~/assets/icons';
+import { buildingsIcon, exLinkIcon } from '~/assets/icons';
 import styles from './agent.module.css';
 import ListingData from '../../reusables/ListingData';
 import { Link } from 'react-router-dom';
@@ -14,21 +14,13 @@ export default function AgentStat() {
       className={`flex f-column f-width gap b-radius ${styles.accountDetails}`}
     >
       <div className={`pad-15`}>
-        <div className={`flex s-btw ${styles.header}`}>
-          <h3>Welcome, <b>{data?.user.full_name}</b></h3>
-          <div className={`flex gap-1 justify-center`}>
-            <span className='text-gray-500 text-sm font-bold'>Balance(KBT)</span>
-            <div className={`flex gap`}>
-              <Svg href={kbtIcon} className='relative bottom-1' />
-              <small>100.00</small>
-            </div>
-          </div>
-        </div>
-        <p>Hello, we're happy to have you here!</p>
+         <h3>Hello, <b>{data?.user.full_name}</b></h3>
+         <p>Hello, we're happy to have you here!</p>
       </div>
       <div className={`flex b-radius pad-1 ${styles.listingInfo}`}>
         <ListingData
           data={'6'}
+          header
           href={buildingsIcon}
           className={styles.l_data}
           title={'Total listing'}

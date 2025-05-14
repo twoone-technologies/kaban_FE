@@ -10,11 +10,13 @@ type ModalProps = {
   isVisible: boolean;
   closeModal?: () => void;
   className?: string;
+  prompt?: boolean;
 } & React.ComponentProps<'dialog'>;
 
-export default function Modal({ isVisible, closeModal, children, className }: ModalProps) {
+export default function Modal({ isVisible, closeModal, children, className, prompt }: ModalProps) {
   const modal = useRef<HTMLDialogElement>(null);
   const isLoggedIn = useAppSelector((state) => selectCurrentToken(state));
+  
 
   useEffect(() => {
     function handleKeyDown(event: { key: string; preventDefault: () => void; }) {
@@ -41,7 +43,7 @@ export default function Modal({ isVisible, closeModal, children, className }: Mo
   }, [isVisible]);
 
   return (
-    <dialog className={`b-radius ${styles.modalWrap} ${className}`} onClose={closeModal} ref={modal}>
+    <dialog className={`b-radius ${!prompt ? styles.modalWrap : `${styles.modalWrap} ${styles.prompt}`} ${className}`} onClose={closeModal} ref={modal}>
       <aside className={styles.modal}>
         {children}
         {location.pathname.includes('dashboard') && !isLoggedIn ? null :

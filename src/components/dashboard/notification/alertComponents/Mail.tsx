@@ -16,7 +16,7 @@ export default function Mail({ item, page, idx }: Props) {
 
   return (
     <div className={styles.mailbox}>
-      <div className={`flex align-y gap pad-inline-1 pad-block-0 
+      <div className={`flex items-center gap-1 p-4 
           ${styles.msgItem} ${item.viewed ? '' : styles.notRead}`}
       >
         <div className={`flex align-y align-x ${styles.svgWrap}`}>

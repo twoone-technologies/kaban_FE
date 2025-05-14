@@ -3,7 +3,7 @@ import styles from './index.module.css';
 import AgentStat from './agentStat';
 import AgentImg from './agentImg';
 import Insights from './insights';
-import Wallet from './wallet';
+import Wallet from './Token';
 import Blog from './blog';
 import Refer from './refer';
 

@@ -33,8 +33,9 @@ export default function Carousel({
   deleteImage,
   setActiveImg,
 }: Props) {
+  console.log(coverImage?.length, imageArr.length, listing) ;
   return (
-    <div>
+    <div className={`border ${coverImage?.length === 0 && imageArr.length === 0 && listing === undefined ? 'h-0 border-none' : ''}`}>
       {coverImage || imageArr.length > 0 || listing ? (
         <CarouselWrap setActiveImg={setActiveImg}>
           {(coverImage && coverImage[0]?.url) || listing?.cover_image ? (

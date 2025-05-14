@@ -47,7 +47,7 @@ export default function Details({
             <FormControl
               as="select"
               name="bathroom"
-              labelText="bathroom"
+              labelText="Bathroom"
               className={styles.input}
               containerClass={`gap-0 f-column ${styles.inputWrap}`}
               defaultValue={listing?.details.bathroom}

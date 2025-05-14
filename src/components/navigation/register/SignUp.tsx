@@ -7,6 +7,7 @@ import LineText from './LineText';
 import { Link } from 'react-router-dom';
 import Button from '~/components/reusable/Button';
 import FormControl from '~/components/reusable/FormControl';
+import { AuthIntent } from '~/utils/types/auth.types';
 
 export default function SignUp({
   signInUrl,
@@ -68,7 +69,7 @@ export default function SignUp({
         </div>
         <input
           name="intent"
-          value="Sign Up"
+          value={AuthIntent.SIGN_UP}
           type="submit"
           className={
             'flex bg-primary-1 b-radius bg-grey c-tertiary align-x c-pad'

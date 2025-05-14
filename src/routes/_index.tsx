@@ -13,13 +13,14 @@ import Footer from '~/components/footer/Footer';
 import Navigation from '~/components/navigation';
 import '~/styles/main.css';
 import { useEffect } from 'react';
+import { AuthIntent } from '~/utils/types/auth.types';
 
 export async function action({ request }: ActionFunctionArgs) {
   // get form data
   const formData = await request.formData();
   const intent = formData.get('intent');
   switch (intent) {
-    case 'sign up':
+    case AuthIntent.SIGN_UP :
       try {
         await signup({
           email: formData.get('email') as string,
@@ -32,7 +33,7 @@ export async function action({ request }: ActionFunctionArgs) {
         console.log(error);
         return { error: 'signup is unsuccessful' };
       }
-    case 'sign in':
+    case AuthIntent.SIGN_IN :
       try {
         await signin({
           email: formData.get('email') as string,
@@ -76,3 +77,4 @@ export default function Root() {
     </>
   );
 }
+

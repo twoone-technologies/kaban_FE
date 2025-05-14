@@ -33,7 +33,6 @@ export default function UploadImages({
 }: Props) {
   return (
     <div {...rest}>
-      <span>Upload Images</span>
       <p className="text-red-600">
         {error?.coverImage && error?.coverImage.message}
       </p>

@@ -109,7 +109,7 @@ export default function AgentDetails({ object, item }: AgentProps) {
       }
       visit={
         <div className={`flex gap-[2px] items-center ${styles.visit}`}>
-          <a>View all listings from this agent</a>
+          <Link to={`/agent-istings/${item.realtor.id}`}>View all listings from this agent</Link>
           <Svg height='1.4rem' href={exLinkIcon} />
         </div>
       }

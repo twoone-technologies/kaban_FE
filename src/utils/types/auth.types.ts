@@ -19,3 +19,8 @@ export type AuthState = {
     fullName: string,
     realtor: Realtor
 }
+
+export enum AuthIntent {
+  SIGN_IN = 'sign-in',
+  SIGN_UP = 'sign-up',
+}

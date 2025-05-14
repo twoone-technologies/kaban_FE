@@ -17,7 +17,7 @@ export default function Tooltip({
 }: TooltipProps) {
   return (
     <h3
-      className={`c-pad stack box-shadow ${className} ${
+      className={`c-pad box-shadow ${className} ${
         popOver ? styles.slideIn : styles.popOver
       }
       ${copy === true ? styles.active : styles.slide}`}

@@ -6,7 +6,6 @@ import { arrowLeftIcon, arrowRightIcon, sortIcon } from '~/assets/icons';
 import { sortToken, transactionArr } from './tokenHistory';
 import useSortSwitch from '~/hooks/useSortSwitch';
 import OptGroup from '~/components/herosection/Optgroup';
-
 import FormControl from '~/components/reusable/FormControl';
 import Modal from '~/components/reusable/modal/Modal';
 import { useState } from 'react';
@@ -19,14 +18,13 @@ export type Transaction = {
   date: string;
 };
 
-export default function Wallet() {
+export default function Token() {
   const { sortArr, handleSort } = useSortSwitch(transactionArr);
   const [showModal, setShowModal] = useState(false);
-  console.log(showModal);
   return (
     <Wrapper element="section">
       <div
-        className={`b-radius flex f-column pad gap-0 ${styles.tokenBalance}`}
+        className={`b-radius flex f-column p-4 gap-0 ${styles.tokenBalance}`}
       >
         <span>Available Balance</span>
         <h3>
@@ -37,7 +35,7 @@ export default function Wallet() {
         </Button>
         <Modal isVisible={showModal} closeModal={() => setShowModal(false)}>
           <div className="f-column w-max mb-0.5 text-left">
-            <h3 className='mb-1 text-2xl font-bold'>Buy Token</h3>
+            <h2 className='mb-1 text-2xl font-bold'>Buy Token</h2>
             <p className='text-gray-400'>Available Balance</p>
             <h3 className='font-bold text-sm'>50<span> KBT</span></h3>
           </div>
@@ -45,14 +43,14 @@ export default function Wallet() {
           <div className="flex flex-col gap">
             <FormControl
               as="input"
-              labelText={<b>Enter ammount to be received (KBT)</b>}
+              labelText={<b>Enter amount to be received (KBT)</b>}
               containerClass={styles.select}
               placeholder="Min: 100"
               className={styles.inputSelect}
             />
             <FormControl
               as="input"
-              labelText={<b>Ammount</b>}
+              labelText={<b>amount</b>}
               containerClass={styles.input}
               className={styles.inputSelect}
               placeholder="Enter Amount"
@@ -61,7 +59,7 @@ export default function Wallet() {
           </div>
         </Modal>
       </div>
-      <div className={`f-width b-radius ${styles.table_wrap}`}>
+      <div className={`f-width b-radius p-4 ${styles.table_wrap}`}>
         <div className="pad flex align-y s-btw">
           <h3>Transaction History</h3>
           <div className="flex align-y gap">

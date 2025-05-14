@@ -33,7 +33,7 @@ export async function action({ request }: ActionFunctionArgs) {
   const newArray: [string, File][] = [];
 
   const cover_Image = JSON.parse(coverImage as unknown as string);
-  const coverImgFile = new File([cover_Image[0]], cover_Image[0].name, { type: cover_Image[0].type });
+  const coverImgFile = new File([cover_Image[0]], cover_Image[0]?.name, { type: cover_Image[0]?.type });
   newArray.push(['cover_Image', coverImgFile]);
 
   listingImages.forEach((file) => {

@@ -21,7 +21,9 @@ export default function SalesRentPrice({
   listing,
 }: SalesRentPriceProps) {
   return (
-    <InputWrap className={styles.salesRent}>
+    <InputWrap className={''}>
+      <h3>Price</h3>
+      <div className='flex gap-1'>
       <FormControl
         required
         as="input"
@@ -30,8 +32,8 @@ export default function SalesRentPrice({
         name="salesRentPrice"
         className={styles.input}
         defaultValue={listing?.price.amount}
-        placeholder="your price here"
-        labelText={'Sales / Rent Price (₦)'}
+        placeholder="write your sale/rent price here"
+        labelText={'Sale / Rent Price (₦)'}
         containerClass={`gap-0 f-column ${styles.inputWrap}`}
         error={error.salesRentPrice && error.salesRentPrice.message}
       />
@@ -45,6 +47,7 @@ export default function SalesRentPrice({
       >
         <OptGroup header="suffix" subItems={suffix} />
       </FormControl>
+      </div>
     </InputWrap>
   );
 }

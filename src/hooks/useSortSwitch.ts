@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Transaction } from "~/components/dashboard/wallet";
+import { Transaction } from "~/components/dashboard/token";
 import { Listing } from "~/utils/types/listing.types";
 
 type ObjectTypes = Listing[] | Transaction[];
@@ -50,7 +50,8 @@ export default function useSortSwitch(object: ObjectTypes) {
       }
     }
     if(isHouseCardArray(sortArr) && location.pathname.includes('listings')) {
-      if (value !== 'featured') {
+      if (value === 'sale') {
+        console.log('goattee');
         setSortArr(
           [...sortArr].sort((a, b) => {
             const statusA = a.status === value;
@@ -61,13 +62,10 @@ export default function useSortSwitch(object: ObjectTypes) {
             return 0;
           }),
         );
-      } else {
+      } else if (value === 'featured') {
+        console.log('camel');
         setSortArr(
-          [...sortArr].sort((a, b) => {
-            const aValue = a[value.toLowerCase()] as number;
-            const bValue = b[value.toLowerCase()] as number;
-            return bValue - aValue;
-          }),
+          [...sortArr].sort((a, b) => Number(b.draft) - Number(a.draft)),
         );
       }
     }

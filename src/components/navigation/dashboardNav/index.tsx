@@ -29,12 +29,9 @@ export default function NavBoard() {
       >
         <h3><b>{header}</b></h3>
         <div className={`flex align-y gap-2`}>
-          <div className={`flex gap ${styles.coinWrap}`}>
+          <div className={`flex gap border rounded-full p-1 items-center`}>
             <Svg href={kbtIcon} />
-            <div className={`flex f-column ${styles.currency}`}>
-              <small>100.00</small>
-              <small>≈ ₦1000</small>
-            </div>
+            <small className='font-bold'>100.00</small>
           </div>
           <Link
             onMouseEnter={() => setHover(true)}
@@ -69,12 +66,9 @@ export default function NavBoard() {
             koinNode={
               <div className="flex f-column align-x pad-inline-1">
                 <div className={`flex s-btw ${styles.coinAlert}`}>
-                  <div className={`flex gap ${styles.navCoinWrap}`}>
-                    <Svg href={kbtIcon} />
-                    <div className={`flex f-column ${styles.navCurrency}`}>
-                      <small>100.00</small>
-                      <small>≈ ₦1000</small>
-                    </div>
+                  <div className={`flex items-center px-1 rounded-full gap border`}>
+                    <Svg href={kbtIcon} width='1.8rem' height='1.5rem' />
+                    <small className='font-medium text-sm'>100.00</small>
                   </div>
                   <div className={`flex align-y align-x ${styles.navBellWrap}`}>
                     <Link onClick={() => setOpen(false)}

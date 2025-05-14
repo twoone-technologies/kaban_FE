@@ -15,7 +15,7 @@ export default function Refer() {
       <ListingData
         href={giftIcon}
         data="Refer & Earn"
-        title={'invite a realtor and earn 15kbt per referral'}
+        title={'Invite a realtor and earn 15kbt per referral'}
       />
       <Button 
         onClick={() => setInvite(true)}
