@@ -6,7 +6,8 @@ import {
 } from 'react-router-dom';
 import LandingPage from './routes/_landingpage';
 import { action as listingSearch } from './routes/landingPageAction';
-import Root, { action as signResults } from './routes/_index';
+import Root from './routes/_index';
+import { action as signResults } from './routes/indexAction';
 import Blog from './routes/blog';
 import Commercial, { action as comResults } from './routes/_property.commercial';
 import Industrial, { action as indResults } from './routes/_property.industrial';
