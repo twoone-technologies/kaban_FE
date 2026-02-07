@@ -15,7 +15,7 @@ export default function RequireAuth() {
       if (isSignedUp && authSearchState != 'sign_in') { addAuthToUrl('sign_in'); }
       else if (authSearchState != 'sign_up') { addAuthToUrl('sign_up'); }
     }
-  }, [authSearchState])
+  }, [authSearchState, addAuthToUrl, isLoggedIn, isSignedUp]);
 
   return <Outlet />;
 }
