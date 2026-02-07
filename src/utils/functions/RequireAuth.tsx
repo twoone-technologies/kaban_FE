@@ -10,12 +10,12 @@ export default function RequireAuth() {
   const isLoggedIn = authState.accessToken ? true : false;
   const isSignedUp = authState.email ? true : false;
 
-  useEffect(() => {
-    if (!isLoggedIn) {
-      if (isSignedUp && authSearchState != 'sign_in') { addAuthToUrl('sign_in'); }
-      else if (authSearchState != 'sign_up') { addAuthToUrl('sign_up'); }
-    }
-  }, [authSearchState])
+  // useEffect(() => {
+  //  if (!isLoggedIn) {
+  //    if (isSignedUp && authSearchState != 'sign_in') { addAuthToUrl('sign_in'); }
+  //    else if (authSearchState != 'sign_up') { addAuthToUrl('sign_up'); }
+  //  }
+  //}, [authSearchState])
 
   return <Outlet />;
 }
