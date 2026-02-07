@@ -40,7 +40,7 @@ export default function Modal({ isVisible, closeModal, children, className, prom
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isVisible]);
+  }, [isVisible, isLoggedIn]);
 
   return (
     <dialog className={`b-radius ${!prompt ? styles.modalWrap : `${styles.modalWrap} ${styles.prompt}`} ${className}`} onClose={closeModal} ref={modal}>
