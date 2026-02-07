@@ -12,7 +12,7 @@ export default function AboutUsSection() {
   useEffect(() => {
     visionImgBgRef.current?.style.setProperty('--background-img', `url(${aboutUsImg})`)
     missionImgBgRef.current?.style.setProperty('--background-img', `url(${smilingCoupleImg})`)
-  }, [aboutUsImg])
+  }, [])
   return (
     <Container element="div">
       <section className={`f-column align-center mt-4 gap-1 pb-14 ${styles.about_section}`}>
