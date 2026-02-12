@@ -106,7 +106,7 @@ export default function EditProfile() {
       ) : (
         <Form
           method="post"
-          encType="application/form-data"
+          // encType="application/form-data"
           className="flex flex-col gap-2"
         >
           <input name="realtor_id" type="hidden" value={realtor.id} />
