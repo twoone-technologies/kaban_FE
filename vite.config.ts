@@ -6,12 +6,12 @@ import { resolve } from 'path'
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: 'dist', // Adjust this to your preferred build directory
+    outDir: 'dist',
   },
   resolve: {
     alias: {
-      "~": resolve(__dirname, "src")
-    }
+      "~": resolve(__dirname, "src"),
+    },
   },
   define: {
     'import.meta.env.API_KEY': process.env.VITE_API_KEY,

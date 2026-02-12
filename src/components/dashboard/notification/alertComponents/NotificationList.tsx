@@ -4,7 +4,7 @@ import { arrowLeftIcon, arrowRightIcon, mailIcon } from "~/assets/icons";
 import SeeAllNotification from "~/components/dashboard/notification/alertComponents/SeeAllNotification";
 import Mail from "~/components/dashboard/notification/alertComponents/Mail";
 import { useLocation } from "react-router-dom";
-import { Pagination } from "swiper/modules";
+// import { Pagination } from "swiper/modules";
 
 type Props = {
   className?: string;

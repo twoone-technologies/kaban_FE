@@ -10,7 +10,7 @@ import useTabulation from '~/hooks/useTabulation';
 import Tabulation from '~/components/reusable/tabulation/Tabulation';
 import { useForm } from 'react-hook-form';
 import ContinueOrCancel from './pages/miscellenous/ContinueOrCancel';
-import Tooltip from '~/components/reusable/Tooltip';
+// import Tooltip from '~/components/reusable/Tooltip';
 import { Listing } from '~/utils/types/listing.types';
 
 export type ErrorObj = {
@@ -53,7 +53,7 @@ export default function ListingForm({
   const [listing, setListing] = useState<Listing>(listingItem);
 
   useEffect(() => {
-    let hideTimeout: NodeJS.Timeout;
+    let hideTimeout: ReturnType<typeof setTimeout>;
     if (success) {
       hideTimeout = setTimeout(() => {
         setSuccess(false);
@@ -86,7 +86,7 @@ export default function ListingForm({
       <Form
         method="post"
         className="flex f-column gap"
-        encType="application/form-data"
+        // encType="application/form-data"
       >
         <Basic
           listing={listing}
