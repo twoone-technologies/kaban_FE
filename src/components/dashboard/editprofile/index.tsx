@@ -19,7 +19,7 @@ import { ThreeDots } from '~/components/reusable/Button';
 import { updatePassword } from '~/api/features/password';
 import Tooltip from '~/components/reusable/Tooltip';
 
-export async function action({ request }: ActionFunctionArgs) {
+export async function Action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
   const intent = formData.get('intent');
   const user = formData.get('user_id')?.toString();
@@ -32,7 +32,7 @@ export async function action({ request }: ActionFunctionArgs) {
         const res = await updatePassword(preparePasswordDto(formData), user).unwrap();
         return res;
       } catch (error) {
-        return { error: 'password is unsuccessful'};
+        return { error: 'password is unsuccessful' };
       }
     case 'deactivate_account':
       return 'deactivate account';
@@ -76,14 +76,14 @@ export default function EditProfile() {
   const [alertState, setAlertState] = useState(false);
   const res = useActionData() as { message?: string; error?: string };
   const { state } = useNavigation();
-  
+
   useEffect(() => {
     if (res?.message) setAlertState(true);
     const timeoutId = setTimeout(() => {
       setAlertState(false);
     }, 2000);
     return () => clearTimeout(timeoutId);
-  }, [state]);
+  }, [state, res.message]);
 
   const {
     register,
@@ -106,7 +106,7 @@ export default function EditProfile() {
       ) : (
         <Form
           method="post"
-          encType="application/form-data"
+          encType="multipart/form-data"
           className="flex flex-col gap-2"
         >
           <input name="realtor_id" type="hidden" value={realtor.id} />
@@ -136,7 +136,7 @@ export default function EditProfile() {
               idx={activeIndex}
             />
           )}
-        <Tooltip copy={alertState} popOver={true} text={res?.message} />
+          <Tooltip copy={alertState} popOver={true} text={res?.message} />
         </Form>
       )}
     </Wrapper>

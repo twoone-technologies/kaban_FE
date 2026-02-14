@@ -4,7 +4,6 @@ import { arrowLeftIcon, arrowRightIcon, mailIcon } from "~/assets/icons";
 import SeeAllNotification from "~/components/dashboard/notification/alertComponents/SeeAllNotification";
 import Mail from "~/components/dashboard/notification/alertComponents/Mail";
 import { useLocation } from "react-router-dom";
-import { Pagination } from "swiper/modules";
 
 type Props = {
   className?: string;
@@ -61,7 +60,7 @@ export default function NotificationList({
         </div>
       </div>
       <div
-        className={`flex gap-2 pad-inline-1 pad-block-0 
+        className={`flex gap-2 pad-inline-1 pad-block-0
         ${styles.select} ${mailBoxArr.length === 0 ? styles.accent : ""}`}
       >
         <label
@@ -71,19 +70,18 @@ export default function NotificationList({
         ></label>
         <div
           onClick={clickAll}
-          className={`flex gap 
-          ${
-            mailStat === "all" && mailBoxArr.length !== 0
+          className={`flex gap
+          ${mailStat === "all" && mailBoxArr.length !== 0
               ? styles.isActive
               : styles.notActive
-          }`}
+            }`}
         >
           <span>All</span>
           <span>({mailBoxArr && allMsg})</span>
         </div>
         <div
           onClick={clickUnread}
-          className={`flex gap  
+          className={`flex gap
           ${mailStat === "unread" ? styles.isActive : styles.notActive}`}
         >
           <span>Unread</span>
@@ -100,7 +98,7 @@ export default function NotificationList({
           </div>
         ) : (
           <>
-            <div className={location.pathname === '/dashboard/notification'? '' : styles.mailbox}>
+            <div className={location.pathname === '/dashboard/notification' ? '' : styles.mailbox}>
               {mailBoxArr.map((mail) => (
                 <Mail
                   key={mail.id}
@@ -112,19 +110,19 @@ export default function NotificationList({
             </div>
             <SeeAllNotification />
             <div className={`flex justify-between border p-4 ${styles.pagination}`}>
-          <div className="flex gap">
-            <Svg href={arrowLeftIcon} width="1.2rem" height="1.2rem" /> Prev
-          </div>
-          <div className="flex gap">
-            <span className={styles.td}>2</span>
-            <span className={styles.td}>3</span>
-            <span className={styles.td}>4</span>
-            <span className={styles.td}>5</span>
-          </div>
-          <div className="flex gap">
-            Next <Svg href={arrowRightIcon}  width="1.2rem"  height="1.2rem" />
-          </div>
-        </div>
+              <div className="flex gap">
+                <Svg href={arrowLeftIcon} width="1.2rem" height="1.2rem" /> Prev
+              </div>
+              <div className="flex gap">
+                <span className={styles.td}>2</span>
+                <span className={styles.td}>3</span>
+                <span className={styles.td}>4</span>
+                <span className={styles.td}>5</span>
+              </div>
+              <div className="flex gap">
+                Next <Svg href={arrowRightIcon} width="1.2rem" height="1.2rem" />
+              </div>
+            </div>
           </>
         )}
       </div>

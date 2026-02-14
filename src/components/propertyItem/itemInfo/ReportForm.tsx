@@ -35,7 +35,6 @@ export default function ReportForm() {
           as="select"
           title="reason"
           labelText="Reason"
-          placeholder="fullname"
         >
           <OptGroup subItems={reasonArr} header="Select reason" />
         </FormControl>
